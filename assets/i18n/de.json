@@ -1,0 +1,51 @@
+{
+  "nav.bio": "Bio",
+  "nav.dates": "Termine",
+  "nav.projects": "Projekte",
+  "nav.contact": "Kontakt",
+
+  "head.index.title": "Leo Asal – Schlagzeuger &amp; Komponist",
+  "head.index.description": "Leo Asal ist Schlagzeuger und Komponist aus Köln – zuhause zwischen Jazz, Hip-Hop und elektronischer Musik.",
+  "home.eyebrow": "Schlagzeuger · Komponist",
+  "home.tagline": "Hey, ich bin Leo — Schlagzeuger und Komponist aus Köln, zuhause zwischen Jazz, Hip-Hop und elektronischer Musik.",
+
+  "head.bio.title": "Bio – Leo Asal",
+  "bio.eyebrow": "Über mich",
+  "bio.heading": "Bio",
+  "bio.p1": "Leo Asal, ein Schlagzeuger mit Wurzeln im Jazz und Hip-Hop, studierte in Mainz und Köln bei renommierten Musikern wie Hendrik Smock und Prof. Jonas Burgwinkel. Er hat mit Jazzgrößen wie Emil Mangelsdorff, Diane Schuur und Nathan East gespielt und mit Rap- und R&amp;B-Künstlern wie Megaloh, OG Keemo und MAJAN zusammengearbeitet.",
+  "bio.p2": "Seit 2019 lebt er in Köln und ist Mitglied touring Bands wie dem Jakob Bänsch Quartett und The Jakob Manz Project. 2021 veröffentlichte er mit Bassist Charly Härtel das Album „Ein Tag wie ein anderer“. Seit 2022 tritt er regelmäßig beim Smooth Jazz Festival in Portugal, Spanien und Frankreich auf, unter anderem mit Gerald Albright, Eric Marienthal und Paul Jackson Jr.",
+  "bio.p3": "2024 veröffentlichte sein Duo YAMUNA das Debütalbum „Focus &amp; Distraction“, das elektronische Sounds mit Improvisation verbindet. Von 2023 bis 2025 war er Mitglied im Bundesjazzorchester.",
+  "bio.readMore": "Ausführliche Bio lesen",
+  "bio.long.p1": "Leo Asal wurde 1999 in eine musikalische Familie geboren und entdeckte im Alter von vier Jahren sein Talent fürs Schlagzeugspiel. Schnell gewann er zahlreiche Preise, unter anderem bei „Jugend musiziert“ und „Jugend jazzt“, sowohl im Ensemble als auch solistisch. Mit seinem vielseitigen Spiel etablierte sich der „ZIRP“-Stipendiat als einer der aufstrebenden jungen Schlagzeuger Deutschlands in Jazz und Pop. Seine Musikprojekte und Touren führten ihn zu renommierten Bühnen und Festivals in Deutschland – etwa dem ELBJazz Festival, dem Deutschen Jazzfestival Frankfurt, Jazz Baltica, den Leverkusener Jazztagen, den Festspielen Mecklenburg-Vorpommern und der Alten Oper Frankfurt – sowie international nach Griechenland, Ecuador, Spanien, Portugal, Frankreich, Rumänien und Ägypten.",
+  "bio.long.p2": "Schon früh entwickelte Asal eine Leidenschaft für Jazz und Hip-Hop, die während seines Studiums an der Hochschule für Musik Mainz bei Hendrik Smock weiter gefördert wurde. Dort lernte er von renommierten Jazzmusikern wie Jesse Milliner, Sebastian Sternal und Claudius Valk. Er hatte die Gelegenheit, mit herausragenden Jazzkünstlern wie Emil Mangelsdorff, Diane Schuur, Dominique DiPiazza und Nathan East aufzutreten. Während seiner Zeit in Mainz wirkte er außerdem als Schlagzeuger und musikalischer Leiter der Loft-Arts-Produktionsreihe. Viele damit verbundene Projekte brachten ihn mit Rap- und R&amp;B-Künstlern wie Megaloh, OG Keemo, MAJAN, Monet192, Lary, Teesy, Rola, Kelvyn Colt, Manuellsen und weiteren zusammen.",
+  "bio.long.p3": "2019 zog Asal nach Köln, wo er sein Studium bei Prof. Jonas Burgwinkel und Alex Vesper abschloss. Seitdem ist er Mitglied mehrerer Touring-Bands, darunter das Jakob Bänsch Quartett und The Jakob Manz Project, und arbeitet mit der Kölner Sängerin Ketzberg zusammen. 2021 veröffentlichte er gemeinsam mit Bassist Charly Härtel das Album „Ein Tag wie ein anderer“. Seit 2022 ist Asal regelmäßiger Act beim Smooth Jazz Festival in Portugal, Spanien und Frankreich, unter anderem mit Jazzlegenden wie Gerald Albright, Eric Marienthal, Everette Harp, Paul Jackson Jr., Michael Lington, Tom Browne und Eric Darius.",
+  "bio.long.p4": "Außerdem gründete Asal gemeinsam mit Keyboarder und Beatmaker halfpastseven das Duo YAMUNA, das die künstlerische Verbindung zwischen Mensch und Maschine erforscht. Ihr Debütalbum „Focus &amp; Distraction“ erschien 2024 beim Amsterdamer Label Wicked Wax und verbindet elektronische Elemente mit freier Improvisation.",
+  "bio.long.p5": "Von 2023 bis 2025 war Leo Asal Mitglied im Bundesjazzorchester.",
+
+  "head.dates.title": "Termine – Leo Asal",
+  "dates.eyebrow": "Live",
+  "dates.heading": "Termine",
+  "dates.loading": "Termine werden geladen…",
+  "dates.empty": "Aktuell keine anstehenden Termine.",
+
+  "head.projects.title": "Projekte – Leo Asal",
+  "projects.eyebrow": "Arbeit",
+  "projects.heading": "Projekte",
+  "projects.yamuna.subtitle": "Improvisierte Beats",
+  "projects.jakobmanz.subtitle": "Mit frischem, mitreißendem Sound ist The Jakob Manz Project eine der erfolgreichsten Bands im jungen deutschen Jazz.",
+  "projects.baensch.subtitle": "Lyrische Melodien, virtuoser Jazz und sinfonische klassische Elemente unter der Leitung von Trompeter Jakob Bänsch.",
+  "projects.ketzberg.subtitle": "Poppiger Soul &amp; RnB aus Köln, gesungen auf Deutsch.",
+
+  "head.contact.title": "Kontakt – Leo Asal",
+  "contact.eyebrow": "Kontakt aufnehmen",
+  "contact.heading": "Kontakt",
+  "contact.reachMe": "Erreich mich",
+
+  "head.yamuna.title": "YAMUNA EPK – Leo Asal",
+  "yamuna.eyebrow": "Jetzt erhältlich",
+  "yamuna.albumLine": "„Focus &amp; Distraction“ (Album)",
+  "yamuna.listenBuy": "Anhören / Vinyl kaufen",
+  "yamuna.description": "YAMUNA nimmt die Hörer:innen mit auf eine klangliche Reise durch eine Landschaft ineinander verwobener Stile. Die Musik bewegt sich vor allem im Hip-Hop und stößt dabei ganz natürlich in die Bereiche Jazz, Drum and Bass, Lo-Fi und improvisierte Musik vor. YAMUNA lädt dazu ein, die eigene Wahrnehmung zu hinterfragen und die Schnittstellen zwischen Mensch und Maschine zu erkunden. Die Verschmelzung elektronischer Elemente mit frei improvisierten Passagen erzeugt eine einzigartige Atmosphäre, die fordernd und fesselnd zugleich ist.",
+  "yamuna.downloadsHeading": "Downloads",
+  "yamuna.presskit": "Presskit (Fotos &amp; Texte)"
+}

@@ -1,0 +1,51 @@
+{
+  "nav.bio": "Bio",
+  "nav.dates": "Dates",
+  "nav.projects": "Projects",
+  "nav.contact": "Contact",
+
+  "head.index.title": "Leo Asal – Drummer & Composer",
+  "head.index.description": "Leo Asal is a drummer and composer based in Cologne, moving between jazz, hip-hop and electronic music.",
+  "home.eyebrow": "Drummer · Composer",
+  "home.tagline": "Hey, I'm Leo — a drummer and composer based in Cologne, moving between jazz, hip-hop and electronic music.",
+
+  "head.bio.title": "Bio – Leo Asal",
+  "bio.eyebrow": "About",
+  "bio.heading": "Bio",
+  "bio.p1": "Leo Asal, a drummer with roots in jazz and hip-hop, studied in Mainz and Cologne with renowned musicians such as Hendrik Smock and Prof. Jonas Burgwinkel. He has performed with jazz greats like Emil Mangelsdorff, Diane Schuur, and Nathan East and has collaborated with rap and R&amp;B artists such as Megaloh, OG Keemo, and MAJAN.",
+  "bio.p2": "Since 2019, he has been based in Cologne and is a member of touring bands like the Jakob Bänsch Quartet and The Jakob Manz Project. In 2021, he released the album „Ein Tag wie ein anderer“ with bassist Charly Härtel. Since 2022, he has performed regularly at the Smooth Jazz Festival in Portugal, Spain, and France, sharing the stage with Gerald Albright, Eric Marienthal, and Paul Jackson Jr.",
+  "bio.p3": "In 2024, his duo YAMUNA released its debut album, „Focus &amp; Distraction“, which blends electronic sounds with improvisation. From 2023 to 2025, he was a member of the Bundesjazzorchester.",
+  "bio.readMore": "Read full bio",
+  "bio.long.p1": "Born in 1999 into a musical family, Leo Asal discovered his talent for drumming at the age of four. He quickly won numerous awards, including at the “Jugend Musiziert” and “Jugend Jazzt” competitions, both in ensemble and solo categories. With his versatile playing style, the “ZIRP” scholarship recipient established himself as one of Germany’s rising young drummers in jazz and pop. His music projects and tours have taken him to renowned venues and festivals in Germany, such as the ELBJazz Festival, Deutsches Jazzfestival Frankfurt, Jazz Baltica, Leverkusener Jazztage, Festspiele Mecklenburg-Vorpommern, Alte Oper Frankfurt, and internationally to Greece, Ecuador, Spain, Portugal, France, Romania, and Egypt.",
+  "bio.long.p2": "From an early age, Asal developed a passion for jazz and hip-hop, which was further nurtured during his studies at the Mainz University of Music under Hendrik Smock. There, he learned from renowned jazz musicians such as Jesse Milliner, Sebastian Sternal, and Claudius Valk. He had the opportunity to perform with distinguished jazz artists like Emil Mangelsdorff, Diane Schuur, Dominique DiPiazza, and Nathan East. During his time in Mainz, he was also engaged as a drummer and musical director for the Loft Arts production series. Many projects linked to this brought him together with rap and R&amp;B artists such as Megaloh, OG Keemo, MAJAN, Monet192, Lary, Teesy, Rola, Kelvyn Colt, Manuellsen, and more.",
+  "bio.long.p3": "In 2019, Asal moved to Cologne, where he completed his studies with Prof. Jonas Burgwinkel and Alex Vesper. Since then, he has been a member of several touring bands, including the Jakob Bänsch Quartet and The Jakob Manz Project, and collaborates with Cologne-based singer Ketzberg. In 2021, he released the album Ein Tag wie ein anderer in collaboration with bassist Charly Härtel. Since 2022, Asal has been a regular performer at the Smooth Jazz Festival in Portugal, Spain, and France, sharing the stage with jazz legends such as Gerald Albright, Eric Marienthal, Everette Harp, Paul Jackson Jr., Michael Lington, Tom Browne, and Eric Darius.",
+  "bio.long.p4": "Additionally, Asal founded the duo YAMUNA with keyboardist and beatmaker halfpastseven, exploring the artistic connection between humans and machines. Their debut album Focus &amp; Distraction was released in 2024 under the Amsterdam-based label Wicked Wax, blending electronic elements with free improvisation.",
+  "bio.long.p5": "From 2023 to 2025, Leo Asal was a member of the Bundesjazzorchester.",
+
+  "head.dates.title": "Dates – Leo Asal",
+  "dates.eyebrow": "Live",
+  "dates.heading": "Dates",
+  "dates.loading": "Loading dates…",
+  "dates.empty": "No upcoming dates right now.",
+
+  "head.projects.title": "Projects – Leo Asal",
+  "projects.eyebrow": "Work",
+  "projects.heading": "Projects",
+  "projects.yamuna.subtitle": "Improvised beats",
+  "projects.jakobmanz.subtitle": "With their fresh and compelling sound, The Jakob Manz Project is one of the most successful bands in young German jazz.",
+  "projects.baensch.subtitle": "Lyrical melodies, virtuosic jazz and symphonic classical elements led by trumpeter Jakob Bänsch.",
+  "projects.ketzberg.subtitle": "Poppy soul &amp; RnB from Cologne, sung in German.",
+
+  "head.contact.title": "Contact – Leo Asal",
+  "contact.eyebrow": "Get in touch",
+  "contact.heading": "Contact",
+  "contact.reachMe": "Reach me",
+
+  "head.yamuna.title": "YAMUNA EPK – Leo Asal",
+  "yamuna.eyebrow": "Out now",
+  "yamuna.albumLine": "„Focus &amp; Distraction“ (Album)",
+  "yamuna.listenBuy": "Listen / Buy Vinyl",
+  "yamuna.description": "YAMUNA takes the listeners on a sonic journey through a landscape of various interwoven styles. The music primarily moves within the realm of hip-hop and naturally pushes the boundaries into jazz, drum and bass, lo-fi, and improvised music. YAMUNA invites you to question your own perception and explore the intersections between human and machine. The fusion of electronic elements with freely improvised passages creates a unique atmosphere that is both challenging and captivating.",
+  "yamuna.downloadsHeading": "Downloads",
+  "yamuna.presskit": "Press kit (photos &amp; words)"
+}

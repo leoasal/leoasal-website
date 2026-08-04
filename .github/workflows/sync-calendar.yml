@@ -1,0 +1,36 @@
+name: Sync calendar
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # every 6 hours
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch calendar and rebuild data/dates.json
+        env:
+          CALENDAR_URL: ${{ secrets.CALENDAR_URL }}
+        run: node scripts/sync-calendar.js
+
+      - name: Commit changes if any
+        run: |
+          if git diff --quiet -- data/dates.json; then
+            echo "No changes to dates.json"
+            exit 0
+          fi
+          git config user.name "leoasal-website-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/dates.json
+          git commit -m "Sync dates from calendar"
+          git push

@@ -1,0 +1,51 @@
+{
+  "nav.bio": "Bio",
+  "nav.dates": "Fechas",
+  "nav.projects": "Proyectos",
+  "nav.contact": "Contacto",
+
+  "head.index.title": "Leo Asal – Baterista y Compositor",
+  "head.index.description": "Leo Asal es baterista y compositor afincado en Colonia, entre el jazz, el hip-hop y la música electrónica.",
+  "home.eyebrow": "Baterista · Compositor",
+  "home.tagline": "Hola, soy Leo — baterista y compositor afincado en Colonia, entre el jazz, el hip-hop y la música electrónica.",
+
+  "head.bio.title": "Bio – Leo Asal",
+  "bio.eyebrow": "Sobre mí",
+  "bio.heading": "Biografía",
+  "bio.p1": "Leo Asal, baterista con raíces en el jazz y el hip-hop, estudió en Mainz y Colonia con músicos de renombre como Hendrik Smock y el Prof. Jonas Burgwinkel. Ha tocado con grandes del jazz como Emil Mangelsdorff, Diane Schuur y Nathan East, y ha colaborado con artistas de rap y R&amp;B como Megaloh, OG Keemo y MAJAN.",
+  "bio.p2": "Desde 2019 vive en Colonia y es miembro de bandas en gira como el Jakob Bänsch Quartet y The Jakob Manz Project. En 2021 publicó el álbum „Ein Tag wie ein anderer“ junto al bajista Charly Härtel. Desde 2022 actúa regularmente en el Smooth Jazz Festival en Portugal, España y Francia, compartiendo escenario con Gerald Albright, Eric Marienthal y Paul Jackson Jr.",
+  "bio.p3": "En 2024, su dúo YAMUNA publicó el álbum debut „Focus &amp; Distraction“, que combina sonidos electrónicos con improvisación. Entre 2023 y 2025 fue miembro de la Bundesjazzorchester.",
+  "bio.readMore": "Leer biografía completa",
+  "bio.long.p1": "Nacido en 1999 en una familia de músicos, Leo Asal descubrió su talento para la batería a los cuatro años. Pronto ganó numerosos premios, entre ellos en los concursos „Jugend musiziert“ y „Jugend jazzt“, tanto en categoría de conjunto como solista. Con su estilo versátil, el becario „ZIRP“ se consolidó como uno de los bateristas jóvenes más prometedores de Alemania en jazz y pop. Sus proyectos musicales y giras lo han llevado a escenarios y festivales reconocidos en Alemania —como el ELBJazz Festival, el Deutsches Jazzfestival Frankfurt, Jazz Baltica, las Leverkusener Jazztage, los Festspiele Mecklenburg-Vorpommern y la Alte Oper Frankfurt— así como a Grecia, Ecuador, España, Portugal, Francia, Rumanía y Egipto.",
+  "bio.long.p2": "Desde muy joven, Asal desarrolló una pasión por el jazz y el hip-hop, que siguió cultivando durante sus estudios en la Universidad de Música de Mainz con Hendrik Smock. Allí aprendió de músicos de jazz reconocidos como Jesse Milliner, Sebastian Sternal y Claudius Valk. Tuvo la oportunidad de tocar junto a artistas de jazz destacados como Emil Mangelsdorff, Diane Schuur, Dominique DiPiazza y Nathan East. Durante su etapa en Mainz también trabajó como baterista y director musical de la serie de producciones Loft Arts. Muchos de estos proyectos lo unieron a artistas de rap y R&amp;B como Megaloh, OG Keemo, MAJAN, Monet192, Lary, Teesy, Rola, Kelvyn Colt, Manuellsen y otros.",
+  "bio.long.p3": "En 2019, Asal se mudó a Colonia, donde completó sus estudios con el Prof. Jonas Burgwinkel y Alex Vesper. Desde entonces es miembro de varias bandas en gira, entre ellas el Jakob Bänsch Quartet y The Jakob Manz Project, y colabora con la cantante colonesa Ketzberg. En 2021 publicó el álbum Ein Tag wie ein anderer junto al bajista Charly Härtel. Desde 2022, Asal actúa regularmente en el Smooth Jazz Festival en Portugal, España y Francia, compartiendo escenario con leyendas del jazz como Gerald Albright, Eric Marienthal, Everette Harp, Paul Jackson Jr., Michael Lington, Tom Browne y Eric Darius.",
+  "bio.long.p4": "Además, Asal fundó junto al teclista y beatmaker halfpastseven el dúo YAMUNA, que explora la conexión artística entre el ser humano y la máquina. Su álbum debut Focus &amp; Distraction se publicó en 2024 bajo el sello ámsterdamés Wicked Wax, combinando elementos electrónicos con improvisación libre.",
+  "bio.long.p5": "Entre 2023 y 2025, Leo Asal fue miembro de la Bundesjazzorchester.",
+
+  "head.dates.title": "Fechas – Leo Asal",
+  "dates.eyebrow": "En vivo",
+  "dates.heading": "Fechas",
+  "dates.loading": "Cargando fechas…",
+  "dates.empty": "No hay fechas próximas por el momento.",
+
+  "head.projects.title": "Proyectos – Leo Asal",
+  "projects.eyebrow": "Trabajo",
+  "projects.heading": "Proyectos",
+  "projects.yamuna.subtitle": "Beats improvisados",
+  "projects.jakobmanz.subtitle": "Con un sonido fresco y cautivador, The Jakob Manz Project es una de las bandas más exitosas del joven jazz alemán.",
+  "projects.baensch.subtitle": "Melodías líricas, jazz virtuoso y elementos clásicos sinfónicos liderados por el trompetista Jakob Bänsch.",
+  "projects.ketzberg.subtitle": "Soul y RnB pop de Colonia, cantado en alemán.",
+
+  "head.contact.title": "Contacto – Leo Asal",
+  "contact.eyebrow": "Ponte en contacto",
+  "contact.heading": "Contacto",
+  "contact.reachMe": "Escríbeme",
+
+  "head.yamuna.title": "YAMUNA EPK – Leo Asal",
+  "yamuna.eyebrow": "Ya disponible",
+  "yamuna.albumLine": "„Focus &amp; Distraction“ (Álbum)",
+  "yamuna.listenBuy": "Escuchar / Comprar vinilo",
+  "yamuna.description": "YAMUNA lleva a quien escucha en un viaje sonoro por un paisaje de estilos entrelazados. La música se mueve principalmente en el terreno del hip-hop y traspasa de forma natural las fronteras hacia el jazz, el drum and bass, el lo-fi y la música improvisada. YAMUNA invita a cuestionar la propia percepción y a explorar las intersecciones entre el ser humano y la máquina. La fusión de elementos electrónicos con pasajes de improvisación libre crea una atmósfera única, tan exigente como cautivadora.",
+  "yamuna.downloadsHeading": "Descargas",
+  "yamuna.presskit": "Kit de prensa (fotos y textos)"
+}
