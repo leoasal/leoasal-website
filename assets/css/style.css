@@ -310,6 +310,27 @@ main {
 
 /* ---------- Bio ---------- */
 
+.bio-portrait {
+  margin: 0 0 2rem;
+  max-width: 22rem;
+}
+
+.bio-portrait img {
+  width: 100%;
+  border-radius: 4px;
+  filter: grayscale(1);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  object-position: top;
+}
+
+@media (min-width: 800px) {
+  .bio-portrait {
+    float: right;
+    margin: 0 0 1.5rem 2.5rem;
+  }
+}
+
 .bio-text p { max-width: 68ch; }
 
 details.long-bio {
