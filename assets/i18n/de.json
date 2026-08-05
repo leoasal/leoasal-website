@@ -7,7 +7,6 @@
   "head.index.title": "Leo Asal – Schlagzeuger &amp; Komponist",
   "head.index.description": "Leo Asal ist Schlagzeuger und Komponist aus Köln – zuhause zwischen Jazz, Hip-Hop und elektronischer Musik.",
   "home.eyebrow": "Schlagzeuger · Komponist",
-  "home.tagline": "Hey, ich bin Leo — Schlagzeuger und Komponist aus Köln, zuhause zwischen Jazz, Hip-Hop und elektronischer Musik.",
 
   "head.bio.title": "Bio – Leo Asal",
   "bio.eyebrow": "Über mich",
@@ -35,6 +34,22 @@
   "projects.jakobmanz.subtitle": "Mit frischem, mitreißendem Sound ist The Jakob Manz Project eine der erfolgreichsten Bands im jungen deutschen Jazz.",
   "projects.baensch.subtitle": "Lyrische Melodien, virtuoser Jazz und sinfonische klassische Elemente unter der Leitung von Trompeter Jakob Bänsch.",
   "projects.ketzberg.subtitle": "Poppiger Soul &amp; RnB aus Köln, gesungen auf Deutsch.",
+
+  "project.videosHeading": "Videos",
+  "project.visitWebsite": "Website besuchen",
+
+  "head.jakobmanz.title": "The Jakob Manz Project – Leo Asal",
+  "jakobmanz.eyebrow": "Projekt",
+  "jakobmanz.description": "Mit frischem, mitreißendem Sound ist The Jakob Manz Project eine der erfolgreichsten Bands im jungen deutschen Jazz. Ihr Debütalbum „Natural Energy“ erschien im April 2020 beim renommierten Label ACT. Die Band hat ihr Publikum mit zahlreichen Konzerten begeistert, unter anderem bei Auftritten auf großen Festivals wie dem Elbjazz Festival, den Leverkusener Jazztagen, dem LOTOS Jazzfestival (Polen) und Jazz Baltica.",
+
+  "head.baensch.title": "Jakob Bänsch Quartett – Leo Asal",
+  "baensch.eyebrow": "Projekt",
+  "baensch.description1": "Das Jakob Bänsch Quartett (samt der Band vom Debütalbum „Opening“) besteht aus Jakob Bänsch (Trompete, Flügelhorn), Niklas Roever (Klavier), Jakob Obleser (Bass) und Leo Asal (Schlagzeug). Sie spielen vor allem Kompositionen des Bandleaders, inspiriert von Komponisten wie Herbie Hancock, Richie Beirach, Maria Schneider, Maurice Ravel und Gustav Mahler.",
+  "baensch.description2": "Ihre Musik verbindet lyrische Melodien, virtuosen Jazz, atmosphärische Klanglandschaften und sinfonische klassische Elemente. Das von klassischen Werken beeinflusste, in Leitmotive und Akte gegliederte Konzertprogramm schafft ein wahrhaft immersives Erlebnis.",
+
+  "head.haertelasal.title": "Härtel / Asal Duo – Leo Asal",
+  "haertelasal.eyebrow": "Projekt",
+  "haertelasal.description": "Duo-Projekt mit Bassist Charly Härtel. Ihr Album „Ein Tag wie ein anderer“ verbindet Jazz und Songwriting zu etwas leise Persönlichem.",
 
   "head.contact.title": "Kontakt – Leo Asal",
   "contact.eyebrow": "Kontakt aufnehmen",
