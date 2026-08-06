@@ -138,6 +138,8 @@ aufbauen, damit nichts vergessen wird.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Yamuna-Seite: eigene „YAMUNA"-Überschrift (page-header wie bei den anderen
+  Projektseiten) getrennt vom Album-Block („Out now" + Cover + Listen/Buy Vinyl)
 - Termine sind jetzt aufklappbar (Zeit/Ort/Link), `allDay`-Feld ergänzt,
   Yamuna-Seite umbenannt zu "YAMUNA", Video/Bilder vor die Downloads
   verschoben, Kartenbild-Ausschnitt feinjustiert (2026-08-06)
