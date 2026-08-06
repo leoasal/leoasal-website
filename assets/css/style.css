@@ -584,13 +584,43 @@ a.project-card:hover {
 }
 
 .epk-hero .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.epk-hero-text .eyebrow {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.epk-covers {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 30rem;
+}
+
+.epk-covers a {
+  display: block;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.epk-covers a:hover {
+  opacity: 0.85;
+}
+
+.epk-covers img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 @media (min-width: 700px) {
-  .epk-hero .container { grid-template-columns: 280px 1fr; align-items: center; }
+  .epk-hero .container { gap: 2rem; }
+  .epk-covers { max-width: 26rem; }
 }
 
 .download-list {
