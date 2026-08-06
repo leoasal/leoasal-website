@@ -124,6 +124,26 @@ aufbauen, damit nichts vergessen wird.
   und neu setzen (`gh api repos/leoasal/leoasal-website/pages -X PUT -f "cname="`
   dann nochmal mit dem echten Domainnamen) — das hat den Issuance-Prozess
   neu gestartet und danach ging es in ~1 Minute.
+- **Deploy-Pipeline**: Das alte Legacy-Build-System von Pages (Branch-Deploy)
+  fing irgendwann an, mit generischem "Page build failed." zu scheitern
+  (kein Jekyll-Problem, `.nojekyll` hat es NICHT gefixt). Deshalb läuft
+  Deployment jetzt über `.github/workflows/deploy-pages.yml`
+  (`actions/upload-pages-artifact` + `actions/deploy-pages`), Pages-Setting
+  `build_type: workflow`. **Auch dieser Weg hängt gelegentlich** — der
+  `deploy-pages`-Schritt pollt minutenlang "deployment_in_progress" und
+  bricht nach 10 Min. mit Timeout ab (in dieser Session 2 von 4 Deploys).
+  Kein Konfigurationsfehler, einfach GitHub-Pages-Flakiness auf diesem Repo.
+  **Nach jedem Push den Deploy-Status wirklich prüfen, nicht nur pushen und
+  gut sein lassen:**
+  ```bash
+  GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/gh
+  $GH run list --repo leoasal/leoasal-website --workflow=deploy-pages.yml --limit 1
+  ```
+  Falls `failure`/Timeout: `$GH workflow run deploy-pages.yml --repo leoasal/leoasal-website`
+  erneut auslösen — der zweite Versuch lief bisher immer sauber durch.
+  Am Ende immer live gegenchecken (`curl -s https://leoasal.com/... | grep ...`
+  nach einer eindeutigen neuen CSS-Klasse/Textstelle), nicht nur dem
+  Workflow-Status vertrauen.
 - **Kein Homebrew, kein Node lokal** in diesem Environment — gh CLI läuft
   als portable Binary (s.o.), der Kalender-Sync läuft nur in der GitHub
   Action (dort ist Node vorhanden), nicht lokal testbar ohne eigenes Node.
@@ -138,6 +158,10 @@ aufbauen, damit nichts vergessen wird.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Deploy auf Actions-basiertes Pages-Deployment umgestellt (Legacy-Build
+  fing an zu scheitern), Yamuna-Album-Cover deutlich größer/prominenter,
+  beide Cover (Front + neu: Back) klickbar → öffnen in eigener Lightbox
+  statt neuem Tab (2026-08-06)
 - Yamuna-Seite: eigene „YAMUNA"-Überschrift (page-header wie bei den anderen
   Projektseiten) getrennt vom Album-Block („Out now" + Cover + Listen/Buy Vinyl)
 - Termine sind jetzt aufklappbar (Zeit/Ort/Link), `allDay`-Feld ergänzt,
