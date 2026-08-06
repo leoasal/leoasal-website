@@ -43,15 +43,22 @@
         "<span>" + formatTime(e.start) + "</span></div>";
     }
     if (e.location) {
-      var locationHtml = escapeHtml(e.location).replace(/\n/g, "<br>");
+      var locationText = e.location.replace(/\n/g, ", ");
+      var mapsQuery = encodeURIComponent(locationText);
       body +=
         '<div class="date-detail"><span class="date-detail-label" data-i18n="dates.location">Location</span>' +
-        "<span>" + locationHtml + "</span></div>";
+        '<span class="date-location-value">' +
+        '<a class="date-link" href="https://www.google.com/maps/search/?api=1&query=' + mapsQuery +
+        '" target="_blank" rel="noopener">' + escapeHtml(locationText) + "</a>" +
+        ' <a class="date-link date-link-secondary" href="https://maps.apple.com/?q=' + mapsQuery +
+        '" target="_blank" rel="noopener">(Apple Maps)</a>' +
+        "</span></div>";
     }
     if (e.url) {
       body +=
-        '<div class="date-detail"><a class="date-link" href="' + escapeAttr(e.url) +
-        '" target="_blank" rel="noopener" data-i18n="dates.moreInfo">More info</a></div>';
+        '<div class="date-detail"><span class="date-detail-label" data-i18n="dates.website">Website</span>' +
+        '<a class="date-link" href="' + escapeAttr(e.url) + '" target="_blank" rel="noopener">' +
+        escapeHtml(e.url) + "</a></div>";
     }
 
     return (

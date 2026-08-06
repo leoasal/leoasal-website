@@ -28,7 +28,7 @@
   "dates.empty": "No upcoming dates right now.",
   "dates.time": "Time",
   "dates.location": "Location",
-  "dates.moreInfo": "More info",
+  "dates.website": "Website",
 
   "head.projects.title": "Projects – Leo Asal",
   "projects.eyebrow": "Work",
@@ -38,9 +38,14 @@
   "projects.haertelasal.subtitle": "Duo project with bassist Charly Härtel — their album „Ein Tag wie ein anderer“ blends jazz and songwriting.",
   "projects.baensch.subtitle": "Lyrical melodies, virtuosic jazz and symphonic classical elements led by trumpeter Jakob Bänsch.",
   "projects.ketzberg.subtitle": "Poppy soul &amp; RnB from Cologne, sung in German.",
+  "projects.comingSoon": "Photos coming soon",
 
   "project.videosHeading": "Videos",
   "project.visitWebsite": "Visit website",
+
+  "head.loftarts.title": "Loft Arts – Leo Asal",
+  "loftarts.eyebrow": "Project",
+  "loftarts.description": "More information coming soon.",
 
   "head.jakobmanz.title": "The Jakob Manz Project – Leo Asal",
   "jakobmanz.eyebrow": "Project",
