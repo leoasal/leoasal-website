@@ -61,6 +61,7 @@ function parseIcs(text) {
           title: current.summary || "Untitled event",
           location: current.location || "",
           start: current.start || null,
+          allDay: !!current.allDay,
           url: extractUrl(current.description),
         });
       }
@@ -78,7 +79,10 @@ function parseIcs(text) {
     if (key === "SUMMARY") current.summary = value;
     else if (key === "LOCATION") current.location = value;
     else if (key === "DESCRIPTION") current.description = value;
-    else if (key === "DTSTART") current.start = parseIcsDate(rawKey, value);
+    else if (key === "DTSTART") {
+      current.start = parseIcsDate(rawKey, value);
+      current.allDay = /VALUE=DATE\b/.test(rawKey) && !rawKey.includes("DATE-TIME");
+    }
   }
 
   return events;

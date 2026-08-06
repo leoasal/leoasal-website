@@ -26,6 +26,9 @@
   "dates.heading": "Dates",
   "dates.loading": "Loading dates…",
   "dates.empty": "No upcoming dates right now.",
+  "dates.time": "Time",
+  "dates.location": "Location",
+  "dates.moreInfo": "More info",
 
   "head.projects.title": "Projects – Leo Asal",
   "projects.eyebrow": "Work",
@@ -57,7 +60,7 @@
   "contact.heading": "Contact",
   "contact.reachMe": "Reach me",
 
-  "head.yamuna.title": "YAMUNA EPK – Leo Asal",
+  "head.yamuna.title": "YAMUNA – Leo Asal",
   "yamuna.eyebrow": "Out now",
   "yamuna.albumLine": "„Focus &amp; Distraction“ (Album)",
   "yamuna.listenBuy": "Listen / Buy Vinyl",

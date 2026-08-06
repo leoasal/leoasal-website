@@ -19,25 +19,60 @@
       return;
     }
 
-    list.innerHTML = upcoming.map(function (e) {
-      var when = formatDate(e.start);
-      var where = e.location ? " — " + escapeHtml(e.location) : "";
-      var titleHtml = e.url
-        ? '<a href="' + escapeAttr(e.url) + '" target="_blank" rel="noopener">' + escapeHtml(e.title) + "</a>"
-        : escapeHtml(e.title);
-      return (
-        '<li><span class="date-when">' + when + '</span>' +
-        '<span class="date-what">' + titleHtml + where + "</span></li>"
-      );
-    }).join("");
+    list.innerHTML = upcoming.map(renderEvent).join("");
 
     if (window.i18nRefresh) window.i18nRefresh();
+  }
+
+  function renderEvent(e) {
+    var when = formatDate(e.start);
+    var hasDetails = !e.allDay || e.location || e.url;
+
+    var summary =
+      '<span class="date-when">' + when + "</span>" +
+      '<span class="date-title">' + escapeHtml(e.title) + "</span>";
+
+    if (!hasDetails) {
+      return '<li><div class="date-summary date-summary--plain">' + summary + "</div></li>";
+    }
+
+    var body = "";
+    if (!e.allDay) {
+      body +=
+        '<div class="date-detail"><span class="date-detail-label" data-i18n="dates.time">Time</span>' +
+        "<span>" + formatTime(e.start) + "</span></div>";
+    }
+    if (e.location) {
+      var locationHtml = escapeHtml(e.location).replace(/\n/g, "<br>");
+      body +=
+        '<div class="date-detail"><span class="date-detail-label" data-i18n="dates.location">Location</span>' +
+        "<span>" + locationHtml + "</span></div>";
+    }
+    if (e.url) {
+      body +=
+        '<div class="date-detail"><a class="date-link" href="' + escapeAttr(e.url) +
+        '" target="_blank" rel="noopener" data-i18n="dates.moreInfo">More info</a></div>';
+    }
+
+    return (
+      "<li><details class=\"date-item\">" +
+      '<summary class="date-summary">' + summary + "</summary>" +
+      '<div class="date-body">' + body + "</div>" +
+      "</details></li>"
+    );
   }
 
   function formatDate(iso) {
     var d = new Date(iso);
     return d.toLocaleDateString(document.documentElement.lang || "en", {
       day: "2-digit", month: "short", year: "numeric"
+    });
+  }
+
+  function formatTime(iso) {
+    var d = new Date(iso);
+    return d.toLocaleTimeString(document.documentElement.lang || "en", {
+      hour: "2-digit", minute: "2-digit"
     });
   }
 
