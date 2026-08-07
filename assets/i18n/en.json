@@ -28,7 +28,7 @@
   "dates.empty": "No upcoming dates right now.",
   "dates.time": "Time",
   "dates.location": "Location",
-  "dates.website": "Website",
+  "dates.moreInfo": "More information",
 
   "head.projects.title": "Projects – Leo Asal",
   "projects.eyebrow": "Work",
@@ -38,26 +38,21 @@
   "projects.haertelasal.subtitle": "Duo project with bassist Charly Härtel — their album „Ein Tag wie ein anderer“ blends jazz and songwriting.",
   "projects.baensch.subtitle": "Lyrical melodies, virtuosic jazz and symphonic classical elements led by trumpeter Jakob Bänsch.",
   "projects.ketzberg.subtitle": "Poppy soul &amp; RnB from Cologne, sung in German.",
-  "projects.comingSoon": "Photos coming soon",
 
   "project.videosHeading": "Videos",
   "project.visitWebsite": "Visit website",
 
   "head.loftarts.title": "Loft Arts – Leo Asal",
-  "loftarts.eyebrow": "Project",
   "loftarts.description": "More information coming soon.",
 
   "head.jakobmanz.title": "The Jakob Manz Project – Leo Asal",
-  "jakobmanz.eyebrow": "Project",
   "jakobmanz.description": "With their fresh and compelling sound, The Jakob Manz Project is one of the most successful bands in young German jazz. Their debut album, „Natural Energy,“ was released in April 2020 under the renowned label ACT. The band has won over the hearts of their audience through numerous concerts, including performances at major festivals such as the Elbjazz Festival, Leverkusener Jazztage, LOTOS Jazzfestival (Poland), and Jazz Baltica.",
 
   "head.baensch.title": "Jakob Bänsch Quartett – Leo Asal",
-  "baensch.eyebrow": "Project",
   "baensch.description1": "The Jakob Bänsch Quartet (including the band featured on their debut album „Opening“) consists of Jakob Bänsch (trumpet, flugelhorn), Niklas Roever (piano), Jakob Obleser (bass), and Leo Asal (drums). They primarily perform compositions by the band leader, drawing inspiration from composers such as Herbie Hancock, Richie Beirach, Maria Schneider, Maurice Ravel, and Gustav Mahler.",
   "baensch.description2": "Their music combines lyrical melodies, virtuosic jazz, atmospheric soundscapes, and symphonic classical elements. The concert program, influenced by classical works and structured with leitmotifs and acts, creates a truly immersive experience.",
 
   "head.haertelasal.title": "Härtel / Asal Duo – Leo Asal",
-  "haertelasal.eyebrow": "Project",
   "haertelasal.description": "Duo project with bassist Charly Härtel. Their album „Ein Tag wie ein anderer“ blends jazz and songwriting into something quietly personal.",
 
   "head.contact.title": "Contact – Leo Asal",
@@ -66,7 +61,6 @@
   "contact.reachMe": "Reach me",
 
   "head.yamuna.title": "YAMUNA – Leo Asal",
-  "yamuna.pageEyebrow": "Project",
   "yamuna.eyebrow": "Out now",
   "yamuna.albumLine": "„Focus &amp; Distraction“ (Album)",
   "yamuna.listenBuy": "Listen / Buy Vinyl",

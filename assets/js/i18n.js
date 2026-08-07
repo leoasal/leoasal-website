@@ -49,5 +49,10 @@
       var key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.innerHTML = dict[key];
     });
+    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
+      var spec = el.getAttribute("data-i18n-attr").split(":");
+      var attr = spec[0], key = spec[1];
+      if (dict[key] != null) el.setAttribute(attr, dict[key]);
+    });
   };
 })();

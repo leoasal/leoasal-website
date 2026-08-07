@@ -145,8 +145,6 @@ p { margin: 0 0 1em; }
 .lang-switch {
   display: flex;
   gap: 0.25rem;
-  margin-left: 1.25rem;
-  margin-top: 0.4rem;
   padding-left: 1.25rem;
   border-left: 1px solid var(--line);
 }
@@ -243,7 +241,11 @@ main {
 }
 
 @media (min-width: 800px) {
-  .site-nav { display: block; }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
   .mobile-nav { display: none; }
   main { padding-bottom: 0; }
 }
@@ -326,6 +328,24 @@ main {
   padding: 3rem 0 1.5rem;
   border-bottom: 1px solid var(--line);
   margin-bottom: 2.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.back-link svg {
+  width: 0.8em;
+  height: 0.8em;
+  flex-shrink: 0;
+}
+
+.back-link:hover {
+  color: var(--accent);
 }
 
 /* ---------- Bio ---------- */
@@ -439,6 +459,7 @@ details.long-bio summary {
 .date-detail {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.4rem 0.6rem;
   font-size: 0.9rem;
 }
@@ -453,6 +474,17 @@ details.long-bio summary {
   min-width: 5.5em;
 }
 
+.date-detail-icon {
+  display: inline-flex;
+  color: var(--plum);
+  opacity: 0.6;
+}
+
+.date-detail-icon svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
 .date-link {
   color: var(--accent-dark);
   text-decoration: underline;
@@ -460,17 +492,27 @@ details.long-bio summary {
   font-weight: 600;
 }
 
-.date-link-secondary {
-  font-weight: 400;
-  opacity: 0.75;
-  font-size: 0.85em;
-}
-
 .date-location-value {
   display: inline-flex;
   flex-wrap: wrap;
   gap: 0.4em;
   align-items: baseline;
+}
+
+.date-map {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.date-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .dates-empty {
@@ -518,23 +560,6 @@ a.project-card:hover {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--bg-soft);
-}
-
-.thumb-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-}
-
-.thumb-placeholder span {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--plum);
-  opacity: 0.5;
 }
 
 .project-card img {
