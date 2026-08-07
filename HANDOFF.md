@@ -66,7 +66,7 @@ jakob-manz-project.html       Beschreibung + 2 YouTube-Videos + Link zu jakobman
 jakob-baensch-quartett.html   Beschreibung + 3 YouTube-Videos + Link zu jakobbaensch.com
 haertel-asal-duo.html         Kurzbeschreibung + 4 YouTube-Videos (keine externe Site)
 loft-arts.html                Platzhalter-Text ("weitere Infos folgen") + 4 YouTube-Videos,
-                               Karte auf projects.html mit "Photos coming soon"-Platzhalter
+                               Karte auf projects.html zeigt Leos Logo (assets/images/project-loft-arts.jpg)
 contact.html                  E-Mail + Instagram/Facebook (inline SVG-Icons)
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
@@ -78,6 +78,18 @@ Footer mit Impressum/Datenschutz/Sprachumschalter-Kopie fürs Handy. Neue
 Seiten am besten von einer bestehenden ähnlichen Seite kopieren statt neu
 aufbauen, damit nichts vergessen wird.
 
+Header-Nav (ab `min-width: 800px`): `.site-nav` ist `display: flex`, Haupt-
+links (`ul`) und Sprachumschalter (`.lang-switch`) sitzen dadurch auf einer
+Zeile, Sprachumschalter rechtsbündig mit Trennstrich (2026-08-07, vorher
+stand der Umschalter darunter statt daneben).
+
+Die 5 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
+Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
+klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
+`projects.html` — bei neuen Projekt-Unterseiten dieses Pattern übernehmen,
+nicht wieder einen reinen Text-Eyebrow einbauen (2026-08-07). Die Haupt-
+Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
+
 ## i18n (EN/DE/ES)
 
 - `assets/js/i18n.js` liest `assets/i18n/{en,de,es}.json`, ersetzt alles mit
@@ -87,6 +99,9 @@ aufbauen, damit nichts vergessen wird.
 - Dynamisch nachgeladener Inhalt (z.B. Termine) muss nach dem Rendern
   `window.i18nRefresh()` aufrufen, sonst bleibt er unübersetzt bei
   Sprachwechsel/Reload-Race — siehe `assets/js/dates.js` als Beispiel.
+  `window.i18nRefresh()` verarbeitet seit 2026-08-07 auch `data-i18n-attr`
+  (vorher nur `data-i18n`/innerHTML) — nötig, damit dynamisch eingefügte
+  Elemente wie das Location-Icon ein übersetztes `aria-label` bekommen.
 - Neuen Text immer in **allen drei** JSON-Dateien ergänzen, nicht nur Englisch.
 
 ## Kalender-Sync (Apple Calendar → dates.html)
@@ -110,12 +125,17 @@ aufbauen, damit nichts vergessen wird.
   antippen/klicken zeigt Zeit (falls nicht `allDay`), Ort und Link (falls
   vorhanden). Bewusst kein Hover-only-Pattern, damit es auf dem Handy genauso
   funktioniert wie am Desktop.
-- Ort ist klickbar → verlinkt auf Google-Maps-Suche
-  (`https://www.google.com/maps/search/?api=1&query=...`), daneben ein
-  kleinerer sekundärer "(Apple Maps)"-Link (`https://maps.apple.com/?q=...`).
-  Beide aus `e.location` gebaut, kein API-Key nötig.
-- Die eingetragene URL wird als eigene, sichtbare Zeile mit Label "Website"
-  angezeigt (nicht mehr als generischer "More info"-Button).
+- Ort zeigt ein Pin-Icon statt des Text-Labels "Location" (Icon hat
+  `role="img"` + `data-i18n-attr="aria-label:dates.location"` fürs
+  Screenreader-Label), ist klickbar → verlinkt auf Google-Maps-Suche
+  (`https://www.google.com/maps/search/?api=1&query=...`), und darunter
+  liegt ein eingebettetes Google-Maps-Preview (`.date-map` iframe,
+  `output=embed`-Trick, kein API-Key nötig). **Kein Apple-Maps-Link mehr**
+  (auf Leos Wunsch entfernt, 2026-08-07).
+- Die eingetragene URL zeigt ein Info-Icon statt Text-Label und der Link
+  selbst heißt "More information"/"Mehr Informationen"/"Más información"
+  (Key `dates.moreInfo`) statt vorher "Website" + roher URL als Linktext
+  (2026-08-07).
 - **Wichtig (2026-08-07):** Commits, die der Sync-Workflow selbst mit dem
   Standard-`GITHUB_TOKEN` pusht, lösen **keinen** neuen `Deploy Pages`-Run
   aus — GitHub verhindert das bewusst (Loop-Schutz: Events von
@@ -213,6 +233,16 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Nav-Layout, Zurück-Links, Kalender-Feinschliff, Loft-Arts-Bild (alles
+  2026-08-07): Header-Nav und Sprachumschalter jetzt auf einer Zeile statt
+  übereinander; die 5 Projekt-Unterseiten haben einen "‹ Projects"-Zurück-
+  Link statt reinem "Project"-Text (Muster oben unter "Seitenstruktur"
+  dokumentiert); Kalender zeigt Pin-/Info-Icons statt Text-Labels, Apple-
+  Maps-Link entfernt, dafür eingebettete Google-Maps-Preview, Link heißt
+  "More information" statt "Website"; Loft-Arts-Karte auf projects.html
+  zeigt jetzt Leos echtes Logo statt "Photos coming soon"; "Arbeit"-Eyebrow
+  auf der Projects-Seite blieb auf Leos Wunsch erhalten (kurz entfernt,
+  dann zurückgeholt). Alle Punkte live verifiziert.
 - Kalender-URLs gefixt: Sync-Skript liest jetzt das ics-`URL:`-Feld (statt
   nur Notizen) und akzeptiert Domains ohne `https://`-Schema. Zusätzlich
   triggert der Sync-Workflow jetzt explizit einen Pages-Deploy nach einem
