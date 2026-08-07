@@ -304,9 +304,12 @@ main {
 }
 
 .hero-social {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
   display: flex;
   gap: 1rem;
-  margin-top: 0.5em;
 }
 
 .hero-social a {
@@ -333,12 +336,9 @@ main {
     gap: 1.5rem;
   }
 
-  .hero-name-block {
-    order: 1;
-  }
-
   .hero-content h1 {
     margin-bottom: 0;
+    order: 1;
   }
 
   .hero-content .eyebrow {
