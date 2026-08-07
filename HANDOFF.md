@@ -173,27 +173,32 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   ```
   Bei `failure` (nicht `waiting`/`pending`/`queued`!): einmal neu auslösen
   mit `$GH workflow run deploy-pages.yml --repo leoasal/leoasal-website`.
-  Bei `waiting`/`pending` über mehrere Minuten: das ist der Runner-Ausfall,
-  nicht neu triggern, sondern in ein paar Minuten mit `gh run view <id>
-  --json status,conclusion` nachschauen (robuster als `gh run watch`, das bei
-  Netzwerkflakes selbst mit falschem Exit-Code abbricht). Am Ende immer live
-  gegenchecken (`curl -s https://leoasal.com/... | grep ...` nach einer
-  eindeutigen neuen CSS-Klasse/Textstelle), nicht nur dem Workflow-Status
-  vertrauen — und **beim Session-Start immer erstmal prüfen, ob es noch
-  unerledigte/hängende Deploys vom letzten Mal gibt**, bevor man annimmt,
-  der letzte Push sei live.
+  Am Ende immer live gegenchecken (`curl -s https://leoasal.com/... | grep ...`
+  nach einer eindeutigen neuen CSS-Klasse/Textstelle bzw. `curl -I` auf
+  `last-modified`), nicht nur dem Workflow-Status vertrauen — und **beim
+  Session-Start immer erstmal prüfen, ob es noch unerledigte/hängende
+  Deploys vom letzten Mal gibt**, bevor man annimmt, der letzte Push sei live.
+
+  **Korrektur (2026-08-07): Der "GitHub-weite Runner-Ausfall" vom 2026-08-06
+  war eine Fehldiagnose.** Tatsächliche Ursache: Der Workflow hat
+  `concurrency: { group: "pages", cancel-in-progress: false }`
+  (`.github/workflows/deploy-pages.yml`). Ein einzelner Run blieb auf
+  `waiting` hängen (Ursache dafür unklar — evtl. doch ein kurzer, echter
+  Runner-Hänger) und **blockierte durch die Concurrency-Gruppe alle
+  nachfolgenden Runs**, die dann ebenfalls auf `pending`/`waiting` standen —
+  das sah nach einem plattformweiten Ausfall aus, war aber nur dieser eine
+  Zombie-Run. `githubstatus.com` zeigte die ganze Zeit "All Systems
+  Operational". **Fix bei hängendem `waiting`/`pending` über mehrere
+  Minuten:** zuerst den ältesten hängenden Run canceln
+  (`gh run cancel <id> --repo leoasal/leoasal-website`), dann erst neu
+  triggern falls nötig — nicht einfach nur neu triggern, das reiht sich
+  nur hinten in der gleichen blockierten Gruppe ein.
 - **Kein Homebrew, kein Node lokal** in diesem Environment — gh CLI läuft
   als portable Binary (s.o.), der Kalender-Sync läuft nur in der GitHub
   Action (dort ist Node vorhanden), nicht lokal testbar ohne eigenes Node.
 
 ## Offene Punkte / mögliche nächste Schritte
 
-- **⚠️ Stand 2026-08-06, ~18:40 Uhr: mehrere Commits sind gepusht, aber wegen
-  des GitHub-Runner-Ausfalls (s.u.) noch NICHT live.** Betrifft: Dates
-  Ort/Website-Anzeige, Yamuna Listen/Buy-Vinyl-Position, Nav-Abstand-Fix,
-  komplette Loft-Arts-Seite inkl. Videos. Erstes, was eine neue Session tun
-  sollte: Deploy-Status prüfen (`gh run list --workflow=deploy-pages.yml
-  --limit 3`) und ggf. den zuletzt hängenden Job/Push neu antriggern.
 - Leo trägt nach und nach echte Termine in "Website Termine" ein — einfach
   beobachten, ob der Sync sauber durchläuft (`gh run list --workflow=sync-calendar.yml`).
 - Kein offener inhaltlicher Task-Rückstand sonst; alles unten in "Erledigt"
@@ -203,6 +208,11 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Hängenden Deploy von gestern gelöst: alter Zombie-Run in der `concurrency`-
+  Gruppe "pages" gecancelt, danach lief der Deploy sofort durch. Alle
+  gestrigen Änderungen (Loft-Arts, Dates-Ort/Website-Zeile, Yamuna-Position,
+  Nav-Abstand) sind jetzt live und live-verifiziert. Ursache war keine
+  GitHub-weite Störung, siehe korrigierter Abschnitt oben (2026-08-07)
 - Loft-Arts-Projektseite angelegt (Platzhaltertext + 4 YouTube-Videos),
   Karte auf projects.html mit Platzhalter-Thumb (2026-08-06)
 - Dates: Ort verlinkt jetzt zu Google Maps (+ sekundärer Apple-Maps-Link),
