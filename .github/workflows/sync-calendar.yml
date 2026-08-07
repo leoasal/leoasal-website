@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   sync:
@@ -24,9 +25,11 @@ jobs:
         run: node scripts/sync-calendar.js
 
       - name: Commit changes if any
+        id: commit
         run: |
           if git diff --quiet -- data/dates.json; then
             echo "No changes to dates.json"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "leoasal-website-bot"
@@ -34,3 +37,13 @@ jobs:
           git add data/dates.json
           git commit -m "Sync dates from calendar"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with the default GITHUB_TOKEN does not trigger other
+      # workflows (GitHub's built-in loop prevention) — so Deploy Pages would
+      # never run automatically after a calendar sync. Trigger it explicitly.
+      - name: Trigger Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-pages.yml --ref main
