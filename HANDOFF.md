@@ -52,7 +52,9 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 ## Seitenstruktur
 
 ```
-index.html                    Startseite: Foto + Name + Nav, kein Intro-Text (bewusst leer)
+index.html                    Startseite: Foto + Name + Nav. Oben links auf dem Hero-Bild fest
+                               positionierte Social-Icons (Instagram/Facebook/Spotify/Apple
+                               Music), unabhängig vom "Leo Asal"-Schriftzug unten (2026-08-07)
 bio.html                      Bio kurz + ausklappbare Langfassung, Portraitfoto
 dates.html                    Termine, gespeist aus data/dates.json (siehe unten)
 projects.html                 Projekt-Grid: Yamuna, Jakob Manz, Härtel/Asal Duo,
@@ -65,9 +67,10 @@ yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschr
 jakob-manz-project.html       Beschreibung + 2 YouTube-Videos + Link zu jakobmanz.de
 jakob-baensch-quartett.html   Beschreibung + 3 YouTube-Videos + Link zu jakobbaensch.com
 haertel-asal-duo.html         Kurzbeschreibung + 4 YouTube-Videos (keine externe Site)
-loft-arts.html                Platzhalter-Text ("weitere Infos folgen") + 4 YouTube-Videos,
-                               Karte auf projects.html zeigt Leos Logo (assets/images/project-loft-arts.jpg)
-contact.html                  E-Mail + Instagram/Facebook (inline SVG-Icons)
+loft-arts.html                Echter Beschreibungstext (Agentur-Info + Leos Rolle als
+                               Schlagzeuger/Musical Director) + 7 YouTube-Videos. Karte auf
+                               projects.html zeigt Leos Logo (assets/images/project-loft-arts.jpg)
+contact.html                  E-Mail + Instagram/Facebook/Spotify/Apple Music (inline SVG-Icons)
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
@@ -233,6 +236,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Loft Arts bekam einen echten Beschreibungstext (Agentur-Info von Leo
+  Stolz/Niklas von Klitzing + Leos eigene Rolle als Schlagzeuger/Musical
+  Director, in allen 3 Sprachen umformuliert statt 1:1 von der Loft-Arts-
+  Website übernommen) und 3 weitere Videos (Novaa, Woodie Smalls, MAJAN
+  live — insgesamt jetzt 7). Social-Icons: Instagram/Facebook auf der
+  Startseite ergänzt, dann auf Leos Wunsch von "unter Leo Asal" zu fest
+  positioniert **oben links auf dem Hero-Bild** verschoben (`.hero-social`,
+  `position: absolute`, unabhängig vom Namens-Schriftzug); dabei auch
+  Spotify + Apple Music ergänzt (auf Startseite UND Kontaktseite) — Leo
+  hatte den Apple-Music-Link fälschlich "Tidal" genannt, das war die
+  einzige Rückfrage nötig (2026-08-07)
 - Nav-Layout, Zurück-Links, Kalender-Feinschliff, Loft-Arts-Bild (alles
   2026-08-07): Header-Nav und Sprachumschalter jetzt auf einer Zeile statt
   übereinander; die 5 Projekt-Unterseiten haben einen "‹ Projects"-Zurück-
