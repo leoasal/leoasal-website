@@ -96,9 +96,11 @@ aufbauen, damit nichts vergessen wird.
 - `.github/workflows/sync-calendar.yml` läuft alle 6h + manuell auslösbar
   (`gh workflow run sync-calendar.yml` oder im Actions-Tab).
 - `scripts/sync-calendar.js` parst das ics, schreibt `data/dates.json`:
-  `{ title, location, start (ISO), allDay (bool), url }`. `url` kommt aus
-  der **ersten Zeile der Notizen** des Kalendereintrags (nur falls es wie
-  eine http(s)-URL aussieht).
+  `{ title, location, start (ISO), allDay (bool), url }`. `url` kommt primär
+  aus dem **URL-Feld** des Kalendereintrags (ics-Property `URL:`), Fallback:
+  erste Zeile der Notizen. Beides akzeptiert auch **Domains ohne Schema**
+  (z.B. `jakobmanz.de` statt `https://jakobmanz.de`) — wird automatisch mit
+  `https://` ergänzt, da Leo es i.d.R. so eintippt.
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
   reinschreiben und committen (außer kurz zum lokalen Testen, danach
   zurücksetzen, siehe Git-History für ein Beispiel).
@@ -112,10 +114,14 @@ aufbauen, damit nichts vergessen wird.
   Beide aus `e.location` gebaut, kein API-Key nötig.
 - Die eingetragene URL wird als eigene, sichtbare Zeile mit Label "Website"
   angezeigt (nicht mehr als generischer "More info"-Button).
-- **Wichtig:** Leos aktuelle echte Kalendereinträge haben (Stand 2026-08-06)
-  weder Ort noch URL gepflegt — das ist kein Bug, einfach noch nicht
-  eingetragen. Erst prüfen ob Leo das nachträgt, bevor man denkt, die
-  Anzeige sei kaputt.
+- **Wichtig (2026-08-07):** Commits, die der Sync-Workflow selbst mit dem
+  Standard-`GITHUB_TOKEN` pusht, lösen **keinen** neuen `Deploy Pages`-Run
+  aus — GitHub verhindert das bewusst (Loop-Schutz: Events von
+  `GITHUB_TOKEN` triggern keine anderen Workflows). Deshalb triggert
+  `sync-calendar.yml` am Ende jetzt explizit `gh workflow run deploy-pages.yml`,
+  wenn sich `dates.json` geändert hat (Schritt "Trigger Pages deploy",
+  braucht `permissions: actions: write`). Ohne das würde jeder automatische
+  6h-Sync zwar committen, aber nie live gehen.
 
 ## Rechtliches: Cookie-Banner / YouTube-Embeds
 
@@ -199,15 +205,24 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Offene Punkte / mögliche nächste Schritte
 
-- Leo trägt nach und nach echte Termine in "Website Termine" ein — einfach
-  beobachten, ob der Sync sauber durchläuft (`gh run list --workflow=sync-calendar.yml`).
-- Kein offener inhaltlicher Task-Rückstand sonst; alles unten in "Erledigt"
-  ist umgesetzt (auch wenn der Deploy gerade hängt, s.o.). Neue Wünsche
-  einfach hier oben ergänzen, sobald sie reinkommen, und nach Erledigung
-  nach unten verschieben.
+- Kein offener inhaltlicher Task-Rückstand; alles unten in "Erledigt" ist
+  umgesetzt und live verifiziert. Neue Wünsche einfach hier oben ergänzen,
+  sobald sie reinkommen, und nach Erledigung nach unten verschieben.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Kalender-URLs gefixt: Sync-Skript liest jetzt das ics-`URL:`-Feld (statt
+  nur Notizen) und akzeptiert Domains ohne `https://`-Schema. Zusätzlich
+  triggert der Sync-Workflow jetzt explizit einen Pages-Deploy nach einem
+  Commit, da `GITHUB_TOKEN`-Pushes sonst nie automatisch deployt worden
+  wären (s.o.). Beide Termine (jakobmanz.de, jakobbaensch.com) live
+  verifiziert (2026-08-07)
+- Hero-Bild auf der Startseite: Text ("Drummer · Composer") saß auf Desktop-
+  Breite über einem hellen Bildbereich statt über der schwarzen Hose wie
+  auf Mobile — Ursache war der zentrierte `object-fit: cover`-Crop bei
+  breiterem Container-Seitenverhältnis. Fix: `object-position: center bottom`
+  in `.hero img`, verankert den Ausschnitt am unteren Bildrand, auf Mobile
+  keine Änderung (dort war ohnehin die volle Bildhöhe sichtbar) (2026-08-07)
 - Hängenden Deploy von gestern gelöst: alter Zombie-Run in der `concurrency`-
   Gruppe "pages" gecancelt, danach lief der Deploy sofort durch. Alle
   gestrigen Änderungen (Loft-Arts, Dates-Ort/Website-Zeile, Yamuna-Position,
