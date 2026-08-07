@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Fetches Leo's public "Website Termine" iCloud calendar (ics feed) and writes
 // a minimal data/dates.json containing only title, location, start time and
-// (optionally) a URL taken from the first line of the event description.
+// (optionally) a URL — taken from the event's URL field, falling back to the
+// first line of the description/notes if no URL field is set.
 //
 // Usage: CALENDAR_URL="https://p12-caldav.icloud.com/published/2/....ics" node scripts/sync-calendar.js
 
@@ -62,7 +63,7 @@ function parseIcs(text) {
           location: current.location || "",
           start: current.start || null,
           allDay: !!current.allDay,
-          url: extractUrl(current.description),
+          url: extractUrl(current.url) || extractUrl(current.description),
         });
       }
       current = null;
@@ -79,6 +80,7 @@ function parseIcs(text) {
     if (key === "SUMMARY") current.summary = value;
     else if (key === "LOCATION") current.location = value;
     else if (key === "DESCRIPTION") current.description = value;
+    else if (key === "URL") current.url = value;
     else if (key === "DTSTART") {
       current.start = parseIcsDate(rawKey, value);
       current.allDay = /VALUE=DATE\b/.test(rawKey) && !rawKey.includes("DATE-TIME");
