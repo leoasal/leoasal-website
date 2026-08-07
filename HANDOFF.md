@@ -4,6 +4,10 @@ Lebendes Übergabedokument für diesen Ordner. Bei jeder wesentlichen Änderung
 aktualisieren, nicht nur anhängen — veraltete Abschnitte korrigieren.
 **Proaktiv aktualisieren und committen, ohne dass Leo danach fragen muss** —
 direkt im Anschluss an die eigentliche Änderung, als fester Teil davon.
+**Seit 2026-08-07 gilt das auch fürs Pushen selbst:** Leo will vorm
+`git push` nicht mehr gefragt werden ("frag mich ab jetzt nicht mehr...
+mach es einfach von alleine") — lokal testen wie gewohnt, dann direkt
+committen + pushen, ohne Rückfrage.
 
 ## Was das hier ist
 
@@ -52,25 +56,27 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 ## Seitenstruktur
 
 ```
-index.html                    Startseite: Foto + Name + Nav. Oben links auf dem Hero-Bild fest
-                               positionierte Social-Icons (Instagram/Facebook/Spotify/Apple
-                               Music), unabhängig vom "Leo Asal"-Schriftzug unten (2026-08-07)
+index.html                    Startseite: Foto + Name + Nav, kein Intro-Text (bewusst leer)
 bio.html                      Bio kurz + ausklappbare Langfassung, Portraitfoto
 dates.html                    Termine, gespeist aus data/dates.json (siehe unten)
 projects.html                 Projekt-Grid: Yamuna, Jakob Manz, Härtel/Asal Duo,
-                               Jakob Bänsch, Ketzberg (Ketzberg verlinkt extern,
-                               die anderen vier haben eigene Unterseiten)
+                               Jakob Bänsch, Ketzberg, Loft Arts (jede eigene Unterseite
+                               außer Ketzberg, verlinkt extern), jede Karte hat ein Bild +
+                               Subtitle
 yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschrift oben,
                                dann Album-Block ("Out now" + Front-/Back-Cover, beide als
                                Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
                                dann Beschreibung, Pressefotos, Videos, Downloads
-jakob-manz-project.html       Beschreibung + 2 YouTube-Videos + Link zu jakobmanz.de
-jakob-baensch-quartett.html   Beschreibung + 3 YouTube-Videos + Link zu jakobbaensch.com
+jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
+                               `.project-link`) + 2 YouTube-Videos
+jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
+                               3 YouTube-Videos
 haertel-asal-duo.html         Kurzbeschreibung + 4 YouTube-Videos (keine externe Site)
 loft-arts.html                Echter Beschreibungstext (Agentur-Info + Leos Rolle als
-                               Schlagzeuger/Musical Director) + 7 YouTube-Videos. Karte auf
-                               projects.html zeigt Leos Logo (assets/images/project-loft-arts.jpg)
-contact.html                  E-Mail + Instagram/Facebook/Spotify/Apple Music (inline SVG-Icons)
+                               Schlagzeuger/Musical Director) + Icon+Domain-Link
+                               (loft-arts.com) + 7 YouTube-Videos
+contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
+                               nicht mehr extra auf dieser Seite
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
@@ -85,6 +91,16 @@ Header-Nav (ab `min-width: 800px`): `.site-nav` ist `display: flex`, Haupt-
 links (`ul`) und Sprachumschalter (`.lang-switch`) sitzen dadurch auf einer
 Zeile, Sprachumschalter rechtsbündig mit Trennstrich (2026-08-07, vorher
 stand der Umschalter darunter statt daneben).
+
+**Social-Icons sind Teil des Headers** (`.brand-group` wrapt Logo + neues
+`.site-social`), direkt neben "LEO ASAL", dadurch automatisch oben links
+auf **jeder** Seite sichtbar (Header ist überall identisch + `sticky`).
+Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
+identisch in allen 12 HTML-Dateien. Bei neuen Seiten unbedingt aus einer
+bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
+den langen SVG-Paths). Frühere Versuche (nur auf der Startseite im Hero-
+Bild, nur auf der Kontaktseite inline im Content) wurden verworfen und
+entfernt — nicht wieder einzeln pro Seite einbauen (2026-08-07).
 
 Die 5 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
 Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
@@ -128,17 +144,25 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   antippen/klicken zeigt Zeit (falls nicht `allDay`), Ort und Link (falls
   vorhanden). Bewusst kein Hover-only-Pattern, damit es auf dem Handy genauso
   funktioniert wie am Desktop.
-- Ort zeigt ein Pin-Icon statt des Text-Labels "Location" (Icon hat
-  `role="img"` + `data-i18n-attr="aria-label:dates.location"` fürs
-  Screenreader-Label), ist klickbar → verlinkt auf Google-Maps-Suche
+- Zeit, Ort und URL zeigen jeweils ein Icon statt eines Text-Labels (Uhr/
+  Pin/Info, alle `role="img"` + `data-i18n-attr="aria-label:dates.X"` fürs
+  Screenreader-Label — die i18n-Keys `dates.time`/`dates.location`/
+  `dates.moreInfo` liefern jetzt nur noch den `aria-label`, keinen
+  sichtbaren Text mehr).
+- Ort ist klickbar → verlinkt auf Google-Maps-Suche
   (`https://www.google.com/maps/search/?api=1&query=...`), und darunter
   liegt ein eingebettetes Google-Maps-Preview (`.date-map` iframe,
   `output=embed`-Trick, kein API-Key nötig). **Kein Apple-Maps-Link mehr**
   (auf Leos Wunsch entfernt, 2026-08-07).
-- Die eingetragene URL zeigt ein Info-Icon statt Text-Label und der Link
-  selbst heißt "More information"/"Mehr Informationen"/"Más información"
-  (Key `dates.moreInfo`) statt vorher "Website" + roher URL als Linktext
+- Der URL-Link zeigt die **rohe Domain ohne Schema** als Linktext (z.B.
+  `jakobmanz.de`, via `displayUrl()` in `dates.js`, strippt `https://`),
+  nicht mehr "More information" als Phrase. Location- und URL-Link sind
+  **nicht mehr fett** (nur `text-decoration: underline`), auf Leos Wunsch
   (2026-08-07).
+- `.dates-list` hat **kein `max-width: 68ch` mehr** — die Termin-Zeilen
+  sind jetzt so breit wie der `.container` (960px), damit auch lange
+  Adressen (z.B. "Sommernachtskino Tübingen, Brunnenstraße 3, ...") in
+  eine Zeile neben das Pin-Icon passen, statt umzubrechen (2026-08-07).
 - **Wichtig (2026-08-07):** Commits, die der Sync-Workflow selbst mit dem
   Standard-`GITHUB_TOKEN` pusht, lösen **keinen** neuen `Deploy Pages`-Run
   aus — GitHub verhindert das bewusst (Loop-Schutz: Events von
@@ -236,6 +260,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Social-Icons final ins Header-`.brand-group`/`.site-social` verschoben
+  (siehe "Seitenstruktur" oben) — jetzt auf allen 12 Seiten identisch oben
+  links, Tidal ergänzt (`tidal.com/artist/20479911/u`). Kalender-Feinschliff:
+  Zeit/Ort/URL als Icons statt Text-Label, Location-/URL-Link nicht mehr
+  fett, URL zeigt rohe Domain statt "More information", `.dates-list` ohne
+  68ch-Cap (volle Container-Breite, lange Adressen passen jetzt in eine
+  Zeile). "Visit website"-Buttons auf Jakob-Manz-/Jakob-Bänsch-/Loft-Arts-
+  Seite durch kleinen Icon+Domain-Link (`.project-link`, gleiches Info-Icon
+  wie im Kalender) ersetzt. Loft-Arts-Karte auf projects.html hat jetzt
+  einen Subtitle wie die anderen Karten. Leo will ab jetzt **nicht mehr vor
+  jedem Push gefragt werden** (s.o., 2026-08-07)
 - Loft Arts bekam einen echten Beschreibungstext (Agentur-Info von Leo
   Stolz/Niklas von Klitzing + Leos eigene Rolle als Schlagzeuger/Musical
   Director, in allen 3 Sprachen umformuliert statt 1:1 von der Loft-Arts-
