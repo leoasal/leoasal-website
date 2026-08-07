@@ -30,10 +30,6 @@ async function main() {
     throw new Error(`Failed to fetch calendar: ${res.status} ${res.statusText}`);
   }
   const ics = await res.text();
-  if (process.env.DEBUG_ICS) {
-    const urlLines = ics.split(/\r?\n/).filter((l) => /url/i.test(l));
-    console.error("DEBUG raw lines containing 'url':", JSON.stringify(urlLines));
-  }
   const events = parseIcs(ics);
 
   const now = Date.now();
@@ -62,9 +58,6 @@ function parseIcs(text) {
     }
     if (line === "END:VEVENT") {
       if (current) {
-        if (process.env.DEBUG_ICS) {
-          console.error("DEBUG event:", JSON.stringify({ summary: current.summary, url: current.url, description: current.description }));
-        }
         events.push({
           title: current.summary || "Untitled event",
           location: current.location || "",
@@ -115,7 +108,10 @@ function parseIcsDate(rawKey, value) {
 function extractUrl(description) {
   if (!description) return "";
   const firstLine = description.split("\n")[0].trim();
-  return /^https?:\/\//i.test(firstLine) ? firstLine : "";
+  if (/^https?:\/\//i.test(firstLine)) return firstLine;
+  // Bare domain without scheme (e.g. "example.com") — add https://
+  if (/^[a-z0-9-]+(\.[a-z0-9-]+)+(\/\S*)?$/i.test(firstLine)) return `https://${firstLine}`;
+  return "";
 }
 
 function unescapeIcs(value) {
