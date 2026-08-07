@@ -21,6 +21,7 @@ jobs:
       - name: Fetch calendar and rebuild data/dates.json
         env:
           CALENDAR_URL: ${{ secrets.CALENDAR_URL }}
+          DEBUG_ICS: "1"
         run: node scripts/sync-calendar.js
 
       - name: Commit changes if any
