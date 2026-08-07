@@ -2,6 +2,8 @@
 
 Lebendes Übergabedokument für diesen Ordner. Bei jeder wesentlichen Änderung
 aktualisieren, nicht nur anhängen — veraltete Abschnitte korrigieren.
+**Proaktiv aktualisieren und committen, ohne dass Leo danach fragen muss** —
+direkt im Anschluss an die eigentliche Änderung, als fester Teil davon.
 
 ## Was das hier ist
 
@@ -219,10 +221,14 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   verifiziert (2026-08-07)
 - Hero-Bild auf der Startseite: Text ("Drummer · Composer") saß auf Desktop-
   Breite über einem hellen Bildbereich statt über der schwarzen Hose wie
-  auf Mobile — Ursache war der zentrierte `object-fit: cover`-Crop bei
-  breiterem Container-Seitenverhältnis. Fix: `object-position: center bottom`
-  in `.hero img`, verankert den Ausschnitt am unteren Bildrand, auf Mobile
-  keine Änderung (dort war ohnehin die volle Bildhöhe sichtbar) (2026-08-07)
+  auf Mobile. Erster Versuch war `object-position: center bottom` (Bild-
+  Crop unten verankern) — **von Leo verworfen, Bildausschnitt vorher war
+  ihm lieber**. Stattdessen jetzt: Bild-Crop zurück auf Standard (`object-fit:
+  cover` ohne `object-position`), dafür Layout ab `min-width: 800px` geändert
+  — `.hero-content` wird `display: flex; justify-content: space-between`,
+  Eyebrow ("Drummer · Composer") liegt per `order: 2` rechts auf gleicher
+  Grundlinie wie „Leo Asal" statt darüber. Mobile bewusst unverändert
+  (gestapeltes Layout wie vorher) (2026-08-07)
 - Hängenden Deploy von gestern gelöst: alter Zombie-Run in der `concurrency`-
   Gruppe "pages" gecancelt, danach lief der Deploy sofort durch. Alle
   gestrigen Änderungen (Loft-Arts, Dates-Ort/Website-Zeile, Yamuna-Position,
