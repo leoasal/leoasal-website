@@ -30,6 +30,10 @@ async function main() {
     throw new Error(`Failed to fetch calendar: ${res.status} ${res.statusText}`);
   }
   const ics = await res.text();
+  if (process.env.DEBUG_ICS) {
+    const urlLines = ics.split(/\r?\n/).filter((l) => /url/i.test(l));
+    console.error("DEBUG raw lines containing 'url':", JSON.stringify(urlLines));
+  }
   const events = parseIcs(ics);
 
   const now = Date.now();
@@ -58,6 +62,9 @@ function parseIcs(text) {
     }
     if (line === "END:VEVENT") {
       if (current) {
+        if (process.env.DEBUG_ICS) {
+          console.error("DEBUG event:", JSON.stringify({ summary: current.summary, url: current.url, description: current.description }));
+        }
         events.push({
           title: current.summary || "Untitled event",
           location: current.location || "",
