@@ -111,6 +111,37 @@ p { margin: 0 0 1em; }
   color: var(--ink);
 }
 
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-social {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.site-social a {
+  display: inline-flex;
+  color: var(--plum);
+  opacity: 0.55;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.site-social a:hover {
+  opacity: 1;
+  color: var(--accent-dark);
+}
+
+.site-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  display: block;
+}
+
 .site-nav {
   display: none;
 }
@@ -303,31 +334,6 @@ main {
   color: #f0eff5;
 }
 
-.hero-social {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  z-index: 2;
-  display: flex;
-  gap: 1rem;
-}
-
-.hero-social a {
-  color: rgba(255, 255, 255, 0.75);
-  transition: color 0.15s ease;
-}
-
-.hero-social a:hover {
-  color: #fff;
-}
-
-.hero-social svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-  display: block;
-}
-
 @media (min-width: 800px) {
   .hero-content {
     display: flex;
@@ -419,7 +425,6 @@ details.long-bio summary {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 68ch;
 }
 
 .dates-list li {
@@ -489,16 +494,6 @@ details.long-bio summary {
   font-size: 0.9rem;
 }
 
-.date-detail-label {
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  color: var(--plum);
-  opacity: 0.65;
-  min-width: 5.5em;
-}
-
 .date-detail-icon {
   display: inline-flex;
   color: var(--plum);
@@ -514,7 +509,6 @@ details.long-bio summary {
   color: var(--accent-dark);
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-weight: 600;
 }
 
 .date-location-value {
@@ -619,33 +613,14 @@ a.project-card:hover {
   margin: 0.5rem 0 2rem;
 }
 
-.social-links {
+/* ---------- Project links (small icon + URL, e.g. "visit website") ---------- */
+
+.project-link {
   display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--bg-soft);
-  color: var(--plum);
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.social-links a:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-.social-links svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  display: block;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
 }
 
 /* ---------- Yamuna EPK ---------- */
