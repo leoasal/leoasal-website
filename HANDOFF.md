@@ -318,6 +318,19 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Jakob-Manz-Project-Seite: 3 weitere Videos ergänzt (insgesamt jetzt 5)
+  (2026-08-08)
+- Eigenes Favicon statt Safaris automatisch generiertem Magenta-Monogramm:
+  `assets/images/favicon.svg` (rundes Quadrat in `--ink` #0a0a0a, "LA" in
+  Georgia Bold — Fallback aus dem `--font-display`-Stack, da Playfair
+  Display nur als woff2 vorliegt und hier kein Tool zum Konvertieren nach
+  TTF verfügbar war; optisch praktisch identisch), dünne `--accent`-Linie
+  darunter. Plus PNG/ICO-Fallbacks (`favicon-16.png`, `favicon-32.png`,
+  `favicon.ico`, `apple-touch-icon.png` 180px, generiert per PIL-Skript,
+  System-Font Georgia Bold) für ältere Browser/iOS-Homescreen. `favicon.ico`
+  liegt zusätzlich im Repo-Root (Browser-Default-Lookup). Auf allen 12
+  Seiten per `<link rel="icon"/apple-touch-icon>` im `<head>` verlinkt
+  (2026-08-08)
 - YAMUNA-Seite bekam eine eigene Social-Icon-Zeile (Instagram, Spotify,
   Tidal, Apple Music — YAMUNAs eigene Profile, nicht Leos) im
   `.page-header`, rechts neben "‹ Projects"/"YAMUNA". Neue CSS-Klassen
