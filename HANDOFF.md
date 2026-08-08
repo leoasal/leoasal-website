@@ -318,6 +318,7 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Loft-Arts-Seite: 4 weitere Videos ergänzt (insgesamt jetzt 11) (2026-08-08)
 - Jakob-Manz-Project-Seite: 3 weitere Videos ergänzt (insgesamt jetzt 5)
   (2026-08-08)
 - Eigenes Favicon statt Safaris automatisch generiertem Magenta-Monogramm:
