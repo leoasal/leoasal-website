@@ -6,7 +6,7 @@ METHOD:PUBLISH
 X-WR-CALNAME:Leo Asal – Termine
 BEGIN:VEVENT
 UID:ee43eb5d1afb3bfa@leoasal.com
-DTSTAMP:20260808T140520Z
+DTSTAMP:20260808T191840Z
 DTSTART;TZID=Europe/Berlin:20260812T203000
 DTEND;TZID=Europe/Berlin:20260812T223000
 SUMMARY:The Jakob Manz Project @ Sommernachtskino Tübingen
@@ -14,12 +14,246 @@ LOCATION:Sommernachtskino Tübingen\, Brunnenstraße 3\, Innenstadt\, 72074 Tüb
 URL:https://jakobmanz.de
 END:VEVENT
 BEGIN:VEVENT
-UID:b1e56b272c7f2966@leoasal.com
-DTSTAMP:20260808T140520Z
-DTSTART;VALUE=DATE:20260814
-DTEND;VALUE=DATE:20260815
+UID:8c086e5dfed525ce@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260814T200000
+DTEND;TZID=Europe/Berlin:20260814T220000
 SUMMARY:Jakob Bänsch Quartett | Saarlouis
-LOCATION:Saarlouis\, Saarland\, Deutschland
+LOCATION:Vauban-Insel\, Marshall-Ney-Weg 7\, 66740 Saarlouis\, Deutschland
 URL:https://jakobbaensch.com
+END:VEVENT
+BEGIN:VEVENT
+UID:801c371acfb38166@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260827T200000
+DTEND;TZID=Europe/Berlin:20260827T220000
+SUMMARY:The Jakob Manz Project @ Mosel Musikfestival
+LOCATION:Mosel Musikfestival\, Bernkastel-Kues\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:c97ac8252bdf9935@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260903T194500
+DTEND;TZID=Europe/Berlin:20260903T214500
+SUMMARY:Rüdiger Baldauf Trumpet Night @ STADEUM Kultur- und Tagungszentrum
+LOCATION:STADEUM Kultur- und Tagungszentrum\, Schiffertorsstraße 6\, 21682 Stade\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:e19e1f88fbcdfd19@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260905T203000
+DTEND;TZID=Europe/Berlin:20260905T223000
+SUMMARY:The Jakob Manz Project @ Bischofsmühle Cyclus 66 e. V.
+LOCATION:Bischofsmühle Cyclus 66 e. V.\, Dammstraße 32\, 31134 Hildesheim\, Niedersachsen\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:61b7ccd8305f2d38@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260918T200000
+DTEND;TZID=Europe/Berlin:20260918T220000
+SUMMARY:The Jakob Manz Project @ Kulturhaus Klosterkirche
+LOCATION:Kulturhaus Klosterkirche\, 72793 Pfullingen\, Baden-Württemberg\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:55e9d78869d358d3@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20260919T150000
+DTEND;TZID=Europe/Berlin:20260919T170000
+SUMMARY:The Jakob Manz Project @ Europa-Park\; Ballsaal Berlin
+LOCATION:Europa-Park\; Ballsaal Berlin\, Europa-Park-Straße 2\, 77977 Rust\, Baden-Württemberg\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:956ed8c55f2a229c@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+SUMMARY:Jakob Bänsch Quartett @ Bielefeld\, Bunker Ulmenwall
+LOCATION:Bunker Ulmenwall\, Kreuzstraße 0\, 33602 Bielefeld\, Deutschland
+URL:https://jakobbaensch.com
+END:VEVENT
+BEGIN:VEVENT
+UID:853af56d712d4fde@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261001T213000
+DTEND;TZID=Europe/Berlin:20261001T233000
+SUMMARY:Jakob Manz Young European Stars @ Komünite\, Istanbul
+LOCATION:Komünite\, Kurbağalıdere Cd. 2/2\, Kadıköy\, İstanbul\, Türkiye
+URL:https://www.akbanksanat.com/en/event/act-night-jakob-manz-young-european-stars-feat-shuteen-erdenebaatar-nils-kugelmann-jakob-bnsch-leo-asal-36-akbank-caz-festivali
+END:VEVENT
+BEGIN:VEVENT
+UID:dc0272137e117bb5@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261003T193000
+DTEND;TZID=Europe/Berlin:20261003T213000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Forum Alte Post
+LOCATION:Forum Alte Post\, Pirmasens\, Rheinland-Pfalz\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:f30634303a580793@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Altes Kulturhaus
+LOCATION:Altes Kulturhaus\, Bad Füssing\, Bayern\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:a7868a055b301700@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261005T200000
+DTEND;TZID=Europe/Berlin:20261005T220000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Bodanrückhalle
+LOCATION:Bodanrückhalle\, Schulstr. 12\, 78476 Allensbach\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:09658e7ae8a21916@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261006T200000
+DTEND;TZID=Europe/Berlin:20261006T220000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Kulturmuschel\, Brückenkopf-Park
+LOCATION:Kulturmuschel\, Brückenkopf-Park\, Rurauenstraße 11\, 52428 Jülich\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:51f037e02a85e565@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261007T200000
+DTEND;TZID=Europe/Berlin:20261007T220000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Theater am Ring
+LOCATION:Theater am Ring – Theatersaal\, Kaiser-Friedrich-Ring 26\, 66740 Saarlouis\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:48195a802e978edb@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261008T193000
+DTEND;TZID=Europe/Berlin:20261008T213000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Anthroposophisches Zentrum
+LOCATION:Anthroposophisches Zentrum\, Wilhelmshöher Allee 261\, 34131 Kassel\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:ec53c361bad6ac8d@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261009T190000
+DTEND;TZID=Europe/Berlin:20261009T210000
+SUMMARY:Rüdiger Baldauf Trumpet Night @ Lindenhalle
+LOCATION:Lindenhalle\, Lindenstraße 51\, 89584 Ehingen (Donau)\, Deutschland
+URL:https://ruedigerbaldauf.de
+END:VEVENT
+BEGIN:VEVENT
+UID:c1acd530128418a4@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261024
+SUMMARY:Vienna Smooth Jazz Festival
+LOCATION:MS Amadeus Star (Donaukreuzfahrt)\, Wien\, Österreich
+URL:https://smoothjazzeurope.eu
+END:VEVENT
+BEGIN:VEVENT
+UID:92d8d692dcec44be@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261024T211500
+DTEND;TZID=Europe/Berlin:20261024T231500
+SUMMARY:The Jakob Manz Project @ Bürgerzentrum Brilon
+LOCATION:Bürgerzentrum Brilon\, Propst-Meyer-Straße 7\, 59929 Brilon\, Nordrhein-Westfalen\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:5c6c2a7fd3ba96b7@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261031
+SUMMARY:Vienna Smooth Jazz Festival
+LOCATION:MS Amadeus Star (Donaukreuzfahrt)\, Wien\, Österreich
+URL:https://smoothjazzeurope.eu
+END:VEVENT
+BEGIN:VEVENT
+UID:6187b11556fa8d39@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261103T210000
+DTEND;TZID=Europe/Berlin:20261103T230000
+SUMMARY:The Jakob Manz Project @ Zehntscheuer Ravensburg
+LOCATION:Zehntscheuer Ravensburg\, Grüner-Turm-Straße 30\, 88212 Ravensburg\, Baden-Württemberg\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:2c8e352a278dc3c9@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20261113T200000
+DTEND;TZID=Europe/Berlin:20261113T220000
+SUMMARY:The Jakob Manz Project @ Gesellschaftshaus Sonneberg
+LOCATION:Gesellschaftshaus Sonneberg\, Charlottenstraße 5\, 96515 Sonneberg\, Thüringen\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:5e1f8f5529c60102@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20270309T193000
+DTEND;TZID=Europe/Berlin:20270309T213000
+SUMMARY:The Jakob Manz Project @ Haus des Gastes Baabe
+LOCATION:Haus des Gastes Baabe\, Am Kurpark 9\, 18586 Baabe\, Mecklenburg-Vorpommern\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:ffe047c3a64fd1dd@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20270310T200000
+DTEND;TZID=Europe/Berlin:20270310T220000
+SUMMARY:The Jakob Manz Project @ Nica Jazz Club
+LOCATION:Nica Jazz Club\, Alter Wall 20\, 20457 Hamburg\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:f9188ce2a31ab7f5@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20270319T214500
+DTEND;TZID=Europe/Berlin:20270319T234500
+SUMMARY:The Jakob Manz Project @ Backnanger Bürgerhaus
+LOCATION:Backnanger Bürgerhaus\, Bahnhofstraße 7\, 71522 Backnang\, Baden-Württemberg\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:c10554e3a6eac00b@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20270411
+DTEND;VALUE=DATE:20270412
+SUMMARY:Jakob Bänsch Quartett @ Essen
+LOCATION:Philharmonie Essen (Kleiner Saal)\, Huyssenallee 53\, 45128 Essen\, Deutschland
+URL:https://jakobbaensch.com
+END:VEVENT
+BEGIN:VEVENT
+UID:69c076d03a5d5e76@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270517
+SUMMARY:Algarve Smooth Jazz Festival
+LOCATION:Pine Cliffs Resort\, Albufeira\, Portugal
+URL:https://smoothjazzeurope.eu
+END:VEVENT
+BEGIN:VEVENT
+UID:1810156c22515386@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;VALUE=DATE:20270619
+DTEND;VALUE=DATE:20270620
+SUMMARY:The Jakob Manz Project @ VIVA Kulturforum
+LOCATION:VIVA Kulturforum\, Windmühlenstraße 2a\, 07937 Zeulenroda-Triebes\, Thüringen\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:4db1f2b586571997@leoasal.com
+DTSTAMP:20260808T191840Z
+DTSTART;TZID=Europe/Berlin:20270924T211500
+DTEND;TZID=Europe/Berlin:20270924T231500
+SUMMARY:The Jakob Manz Project @ Zeughaus Lindau
+LOCATION:Zeughaus Lindau\, Lindau\, Deutschland
+URL:https://jakobmanz.de
 END:VEVENT
 END:VCALENDAR

@@ -8,9 +8,194 @@
   },
   {
     "title": "Jakob Bänsch Quartett | Saarlouis",
-    "location": "Saarlouis\nSaarland, Deutschland",
-    "start": "2026-08-14T00:00:00",
+    "location": "Vauban-Insel\nMarshall-Ney-Weg 7, 66740 Saarlouis, Deutschland",
+    "start": "2026-08-14T20:00:00",
+    "allDay": false,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Mosel Musikfestival",
+    "location": "Mosel Musikfestival\nBernkastel-Kues, Deutschland",
+    "start": "2026-08-27T20:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ STADEUM Kultur- und Tagungszentrum",
+    "location": "STADEUM Kultur- und Tagungszentrum\nSchiffertorsstraße 6, 21682 Stade, Deutschland",
+    "start": "2026-09-03T19:45:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bischofsmühle Cyclus 66 e. V.",
+    "location": "Bischofsmühle Cyclus 66 e. V.\nDammstraße 32, 31134 Hildesheim, Niedersachsen, Deutschland",
+    "start": "2026-09-05T20:30:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturhaus Klosterkirche",
+    "location": "Kulturhaus Klosterkirche\n72793 Pfullingen, Baden-Württemberg, Deutschland",
+    "start": "2026-09-18T20:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Europa-Park; Ballsaal Berlin",
+    "location": "Europa-Park; Ballsaal Berlin\nEuropa-Park-Straße 2, 77977 Rust, Baden-Württemberg, Deutschland",
+    "start": "2026-09-19T15:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Bielefeld, Bunker Ulmenwall",
+    "location": "Bunker Ulmenwall\nKreuzstraße 0, 33602 Bielefeld, Deutschland",
+    "start": "2026-09-25T00:00:00",
     "allDay": true,
     "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Manz Young European Stars @ Komünite, Istanbul",
+    "location": "Komünite\nKurbağalıdere Cd. 2/2, Kadıköy, İstanbul, Türkiye",
+    "start": "2026-10-01T21:30:00",
+    "allDay": false,
+    "url": "https://www.akbanksanat.com/en/event/act-night-jakob-manz-young-european-stars-feat-shuteen-erdenebaatar-nils-kugelmann-jakob-bnsch-leo-asal-36-akbank-caz-festivali"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Forum Alte Post",
+    "location": "Forum Alte Post\nPirmasens, Rheinland-Pfalz, Deutschland",
+    "start": "2026-10-03T19:30:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Altes Kulturhaus",
+    "location": "Altes Kulturhaus\nBad Füssing, Bayern, Deutschland",
+    "start": "2026-10-04T00:00:00",
+    "allDay": true,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Bodanrückhalle",
+    "location": "Bodanrückhalle\nSchulstr. 12, 78476 Allensbach, Deutschland",
+    "start": "2026-10-05T20:00:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Kulturmuschel, Brückenkopf-Park",
+    "location": "Kulturmuschel, Brückenkopf-Park\nRurauenstraße 11, 52428 Jülich, Deutschland",
+    "start": "2026-10-06T20:00:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Theater am Ring",
+    "location": "Theater am Ring – Theatersaal\nKaiser-Friedrich-Ring 26, 66740 Saarlouis, Deutschland",
+    "start": "2026-10-07T20:00:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Anthroposophisches Zentrum",
+    "location": "Anthroposophisches Zentrum\nWilhelmshöher Allee 261, 34131 Kassel, Deutschland",
+    "start": "2026-10-08T19:30:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Trumpet Night @ Lindenhalle",
+    "location": "Lindenhalle\nLindenstraße 51, 89584 Ehingen (Donau), Deutschland",
+    "start": "2026-10-09T19:00:00",
+    "allDay": false,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "Vienna Smooth Jazz Festival",
+    "location": "MS Amadeus Star (Donaukreuzfahrt)\nWien, Österreich",
+    "start": "2026-10-16T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2026-10-23T00:00:00"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bürgerzentrum Brilon",
+    "location": "Bürgerzentrum Brilon\nPropst-Meyer-Straße 7, 59929 Brilon, Nordrhein-Westfalen, Deutschland",
+    "start": "2026-10-24T21:15:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Vienna Smooth Jazz Festival",
+    "location": "MS Amadeus Star (Donaukreuzfahrt)\nWien, Österreich",
+    "start": "2026-10-26T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2026-10-30T00:00:00"
+  },
+  {
+    "title": "The Jakob Manz Project @ Zehntscheuer Ravensburg",
+    "location": "Zehntscheuer Ravensburg\nGrüner-Turm-Straße 30, 88212 Ravensburg, Baden-Württemberg, Deutschland",
+    "start": "2026-11-03T21:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Gesellschaftshaus Sonneberg",
+    "location": "Gesellschaftshaus Sonneberg\nCharlottenstraße 5, 96515 Sonneberg, Thüringen, Deutschland",
+    "start": "2026-11-13T20:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Haus des Gastes Baabe",
+    "location": "Haus des Gastes Baabe\nAm Kurpark 9, 18586 Baabe, Mecklenburg-Vorpommern, Deutschland",
+    "start": "2027-03-09T19:30:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Nica Jazz Club",
+    "location": "Nica Jazz Club\nAlter Wall 20, 20457 Hamburg, Deutschland",
+    "start": "2027-03-10T20:00:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Backnanger Bürgerhaus",
+    "location": "Backnanger Bürgerhaus\nBahnhofstraße 7, 71522 Backnang, Baden-Württemberg, Deutschland",
+    "start": "2027-03-19T21:45:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Essen",
+    "location": "Philharmonie Essen (Kleiner Saal)\nHuyssenallee 53, 45128 Essen, Deutschland",
+    "start": "2027-04-11T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Algarve Smooth Jazz Festival",
+    "location": "Pine Cliffs Resort\nAlbufeira, Portugal",
+    "start": "2027-05-11T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2027-05-16T00:00:00"
+  },
+  {
+    "title": "The Jakob Manz Project @ VIVA Kulturforum",
+    "location": "VIVA Kulturforum\nWindmühlenstraße 2a, 07937 Zeulenroda-Triebes, Thüringen, Deutschland",
+    "start": "2027-06-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Zeughaus Lindau",
+    "location": "Zeughaus Lindau\nLindau, Deutschland",
+    "start": "2027-09-24T21:15:00",
+    "allDay": false,
+    "url": "https://jakobmanz.de"
   }
 ]
