@@ -355,6 +355,18 @@ main {
   margin-bottom: 2.5rem;
 }
 
+.page-header-with-social {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-header-social {
+  margin-top: 0.3em;
+}
+
 .back-link {
   display: inline-flex;
   align-items: center;
