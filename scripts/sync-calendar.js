@@ -39,8 +39,27 @@ async function main() {
   const now = Date.now();
   const oneDayAgo = now - 24 * 60 * 60 * 1000;
   const cleaned = events
-    .filter((e) => e.start && new Date(e.start).getTime() >= oneDayAgo)
-    .sort((a, b) => new Date(a.start) - new Date(b.start));
+    .filter((e) => {
+      const relevant = e.allDay && e.end ? e.end : e.start;
+      return e.start && new Date(relevant).getTime() >= oneDayAgo;
+    })
+    .sort((a, b) => new Date(a.start) - new Date(b.start))
+    .map((e) => {
+      const out = { title: e.title, location: e.location, start: e.start, allDay: e.allDay, url: e.url };
+      // Multi-day all-day event (e.g. a festival or cruise): expose an
+      // inclusive "end" date (last day of the event) so the site can show
+      // a range like "1.–14. Aug 2026" instead of just the first day.
+      // Single-day all-day events keep DTEND == DTSTART+1 in the source
+      // ICS (the normal one-day representation) — only surface `end` when
+      // it's genuinely a multi-day span, so single-day JSON stays as before.
+      if (e.allDay && e.end) {
+        const inclusiveEnd = shiftIsoDate(e.end, -1);
+        if (inclusiveEnd !== e.start.slice(0, 10) + "T00:00:00") {
+          out.end = inclusiveEnd;
+        }
+      }
+      return out;
+    });
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(cleaned, null, 2) + "\n");
@@ -67,8 +86,13 @@ function buildIcs(events) {
     if (e.allDay) {
       // e.start is "YYYY-MM-DDT00:00:00" — a plain calendar date, no timezone.
       const startDigits = e.start.replace(/[-:]/g, "").slice(0, 8);
+      // e.end (if set) is the inclusive last day; ICS DTEND for all-day
+      // events is exclusive (the day after), so shift it forward by one.
+      const endDigits = e.end
+        ? addDaysToDateDigits(e.end.replace(/[-:]/g, "").slice(0, 8), 1)
+        : addDaysToDateDigits(startDigits, 1);
       lines.push(`DTSTART;VALUE=DATE:${startDigits}`);
-      lines.push(`DTEND;VALUE=DATE:${addDaysToDateDigits(startDigits, 1)}`);
+      lines.push(`DTEND;VALUE=DATE:${endDigits}`);
     } else {
       // e.start is either a true UTC instant ("...Z") or a floating local
       // time (see parseIcsDate below) which for Leo's calendar is always
@@ -107,6 +131,16 @@ function addDaysToDateDigits(digits, days) {
   return `${dt.getUTCFullYear()}${pad(dt.getUTCMonth() + 1)}${pad(dt.getUTCDate())}`;
 }
 
+// Shift an ISO "YYYY-MM-DDT00:00:00" date-only string by N days (N may be
+// negative). Used to convert an exclusive ICS DTEND (day after the last
+// day) into the inclusive last day we expose in dates.json, and back.
+function shiftIsoDate(iso, days) {
+  const y = +iso.slice(0, 4), mo = +iso.slice(5, 7) - 1, d = +iso.slice(8, 10);
+  const dt = new Date(Date.UTC(y, mo, d + days));
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth() + 1)}-${pad(dt.getUTCDate())}T00:00:00`;
+}
+
 function addHoursToDateTimeDigits(digits, hours) {
   const y = +digits.slice(0, 4), mo = +digits.slice(4, 6) - 1, d = +digits.slice(6, 8);
   const h = +digits.slice(9, 11), mi = +digits.slice(11, 13), s = +digits.slice(13, 15);
@@ -142,6 +176,7 @@ function parseIcs(text) {
           title: current.summary || "Untitled event",
           location: current.location || "",
           start: current.start || null,
+          end: current.end || null,
           allDay: !!current.allDay,
           url: extractUrl(current.url) || extractUrl(current.description),
         });
@@ -164,6 +199,8 @@ function parseIcs(text) {
     else if (key === "DTSTART") {
       current.start = parseIcsDate(rawKey, value);
       current.allDay = /VALUE=DATE\b/.test(rawKey) && !rawKey.includes("DATE-TIME");
+    } else if (key === "DTEND") {
+      current.end = parseIcsDate(rawKey, value);
     }
   }
 

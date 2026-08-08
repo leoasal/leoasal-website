@@ -10,7 +10,7 @@
   function render(events) {
     var now = new Date();
     var upcoming = (events || [])
-      .filter(function (e) { return new Date(e.start) >= now; })
+      .filter(function (e) { return new Date(e.end || e.start) >= now; })
       .sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
 
     if (upcoming.length === 0) {
@@ -32,7 +32,7 @@
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/></svg>';
 
   function renderEvent(e) {
-    var when = formatDate(e.start);
+    var when = e.end ? formatDateRange(e.start, e.end) : formatDate(e.start);
     var hasDetails = !e.allDay || e.location || e.url;
 
     var summary =
@@ -85,6 +85,22 @@
     return d.toLocaleDateString(document.documentElement.lang || "en", {
       day: "2-digit", month: "short", year: "numeric"
     });
+  }
+
+  // Multi-day all-day event (e.g. a festival or cruise): "1.–14. Aug 2026"
+  // when both ends fall in the same month, "28. Jul – 3. Aug 2026" otherwise.
+  function formatDateRange(startIso, endIso) {
+    var lang = document.documentElement.lang || "en";
+    var start = new Date(startIso);
+    var end = new Date(endIso);
+    var sameMonth = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
+    var endPart = end.toLocaleDateString(lang, { day: "2-digit", month: "short", year: "numeric" });
+    if (sameMonth) {
+      var startDay = start.toLocaleDateString(lang, { day: "2-digit" });
+      return startDay + "–" + endPart;
+    }
+    var startPart = start.toLocaleDateString(lang, { day: "2-digit", month: "short" });
+    return startPart + " – " + endPart;
   }
 
   function formatTime(iso) {
