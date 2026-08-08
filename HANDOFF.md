@@ -92,15 +92,25 @@ links (`ul`) und Sprachumschalter (`.lang-switch`) sitzen dadurch auf einer
 Zeile, Sprachumschalter rechtsbündig mit Trennstrich (2026-08-07, vorher
 stand der Umschalter darunter statt daneben).
 
-**Social-Icons sind Teil des Headers** (`.brand-group` wrapt Logo + neues
-`.site-social`), direkt neben "LEO ASAL", dadurch automatisch oben links
-auf **jeder** Seite sichtbar (Header ist überall identisch + `sticky`).
+**Social-Icons sind Teil des Headers**: `.logo`, `.site-social` und
+`.site-nav` sind **direkte Flex-Geschwister** in `.site-header .container`
+(kein Wrapper-Div mehr — bewusst entfernt, siehe unten). `.container` ist
+`display:flex; justify-content:space-between` **immer** (nicht nur ab
+800px). Das ergibt automatisch:
+- **Mobil** (`.site-nav` ist `display:none`): nur 2 sichtbare Items →
+  Logo links, Icons rechts, Lücke dazwischen frei.
+- **Desktop** (`.site-nav` sichtbar): 3 Items → `space-between` verteilt
+  den Icons-Block **exakt mittig** in die Lücke zwischen Logo und "Bio"
+  (dem ersten Nav-Link). Das war explizit so gewünscht — nicht wieder auf
+  eine `.brand-group`-Wrapper-Lösung umbauen, die zieht die Icons direkt
+  neben den Logo-Text statt sie mittig zu verteilen (2026-08-07).
+
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
 identisch in allen 12 HTML-Dateien. Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths). Frühere Versuche (nur auf der Startseite im Hero-
-Bild, nur auf der Kontaktseite inline im Content) wurden verworfen und
-entfernt — nicht wieder einzeln pro Seite einbauen (2026-08-07).
+Bild, nur auf der Kontaktseite inline im Content, dann eine Zwischenlösung
+mit `.brand-group`-Wrapper) wurden alle verworfen und entfernt.
 
 Die 5 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
 Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
@@ -145,10 +155,13 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   vorhanden). Bewusst kein Hover-only-Pattern, damit es auf dem Handy genauso
   funktioniert wie am Desktop.
 - Zeit, Ort und URL zeigen jeweils ein Icon statt eines Text-Labels (Uhr/
-  Pin/Info, alle `role="img"` + `data-i18n-attr="aria-label:dates.X"` fürs
+  Pin/Pfeil, alle `role="img"` + `data-i18n-attr="aria-label:dates.X"` fürs
   Screenreader-Label — die i18n-Keys `dates.time`/`dates.location`/
   `dates.moreInfo` liefern jetzt nur noch den `aria-label`, keinen
-  sichtbaren Text mehr).
+  sichtbaren Text mehr). Das URL-Icon war zuerst ein Info-Kreis (i), auf
+  Leos Wunsch durch einen simplen ">"-Pfeil ersetzt (`ICON_ARROW` in
+  `dates.js`) — gleiches Icon auch auf den `.project-link`-Zeilen bei
+  Jakob Manz/Jakob Bänsch/Loft Arts (2026-08-08).
 - Ort ist klickbar → verlinkt auf Google-Maps-Suche
   (`https://www.google.com/maps/search/?api=1&query=...`), und darunter
   liegt ein eingebettetes Google-Maps-Preview (`.date-map` iframe,
@@ -171,6 +184,40 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   wenn sich `dates.json` geändert hat (Schritt "Trigger Pages deploy",
   braucht `permissions: actions: write`). Ohne das würde jeder automatische
   6h-Sync zwar committen, aber nie live gehen.
+
+### Kalender-Abo (2026-08-08)
+
+Fans können den Kalender abonnieren, ohne dass Leos private iCloud-Feed-URL
+(das `CALENDAR_URL`-Secret) veröffentlicht werden muss:
+
+- `scripts/sync-calendar.js` schreibt jetzt zusätzlich zu `data/dates.json`
+  auch **`data/dates.ics`** — ein eigener, öffentlicher RFC5545-Feed mit
+  denselben Terminen (Funktion `buildIcs()`). `sync-calendar.yml` committet
+  und deployt beide Dateien zusammen (`git diff`/`git add` prüft jetzt
+  beide Pfade).
+- **Zeitzone:** `e.start` ist entweder ein echtes UTC-`Z`-Datum oder (der
+  Normalfall bei Leos Kalender) eine "floating" lokale Zeit ohne Zeitzone.
+  Floating-Zeiten werden als `DTSTART;TZID=Europe/Berlin:...` geschrieben
+  statt als `Z`-UTC-Zeit — sonst zeigen Abonnenten-Apps die Termine 1–2h
+  falsch an (Sommer-/Winterzeit-Verschiebung). Bei ganztägigen Terminen
+  `VALUE=DATE`, kein Zeitzonen-Thema.
+- Keine echten Event-Enddaten vorhanden → Fallback: 2h-Slot für Termine mit
+  Uhrzeit, 1 Tag für ganztägige Termine (`addHoursToDateTimeDigits`/
+  `addDaysToDateDigits`, reine Wall-Clock-Arithmetik via `Date.UTC`, absichtlich
+  zeitzonen-unabhängig von der Umgebung, in der das Skript läuft).
+- Frontend: `dates.html` hat einen "Subscribe to this calendar"-Link
+  (`webcal://leoasal.com/data/dates.ics` — funktioniert direkt in Apple
+  Calendar/Outlook) plus einen kleinen Hinweistext für Google Calendar
+  (das braucht "Einstellungen → Kalender hinzufügen → Per URL" mit der
+  `https://`-Variante, reagiert nicht auf `webcal://`-Klicks).
+- GitHub Pages liefert `.ics`-Dateien automatisch mit
+  `Content-Type: text/calendar` — kein Workaround nötig.
+- Lokal ohne Node lässt sich der echte Sync nicht testen (s.u.); beim
+  ersten Rollout wurde `data/dates.ics` einmalig per Python-Skript von
+  Hand nachgebaut (mit identischer TZID-Logik) und nach dem ersten echten
+  `gh workflow run sync-calendar.yml` durch die Node-Version überschrieben
+  — falls nochmal nötig, lieber gleich den Workflow triggern statt lokal
+  nachzubauen.
 
 ## Rechtliches: Cookie-Banner / YouTube-Embeds
 
@@ -260,6 +307,14 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Header-Layout korrigiert: `.brand-group`-Wrapper wieder entfernt, Logo/
+  Icons/Nav sind jetzt direkte Flex-Geschwister — dadurch landen die Icons
+  auf Mobil rechts (Logo links, Lücke dazwischen) und auf Desktop exakt
+  mittig zwischen Logo und "Bio" (Details oben unter "Seitenstruktur").
+  Kalender- und Projekt-Link-Icon (vorher Info-Kreis) ist jetzt ein
+  einfacher ">"-Pfeil. Neues Feature: Kalender-Abo als `.ics`-Feed zum
+  Selbst-Abonnieren in Apple/Google/Outlook-Kalendern, ohne Leos privaten
+  iCloud-Link preiszugeben (Details oben unter "Kalender-Sync") (2026-08-08)
 - Social-Icons final ins Header-`.brand-group`/`.site-social` verschoben
   (siehe "Seitenstruktur" oben) — jetzt auf allen 12 Seiten identisch oben
   links, Tidal ergänzt (`tidal.com/artist/20479911/u`). Kalender-Feinschliff:
