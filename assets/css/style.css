@@ -420,7 +420,7 @@ details.long-bio summary {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.9rem;
-  margin-bottom: 0.4rem;
+  margin: 2rem 0 0.4rem;
 }
 
 .dates-subscribe-hint {
