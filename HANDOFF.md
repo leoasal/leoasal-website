@@ -155,6 +155,15 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   erste Zeile der Notizen. Beides akzeptiert auch **Domains ohne Schema**
   (z.B. `jakobmanz.de` statt `https://jakobmanz.de`) — wird automatisch mit
   `https://` ergänzt, da Leo es i.d.R. so eintippt.
+- **Mehrtägige ganztägige Termine** (Festival, Kreuzfahrt o.ä.): `DTEND` wird
+  jetzt mitgelesen (vorher komplett ignoriert). Nur wenn er vom Startdatum
+  abweicht, bekommt der JSON-Eintrag zusätzlich ein `end` (inklusives
+  letztes Tagesdatum, ICS-`DTEND` ist ja exklusiv → in `shiftIsoDate(-1)`
+  umgerechnet). `dates.js` zeigt dann eine Spanne wie "16.–23. Okt 2026"
+  (`formatDateRange()`) statt nur des ersten Tages; beim Re-Export in
+  `dates.ics` wird die Spanne wieder korrekt in ein exklusives `DTEND`
+  zurückgerechnet. Eintägige Termine bekommen weiterhin kein `end`-Feld
+  (Format bleibt für die bestehenden Konsumenten unverändert) (2026-08-08).
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
   reinschreiben und committen (außer kurz zum lokalen Testen, danach
   zurücksetzen, siehe Git-History für ein Beispiel).
@@ -318,6 +327,9 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Mehrtägige Termine (Festival/Kreuzfahrt) zeigen jetzt eine Datumsspanne
+  ("16.–23. Okt 2026") statt nur des ersten Tages — `DTEND` wurde bisher
+  komplett ignoriert. Details siehe Abschnitt "Kalender-Sync" (2026-08-08)
 - Loft-Arts-Seite: 4 weitere Videos ergänzt (insgesamt jetzt 11) (2026-08-08)
 - Jakob-Manz-Project-Seite: 3 weitere Videos ergänzt (insgesamt jetzt 5)
   (2026-08-08)
