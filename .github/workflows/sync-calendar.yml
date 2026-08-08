@@ -27,14 +27,14 @@ jobs:
       - name: Commit changes if any
         id: commit
         run: |
-          if git diff --quiet -- data/dates.json; then
-            echo "No changes to dates.json"
+          if git diff --quiet -- data/dates.json data/dates.ics; then
+            echo "No changes to dates.json/dates.ics"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "leoasal-website-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/dates.json
+          git add data/dates.json data/dates.ics
           git commit -m "Sync dates from calendar"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

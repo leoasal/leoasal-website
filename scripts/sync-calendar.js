@@ -2,7 +2,10 @@
 // Fetches Leo's public "Website Termine" iCloud calendar (ics feed) and writes
 // a minimal data/dates.json containing only title, location, start time and
 // (optionally) a URL — taken from the event's URL field, falling back to the
-// first line of the description/notes if no URL field is set.
+// first line of the description/notes if no URL field is set. Also writes
+// data/dates.ics, a re-published feed of the same events so fans can
+// subscribe to it directly (see assets/js/dates.js "Subscribe" link) without
+// exposing Leo's private iCloud calendar URL.
 //
 // Usage: CALENDAR_URL="https://p12-caldav.icloud.com/published/2/....ics" node scripts/sync-calendar.js
 
@@ -11,6 +14,7 @@ const path = require("path");
 
 const CALENDAR_URL = (process.env.CALENDAR_URL || "").trim();
 const OUTPUT_PATH = path.join(__dirname, "..", "data", "dates.json");
+const OUTPUT_ICS_PATH = path.join(__dirname, "..", "data", "dates.ics");
 
 if (!CALENDAR_URL) {
   console.error("CALENDAR_URL is not set. Nothing to sync.");
@@ -41,6 +45,82 @@ async function main() {
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(cleaned, null, 2) + "\n");
   console.log(`Wrote ${cleaned.length} upcoming event(s) to ${OUTPUT_PATH}`);
+
+  fs.writeFileSync(OUTPUT_ICS_PATH, buildIcs(cleaned));
+  console.log(`Wrote ${cleaned.length} upcoming event(s) to ${OUTPUT_ICS_PATH}`);
+}
+
+function buildIcs(events) {
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//leoasal.com//Website Termine//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "X-WR-CALNAME:Leo Asal – Termine",
+  ];
+
+  events.forEach((e) => {
+    lines.push("BEGIN:VEVENT");
+    lines.push(`UID:${icsUid(e)}`);
+    lines.push(`DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`);
+    if (e.allDay) {
+      // e.start is "YYYY-MM-DDT00:00:00" — a plain calendar date, no timezone.
+      const startDigits = e.start.replace(/[-:]/g, "").slice(0, 8);
+      lines.push(`DTSTART;VALUE=DATE:${startDigits}`);
+      lines.push(`DTEND;VALUE=DATE:${addDaysToDateDigits(startDigits, 1)}`);
+    } else {
+      // e.start is either a true UTC instant ("...Z") or a floating local
+      // time (see parseIcsDate below) which for Leo's calendar is always
+      // Europe/Berlin wall-clock time. Represent it as such with TZID
+      // rather than misreading the digits as UTC — otherwise every
+      // subscriber's calendar app would show the event 1-2h off.
+      const isUtc = /Z$/.test(e.start);
+      const digits = e.start.replace(/[-:]/g, "").replace(/Z$/, "");
+      // No end time in our data — default to a 2h slot, typical for a concert.
+      const endDigits = addHoursToDateTimeDigits(digits, 2);
+      lines.push(isUtc ? `DTSTART:${digits}Z` : `DTSTART;TZID=Europe/Berlin:${digits}`);
+      lines.push(isUtc ? `DTEND:${endDigits}Z` : `DTEND;TZID=Europe/Berlin:${endDigits}`);
+    }
+    lines.push(`SUMMARY:${escapeIcsText(e.title)}`);
+    if (e.location) lines.push(`LOCATION:${escapeIcsText(e.location.replace(/\n/g, ", "))}`);
+    if (e.url) lines.push(`URL:${e.url}`);
+    lines.push("END:VEVENT");
+  });
+
+  lines.push("END:VCALENDAR");
+  return lines.join("\r\n") + "\r\n";
+}
+
+function icsUid(e) {
+  const hash = require("crypto").createHash("sha1").update(e.title + e.start).digest("hex").slice(0, 16);
+  return `${hash}@leoasal.com`;
+}
+
+// Pure wall-clock digit arithmetic via Date.UTC — timezone-independent
+// (doesn't matter what TZ the current process runs in), and fine for a
+// nominal +Nh/+Nd guess since we don't have real event durations.
+function addDaysToDateDigits(digits, days) {
+  const y = +digits.slice(0, 4), mo = +digits.slice(4, 6) - 1, d = +digits.slice(6, 8);
+  const dt = new Date(Date.UTC(y, mo, d + days));
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${dt.getUTCFullYear()}${pad(dt.getUTCMonth() + 1)}${pad(dt.getUTCDate())}`;
+}
+
+function addHoursToDateTimeDigits(digits, hours) {
+  const y = +digits.slice(0, 4), mo = +digits.slice(4, 6) - 1, d = +digits.slice(6, 8);
+  const h = +digits.slice(9, 11), mi = +digits.slice(11, 13), s = +digits.slice(13, 15);
+  const dt = new Date(Date.UTC(y, mo, d, h, mi, s) + hours * 3600000);
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${dt.getUTCFullYear()}${pad(dt.getUTCMonth() + 1)}${pad(dt.getUTCDate())}T${pad(dt.getUTCHours())}${pad(dt.getUTCMinutes())}${pad(dt.getUTCSeconds())}`;
+}
+
+function escapeIcsText(str) {
+  return String(str || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\n/g, "\\n");
 }
 
 function parseIcs(text) {

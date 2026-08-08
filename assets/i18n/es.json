@@ -29,6 +29,8 @@
   "dates.time": "Hora",
   "dates.location": "Lugar",
   "dates.moreInfo": "Más información",
+  "dates.subscribe": "Suscribirse a este calendario",
+  "dates.subscribeGoogleHint": "Para Google Calendar: Configuración → Añadir calendario → Desde URL, luego pega https://leoasal.com/data/dates.ics",
 
   "head.projects.title": "Proyectos – Leo Asal",
   "projects.eyebrow": "Trabajo",

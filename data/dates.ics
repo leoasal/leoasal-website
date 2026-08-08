@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//leoasal.com//Website Termine//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Leo Asal – Termine
+BEGIN:VEVENT
+UID:ee43eb5d1afb3bfa@leoasal.com
+DTSTAMP:20260808T113434Z
+DTSTART;TZID=Europe/Berlin:20260812T203000
+DTEND;TZID=Europe/Berlin:20260812T223000
+SUMMARY:The Jakob Manz Project @ Sommernachtskino Tübingen
+LOCATION:Sommernachtskino Tübingen\, Brunnenstraße 3\, Innenstadt\, 72074 Tübingen\, Deutschland
+URL:https://jakobmanz.de
+END:VEVENT
+BEGIN:VEVENT
+UID:b1e56b272c7f2966@leoasal.com
+DTSTAMP:20260808T113434Z
+DTSTART;VALUE=DATE:20260814
+DTEND;VALUE=DATE:20260815
+SUMMARY:Jakob Bänsch Quartett | Saarlouis
+LOCATION:Saarlouis\, Saarland\, Deutschland
+URL:https://jakobbaensch.com
+END:VEVENT
+END:VCALENDAR
