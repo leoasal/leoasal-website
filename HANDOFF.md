@@ -318,6 +318,16 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- YAMUNA-Seite bekam eine eigene Social-Icon-Zeile (Instagram, Spotify,
+  Tidal, Apple Music — YAMUNAs eigene Profile, nicht Leos) im
+  `.page-header`, rechts neben "‹ Projects"/"YAMUNA". Neue CSS-Klassen
+  `.page-header-with-social` (flex, `justify-content: space-between`,
+  `align-items: flex-start`) + `.page-header-social` machen `.page-header`
+  zum Flex-Container, ohne die bestehenden `.page-header`-Vorkommen auf
+  anderen Seiten zu beeinflussen (diese nutzen weiterhin nur die einfache
+  `.page-header`-Klasse ohne den Modifier). Icon-Markup/Styling wiederverwendet
+  `.site-social` aus dem Header. Bei Bedarf gleiches Pattern für andere
+  Projekt-Unterseiten übernehmen (2026-08-08)
 - Kalender-Abo-Link von oberhalb nach **unterhalb** der Terminliste
   verschoben (mit deutlich mehr Abstand zum letzten Termin, `margin-top:
   3.5rem`). Separates, nicht-committetes Handoff-Dokument für einen neuen
