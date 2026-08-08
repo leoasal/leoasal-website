@@ -23,6 +23,14 @@ Framework, kein CMS). Live seit 2026-08-06.
 - **Owner:** Leo Asal — Schlagzeuger/Komponist aus Köln, nicht technisch,
   arbeitet aber gerne direkt mit Claude Code statt über ein Admin-Panel
 
+**Privater Ordner `Website Kalender/`** liegt in diesem Repo-Verzeichnis,
+ist aber bewusst in `.gitignore` eingetragen und wird **nie committet** —
+das Repo ist öffentlich, der Ordner enthält private Notizen (aktuell: ein
+Handoff-Dokument für einen separaten Agenten, der Leos persönlichen
+Kalender nach Konzerten durchsucht und öffentliche Termine in "Website
+Termine" einträgt). Nicht versehentlich mit `git add -A` o.ä. doch
+committen (2026-08-08).
+
 ## Lokal arbeiten
 
 ```bash
@@ -209,7 +217,10 @@ Fans können den Kalender abonnieren, ohne dass Leos private iCloud-Feed-URL
   (`webcal://leoasal.com/data/dates.ics` — funktioniert direkt in Apple
   Calendar/Outlook) plus einen kleinen Hinweistext für Google Calendar
   (das braucht "Einstellungen → Kalender hinzufügen → Per URL" mit der
-  `https://`-Variante, reagiert nicht auf `webcal://`-Klicks).
+  `https://`-Variante, reagiert nicht auf `webcal://`-Klicks). Sitzt
+  **unterhalb** der Terminliste (`.dates-subscribe`, `margin-top: 3.5rem`
+  für sichtbaren Abstand zum letzten Termin) — bewusst nicht oben, auf
+  Leos Wunsch (2026-08-08).
 - GitHub Pages liefert `.ics`-Dateien automatisch mit
   `Content-Type: text/calendar` — kein Workaround nötig.
 - Lokal ohne Node lässt sich der echte Sync nicht testen (s.u.); beim
@@ -307,6 +318,13 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Kalender-Abo-Link von oberhalb nach **unterhalb** der Terminliste
+  verschoben (mit deutlich mehr Abstand zum letzten Termin, `margin-top:
+  3.5rem`). Separates, nicht-committetes Handoff-Dokument für einen neuen
+  Agenten angelegt (`Website Kalender/`-Ordner, per `.gitignore` vom
+  öffentlichen Repo ausgeschlossen), der Leos persönlichen Kalender nach
+  Konzerten durchsuchen und öffentliche Termine in "Website Termine"
+  eintragen soll (2026-08-08)
 - Header-Layout korrigiert: `.brand-group`-Wrapper wieder entfernt, Logo/
   Icons/Nav sind jetzt direkte Flex-Geschwister — dadurch landen die Icons
   auf Mobil rechts (Logo links, Lücke dazwischen) und auf Desktop exakt
