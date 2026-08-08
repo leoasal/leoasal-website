@@ -1,2 +1,5 @@
 .DS_Store
 node_modules/
+
+# Private notes, not for the public repo
+/Website Kalender/
