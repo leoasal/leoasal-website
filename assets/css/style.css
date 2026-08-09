@@ -697,6 +697,11 @@ a.project-card:hover {
   max-width: 40rem;
 }
 
+.epk-covers--single {
+  grid-template-columns: 1fr;
+  max-width: 20rem;
+}
+
 .cover-trigger {
   display: block;
   width: 100%;
@@ -767,6 +772,7 @@ a.project-card:hover {
 @media (min-width: 700px) {
   .epk-hero .container { gap: 2rem; }
   .epk-covers { max-width: 44rem; }
+  .epk-covers--single { max-width: 20rem; }
 }
 
 .download-list {
