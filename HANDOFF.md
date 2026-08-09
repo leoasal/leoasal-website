@@ -327,6 +327,18 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal-Duo-Fotogrid nachjustiert: Cover war zunächst größer als
+  Yamunas Cover und die 4 kleinen Fotos hatten ungleiche Abstände
+  (Reihen-Höhe > Bild-Höhe durch einen Stretch/aspect-ratio-Konflikt in
+  CSS Grid). Fix: `aspect-ratio:1` sitzt jetzt auf dem
+  `.epk-covers-extra`-Grid-Container selbst statt auf den einzelnen
+  Bildern, plus `align-items:flex-start` auf `.epk-covers--mixed`, damit
+  der Flex-Container das Grid nicht auf Cover-Höhe streckt. Cover-Größe
+  jetzt exakt `19.375rem`/`21.375rem` (mobil/≥700px) — identisch zu den
+  einzelnen Front/Back-Covern bei Yamuna. Lehre für ähnliche Fälle:
+  `aspect-ratio` auf Grid-/Flex-*Items* kollidiert mit Default-Stretch —
+  lieber auf den Container setzen und Kinder explizit füllen lassen
+  (2026-08-09)
 - Härtel/Asal-Duo-Seite: Album-Block ganz oben, analog zu Yamuna —
   "Out now"-Eyebrow + Albumtitel „Ein Tag wie ein anderer", Cover +
   restliche 4 Fotos (CD-Objekt-Shots, Booklet-Innenseite) alle klickbar via
