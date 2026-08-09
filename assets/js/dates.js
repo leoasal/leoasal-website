@@ -17,19 +17,36 @@
     if (cachedEvents) render(cachedEvents);
   });
 
+  var previousDetails = document.getElementById("dates-previous");
+  var previousList = document.getElementById("dates-list-previous");
+
   function render(events) {
     var now = new Date();
-    var upcoming = (events || [])
-      .filter(function (e) { return new Date(e.end || e.start) >= now; })
-      .sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
+    var upcoming = [];
+    var previous = [];
+    (events || []).forEach(function (e) {
+      if (new Date(e.end || e.start) >= now) upcoming.push(e);
+      else previous.push(e);
+    });
+    upcoming.sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
+    // Most recent first, like a history/archive rather than a schedule.
+    previous.sort(function (a, b) { return new Date(b.start) - new Date(a.start); });
 
     if (upcoming.length === 0) {
       list.innerHTML = '<li class="dates-empty" data-i18n="dates.empty">No upcoming dates right now.</li>';
-      if (window.i18nRefresh) window.i18nRefresh();
-      return;
+    } else {
+      list.innerHTML = upcoming.map(renderEvent).join("");
     }
 
-    list.innerHTML = upcoming.map(renderEvent).join("");
+    if (previousDetails && previousList) {
+      if (previous.length === 0) {
+        previousDetails.hidden = true;
+        previousList.innerHTML = "";
+      } else {
+        previousDetails.hidden = false;
+        previousList.innerHTML = previous.map(renderEvent).join("");
+      }
+    }
 
     if (window.i18nRefresh) window.i18nRefresh();
   }
@@ -97,19 +114,29 @@
     });
   }
 
-  // Multi-day all-day event (e.g. a festival or cruise): "1.–14. Aug 2026"
-  // when both ends fall in the same month, "28. Jul – 3. Aug 2026" otherwise.
+  // Multi-day all-day event (e.g. a festival or cruise). Same month: splice
+  // the start day into the front of the end date's own "day" token, so it
+  // reads naturally in whatever order the locale uses ("Oct 16–23, 2026" in
+  // English, "16.–23. Okt. 2026" in German). Different months/years: two
+  // separate short dates joined by an en dash.
   function formatDateRange(startIso, endIso) {
     var lang = document.documentElement.lang || "en";
     var start = new Date(startIso);
     var end = new Date(endIso);
-    var sameMonth = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
-    var endPart = end.toLocaleDateString(lang, { day: "2-digit", month: "short", year: "numeric" });
+    var sameYear = start.getFullYear() === end.getFullYear();
+    var sameMonth = sameYear && start.getMonth() === end.getMonth();
+
     if (sameMonth) {
       var startDay = start.toLocaleDateString(lang, { day: "2-digit" });
-      return startDay + "–" + endPart;
+      var parts = new Intl.DateTimeFormat(lang, { day: "2-digit", month: "short", year: "numeric" }).formatToParts(end);
+      return parts.map(function (p) {
+        return p.type === "day" ? startDay + "–" + p.value : p.value;
+      }).join("");
     }
-    var startPart = start.toLocaleDateString(lang, { day: "2-digit", month: "short" });
+
+    var startOpts = sameYear ? { day: "2-digit", month: "short" } : { day: "2-digit", month: "short", year: "numeric" };
+    var startPart = start.toLocaleDateString(lang, startOpts);
+    var endPart = end.toLocaleDateString(lang, { day: "2-digit", month: "short", year: "numeric" });
     return startPart + " – " + endPart;
   }
 

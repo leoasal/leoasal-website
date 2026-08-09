@@ -26,6 +26,7 @@
   "dates.heading": "Dates",
   "dates.loading": "Loading dates…",
   "dates.empty": "No upcoming dates right now.",
+  "dates.previous": "Previous dates",
   "dates.time": "Time",
   "dates.location": "Location",
   "dates.moreInfo": "More information",

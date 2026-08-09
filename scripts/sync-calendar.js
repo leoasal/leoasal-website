@@ -36,13 +36,10 @@ async function main() {
   const ics = await res.text();
   const events = parseIcs(ics);
 
-  const now = Date.now();
-  const oneDayAgo = now - 24 * 60 * 60 * 1000;
+  // Keep past events too (the site shows them in a collapsed "Previous
+  // dates" section) — only drop entries with no parseable start at all.
   const cleaned = events
-    .filter((e) => {
-      const relevant = e.allDay && e.end ? e.end : e.start;
-      return e.start && new Date(relevant).getTime() >= oneDayAgo;
-    })
+    .filter((e) => e.start)
     .sort((a, b) => new Date(a.start) - new Date(b.start))
     .map((e) => {
       const out = { title: e.title, location: e.location, start: e.start, allDay: e.allDay, url: e.url };
@@ -63,10 +60,17 @@ async function main() {
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(cleaned, null, 2) + "\n");
-  console.log(`Wrote ${cleaned.length} upcoming event(s) to ${OUTPUT_PATH}`);
+  console.log(`Wrote ${cleaned.length} event(s) (past + upcoming) to ${OUTPUT_PATH}`);
 
-  fs.writeFileSync(OUTPUT_ICS_PATH, buildIcs(cleaned));
-  console.log(`Wrote ${cleaned.length} upcoming event(s) to ${OUTPUT_ICS_PATH}`);
+  // The public .ics subscribe feed is for calendar apps, not an archive —
+  // only upcoming events belong in it, unlike dates.json (see above).
+  const now = Date.now();
+  const upcomingForIcs = cleaned.filter((e) => {
+    const relevant = e.allDay && e.end ? e.end : e.start;
+    return new Date(relevant).getTime() >= now - 24 * 60 * 60 * 1000;
+  });
+  fs.writeFileSync(OUTPUT_ICS_PATH, buildIcs(upcomingForIcs));
+  console.log(`Wrote ${upcomingForIcs.length} upcoming event(s) to ${OUTPUT_ICS_PATH}`);
 }
 
 function buildIcs(events) {

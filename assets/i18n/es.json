@@ -26,6 +26,7 @@
   "dates.heading": "Fechas",
   "dates.loading": "Cargando fechas…",
   "dates.empty": "No hay fechas próximas por el momento.",
+  "dates.previous": "Fechas anteriores",
   "dates.time": "Hora",
   "dates.location": "Lugar",
   "dates.moreInfo": "Más información",
