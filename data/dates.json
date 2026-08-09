@@ -1,5 +1,1531 @@
 [
   {
+    "title": "The Jakob Manz Project @ Jazzclub Villingen",
+    "location": "Jazzclub Villingen, Webergasse 5, 78050 Villingen, Deutschland",
+    "start": "2023-01-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Oli Lutz Gig @ Salon de Jazz, Köln",
+    "location": "Salon de Jazz\nSeverinskloster 3A, 50678 Köln, Deutschland",
+    "start": "2023-01-21T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Kultur hinterm Feld",
+    "location": "Kultur hinterm Feld, Hinterm Feld 14, 27801 Dötlingen, Deutschland",
+    "start": "2023-01-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ A-Trane",
+    "location": "A-Trane, Bleibtreustraße 1, 10623 Berlin, Berlin, Deutschland",
+    "start": "2023-02-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Hatori / Härtel / Asal @ Jazzkeller",
+    "location": "Jazzkeller",
+    "start": "2023-02-08T00:00:00",
+    "allDay": true,
+    "url": "https://leoasal.com/haertel-asal-duo.html"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kreuzkirche",
+    "location": "Kreuzkirche, Kreuzkirchstraße 3, 72622 Nürtingen, Baden-Württemberg, Deutschland",
+    "start": "2023-03-03T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Julius van Rhee @ Bad Honnef",
+    "location": "Bad Honnef, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-03-03T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadthalle",
+    "location": "Stadthalle, Friedrich-Ebert-Straße 2, 69412 Eberbach, Baden-Württemberg, Deutschland",
+    "start": "2023-03-04T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturbahnhof Bad Homburg / Speicher",
+    "location": "Kulturbahnhof Bad Homburg / Speicher, Am Bahnhof 2, 61352 Bad Homburg vor der Höhe, Hessen, Deutschland",
+    "start": "2023-03-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "BuJazzO @ Dessau",
+    "location": "Dessau / Arendsee (Altmark), Sachsen-Anhalt, Deutschland",
+    "start": "2023-03-11T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schloss Landestrost / Großer Saal",
+    "location": "Schloss Landestrost / Großer Saal, Schloßstraße 1, 31535 Neustadt am Rübenberge, Niedersachsen, Deutschland",
+    "start": "2023-03-11T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "BuJazzO @ Bielefeld",
+    "location": "Bielefeld, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-03-12T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "BuJazzO @ Bielefeld",
+    "location": "Bielefeld, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-03-13T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "Charly @ Mainz",
+    "location": "Bornstraße 15, Dexheim, Deutschland",
+    "start": "2023-03-26T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Salon de Jazz",
+    "location": "Salon de Jazz\nKöln, Deutschland",
+    "start": "2023-04-01T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Ketzberg @ Support Schorle",
+    "location": "",
+    "start": "2023-04-02T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Pavillon",
+    "location": "Pavillon, Calwer Straße 36, 71063 Sindelfingen, Baden-Württemberg, Deutschland",
+    "start": "2023-04-02T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturzentrum Prediger Schwäbisch Gmünd",
+    "location": "Kulturzentrum Prediger Schwäbisch Gmünd, Johannisplatz 3, 73525 Schwäbisch Gmünd, Baden-Württemberg, Deutschland",
+    "start": "2023-04-29T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bürgerhalle Gronau",
+    "location": "Bürgerhalle Gronau, Spinnereistraße 20, 48599 Gronau (Westfalen), Nordrhein-Westfalen, Deutschland",
+    "start": "2023-05-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Haberecht 4 @ Heppenheim",
+    "location": "Heppenheim, Deutschland",
+    "start": "2023-05-03T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Algarve Smooth Jazz Festival",
+    "location": "",
+    "start": "2023-05-09T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2023-05-14T00:00:00"
+  },
+  {
+    "title": "Midnight Jam Session",
+    "location": "",
+    "start": "2023-05-11T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Julius van Rhee @ Arttheater, Köln",
+    "location": "Arttheater\nKöln, Deutschland",
+    "start": "2023-05-16T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Clemens Orth Hammond Trio",
+    "location": "",
+    "start": "2023-05-22T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Atelier Café",
+    "location": "Atelier Café, Strada Memorandumului 9, 400394 Cluj-Napoca, Cluj, Rumänien",
+    "start": "2023-05-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Joseph Schmidt Auditorium",
+    "location": "Joseph Schmidt Auditorium, Strada Universității 13, 720229 Suceava, Suceava, Rumänien",
+    "start": "2023-05-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ The Trumpets",
+    "location": "The Trumpets, Esplanada Teatrul Luceafărul, 700259 Iași, Iaşi, Rumänien",
+    "start": "2023-05-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Forum der Stadtsparkasse Düsseldorf",
+    "location": "Forum der Stadtsparkasse Düsseldorf, Berliner Allee 33, 40212 Düsseldorf, Deutschland",
+    "start": "2023-05-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadttheater",
+    "location": "Stadttheater, Theaterstraße 6, 31141 Hildesheim, Niedersachsen, Deutschland",
+    "start": "2023-05-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Rüdiger Baldauf Quartett @ Bad Füssing",
+    "location": "Bad Füssing, Bayern, Deutschland",
+    "start": "2023-06-02T00:00:00",
+    "allDay": true,
+    "url": "https://ruedigerbaldauf.de"
+  },
+  {
+    "title": "BuJazzO @ Nürnberg",
+    "location": "Nürnberg, Deutschland",
+    "start": "2023-06-08T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ werk3 - KlangWert - Theaterprogrammkneipe im Domwinkel, Cafe und Musikfachgeschäft",
+    "location": "werk3 - KlangWert - Theaterprogrammkneipe im Domwinkel, Cafe und Musikfachgeschäft, Friedrichstraße 11, 19055 Schwerin, Mecklenburg-Vorpommern, Deutschland",
+    "start": "2023-06-08T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schiffbauhalle / Elbjazz",
+    "location": "Schiffbauhalle / Elbjazz, Blohm+Voss, Hermann-Blohm-Straße 3, 20457 Hamburg, Deutschland",
+    "start": "2023-06-09T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Roy Hargrove Tribute @ Arttheater, Köln",
+    "location": "Arttheater\nKöln, Deutschland",
+    "start": "2023-06-13T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Haberecht 4 @ Bad Marienberg",
+    "location": "Bad Marienberg, Rheinland-Pfalz, Deutschland",
+    "start": "2023-06-17T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Julius McGill @ Erftstadt",
+    "location": "Erftstadt, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-06-21T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Lindenhalle Ehingen (Donau)",
+    "location": "Lindenhalle Ehingen (Donau), Lindenstraße 51, 89584 Ehingen (Donau), Baden-Württemberg, Deutschland",
+    "start": "2023-06-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Ketzberg @ Kreuzberg Festival",
+    "location": "Kreuzberg Festival",
+    "start": "2023-07-01T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "Max Clouth / Robert Schippers @ Jazzkeller",
+    "location": "",
+    "start": "2023-07-14T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Einhaldenfestival",
+    "location": "Einhaldenfestival, Geratsreute 7, 88273 Fronreute, Deutschland",
+    "start": "2023-07-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ echaz.Hafen",
+    "location": "echaz.Hafen, Unter den Linden 23, 72762 Reutlingen, Baden-Württemberg, Deutschland",
+    "start": "2023-08-06T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Andreas Theobald Trio @ Bonn",
+    "location": "Bonn, Deutschland",
+    "start": "2023-08-11T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Draiflessen Conference Tagungszentrum",
+    "location": "Draiflessen Conference Tagungszentrum, Bachstraße 31, 49497 Mettingen, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-08-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "BuJazzO @ Rheinsberg",
+    "location": "Rheinsberg, Deutschland",
+    "start": "2023-08-25T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "BuJazzO @ Bielefeld",
+    "location": "Bielefeld, Deutschland",
+    "start": "2023-08-26T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "Ketzberg (Live-Album-Aufnahme)",
+    "location": "",
+    "start": "2023-08-29T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Ballenlager",
+    "location": "Ballenlager, Friedrich-Ebert-Straße 3-5, 48268 Greven, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-09-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Sebastian Gahler @ KIT Café and Bar, Düsseldorf",
+    "location": "KIT Café and Bar\nMannesmannufer 1b, 40213 Düsseldorf, Deutschland",
+    "start": "2023-09-13T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Lars Duppler, Lennart Allkemper, Martin Fuhrmann @ Gelsenkirchen",
+    "location": "Bochumer Straße 138, Gelsenkirchen, Deutschland",
+    "start": "2023-09-14T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "BuJazzO @ Heek",
+    "location": "Heek, Nordrhein-Westfalen, Deutschland",
+    "start": "2023-09-22T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "Sebastian Gahler @ KIT Café and Bar, Düsseldorf",
+    "location": "KIT Café and Bar\nMannesmannufer 1b, 40213 Düsseldorf, Deutschland",
+    "start": "2023-09-24T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Gnadenkirche",
+    "location": "Gnadenkirche, Auf dem Höhrenberg , 78476 Allensbach., Allensbach, Deutschland",
+    "start": "2023-10-09T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Motorworld Village Metzingen",
+    "location": "Motorworld Village Metzingen, Paul-Lechler-Straße 1-12, 72555 Metzingen, Baden-Württemberg, Deutschland",
+    "start": "2023-10-13T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Reithalle Rastatt",
+    "location": "Reithalle Rastatt, Am Schlossplatz 9, 76437 Rastatt, Baden-Württemberg, Deutschland",
+    "start": "2023-10-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Abrahams",
+    "location": "Abrahams, Restaurant-Eventlocation Abrahams, Bahnhofstrasse 4, 33378 Rheda-Wiedenbrück, Deutschland",
+    "start": "2023-10-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schlosstheater Schwetzingen",
+    "location": "Schlosstheater Schwetzingen, Am Schloß, 68723 Schwetzingen, Baden-Württemberg, Deutschland",
+    "start": "2023-10-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ FORUM Merzhausen",
+    "location": "FORUM Merzhausen, Am Marktplatz 4, 79249 Merzhausen, Baden-Württemberg, Deutschland",
+    "start": "2023-10-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Folkets Hus Kulturhuset",
+    "location": "Folkets Hus Kulturhuset, Kungsgatan 25, 461 30 Trollhättan, Västra Götaland, Schweden",
+    "start": "2023-10-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kleine Bühne Saalfeld / Villa Weidig",
+    "location": "Kleine Bühne Saalfeld / Villa Weidig, Am Weidig 1, 07318 Saalfeld/Saale, Thüringen, Deutschland",
+    "start": "2023-10-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Mallorca Smooth Jazz Festival",
+    "location": "",
+    "start": "2023-10-31T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2023-11-05T00:00:00"
+  },
+  {
+    "title": "Midnight Jam Session",
+    "location": "",
+    "start": "2023-11-03T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Haberecht 4 @ Bad Kreuznach",
+    "location": "Bad Kreuznach, Rheinland-Pfalz, Deutschland",
+    "start": "2023-11-10T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Ketzberg @ Yuca (Support)",
+    "location": "",
+    "start": "2023-11-15T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Filarmonica de Stat Oradea",
+    "location": "Filarmonica de Stat Oradea, Strada Moscovei 5, 410001 Oradea, Bihor, Rumänien",
+    "start": "2023-11-17T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schloss Elmau",
+    "location": "Schloss Elmau, In Elmau 2, D - 82493 Elmau/Oberbayern, Bayern, Deutschland",
+    "start": "2023-11-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Charly Duo @ Greesberger, Köln",
+    "location": "Greesberger\nKöln, Deutschland",
+    "start": "2023-11-20T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "BuJazzO \"Clarke/Boland\" @ Ludwigsburg",
+    "location": "Ludwigsburg, Deutschland",
+    "start": "2023-11-24T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Zehntscheuer-Bürgerhaus Münsingen",
+    "location": "Zehntscheuer-Bürgerhaus Münsingen, Zehntscheuerweg 11, 72525 Münsingen, Baden-Württemberg, Deutschland",
+    "start": "2023-11-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "VIP Lounge Gig @ kunstbar, Köln",
+    "location": "kunstbar\nKöln, Deutschland",
+    "start": "2023-11-27T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Ketzberg Trio @ Köln",
+    "location": "Köln, Deutschland",
+    "start": "2023-12-01T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "Jazzkeller Gig",
+    "location": "",
+    "start": "2023-12-06T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "GE Jazzt",
+    "location": "",
+    "start": "2023-12-09T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Ketzberg Trio @ Köln",
+    "location": "Köln, Deutschland",
+    "start": "2023-12-16T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Esposito Vreden",
+    "location": "Esposito Vreden | Drink & Dance, Bahnhofstraße 28-30, 48691 Vreden, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-02-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Doubletime Jazz & Kultur Club",
+    "location": "Doubletime Jazz & Kultur Club, Ostertorwall 2, 31785 Hameln, Niedersachsen, Deutschland",
+    "start": "2024-02-02T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazz Club Minden e.V.",
+    "location": "Jazz Club Minden e.V., Königswall 97, 32423 Minden, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-02-03T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Theaterstübchen",
+    "location": "Theaterstübchen, Jordanstraße 11, 34117 Kassel, Hessen, Deutschland",
+    "start": "2024-02-04T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Cave61",
+    "location": "Jazzclub Cave61, Zigarre / K2acht, Weststraße 28, 74072 Heilbronn, Baden-Württemberg, Deutschland",
+    "start": "2024-02-05T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Tonne e.V.",
+    "location": "Jazzclub Tonne e.V., Tzschirnerplatz 3-5, 01067 Dresden, Dresden, Sachsen, Deutschland",
+    "start": "2024-02-06T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Red Horn District e.V",
+    "location": "Red Horn District e.V, Detmolder Straße 46, 32805 Horn-Bad Meinberg, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-02-08T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kultur hinterm Feld",
+    "location": "Kultur hinterm Feld, Hinterm Feld 14, 27801 Dötlingen, Deutschland",
+    "start": "2024-02-09T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadthalle Gütersloh - kleiner Saal",
+    "location": "Stadthalle Gütersloh - kleiner Saal, Friedrichstraße 10, 33330 Gütersloh, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-02-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Seeliger Villa",
+    "location": "Seeliger Villa, Schulwall 1, 38300 Wolfenbüttel, Niedersachsen, Deutschland",
+    "start": "2024-02-11T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ A-Trane",
+    "location": "A-Trane, Bleibtreustraße 1, 10623 Berlin, Berlin, Deutschland",
+    "start": "2024-02-13T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Malzhaus",
+    "location": "Malzhaus, Alter Teich 7-9, 08527 Plauen, Sachsen, Deutschland",
+    "start": "2024-02-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Leerer Beutel",
+    "location": "Leerer Beutel, Bertoldstraße 9, 93047 Regensburg, Bayern, Deutschland",
+    "start": "2024-02-15T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ E-Werk Erlangen",
+    "location": "E-Werk Erlangen, Fuchsenwiese 1, 91054 Erlangen, Bayern, Deutschland",
+    "start": "2024-02-16T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturbahnhof Bad Homburg / Speicher",
+    "location": "Kulturbahnhof Bad Homburg / Speicher, Am Bahnhof 2, 61352 Bad Homburg vor der Höhe, Hessen, Deutschland",
+    "start": "2024-02-17T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturzentrum Tempel",
+    "location": "Kulturzentrum Tempel, Hardtstraße 37a, 76185 Karlsruhe, Baden-Württemberg, Deutschland",
+    "start": "2024-02-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Moods",
+    "location": "Moods, Schiffbaustrasse 6 (Artist Entry), 8005 Zürich, Zurich, Schweiz",
+    "start": "2024-02-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Spielboden",
+    "location": "Spielboden, Färbergasse 15, Rhombergs Fabrik, 6850 Dornbirn, Vorarlberg, Österreich",
+    "start": "2024-02-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Biberach / Jazzkeller",
+    "location": "Jazzclub Biberach / Jazzkeller, Wielandstraße 23, 88400 Biberach an der Riß, Baden-Württemberg, Deutschland",
+    "start": "2024-02-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadt Bad Neustadt",
+    "location": "Stadt Bad Neustadt, An der Stadthalle 4, 97616 Bad Neustadt an der Saale, Bayern, Deutschland",
+    "start": "2024-02-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Unterfahrt",
+    "location": "Jazzclub Unterfahrt, Einsteinstraße 42, 81675 München, Deutschland",
+    "start": "2024-02-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Veranstaltungsforum Fürstenfeld",
+    "location": "Veranstaltungsforum Fürstenfeld, Fürstenfeld 12, 82256 Fürstenfeldbruck, Bayern, Deutschland",
+    "start": "2024-02-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bürgerhaus der Gemeinde Pullach i. Isartal",
+    "location": "Bürgerhaus der Gemeinde Pullach i. Isartal, Heilmannstr 2a, 82049 Pullach im Isartal, Bayern, Deutschland",
+    "start": "2024-02-29T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ ROXY Ulm",
+    "location": "ROXY Ulm, Schillerstraße 1/12, 89077 Ulm, Deutschland",
+    "start": "2024-03-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ BIX Jazzclub",
+    "location": "BIX Jazzclub, Leonhardsplatz 28, 70182 Stuttgart, Baden-Württemberg, Deutschland",
+    "start": "2024-03-02T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Theater Uri",
+    "location": "Theater Uri, Schützengasse 11, 6460 Altdorf, Uri, Schweiz",
+    "start": "2024-03-16T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Vaya Casa",
+    "location": "Vaya Casa, Herrenstraße 5a, 77876 Kappelrodeck, Deutschland",
+    "start": "2024-03-17T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bistro St.Gallen",
+    "location": "Bistro St.Gallen, Wassergasse 3, 9000 St. Gallen, St. Gallen, Schweiz",
+    "start": "2024-03-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazz am See",
+    "location": "Jazz am See, Bürgersaal im Rathaus, Bahnhofsplatz 1, 82340 Feldafing, Bayern, Deutschland",
+    "start": "2024-03-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Festhalle am Psychiatrischen Zentrum Nordbaden",
+    "location": "Festhalle am Psychiatrischen Zentrum Nordbaden, 69168 Wiesloch, Baden-Württemberg, Deutschland",
+    "start": "2024-03-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ JazzHall",
+    "location": "JazzHall, Harvestehuder Weg 12, 20148 Hamburg, Hamburg, Deutschland",
+    "start": "2024-03-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kammgarn",
+    "location": "Kammgarn, Schoenstraße 10, 67659 Kaiserslautern, Kaiserslautern, Deutschland",
+    "start": "2024-04-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ King Georg",
+    "location": "King Georg, Sudermanstraße 2, 50670 Köln, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-04-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ King Georg",
+    "location": "King Georg, Sudermanstraße 2, 50670 Köln, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-04-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazz-Club Paderborn",
+    "location": "Jazz-Club Paderborn, Krämerstr. 8 -10, 33102 Paderborn, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-04-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ LOCH UG",
+    "location": "LOCH UG, Plateniusstraße 35, 42105 Wuppertal, Deutschland",
+    "start": "2024-04-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Zehntscheuer Ravensburg",
+    "location": "Zehntscheuer Ravensburg, Grüner-Turm-Straße 30, 88212 Ravensburg, Baden-Württemberg, Deutschland",
+    "start": "2024-05-02T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bürgerverein Dottendorf/Gronau e.V.",
+    "location": "Bürgerverein Dottendorf/Gronau e.V., Dottendorfer Straße 37, 53129 Bonn, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-05-03T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Algarve Smooth Jazz Festival",
+    "location": "",
+    "start": "2024-05-14T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2024-05-19T00:00:00"
+  },
+  {
+    "title": "Midnight Jam Session",
+    "location": "",
+    "start": "2024-05-17T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Bischofsmühle Cyclus 66 e. V.",
+    "location": "Bischofsmühle Cyclus 66 e. V., Dammstraße 32, 31134 Hildesheim, Niedersachsen, Deutschland",
+    "start": "2024-05-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schloss Kloster Bentlage –Kulturelle Begegnungsstätte",
+    "location": "Schloss Kloster Bentlage –Kulturelle Begegnungsstätte, Bentlager Weg 130, 48432 Rheine, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-05-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Julius van Rhee Quartett @ Loft, Köln",
+    "location": "Loft\nKöln, Deutschland",
+    "start": "2024-06-06T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Ostfriesland Festival",
+    "location": "",
+    "start": "2024-06-07T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Ahrenshooper Jazzfest",
+    "location": "Ahrenshooper Jazzfest, 18347 Ahrenshoop, Deutschland",
+    "start": "2024-06-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Ketzberg @ Odonien, Köln",
+    "location": "Odonien\nKöln, Deutschland",
+    "start": "2024-06-21T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Deutsch-Französisches Kulturinstitut Tübingen e.V.",
+    "location": "Deutsch-Französisches Kulturinstitut Tübingen e.V., Doblerstraße 25, 72074 Tübingen, Baden-Württemberg, Deutschland",
+    "start": "2024-06-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Daniel Migliosi @ Straßburg",
+    "location": "Straßburg, Frankreich",
+    "start": "2024-06-25T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Alma (Open Air) @ Hannover",
+    "location": "Hannover, Niedersachsen, Deutschland",
+    "start": "2024-07-20T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Sommerbühne am Blautopf",
+    "location": "Sommerbühne am Blautopf, Blaubeuren, Deutschland",
+    "start": "2024-07-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schloss und Gut Ulrichshusen",
+    "location": "Schloss und Gut Ulrichshusen, Seestraße 14, 17194 Schwinkendorf, Mecklenburg-Vorpommern, Deutschland",
+    "start": "2024-07-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Volksbank-Bühne Weckerlingplatz / Jazz and Joy Festival",
+    "location": "Volksbank-Bühne Weckerlingplatz / Jazz and Joy Festival, Weckerlingplatz, 67547 Worms, Rheinland-Pfalz, Deutschland",
+    "start": "2024-08-17T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Ketzberg @ Therme",
+    "location": "",
+    "start": "2024-08-28T00:00:00",
+    "allDay": true,
+    "url": "https://ketzberg.com"
+  },
+  {
+    "title": "BuJazzO @ Stadtgarten, Köln",
+    "location": "Stadtgarten\nVenloer Straße 40, 50672 Köln, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-08-31T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "BuJazzO Matinee-Konzert @ Zülpich",
+    "location": "Burg Langendorf\nEifelstraße 85, 53909 Zülpich, Deutschland",
+    "start": "2024-09-01T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Rudolf-Oetker-Halle",
+    "location": "Rudolf-Oetker-Halle, Lampingstraße 16, 33615 Bielefeld, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-09-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Alma Naidu Quintett @ Kito, Bremen",
+    "location": "Kito\nBremen, Deutschland",
+    "start": "2024-09-12T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Europa-Park; Ballsaal Berlin",
+    "location": "Europa-Park; Ballsaal Berlin, Europa-Park-Straße 2, 77977 Rust, Baden-Württemberg, Deutschland",
+    "start": "2024-09-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "BuJazzO + WDR Big Band @ Ahaus",
+    "location": "Stadthalle Ahaus\nAhaus, Deutschland",
+    "start": "2024-09-20T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "BuJazzO + WDR Big Band @ Bielefeld",
+    "location": "Rudolf-Oetker-Halle\nLampingstraße 16, 33615 Bielefeld, Deutschland",
+    "start": "2024-09-21T00:00:00",
+    "allDay": true,
+    "url": "https://bujazzo.de"
+  },
+  {
+    "title": "Sebastian Gahler @ KIT Café and Bar, Düsseldorf",
+    "location": "KIT Café and Bar\nMannesmannufer 1b, 40213 Düsseldorf, Deutschland",
+    "start": "2024-09-26T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ KSK Carre",
+    "location": "KSK Carre, Mühlbachäckerstraße 2, 72072 Tübingen, Deutschland",
+    "start": "2024-10-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Philharmonie Essen",
+    "location": "Philharmonie Essen, Huyssenallee 53, 45128 Essen, Deutschland",
+    "start": "2024-10-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Altes E-Werk",
+    "location": "Altes E-Werk, Mörikestraße 18, 73033 Göppingen, Baden-Württemberg, Deutschland",
+    "start": "2024-10-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schillerhalle, Dettingen an der Erms",
+    "location": "Schillerhalle, Dettingen an der Erms, Hülbener Straße 99, 72581 Dettingen an der Erms, Baden-Württemberg, Deutschland",
+    "start": "2024-10-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Cafe Hahn",
+    "location": "Cafe Hahn, Neustraße 15, 56072 Koblenz, Koblenz, Deutschland",
+    "start": "2024-11-06T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bayer Erholungshaus",
+    "location": "Bayer Erholungshaus, Nobelstraße 37, 51373 Leverkusen, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-11-07T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazz Club Hannover",
+    "location": "Jazz Club Hannover, Am Lindener Berge 38, 30449 Hannover, Niedersachsen, Deutschland",
+    "start": "2024-11-09T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Klangbrücke Aachen",
+    "location": "Klangbrücke Aachen, Kurhausstraße 1, 52062 Aachen, Nordrhein-Westfalen, Deutschland",
+    "start": "2024-11-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Lokschuppen",
+    "location": "Lokschuppen, Kanalstraße 17, 89522 Heidenheim an der Brenz, Baden-Württemberg, Deutschland",
+    "start": "2024-11-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ JazzPoint Club (Schwarzer Hasen)",
+    "location": "JazzPoint Club (Schwarzer Hasen), Argenauweg 6-7, 88239 Wangen im Allgäu, Baden-Württemberg, Deutschland",
+    "start": "2024-11-15T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Schloss-Scheune Essingen",
+    "location": "Schloss-Scheune Essingen, Bahnhofstraße 7, 73457 Essingen, Baden-Württemberg, Deutschland",
+    "start": "2024-11-16T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Ella & Louis",
+    "location": "Ella & Louis, Rosengartenplatz 2, 68161 Mannheim, Deutschland",
+    "start": "2024-11-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturforum Illipse",
+    "location": "Kulturforum Illipse, Burgweg 4, 66557 Illingen, Saarland, Deutschland",
+    "start": "2024-11-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ FORUM Merzhausen",
+    "location": "FORUM Merzhausen, Am Marktplatz 4, 79249 Merzhausen, Baden-Württemberg, Deutschland",
+    "start": "2024-12-07T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Roter Saal",
+    "location": "Roter Saal, Schloßplatz 1, 38100 Braunschweig, Niedersachsen, Deutschland",
+    "start": "2024-12-13T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Radius @ Jazz-Schmiede, Düsseldorf",
+    "location": "Jazz-Schmiede\nHimmelgeister Straße 107G, 40225 Düsseldorf, Deutschland",
+    "start": "2025-03-01T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Unterfahrt",
+    "location": "Jazzclub Unterfahrt, Einsteinstraße 42, 81675 München, Deutschland",
+    "start": "2025-03-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Chudoscnik Sunergia VoG / Kulturzentrum Alter Schlachthof",
+    "location": "Chudoscnik Sunergia VoG / Kulturzentrum Alter Schlachthof, Rotenbergplatz 19, 4700 EUPEN, Belgien",
+    "start": "2025-03-19T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Göttenbachaula",
+    "location": "Göttenbachaula, Georg-Maus-Str. 3, 55743 Idar-Oberstein, Rheinland-Pfalz, Deutschland",
+    "start": "2025-03-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bistrot Paris",
+    "location": "Bistrot Paris, Sebastianstraße 2, 92637 Weiden in der Oberpfalz, Bayern, Deutschland",
+    "start": "2025-03-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Backnanger Bürgerhaus",
+    "location": "Backnanger Bürgerhaus, Bahnhofstraße 7, 71522 Backnang, Baden-Württemberg, Deutschland",
+    "start": "2025-03-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Achalmschule Eningen / Aula",
+    "location": "Achalmschule Eningen / Aula, 72800 Eningen unter Achalm, Baden-Württemberg, Deutschland",
+    "start": "2025-03-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quintett @ Club Show",
+    "location": "birdland jazz-club Neuburg/Donau / Am Karlsplatz A 52",
+    "start": "2025-04-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Bastion Kirchheim Teck",
+    "location": "",
+    "start": "2025-04-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quintett @ Leerer Beutel Regensburg",
+    "location": "Jazzclub Regensburg / Bertoldstraße 9, Innenstadt, 93047 Regensburg, Deutschland",
+    "start": "2025-04-29T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Algarve Smooth Jazz Festival",
+    "location": "",
+    "start": "2025-05-06T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2025-05-11T00:00:00"
+  },
+  {
+    "title": "Midnight Jam Session (w/ Michael Paulo)",
+    "location": "",
+    "start": "2025-05-08T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadtgarten",
+    "location": "Stadtgarten, Venloer Straße 40, 50672 Köln, Nordrhein-Westfalen, Deutschland",
+    "start": "2025-05-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quintett Karlsruhe",
+    "location": "Kulturzentrum Tempel / Hardtstraße 37A, Mühlburg, 76185 Karlsruhe, Deutschland",
+    "start": "2025-05-30T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quintett @ Jakob Bämsch Quintett Munich",
+    "location": "Jazzclub Unterfahrt / Einsteinstraße 42, 81675 München, Deutschland",
+    "start": "2025-05-31T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Shuteen @ Goethe-Museum, Düsseldorf",
+    "location": "Goethe-Museum Düsseldorf\nJacobistraße 2, 40211 Düsseldorf, Deutschland",
+    "start": "2025-06-07T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Dracula's Ghost Riders Club",
+    "location": "Dracula's Ghost Riders Club, Plazza Gunter Sachs, Via Maistra 54, 7500 Sankt Moritz, Graubünden, Schweiz",
+    "start": "2025-07-03T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Marktplatz",
+    "location": "Marktplatz, Marktplatz, 72108 Rottenburg am Neckar, Baden-Württemberg, Deutschland",
+    "start": "2025-08-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Iiro Rantala Gigs",
+    "location": "",
+    "start": "2025-08-16T00:00:00",
+    "allDay": true,
+    "url": "",
+    "end": "2025-08-17T00:00:00"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazz ohne Gleichen",
+    "location": "Jazz ohne Gleichen, Kulturscheune Rittmarshausen, Lindenberg 8, 37130 Gleichen, Niedersachsen, Deutschland",
+    "start": "2025-08-31T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ intermezzo - Konzerte in der Lutherkirche",
+    "location": "intermezzo - Konzerte in der Lutherkirche, Lutherkirche, Martinstr. 35, 47058 Duisburg, Deutschland",
+    "start": "2025-09-05T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Frankfurter Hof Konzert",
+    "location": "",
+    "start": "2025-09-16T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturzentrum Tempel",
+    "location": "Kulturzentrum Tempel, Hardtstraße 37a, 76185 Karlsruhe, Baden-Württemberg, Deutschland",
+    "start": "2025-09-21T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Gnadenkirche",
+    "location": "Gnadenkirche, Auf dem Höhrenberg , 78476 Allensbach., Allensbach, Deutschland",
+    "start": "2025-09-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Parkhotel Dresden",
+    "location": "Parkhotel Dresden, Blauer Salon, Bautzner Landstraße 7, 01324 Dresden, Sachsen, Deutschland",
+    "start": "2025-09-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Gretchen",
+    "location": "Gretchen, Obentrautstraße 19-21, 10963 Berlin, Berlin, Deutschland",
+    "start": "2025-09-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Domicil",
+    "location": "Domicil, Hansastr. 7-11, 44137 Dortmund, Dortmund, Deutschland",
+    "start": "2025-09-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Nica Jazz Club",
+    "location": "Nica Jazz Club, Alter Wall 20, 20457 Hamburg, Deutschland",
+    "start": "2025-09-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Alte Schwimmhalle am Schloss",
+    "location": "Alte Schwimmhalle am Schloss, Schloßgebiet 1 A, 24306 Plön, Schleswig-Holstein, Deutschland",
+    "start": "2025-09-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Smooth Jazz Festival",
+    "location": "",
+    "start": "2025-09-29T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2025-10-02T00:00:00"
+  },
+  {
+    "title": "The Jakob Manz Project @ Werner Richard - Dr. Carl Dörken Stiftung",
+    "location": "Werner Richard - Dr. Carl Dörken Stiftung, Wetterstraße 60, D-58313 Herdecke, Deutschland",
+    "start": "2025-10-04T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Reithalle im Kulturforum",
+    "location": "Reithalle im Kulturforum, Moltkestraße 31, 77654 Offenburg, Baden-Württemberg, Deutschland",
+    "start": "2025-10-05T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Smooth Jazz Festival",
+    "location": "",
+    "start": "2025-10-09T00:00:00",
+    "allDay": true,
+    "url": "https://smoothjazzeurope.eu",
+    "end": "2025-10-12T00:00:00"
+  },
+  {
+    "title": "YAMUNA @ Salon de Jazz, Köln",
+    "location": "Salon de Jazz\nSeverinskloster 3A, 50678 Köln, Deutschland",
+    "start": "2025-10-17T00:00:00",
+    "allDay": true,
+    "url": "https://leoasal.com/yamuna.html"
+  },
+  {
+    "title": "The Jakob Manz Project @ Trollhättan Jazz & Blues Festival",
+    "location": "Trollhättan Jazz & Blues Festival, Schweden",
+    "start": "2025-10-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ MozARTareal Würzburg",
+    "location": "MozARTareal Würzburg, Maxstraße 2, 97070 Würzburg, Bayern, Deutschland",
+    "start": "2025-10-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Alte Oper Frankfurt / Mozart Saal",
+    "location": "Alte Oper Frankfurt / Mozart Saal, Opernplatz 1, 60313 Frankfurt am Main, Hessen, Deutschland",
+    "start": "2025-11-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Brauhaus Breznik",
+    "location": "Brauhaus Breznik, 10. Oktober Platz 9, 9150 Bleiburg, Kärnten, Österreich",
+    "start": "2025-11-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Musikhaus Thomann",
+    "location": "Musikhaus Thomann, Hans-Thomann-Straße 1, 96138 Burgebrach, Bayern, Deutschland",
+    "start": "2025-11-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Fabrik für Kultur und Stadtteil",
+    "location": "Fabrik für Kultur und Stadtteil, Binsfelder Straße 77, 52351 Düren, Nordrhein-Westfalen, Deutschland",
+    "start": "2025-11-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Rätsche",
+    "location": "Rätsche, Schlachthausstraße 22, 73312 Geislingen an der Steige, Baden-Württemberg, Deutschland",
+    "start": "2025-11-29T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Theater Aachen",
+    "location": "Theater Aachen / AachenMünchener-Platz 3, 52064 Aachen, Deutschland",
+    "start": "2025-12-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Kulturzentrum franz.K",
+    "location": "Kulturzentrum franz.K, Unter den Linden 23, 72762 Reutlingen, Baden-Württemberg, Deutschland",
+    "start": "2026-01-10T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Eupen",
+    "location": "Alter Schlachthof / Rotenbergplatz 19, 4700 Eupen, Belgien",
+    "start": "2026-01-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Dinslaken",
+    "location": "Jazz Initiative Dinslaken E.v. / Kreuzstraße 14A, Innenstadt, 46535 Dinslaken, Deutschland",
+    "start": "2026-01-23T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Paderborn",
+    "location": "Jazz-Club Paderborn / Ostpreußenweg 7, 33104 Paderborn, Deutschland",
+    "start": "2026-01-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Kempen",
+    "location": "Kulturforum Kempen / Burgstraße 17, 47906 Kempen, Deutschland",
+    "start": "2026-01-30T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "New Orleans Gig @ Café Berlín, Madrid",
+    "location": "Café Berlín\nCostanilla de los Ángeles, 20, 28013 Madrid, España",
+    "start": "2026-02-08T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ SOL Kulturbar Mühlheim",
+    "location": "SOL Kulturbar / Akazienallee 61, 45478 Mülheim an der Ruhr, Deutschland",
+    "start": "2026-02-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Malzhaus Plauen",
+    "location": "Malzhaus / Alter Teich 7-9",
+    "start": "2026-02-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Jazzclub Biberach",
+    "location": "Jazzclub Biberach / Wielandstraße 27, 88400 Biberach an der Riß, Deutschland",
+    "start": "2026-02-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Dortmund",
+    "location": "",
+    "start": "2026-02-28T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Gig Kraichgau",
+    "location": "Altes Rathaus / Marktplatz 1, 75015 Bretten, Deutschland",
+    "start": "2026-03-20T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quintett @ Jazzwoche Burghausen",
+    "location": "Stadtsaal Stadtplatz 108, 84489 Burghausen, Deutschland",
+    "start": "2026-03-22T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ B-Flat Berlin",
+    "location": "b-flat / Dircksenstraße 40, Mitte, 10178 Berlin, Deutschland",
+    "start": "2026-03-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Jazzclub Armer Konrad Weinstadt",
+    "location": "Jazzclub Armer Konrad e.V. / Stiftstraße 32, 71384 Weinstadt, Deutschland",
+    "start": "2026-03-26T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Heidenheim Jazz Club",
+    "location": "Duale Hochschule Baden-Württemberg Heidenheim / Wilhelmstraße 10, Innenstadt, 89518 Heidenheim an der Brenz, Deutschland",
+    "start": "2026-03-27T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quintett Singen",
+    "location": "Jazz Club Singen e.V. / Mühlenstraße 13, 78224 Singen (Hohentwiel), Deutschland",
+    "start": "2026-04-01T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Theaterhaus Stuttgart",
+    "location": "Theaterhaus Stuttgart\nSiemensstraße 11, 70469 Stuttgart, Deutschland",
+    "start": "2026-04-03T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Jazzclub Englischer Bahnhof",
+    "location": "Jazzclub Englischer Bahnhof, Poggenburgstraße 10A, 25813 Husum, Schleswig-Holstein, Deutschland",
+    "start": "2026-04-17T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Grosses Haus, Nordharzer Staedtebundtheater",
+    "location": "Grosses Haus, Nordharzer Staedtebundtheater, Straße der Opfer des Faschismus 38, 38820 Halberstadt, Sachsen-Anhalt, Deutschland",
+    "start": "2026-04-18T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "The Jakob Manz Project @ Stadthalle Biberach",
+    "location": "Stadthalle Biberach, Theaterstraße 4-8, 88400 Biberach an der Riß, Baden-Württemberg, Deutschland",
+    "start": "2026-04-25T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Pforzheim Domicile",
+    "location": "",
+    "start": "2026-06-08T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Basel Bird‘s Eye",
+    "location": "",
+    "start": "2026-06-11T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "Jakob Bänsch Quartett @ Basel SBB ➞ Köln Hbf",
+    "location": "Basel SBB",
+    "start": "2026-06-12T00:00:00",
+    "allDay": true,
+    "url": "https://jakobbaensch.com"
+  },
+  {
+    "title": "The Jakob Manz Project @ Bingen Swingt",
+    "location": "Bingen Swingt, 55411 Bingen am Rhein, Rheinland-Pfalz, Deutschland",
+    "start": "2026-06-14T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "Sebastian Gahler @ KIT Café and Bar, Düsseldorf",
+    "location": "KIT Café and Bar\nMannesmannufer 1b, 40213 Düsseldorf, Deutschland",
+    "start": "2026-07-08T00:00:00",
+    "allDay": true,
+    "url": ""
+  },
+  {
+    "title": "The Jakob Manz Project @ Musikpavillon Rhöndorf",
+    "location": "Musikpavillon Rhöndorf, Löwenburgstraße 21, 53604 Bad Honnef, Nordrhein-Westfalen, Deutschland",
+    "start": "2026-07-24T00:00:00",
+    "allDay": true,
+    "url": "https://jakobmanz.de"
+  },
+  {
     "title": "The Jakob Manz Project @ Sommernachtskino Tübingen",
     "location": "Sommernachtskino Tübingen\nBrunnenstraße 3, Innenstadt, 72074 Tübingen, Deutschland",
     "start": "2026-08-12T20:30:00",
