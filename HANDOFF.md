@@ -343,6 +343,21 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal Duo: 4 kleine Fotos brachen auf Mobile linksbündig um
+  (Weißraum rechts sichtbar größer als links) — `justify-content:center`
+  auf `.epk-covers--mixed` behebt das, ab 700px zurück auf `flex-start`
+  (2026-08-09)
+- Ketzberg-Galerie war fälschlich zwangsweise auf Graustufen gesetzt
+  (gleiche `.epk-gallery`-Klasse wie Yamuna) — neue Modifier-Klasse
+  `.epk-gallery--color` hebt den Filter auf. **Wichtig für künftige
+  Foto-Arbeiten: Fotos, die farbig geliefert werden, bleiben farbig —
+  nicht von selbst auf Graustufen umstellen, außer explizit gewünscht.**
+  Alle 6 Ketzberg-Fotos (das 6. ist `project-ketzberg.jpg`, als
+  `ketzberg-photo-6.jpg` in die Galerie kopiert) jetzt einzeln per
+  Lightbox anklickbar, genau wie Yamunas Albumcover. Yamunas 4 Press-Fotos
+  sind jetzt ebenfalls anklickbar (Lightbox), ihr Graustufen-Filter blieb
+  bewusst unverändert (2026-08-09)
+
 - Loft-Arts-Videos neu sortiert (4x Megaloh, Novaa, Teesy, MAJAN, Woodie
   Smalls, OG Keemo, Lostboi Lino, Buffala, Joshua J) + neues Joshua-J-Video
   ergänzt (jetzt 12 statt 11). Die beiden unbeschrifteten Megaloh-Videos
