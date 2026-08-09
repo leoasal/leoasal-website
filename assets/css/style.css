@@ -595,50 +595,6 @@ details.long-bio summary {
   content: "–";
 }
 
-.dates-previous-years {
-  margin-top: 0.25rem;
-}
-
-.dates-year {
-  border-top: 1px solid var(--line);
-}
-
-.dates-year > summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  padding: 0.75rem 1.5rem 0.75rem 0;
-  color: var(--plum);
-  font-weight: 600;
-  font-size: 0.95rem;
-  position: relative;
-}
-
-.dates-year > summary::-webkit-details-marker {
-  display: none;
-}
-
-.dates-year > summary::after {
-  content: "+";
-  position: absolute;
-  right: 0;
-  color: var(--accent-dark);
-  font-weight: 600;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.dates-year[open] > summary::after {
-  content: "–";
-}
-
-.dates-year-count {
-  opacity: 0.6;
-  font-weight: 400;
-}
-
 .dates-list--previous {
   opacity: 0.8;
   margin-top: 0.5rem;
@@ -934,6 +890,10 @@ a.project-card:hover {
   object-fit: cover;
   filter: grayscale(1);
   border-radius: 3px;
+}
+
+.epk-gallery--color img {
+  filter: none;
 }
 
 /* ---------- Legal pages ---------- */
