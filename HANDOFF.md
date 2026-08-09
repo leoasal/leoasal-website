@@ -327,6 +327,18 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal-Duo-Seite bekam einen Album-Block ganz oben, analog zu
+  Yamuna: "Out now"-Eyebrow + Albumtitel „Ein Tag wie ein anderer",
+  Cover klickbar via Lightbox. Da nur ein durchgestaltetes Cover-Artwork
+  vorlag (kein separates Front/Back wie bei Yamuna), neue CSS-Variante
+  `.epk-covers--single` (ein statt zwei Cover nebeneinander, max-width
+  20rem). Die restlichen 4 vom Kunden gelieferten Fotos (CD-Objekt-Shots,
+  Booklet-Innenseite) sind als Graustufen-Galerie unter der Beschreibung
+  gelandet, gleiches Pattern wie Yamunas Press-Photo-Grid. Neue i18n-Keys
+  `haertelasal.eyebrow`/`albumLine` in allen 3 Sprachen. Noch kein
+  Listen/Buy-Link wie bei Yamuna, da keine Streaming-/Store-URL vorliegt —
+  bei Bedarf einfach wie bei Yamunas `.contact-email`-Link ergänzen
+  (2026-08-09)
 - Termine: Datum-/Zeit-Strings werden jetzt bei Sprachwechsel neu formatiert
   (Monatsnamen, Reihenfolge — z.B. "Aug 12, 2026" vs. "12. Aug. 2026" vs.
   "12 ago 2026"). Vorher wurden sie nur beim initialen Laden per
