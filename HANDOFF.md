@@ -327,6 +327,11 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal-Duo: die 4 kleinen Fotos nochmal etwas verkleinert
+  (`.epk-covers-extra` max-width 18rem → 15.5rem) und `align-items: center`
+  statt `flex-start` auf `.epk-covers--mixed` — das Foto-Grid ist jetzt
+  vertikal mittig neben dem (höheren) Cover ausgerichtet, gleich viel
+  Weißraum ober- und unterhalb (2026-08-09)
 - Härtel/Asal-Duo-Fotogrid nachjustiert: Cover war zunächst größer als
   Yamunas Cover und die 4 kleinen Fotos hatten ungleiche Abstände
   (Reihen-Höhe > Bild-Höhe durch einen Stretch/aspect-ratio-Konflikt in
