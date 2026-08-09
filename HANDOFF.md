@@ -164,6 +164,14 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   `dates.ics` wird die Spanne wieder korrekt in ein exklusives `DTEND`
   zurückgerechnet. Eintägige Termine bekommen weiterhin kein `end`-Feld
   (Format bleibt für die bestehenden Konsumenten unverändert) (2026-08-08).
+- **Vergangene Termine**: `sync-calendar.js` schreibt sie seit 2026-08-09
+  mit in `data/dates.json` (vorher hart auf "Startdatum ≥ jetzt-1Tag"
+  gefiltert). `dates.js` teilt beim Rendern in `upcoming`/`previous` auf;
+  `previous` landet gruppiert nach Jahr (neuestes zuerst, mit Anzahl im
+  Summary) in einem eingeklappten `<details id="dates-previous">` unter
+  der normalen Liste, komplett versteckt wenn leer. Der öffentliche
+  `dates.ics`-Abo-Feed bleibt bewusst nur-zukünftig gefiltert (niemand
+  will hunderte vergangene Konzerte in seiner Kalender-App).
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
   reinschreiben und committen (außer kurz zum lokalen Testen, danach
   zurücksetzen, siehe Git-History für ein Beispiel).
@@ -327,6 +335,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- "Vorherige Termine"-Archiv (217 vergangene Termine) jetzt nach Jahr
+  gruppiert: pro Jahr ein eigenes eingeklapptes `<details>` mit Anzahl
+  im Summary, statt einer langen Flachliste (2026-08-09)
+- Kalender-Sync-Workflow kann jetzt auch von Claude selbst ausgelöst
+  werden (`~/.local/gh-cli/.../gh workflow run sync-calendar.yml`,
+  s. Abschnitt "GitHub-Zugriff in diesem Environment") — vorher fälschlich
+  angenommen, das ginge nicht, weil `gh` nicht im Standard-PATH der
+  Bash-Tool-Sandbox liegt (2026-08-09)
+- Bahn-Fahrten ohne bahn.de-Link im Titel (z.B. "Basel SBB ➞ Köln Hbf")
+  rutschen durch den reinen URL-basierten Bahn-Filter — beim nächsten
+  Kalender-Cleanup zusätzlich auf "➞" im Titel prüfen (2026-08-09)
 - Härtel/Asal-Duo: 4 kleine Fotos nach dem Verkleinern (15.5rem) auf
   Mittelweg 16.75rem wieder etwas vergrößert — `align-items:center` sorgt
   weiterhin automatisch für gleichen Weißraum ober-/unterhalb, unabhängig
