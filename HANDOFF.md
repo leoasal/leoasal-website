@@ -172,11 +172,14 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
 - **Vergangene Termine**: `sync-calendar.js` schreibt sie seit 2026-08-09
   mit in `data/dates.json` (vorher hart auf "Startdatum ≥ jetzt-1Tag"
   gefiltert). `dates.js` teilt beim Rendern in `upcoming`/`previous` auf;
-  `previous` landet gruppiert nach Jahr (neuestes zuerst, mit Anzahl im
-  Summary) in einem eingeklappten `<details id="dates-previous">` unter
-  der normalen Liste, komplett versteckt wenn leer. Der öffentliche
-  `dates.ics`-Abo-Feed bleibt bewusst nur-zukünftig gefiltert (niemand
-  will hunderte vergangene Konzerte in seiner Kalender-App).
+  `previous` (neuestes zuerst) landet als flache Liste in einem
+  eingeklappten `<details id="dates-previous">` / `<ul id="dates-list-
+  previous">` unter der normalen Liste, komplett versteckt wenn leer.
+  (Kurzzeitig gab es hier eine Gruppierung nach Jahr mit verschachtelten
+  `<details>` pro Jahr — auf Leos Wunsch am selben Tag wieder auf die
+  flache Liste zurückgebaut, falls das Bedürfnis nochmal aufkommt.) Der
+  öffentliche `dates.ics`-Abo-Feed bleibt bewusst nur-zukünftig gefiltert
+  (niemand will hunderte vergangene Konzerte in seiner Kalender-App).
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
   reinschreiben und committen (außer kurz zum lokalen Testen, danach
   zurücksetzen, siehe Git-History für ein Beispiel).
@@ -354,9 +357,9 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   Graustufen-Galerie (gleiches Pattern wie Yamunas Press-Fotos), 7
   YouTube-Videos. `projects.html`-Karte verlinkt jetzt intern statt mit
   `target="_blank"` (2026-08-09)
-- "Vorherige Termine"-Archiv (217 vergangene Termine) jetzt nach Jahr
-  gruppiert: pro Jahr ein eigenes eingeklapptes `<details>` mit Anzahl
-  im Summary, statt einer langen Flachliste (2026-08-09)
+- "Vorherige Termine"-Archiv kurz nach Jahr gruppiert (pro Jahr ein
+  eigenes `<details>`), auf Leos Wunsch am selben Tag wieder zurück auf
+  die flache Liste (2026-08-09)
 - Kalender-Sync-Workflow kann jetzt auch von Claude selbst ausgelöst
   werden (`~/.local/gh-cli/.../gh workflow run sync-calendar.yml`,
   s. Abschnitt "GitHub-Zugriff in diesem Environment") — vorher fälschlich
