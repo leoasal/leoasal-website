@@ -343,6 +343,14 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- `dates.html` Mobile-Layout: mehrzeilige Adressen (langer Venue-Name +
+  Adresse) rutschten beim Zeilenumbruch unter das Pin-Icon zurück an den
+  linken Rand, statt eingerückt neben dem Icon zu bleiben. `.date-detail`
+  von `flex` (mit `flex-wrap`, dadurch sprang der ganze Text-Block bei zu
+  wenig Platz in eine neue Zeile ab Container-Rand) auf `grid` mit fixer
+  Icon-Spalte (`grid-template-columns: 1.1em 1fr`) umgestellt — betrifft
+  alle drei Detail-Zeilen (Uhrzeit, Adresse, Mehr-Infos-Link) einheitlich,
+  Desktop-Ansicht unverändert (2026-08-09)
 - Ketzberg-Galerie auf 4 Fotos reduziert: Gruppenfoto (#1) und zweites
   Drum-Foto (#4) entfernt (samt Bilddateien), neues Bandfoto (#6) an den
   Anfang, die beiden mittleren (Drums/Neon-Schild) getauscht — Reihenfolge
