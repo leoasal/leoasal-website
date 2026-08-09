@@ -743,6 +743,7 @@ a.project-card:hover {
 .epk-covers--mixed {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   max-width: 48rem;
 }
 
@@ -754,13 +755,15 @@ a.project-card:hover {
 .epk-covers-extra {
   flex: 1 1 13rem;
   max-width: 18rem;
+  aspect-ratio: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 0.75rem;
 }
 
-.epk-covers-extra .cover-trigger {
-  aspect-ratio: 1;
+.epk-covers-extra .cover-trigger img {
+  height: 100%;
 }
 
 .cover-trigger {
@@ -841,6 +844,7 @@ a.project-card:hover {
   .epk-covers { max-width: 44rem; }
   .epk-covers--single { max-width: 20rem; }
   .epk-covers--mixed { max-width: 48rem; }
+  .epk-covers--mixed .cover-trigger--main { max-width: 21.375rem; }
 }
 
 .download-list {
