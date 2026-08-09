@@ -2,10 +2,20 @@
   var list = document.getElementById("dates-list");
   if (!list) return;
 
+  var cachedEvents = null;
+
   fetch("data/dates.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })
-    .then(render)
-    .catch(function () { render([]); });
+    .then(function (events) { cachedEvents = events || []; render(cachedEvents); })
+    .catch(function () { cachedEvents = []; render(cachedEvents); });
+
+  // Date/time strings (month names, day/month order) are baked into the
+  // rendered HTML via toLocaleDateString — a later language switch doesn't
+  // touch existing text nodes, so re-render from the cached data on
+  // "langchange" instead of just re-translating data-i18n labels.
+  document.addEventListener("langchange", function () {
+    if (cachedEvents) render(cachedEvents);
+  });
 
   function render(events) {
     var now = new Date();

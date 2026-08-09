@@ -34,6 +34,7 @@
           var active = btn.getAttribute("data-lang") === l;
           btn.setAttribute("aria-pressed", active ? "true" : "false");
         });
+        document.dispatchEvent(new CustomEvent("langchange", { detail: { lang: l } }));
       })
       .catch(function (err) { console.error("i18n load failed:", err); });
   }
