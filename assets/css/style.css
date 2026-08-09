@@ -743,7 +743,7 @@ a.project-card:hover {
 .epk-covers--mixed {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   max-width: 48rem;
 }
 
@@ -753,8 +753,8 @@ a.project-card:hover {
 }
 
 .epk-covers-extra {
-  flex: 1 1 13rem;
-  max-width: 18rem;
+  flex: 1 1 11rem;
+  max-width: 15.5rem;
   aspect-ratio: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
