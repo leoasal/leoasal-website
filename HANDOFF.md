@@ -343,6 +343,13 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Ketzberg-Galerie auf 4 Fotos reduziert: Gruppenfoto (#1) und zweites
+  Drum-Foto (#4) entfernt (samt Bilddateien), neues Bandfoto (#6) an den
+  Anfang, die beiden mittleren (Drums/Neon-Schild) getauscht — Reihenfolge
+  jetzt 6-3-2-5. Deploy schlug beim ersten Versuch mit "Multiple artifacts
+  named github-pages" fehl (transienter GitHub-Actions-Fehler, nichts mit
+  dem Inhalt zu tun) — einmal manuell neu getriggert
+  (`gh workflow run deploy-pages.yml`), lief danach durch (2026-08-09)
 - Härtel/Asal Duo: 4 kleine Fotos brachen auf Mobile linksbündig um
   (Weißraum rechts sichtbar größer als links) — `justify-content:center`
   auf `.epk-covers--mixed` behebt das, ab 700px zurück auf `flex-start`
