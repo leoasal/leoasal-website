@@ -508,9 +508,9 @@ details.long-bio summary {
 }
 
 .date-detail {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1.1em 1fr;
+  align-items: start;
   gap: 0.4rem 0.6rem;
   font-size: 0.9rem;
 }
