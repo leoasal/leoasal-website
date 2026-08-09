@@ -18,7 +18,7 @@
   });
 
   var previousDetails = document.getElementById("dates-previous");
-  var previousList = document.getElementById("dates-list-previous");
+  var previousYears = document.getElementById("dates-previous-years");
 
   function render(events) {
     var now = new Date();
@@ -38,17 +38,38 @@
       list.innerHTML = upcoming.map(renderEvent).join("");
     }
 
-    if (previousDetails && previousList) {
+    if (previousDetails && previousYears) {
       if (previous.length === 0) {
         previousDetails.hidden = true;
-        previousList.innerHTML = "";
+        previousYears.innerHTML = "";
       } else {
         previousDetails.hidden = false;
-        previousList.innerHTML = previous.map(renderEvent).join("");
+        previousYears.innerHTML = renderPreviousByYear(previous);
       }
     }
 
     if (window.i18nRefresh) window.i18nRefresh();
+  }
+
+  // `previous` is already sorted most-recent-first; bucketing it by year
+  // preserves that order within each year's own <ul>, so no re-sort needed.
+  function renderPreviousByYear(previous) {
+    var byYear = {};
+    var years = [];
+    previous.forEach(function (e) {
+      var y = new Date(e.start).getFullYear();
+      if (!byYear[y]) { byYear[y] = []; years.push(y); }
+      byYear[y].push(e);
+    });
+    years.sort(function (a, b) { return b - a; });
+    return years.map(function (y) {
+      return (
+        '<details class="dates-year">' +
+        "<summary>" + y + " <span class=\"dates-year-count\">(" + byYear[y].length + ")</span></summary>" +
+        '<ul class="dates-list dates-list--previous">' + byYear[y].map(renderEvent).join("") + "</ul>" +
+        "</details>"
+      );
+    }).join("");
   }
 
   var ICON_PIN =
