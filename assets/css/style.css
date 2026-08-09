@@ -702,6 +702,25 @@ a.project-card:hover {
   max-width: 20rem;
 }
 
+.epk-covers--mixed {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 48rem;
+}
+
+.epk-covers--mixed .cover-trigger--main {
+  flex: 1 1 16rem;
+  max-width: 20rem;
+}
+
+.epk-covers-extra {
+  flex: 1 1 16rem;
+  max-width: 24rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
 .cover-trigger {
   display: block;
   width: 100%;
@@ -726,6 +745,12 @@ a.project-card:hover {
   aspect-ratio: 1;
   object-fit: cover;
   display: block;
+  transition: transform 0.25s ease;
+}
+
+.cover-trigger:hover img,
+.cover-trigger:focus-visible img {
+  transform: scale(1.06);
 }
 
 .lightbox-overlay {
@@ -773,6 +798,7 @@ a.project-card:hover {
   .epk-hero .container { gap: 2rem; }
   .epk-covers { max-width: 44rem; }
   .epk-covers--single { max-width: 20rem; }
+  .epk-covers--mixed { max-width: 48rem; }
 }
 
 .download-list {
