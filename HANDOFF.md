@@ -327,6 +327,10 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal-Duo: 4 kleine Fotos nach dem Verkleinern (15.5rem) auf
+  Mittelweg 16.75rem wieder etwas vergrößert — `align-items:center` sorgt
+  weiterhin automatisch für gleichen Weißraum ober-/unterhalb, unabhängig
+  von der genauen Größe (2026-08-09)
 - Härtel/Asal-Duo: die 4 kleinen Fotos nochmal etwas verkleinert
   (`.epk-covers-extra` max-width 18rem → 15.5rem) und `align-items: center`
   statt `flex-start` auf `.epk-covers--mixed` — das Foto-Grid ist jetzt
