@@ -327,6 +327,14 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Termine: Datum-/Zeit-Strings werden jetzt bei Sprachwechsel neu formatiert
+  (Monatsnamen, Reihenfolge — z.B. "Aug 12, 2026" vs. "12. Aug. 2026" vs.
+  "12 ago 2026"). Vorher wurden sie nur beim initialen Laden per
+  `toLocaleDateString()` gerendert und blieben nach einem späteren
+  Sprachwechsel unverändert stehen, da nur die `data-i18n`-Labels aktualisiert
+  wurden, nicht die bereits fertig gerenderten Termin-Strings. Fix: `i18n.js`
+  feuert nach jedem Sprachwechsel ein `langchange`-Event, `dates.js` cached
+  die geladenen Termine und rendert bei diesem Event neu (2026-08-09)
 - Mehrtägige Termine (Festival/Kreuzfahrt) zeigen jetzt eine Datumsspanne
   ("16.–23. Okt 2026") statt nur des ersten Tages — `DTEND` wurde bisher
   komplett ignoriert. Details siehe Abschnitt "Kalender-Sync" (2026-08-08)
