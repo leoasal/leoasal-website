@@ -68,21 +68,26 @@ index.html                    Startseite: Foto + Name + Nav, kein Intro-Text (be
 bio.html                      Bio kurz + ausklappbare Langfassung, Portraitfoto
 dates.html                    Termine, gespeist aus data/dates.json (siehe unten)
 projects.html                 Projekt-Grid: Yamuna, Jakob Manz, Härtel/Asal Duo,
-                               Jakob Bänsch, Ketzberg, Loft Arts (jede eigene Unterseite
-                               außer Ketzberg, verlinkt extern), jede Karte hat ein Bild +
-                               Subtitle
+                               Jakob Bänsch, Ketzberg, Loft Arts — jede eigene Unterseite,
+                               jede Karte hat ein Bild + Subtitle
 yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschrift oben,
                                dann Album-Block ("Out now" + Front-/Back-Cover, beide als
                                Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
                                dann Beschreibung, Pressefotos, Videos, Downloads
 jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
-                               `.project-link`) + 2 YouTube-Videos
+                               `.project-link`) + 5 YouTube-Videos
 jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
                                3 YouTube-Videos
-haertel-asal-duo.html         Kurzbeschreibung + 4 YouTube-Videos (keine externe Site)
+haertel-asal-duo.html         Album-Block oben ("Out now" + Cover + 4 Fotos daneben als
+                               2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link
+                               darunter), dann Beschreibung + 4 YouTube-Videos
+ketzberg.html                 Beschreibung + kleiner Icon+Domain-Link (ketzberg.com) +
+                               5 Bandfotos als Graustufen-Galerie + 7 YouTube-Videos
 loft-arts.html                Echter Beschreibungstext (Agentur-Info + Leos Rolle als
                                Schlagzeuger/Musical Director) + Icon+Domain-Link
-                               (loft-arts.com) + 7 YouTube-Videos
+                               (loft-arts.com) + 12 YouTube-Videos (Reihenfolge: 4x
+                               Megaloh, Novaa, Teesy, MAJAN, Woodie Smalls, OG Keemo,
+                               Lostboi Lino, Buffala, Joshua J)
 contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
                                nicht mehr extra auf dieser Seite
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
@@ -335,6 +340,20 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Loft-Arts-Videos neu sortiert (4x Megaloh, Novaa, Teesy, MAJAN, Woodie
+  Smalls, OG Keemo, Lostboi Lino, Buffala, Joshua J) + neues Joshua-J-Video
+  ergänzt (jetzt 12 statt 11). Die beiden unbeschrifteten Megaloh-Videos
+  ("Zombiemodus", "Gordon Shumway") per YouTube-oEmbed `author_name`
+  verifiziert, da der Titel selbst keinen Künstlernamen enthielt
+  (2026-08-09)
+- Ketzberg bekam eine eigene Projekt-Unterseite (`ketzberg.html`) statt nur
+  extern zu verlinken — gleiches Muster wie Jakob Manz/Bänsch: Beschreibung
+  (bisher nur Karten-Subtitle auf projects.html, jetzt zusätzlich als
+  `ketzberg.description`-i18n-Key), Icon+Domain-Link zu ketzberg.com, 5
+  Bandfotos (von Svenja, Konzert im Berliner Junction Café) als
+  Graustufen-Galerie (gleiches Pattern wie Yamunas Press-Fotos), 7
+  YouTube-Videos. `projects.html`-Karte verlinkt jetzt intern statt mit
+  `target="_blank"` (2026-08-09)
 - "Vorherige Termine"-Archiv (217 vergangene Termine) jetzt nach Jahr
   gruppiert: pro Jahr ein eigenes eingeklapptes `<details>` mit Anzahl
   im Summary, statt einer langen Flachliste (2026-08-09)
