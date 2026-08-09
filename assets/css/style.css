@@ -744,6 +744,7 @@ a.project-card:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   max-width: 48rem;
 }
 
@@ -843,7 +844,7 @@ a.project-card:hover {
   .epk-hero .container { gap: 2rem; }
   .epk-covers { max-width: 44rem; }
   .epk-covers--single { max-width: 20rem; }
-  .epk-covers--mixed { max-width: 48rem; }
+  .epk-covers--mixed { max-width: 48rem; justify-content: flex-start; }
   .epk-covers--mixed .cover-trigger--main { max-width: 21.375rem; }
 }
 
