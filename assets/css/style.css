@@ -753,8 +753,8 @@ a.project-card:hover {
 }
 
 .epk-covers-extra {
-  flex: 1 1 11rem;
-  max-width: 15.5rem;
+  flex: 1 1 12rem;
+  max-width: 16.75rem;
   aspect-ratio: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
