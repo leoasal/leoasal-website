@@ -327,17 +327,19 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
-- Härtel/Asal-Duo-Seite bekam einen Album-Block ganz oben, analog zu
-  Yamuna: "Out now"-Eyebrow + Albumtitel „Ein Tag wie ein anderer",
-  Cover klickbar via Lightbox. Da nur ein durchgestaltetes Cover-Artwork
-  vorlag (kein separates Front/Back wie bei Yamuna), neue CSS-Variante
-  `.epk-covers--single` (ein statt zwei Cover nebeneinander, max-width
-  20rem). Die restlichen 4 vom Kunden gelieferten Fotos (CD-Objekt-Shots,
-  Booklet-Innenseite) sind als Graustufen-Galerie unter der Beschreibung
-  gelandet, gleiches Pattern wie Yamunas Press-Photo-Grid. Neue i18n-Keys
-  `haertelasal.eyebrow`/`albumLine` in allen 3 Sprachen. Noch kein
-  Listen/Buy-Link wie bei Yamuna, da keine Streaming-/Store-URL vorliegt —
-  bei Bedarf einfach wie bei Yamunas `.contact-email`-Link ergänzen
+- Härtel/Asal-Duo-Seite: Album-Block ganz oben, analog zu Yamuna —
+  "Out now"-Eyebrow + Albumtitel „Ein Tag wie ein anderer", Cover +
+  restliche 4 Fotos (CD-Objekt-Shots, Booklet-Innenseite) alle klickbar via
+  Lightbox. Layout: Cover links + 2×2-Foto-Grid rechts daneben (neue
+  Klassen `.epk-covers--mixed`/`.epk-covers-extra`, ersetzt die zunächst
+  gebaute Graustufen-Galerie unter der Beschreibung — auf Leos Wunsch
+  stattdessen direkt neben dem Cover, in Farbe). Neuer Hover-Effekt auf
+  `.cover-trigger img` (leichtes Scale beim Hover) gilt jetzt site-weit für
+  alle Cover-Trigger-Bilder, auch Yamuna. Plus "Buy CD"-Link
+  (charlyhaertel.de/shop) unter dem Album-Block — bewusst eigener Text
+  statt Yamunas "Listen / Buy Vinyl", per neuem i18n-Key
+  `haertelasal.buyCd` übersetzt (DE "CD kaufen", ES "Comprar CD"). Neue
+  i18n-Keys `haertelasal.eyebrow`/`albumLine` in allen 3 Sprachen
   (2026-08-09)
 - Termine: Datum-/Zeit-Strings werden jetzt bei Sprachwechsel neu formatiert
   (Monatsnamen, Reihenfolge — z.B. "Aug 12, 2026" vs. "12. Aug. 2026" vs.
