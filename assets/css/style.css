@@ -519,6 +519,7 @@ details.long-bio summary {
   display: inline-flex;
   color: var(--plum);
   opacity: 0.6;
+  margin-top: 0.25em;
 }
 
 .date-detail-icon svg {
