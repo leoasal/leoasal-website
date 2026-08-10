@@ -343,6 +343,13 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Ketzberg-Galerie: 1. und 3. Foto ausgetauscht (Leo hat Ordnerpfad +
+  Dateinamen direkt mitgeschickt, kein Bildvergleich nötig) —
+  `ketzberg-photo-6.jpg` → `230909_shotbysvenja_ketzberg_braunschweig_68.jpg`,
+  `ketzberg-photo-2.jpg` → `230909_shotbysvenja_ketzberg_braunschweig_150.jpg`,
+  beide aus `.../Ketzberg/Svenja Fotos Auswahl/`, nicht im Repo. Gleiches
+  Seitenverhältnis wie bisher (2:3 Hochformat), auf 1600px lange Kante
+  skaliert (2026-08-10)
 - Bildergalerien jetzt durchklickbar (Pfeil-Navigation im Lightbox), plus
   neue Überschrift "Bilder"/"Photos"/"Fotos" (i18n-Key
   `project.photosHeading`, analog zu `project.videosHeading`) über den
