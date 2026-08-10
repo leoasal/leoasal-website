@@ -343,6 +343,25 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Bildergalerien jetzt durchklickbar (Pfeil-Navigation im Lightbox), plus
+  neue Überschrift "Bilder"/"Photos"/"Fotos" (i18n-Key
+  `project.photosHeading`, analog zu `project.videosHeading`) über den
+  reinen Foto-Galerien. `assets/js/lightbox.js` gruppiert Bilder jetzt
+  automatisch nach nächstgelegenem `.epk-gallery`- bzw.
+  `.epk-covers`-Container (`element.closest(...)`, keine neue Markup-
+  Attribute nötig) — dadurch bilden Yamunas Album-Cover (2 Bilder) und
+  Pressefotos (4 Bilder) zwei getrennte Klick-Kreise, während Härtel/Asals
+  Cover+4-Extra-Fotos (verschachtelt in `.epk-covers-extra` innerhalb von
+  `.epk-covers--mixed`) eine gemeinsame 5er-Gruppe bilden. Pfeile
+  (`.lightbox-prev`/`.lightbox-next`) mit Wrap-Around, Tastatur-Pfeiltasten
+  funktionieren zusätzlich zu Escape. "Bilder"-Überschrift bewusst nur bei
+  den eigenständigen Foto-Galerien ergänzt (Bänsch, Ketzberg, Yamunas
+  Pressefotos) — **nicht** bei Yamunas/Härtel-Asals Album-Cover-Block
+  (eigener "Out now"-Kontext) und nicht bei Jakob Manz/Loft Arts (haben gar
+  keine Fotogalerie, nur Videos). Jakob-Bänsch-Galerie: erstes Foto (#1)
+  ausgetauscht — Leo wollte explizit `Jakob_Bänsch_Quartett-203.jpg`
+  (Gruppenfoto vor Rolltor, gleiche Session wie das Vorschaubild), Dateiname
+  direkt mitgeschickt statt Bildvergleich nötig (2026-08-10)
 - Jakob-Bänsch-Galerie: letztes Foto (#4) ausgetauscht — Leo hat das
   gewünschte Foto direkt als Bild in den Chat gepastet (kein Dateipfad
   mitgeschickt), Zuordnung zur Originaldatei per visuellem Abgleich mit
