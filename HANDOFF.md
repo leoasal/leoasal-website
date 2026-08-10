@@ -343,6 +343,13 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Jakob-Bänsch-Galerie: letztes Foto (#4) ausgetauscht — Leo hat das
+  gewünschte Foto direkt als Bild in den Chat gepastet (kein Dateipfad
+  mitgeschickt), Zuordnung zur Originaldatei per visuellem Abgleich mit
+  allen Fotos in `.../Jakob Bänsch/Jakob Bänsch Quartett/2024/Bilder
+  Studio/` (Kontaktabzug aller 25 Bilder gebaut, dann Kandidaten einzeln
+  vergrößert verglichen): `Jakob_Bänsch_Quartett-356.jpg`. Gleiche
+  Bildquelle wie die restliche Galerie, nicht im Repo (2026-08-10)
 - Jakob-Bänsch-Galerie auf 4 Fotos reduziert (5. Foto entfernt, zu nah am
   4.). Neues Projektkarten-Vorschaubild: Bandfoto aller 4 Musiker vor der
   Kirche (`JakobBänsch-221.jpg`, gleiche Nürnberg-26.5.23-Session wie das
