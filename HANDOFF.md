@@ -343,6 +343,19 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Jakob-Bänsch-Galerie auf 4 Fotos reduziert (5. Foto entfernt, zu nah am
+  4.). Neues Projektkarten-Vorschaubild: Bandfoto aller 4 Musiker vor der
+  Kirche (`JakobBänsch-221.jpg`, gleiche Nürnberg-26.5.23-Session wie das
+  vorherige Vorschaubild) statt des Performance-Fotos (2026-08-10)
+- Yamuna: gleiches Muster wie beim 4. Pressefoto — auch `yamuna-press-2.jpg`
+  lag nur als Graustufen-Datei im Repo, obwohl die Aufnahme
+  (`2302_Yamuna_173.jpg`, gleiche Session wie press-4) original farbig war.
+  Farboriginal in `.../YAMUNA/2023/Initiative Musik Foe-Ru 56/Bilder/`
+  gefunden (Leo hatte den Ordnerpfad direkt mitgeschickt), quadratisch auf
+  2043x2043 zugeschnitten (passend zu den anderen 3 Fotos), Datei ersetzt +
+  `.cover-trigger--color` ergänzt. Falls weitere Pressefotos betroffen
+  sind: gleiche Kanal-Differenz-Prüfung wie oben beschrieben nutzen
+  (2026-08-10)
 - Jakob-Bänsch-Quartett-Seite: 5-Foto-Galerie ergänzt (Gruppenfoto vor
   Rolltor + 3 Drum-Studio-Shots inkl. Doppelbelichtung, aus
   `.../Jakob Bänsch/Jakob Bänsch Quartett/2024/Bilder Studio/` in iCloud —
