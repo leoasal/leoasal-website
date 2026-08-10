@@ -898,6 +898,10 @@ a.project-card:hover {
   filter: none;
 }
 
+.epk-gallery .cover-trigger--color img {
+  filter: none;
+}
+
 /* ---------- Legal pages ---------- */
 
 .legal-content {
