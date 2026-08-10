@@ -343,6 +343,36 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Neues generelles Galerie-Verhalten: Foto-Galerien mit **mehr als 4 Fotos**
+  zeigen jetzt nur noch **eine Zeile** (horizontal scrollbar) statt in
+  mehrere Grid-Zeilen umzubrechen — mit Pfeil-Buttons rechts/links zum
+  Weiterklicken (zusätzlich zum bestehenden Lightbox-Klick-Durch mit
+  Pfeilen). Implementiert in `assets/js/gallery-nav.js` (neu, auf allen
+  Seiten mit `.epk-gallery` eingebunden: Bänsch, Ketzberg, Yamuna,
+  Loft Arts): zählt beim Laden die Fotos pro `.epk-gallery`, aktiviert die
+  Einzeilen-Variante (`epk-gallery--row`-Klasse + dynamisch eingefügter
+  `.epk-gallery-wrap` mit Pfeil-Buttons) **nur wenn mehr als 4 Fotos**
+  vorhanden sind — bei ≤4 bleibt das bisherige 2x2/4er-Grid unverändert.
+  Automatisch zukunftssicher: sobald eine Seite über 4 Fotos wächst, greift
+  die Einzeilen-Variante ohne manuelle Anpassung. Bewusst **kein**
+  `scroll-snap-type` verwendet (erst mit `mandatory` gebaut, dann wieder
+  entfernt — in Kombination mit prozentualen `flex-basis`-Breiten kam es zu
+  Scroll-Aussetzern, sowohl im Test als auch potenziell in echten Browsern;
+  reines `overflow-x:auto` + `scrollBy()` ist robuster).
+  **Testhinweis:** Das Pfeil-Weiterklicken auf der Foto-Zeile selbst
+  (`.gallery-next`/`.gallery-prev`) ließ sich in diesem Environment nicht
+  zuverlässig über das Browser-Tool verifizieren — horizontales Scrollen
+  (`computer scroll` mit `direction:right`) hat die Preview-Pane wiederholt
+  zum Hängen gebracht (Timeout, "pane is hidden"), unabhängig vom Code.
+  Isolierte Minimal-Tests mit identischem CSS/JS-Mechanismus (Flex +
+  `overflow-x:auto` + `scrollBy`) liefen im selben Environment erfolgreich,
+  daher vermutlich eine Eigenheit des Browser-Tools bei verschachtelten
+  Scroll-Containern, kein Code-Bug — **Leo bitte einmal live auf
+  loft-arts.com gegenchecken**, ob der Pfeil bei der Fotoreihe wirklich
+  weiterblättert (2026-08-11)
+- Loft-Arts-Titelbild auf `projects.html` ist jetzt `loftarts-photo-1.jpg`
+  (Kopie nach `project-loft-arts.jpg`) statt des alten Platzhalterfotos
+  (2026-08-11)
 - Loft-Arts-Seite bekam eine neue Foto-Galerie (7 Live-/Konzertfotos,
   `loftarts-photo-1..7.jpg`, aus `.../Loft Arts/BILDER/`, nicht im Repo),
   gleiches Muster wie Bänsch/Ketzberg (`epk-gallery epk-gallery--color` +
