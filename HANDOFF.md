@@ -343,6 +343,15 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Loft-Arts-Seite bekam eine neue Foto-Galerie (7 Live-/Konzertfotos,
+  `loftarts-photo-1..7.jpg`, aus `.../Loft Arts/BILDER/`, nicht im Repo),
+  gleiches Muster wie Bänsch/Ketzberg (`epk-gallery epk-gallery--color` +
+  "Bilder"-Überschrift, vor "Videos" eingefügt). Dabei aufgefallen: Loft
+  Arts hatte als einzige der Projektseiten noch **kein**
+  `<script src="assets/js/lightbox.js">` eingebunden (weil es vorher keine
+  Bildergalerie dort gab) — Lightbox öffnete sich ohne diesen Fix gar
+  nicht. Falls nochmal eine neue Projektseite eine erste Galerie bekommt:
+  immer prüfen, ob `lightbox.js` schon eingebunden ist (2026-08-11)
 - Ketzberg-Galerie: 1. und 3. Foto ausgetauscht (Leo hat Ordnerpfad +
   Dateinamen direkt mitgeschickt, kein Bildvergleich nötig) —
   `ketzberg-photo-6.jpg` → `230909_shotbysvenja_ketzberg_braunschweig_68.jpg`,
