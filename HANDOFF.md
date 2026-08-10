@@ -343,6 +343,12 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Ketzberg-Bandfoto (#6 in der Galerie) durch hochauflösende Version
+  ersetzt — die vorherige Datei stammte von der 550x550-Vorschau auf
+  `project-ketzberg.jpg`, Leo hat das Originalfoto nachgereicht
+  (`230909_shotbysvenja_ketzberg_braunschweig_72.jpg`, gleiche Aufnahme),
+  jetzt wie die anderen Galerie-Fotos auf 1600px lange Kante skaliert
+  (2026-08-10)
 - `dates.html` Mobile-Layout: mehrzeilige Adressen (langer Venue-Name +
   Adresse) rutschten beim Zeilenumbruch unter das Pin-Icon zurück an den
   linken Rand, statt eingerückt neben dem Icon zu bleiben. `.date-detail`
