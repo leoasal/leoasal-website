@@ -77,7 +77,7 @@ yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschr
 jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
                                `.project-link`) + 5 YouTube-Videos
 jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
-                               3 YouTube-Videos
+                               5 Fotos als Farbgalerie + 3 YouTube-Videos
 haertel-asal-duo.html         Album-Block oben ("Out now" + Cover + 4 Fotos daneben als
                                2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link
                                darunter), dann Beschreibung + 4 YouTube-Videos
@@ -343,6 +343,24 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Jakob-Bänsch-Quartett-Seite: 5-Foto-Galerie ergänzt (Gruppenfoto vor
+  Rolltor + 3 Drum-Studio-Shots inkl. Doppelbelichtung, aus
+  `.../Jakob Bänsch/Jakob Bänsch Quartett/2024/Bilder Studio/` in iCloud —
+  Leo hatte die Fotos direkt im Chat gepostet, ohne Dateipfad; Zuordnung
+  zu den Originaldateien per visuellem Abgleich der Aufnahmen). Neues
+  Projektkarten-Vorschaubild (`project-jakob-baensch.jpg`): Live-Foto vom
+  Nürnberg-Konzert 26.5.23 (Kirche, Klavier/Bass/Trompete/Schlagzeug,
+  blau/rot beleuchtet) aus `.../2023/Bänsch Nürnberg 26.5.23/Bilder (Tom
+  Schneider)/JakobBänsch-62.jpg`, ebenfalls per Bildvergleich gefunden.
+  Beide Foto-Quellen liegen NICHT im Repo, nur lokal in iCloud — falls
+  nochmal gebraucht: Dateinamen/Pfade oben (2026-08-10)
+- Yamuna: Kanal-Differenz-Analyse (R/G/B-Werte vergleichen) ergab, dass
+  von den 4 Pressefotos nur `yamuna-press-4.jpg` original farbig war
+  (die anderen 3 sind echte Graustufen-Dateien, kein Filter). Neue Klasse
+  `.cover-trigger--color` hebt den Graustufen-Filter gezielt nur für
+  dieses eine Bild auf — nützliche Technik für ähnliche Fälle: bei
+  Unsicherheit, ob ein Bild originalfarbig war, `PIL` R/G/B-Kanäle
+  vergleichen statt zu raten (2026-08-10)
 - Ketzberg-Bandfoto (#6 in der Galerie) durch hochauflösende Version
   ersetzt — die vorherige Datei stammte von der 550x550-Vorschau auf
   `project-ketzberg.jpg`, Leo hat das Originalfoto nachgereicht
