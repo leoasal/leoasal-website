@@ -343,6 +343,24 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Zwei Lightbox-Fixes: (1) `yamuna-press-13.jpg` war nur per CSS-Filter
+  graustufen-getrickst (Thumbnail grau, Lightbox-Großansicht zeigte aber
+  das Farboriginal, da der Graustufen-Filter nur auf `.epk-gallery img`
+  wirkt, nicht auf `.lightbox-img`) — jetzt echt per PIL desaturiert
+  (`ImageOps.grayscale`), damit Thumbnail und Großansicht konsistent
+  schwarzweiß sind. (2) `assets/js/lightbox.js`: `close()` ruft jetzt
+  `items[index].scrollIntoView({block:"nearest", inline:"nearest"})` auf
+  das zuletzt angesehene Foto, damit sich die Galerie-Zeile beim Schließen
+  der Lightbox zur zuletzt angesehenen Position mitbewegt (Leos Wunsch:
+  nicht wieder ganz vorne stehen, wenn man sich bis zum letzten Foto
+  durchgeklickt hat). Album-Cover-Navigation (Yamuna Front/Back) war schon
+  vorher funktionsfähig (gleiche Gruppierungslogik wie die Foto-Galerien,
+  über `.closest(".epk-gallery, .epk-covers")`) — lokal nochmal bestätigt.
+  **Testhinweis:** Der `scrollIntoView`-Effekt beim Schließen ließ sich im
+  Browser-Tool wieder nicht zuverlässig verifizieren (gleiche bekannte
+  Scroll-Eigenheit dieser Preview-Pane bei der echten `.epk-gallery` wie
+  schon beim Pfeil-Feature — ein isolierter Minimal-Test mit identischer
+  API lief einwandfrei). Bitte Leo live gegenchecken (2026-08-11)
 - Yamuna-Pressefoto-Reihenfolge auf durchgehenden Farbe/Schwarzweiß-Wechsel
   gebracht (Leos Wunsch, nachdem die 10 neuen Fotos ergänzt waren): Fotos
   #9/#10 (`yamuna-press-9.jpg`/`-10.jpg`) in der HTML-Reihenfolge getauscht,

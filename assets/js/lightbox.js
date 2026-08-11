@@ -71,6 +71,9 @@
     if (!overlay) return;
     overlay.classList.remove("is-open");
     document.body.style.overflow = "";
+    if (items[index]) {
+      items[index].scrollIntoView({ block: "nearest", inline: "nearest" });
+    }
   }
 
   document.addEventListener("click", function (e) {
