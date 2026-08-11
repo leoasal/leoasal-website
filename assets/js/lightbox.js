@@ -37,6 +37,37 @@
       if (e.key === "ArrowLeft") show(index - 1);
       if (e.key === "ArrowRight") show(index + 1);
     });
+
+    var touchStartX = null;
+    var touchStartY = null;
+
+    overlay.addEventListener(
+      "touchstart",
+      function (e) {
+        if (e.touches.length !== 1) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    overlay.addEventListener(
+      "touchend",
+      function (e) {
+        if (touchStartX === null) return;
+        var touch = e.changedTouches[0];
+        var dx = touch.clientX - touchStartX;
+        var dy = touch.clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          e.preventDefault();
+          if (dx < 0) show(index + 1);
+          else show(index - 1);
+        }
+      },
+      { passive: false }
+    );
     return overlay;
   }
 

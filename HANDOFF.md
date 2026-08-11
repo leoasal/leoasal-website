@@ -343,6 +343,30 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Lightbox unterstützt jetzt Wisch-Gesten auf Touch-Geräten (Leos Wunsch:
+  auf Mobile musste man bisher auf die Pfeile tippen, Wischen ging nicht).
+  `assets/js/lightbox.js`: `touchstart`/`touchend`-Listener auf dem Overlay,
+  wertet die horizontale Differenz aus (`>40px` und deutlich horizontaler
+  als vertikaler Versatz, Faktor 1.5, um Wischen von normalem Scrollen zu
+  unterscheiden) — Wisch nach links → nächstes Foto, nach rechts →
+  vorheriges. `touchend` ruft bei erkanntem Swipe `preventDefault()` auf,
+  damit kein synthetisches `click`-Event danach die Lightbox versehentlich
+  schließt. Einzelner Tap ohne nennenswerte Bewegung bleibt unverändert
+  (schließt weiterhin bei Tap auf den Hintergrund). Per synthetischen
+  `TouchEvent`s lokal verifiziert (swipe left/right + normaler Tap-Close),
+  da echte Touch-Gesten im Browser-Tool nicht zuverlässig auslösbar sind
+  (bekannte Einschränkung, s. u.) (2026-08-11)
+- Härtel/Asal-Duo-Seite bekam eine neue "Bilder"-Galerie (4 Recording-Fotos,
+  `haertel-asal-photo-1..4.jpg`, aus `.../Härtel : Asal Duo/Bilder/
+  Recording Bilder/`, nicht im Repo) — gleiches Muster wie Bänsch/Ketzberg/
+  Loft Arts, unterhalb der Beschreibung, oberhalb "Videos". Bleibt getrennt
+  vom Album-Cover-Block oben (Cover + 4 Extra-Fotos, eigener "Out now"-
+  Kontext, unverändert). `gallery-nav.js` war auf dieser Seite noch nicht
+  eingebunden (gleicher Fall wie damals bei Loft Arts) — nachgeholt. Farb-/
+  Graustufen-Zuordnung wieder per Kanal-Differenz-Analyse: 3 von 4 klar
+  farbig (092, 189, 016 → `.cover-trigger--color`), eine (021, Kanal-Diff
+  ~10, deutlich näher an neutral als die anderen) als Graustufen belassen
+  (2026-08-11)
 - Leo berichtete, die Lightbox-Pfeile (Album-Cover-Durchklicken) hätten auf
   Mobile evtl. nicht funktioniert (war sich selbst nicht sicher). Konnte es
   im Browser-Tool nicht reproduzieren — echte Taps auf `.lightbox-next`/
