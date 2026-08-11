@@ -343,6 +343,12 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Galerie-Pfeile (`assets/js/gallery-nav.js`) sprangen bisher um eine ganze
+  "Seite" (`gallery.clientWidth`, alle ~4 sichtbaren Fotos auf einmal) —
+  Leo wollte pro Klick nur **ein Foto** weiter. Fix: neue `step()`-Funktion
+  berechnet den Abstand zwischen dem 1. und 2. Foto (`offsetLeft`-Differenz,
+  automatisch korrekt für Mobile-50%/Desktop-25%-Breite), `scrollBy` nutzt
+  jetzt diesen Wert statt der vollen Container-Breite (2026-08-11)
 - Neues generelles Galerie-Verhalten: Foto-Galerien mit **mehr als 4 Fotos**
   zeigen jetzt nur noch **eine Zeile** (horizontal scrollbar) statt in
   mehrere Grid-Zeilen umzubrechen — mit Pfeil-Buttons rechts/links zum

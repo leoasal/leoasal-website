@@ -26,6 +26,15 @@
     wrap.appendChild(prev);
     wrap.appendChild(next);
 
+    function step() {
+      var first = gallery.querySelector(".cover-trigger");
+      var second = items[1];
+      if (first && second) {
+        return second.offsetLeft - first.offsetLeft;
+      }
+      return gallery.clientWidth;
+    }
+
     function update() {
       var max = gallery.scrollWidth - gallery.clientWidth;
       var overflowing = max > 4;
@@ -34,10 +43,10 @@
     }
 
     prev.addEventListener("click", function () {
-      gallery.scrollBy({ left: -gallery.clientWidth, behavior: "smooth" });
+      gallery.scrollBy({ left: -step(), behavior: "smooth" });
     });
     next.addEventListener("click", function () {
-      gallery.scrollBy({ left: gallery.clientWidth, behavior: "smooth" });
+      gallery.scrollBy({ left: step(), behavior: "smooth" });
     });
     gallery.addEventListener("scroll", update);
     window.addEventListener("resize", update);
