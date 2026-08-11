@@ -343,6 +343,18 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Yamuna-Pressefoto-Reihenfolge auf durchgehenden Farbe/Schwarzweiß-Wechsel
+  gebracht (Leos Wunsch, nachdem die 10 neuen Fotos ergänzt waren): Fotos
+  #9/#10 (`yamuna-press-9.jpg`/`-10.jpg`) in der HTML-Reihenfolge getauscht,
+  damit Graustufen-/Farbfoto sich wieder abwechseln. Da nur 4 der 10 neuen
+  Fotos echte Graustufen-Originale waren (6 Farbe), reichte die Alternation
+  nicht bis zum Ende — dafür bei `yamuna-press-13.jpg` die
+  `cover-trigger--color`-Klasse entfernt (Leo hat das explizit erlaubt:
+  "beim allerletzten... in schwarz-weiß umwandeln"). Keine Pixel-Bearbeitung
+  nötig, nur die Klasse entfernt — Galerie ist standardmäßig
+  graustufen-gefiltert (`.epk-gallery img { filter: grayscale(1) }`),
+  `cover-trigger--color` ist der Opt-in fürs Original-Farbfoto. Ergebnis:
+  alle 14 Fotos wechseln jetzt lückenlos G/C/G/C/…/G/C (2026-08-11)
 - Yamuna-Pressefoto-Galerie um 10 weitere Fotos ergänzt (`yamuna-press-5`
   bis `-14.jpg`, aus `.../YAMUNA/2023/Initiative Musik Foe-Ru 56/Bilder/`,
   nicht im Repo) — jetzt 14 Fotos insgesamt, damit greift automatisch die
