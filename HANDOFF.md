@@ -343,6 +343,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Yamuna-Pressefoto-Galerie um 10 weitere Fotos ergänzt (`yamuna-press-5`
+  bis `-14.jpg`, aus `.../YAMUNA/2023/Initiative Musik Foe-Ru 56/Bilder/`,
+  nicht im Repo) — jetzt 14 Fotos insgesamt, damit greift automatisch die
+  neue Einzeilen-Galerie mit Pfeil-Navigation (>4 Fotos). Farb- vs.
+  Graustufen-Zuordnung wieder per Kanal-Differenz-Analyse geprüft (wie bei
+  den früheren Yamuna-/Ketzberg-Fällen): 6 der 10 waren Farboriginale
+  (387, 401, 410, 787, 789, 797 → `.cover-trigger--color`), 4 echte
+  Graustufen-Aufnahmen (319, 363 1, 467, 550 → normaler Graustufen-Filter).
+  Keine manuelle Quadrat-Zuschneidung nötig — `.epk-gallery img` croppt
+  Thumbnails per CSS (`aspect-ratio:1; object-fit:cover`) automatisch,
+  Lightbox zeigt das Originalseitenverhältnis (2026-08-11)
 - Galerie-Pfeile (`assets/js/gallery-nav.js`) sprangen bisher um eine ganze
   "Seite" (`gallery.clientWidth`, alle ~4 sichtbaren Fotos auf einmal) —
   Leo wollte pro Klick nur **ein Foto** weiter. Fix: neue `step()`-Funktion
