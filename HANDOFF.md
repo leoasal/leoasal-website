@@ -343,6 +343,26 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Leo berichtete, die Lightbox-Pfeile (Album-Cover-Durchklicken) hätten auf
+  Mobile evtl. nicht funktioniert (war sich selbst nicht sicher). Konnte es
+  im Browser-Tool nicht reproduzieren — echte Taps auf `.lightbox-next`/
+  `.lightbox-prev` per Mobile-Viewport-Emulation liefen dort konsequent in
+  einen Tool-Timeout, unabhängig vom Code (gleiche bekannte Scroll-/Touch-
+  Eigenheit dieser Preview-Pane wie schon beim Galerie-Pfeil-Feature; per
+  synthetischem `.click()` funktioniert die Navigation nachweislich).
+  Trotzdem vorsorglich zwei bekannte echte Mobile-Safari-Stolperfallen
+  behoben, die genau so ein Symptom (Tap reagiert nicht/braucht 2. Versuch)
+  verursachen können: `touch-action: manipulation` (eliminiert den
+  ~300ms-Tap-Delay/Doppeltipp-Zoom-Konflikt) + expliziter `z-index` auf
+  `.lightbox-close`, `.lightbox-nav` und `.gallery-nav` (vorher `auto`,
+  jetzt garantiert oberste Stacking-Ebene, kein Risiko dass das
+  darunterliegende Bild den Tap abfängt). Falls das Problem auf einem
+  echten iPhone weiter auftritt: nächster Verdächtiger wäre iOS Safaris
+  bekannter "erster Tap auf `position:fixed`-Element wird verschluckt,
+  wenn `body{overflow:hidden}` gesetzt ist"-Bug (Lightbox setzt das beim
+  Öffnen) — Fix dafür wäre ein echtes Scroll-Lock-Pattern
+  (`body{position:fixed; top:-scrollY}` statt nur `overflow:hidden`),
+  bisher nicht umgesetzt, da nicht sicher reproduziert (2026-08-11)
 - Zwei Lightbox-Fixes: (1) `yamuna-press-13.jpg` war nur per CSS-Filter
   graustufen-getrickst (Thumbnail grau, Lightbox-Großansicht zeigte aber
   das Farboriginal, da der Graustufen-Filter nur auf `.epk-gallery img`

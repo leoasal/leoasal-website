@@ -835,6 +835,8 @@ a.project-card:hover {
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
+  z-index: 1;
 }
 
 .lightbox-close:hover {
@@ -855,6 +857,8 @@ a.project-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: manipulation;
+  z-index: 1;
 }
 
 .lightbox-nav svg {
@@ -977,6 +981,7 @@ a.project-card:hover {
   align-items: center;
   justify-content: center;
   z-index: 2;
+  touch-action: manipulation;
 }
 
 .gallery-nav svg {
