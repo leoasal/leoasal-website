@@ -839,6 +839,15 @@ a.project-card:hover {
   text-align: center;
 }
 
+.lightbox-credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.lightbox-credit a:hover {
+  color: #fff;
+}
+
 .lightbox-credit[hidden] {
   display: none;
 }

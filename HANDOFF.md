@@ -343,6 +343,16 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Foto-Credits fertig ausgerollt: Loft Arts (`© Loft Arts`), Jakob Bänsch
+  (`© Vincent Sima`). Zusätzlich neues optionales `data-credit-url`-Attribut
+  (gleiche Fallback-Logik wie `data-credit`: erst am Trigger, dann am
+  `.epk-gallery`-Container) — `assets/js/lightbox.js` rendert die
+  Credit-Zeile dann als Link (`target="_blank" rel="noopener"`) statt reinem
+  Text. Ketzbergs Credit verlinkt jetzt auf
+  `https://www.instagram.com/shotbysvenja/`. Alle 5 Projektseiten mit
+  eigenständiger Foto-Galerie haben jetzt ein Credit: Yamuna, Härtel/Asal
+  Duo, Ketzberg, Loft Arts, Jakob Bänsch (Jakob Manz hat keine Fotogalerie,
+  nur Videos) (2026-08-12)
 - Ketzberg-Galerie bekam ebenfalls einen `data-credit`: „© @shotbysvenja"
   (Leo hat nur den Instagram-Handle genannt, kein Klarname) (2026-08-12)
 - Härtel/Asal-Duo-Bilder-Galerie (die 4 Recording-Fotos) bekam ebenfalls

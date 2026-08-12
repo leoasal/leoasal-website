@@ -87,14 +87,22 @@
     ov.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
     ov.querySelector(".lightbox-next").style.display = multi ? "" : "none";
 
-    var credit = trigger.getAttribute("data-credit");
-    if (!credit) {
-      var galleryEl = trigger.closest(".epk-gallery");
-      if (galleryEl) credit = galleryEl.getAttribute("data-credit");
-    }
+    var galleryEl = trigger.closest(".epk-gallery");
+    var credit = trigger.getAttribute("data-credit") || (galleryEl && galleryEl.getAttribute("data-credit"));
+    var creditUrl = trigger.getAttribute("data-credit-url") || (galleryEl && galleryEl.getAttribute("data-credit-url"));
     var creditEl = ov.querySelector(".lightbox-credit");
     if (credit) {
-      creditEl.textContent = credit;
+      if (creditUrl) {
+        creditEl.innerHTML = "";
+        var link = document.createElement("a");
+        link.href = creditUrl;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = credit;
+        creditEl.appendChild(link);
+      } else {
+        creditEl.textContent = credit;
+      }
       creditEl.hidden = false;
     } else {
       creditEl.textContent = "";
