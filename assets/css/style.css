@@ -824,10 +824,36 @@ a.project-card:hover {
   max-height: 100%;
 }
 
+.lightbox-stage {
+  width: min(92vw, 1200px);
+  max-width: 100%;
+  height: calc(100vh - 8rem);
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.lightbox-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transform: translateX(-33.3333%);
+}
+
+.lightbox-slide {
+  flex: 0 0 33.3333%;
+  width: 33.3333%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .lightbox-img {
   max-width: 100%;
-  max-height: calc(100vh - 8rem);
+  max-height: 100%;
   display: block;
+  object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }

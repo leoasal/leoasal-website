@@ -2,8 +2,14 @@
   var overlay = null;
   var items = [];
   var index = 0;
-  var ANIM_MS = 220;
-  var ANIM_DIST = 36;
+  var ANIM_MS = 300;
+  var track = null;
+  var slideImgs = [];
+  var stageWidth = 0;
+  var dragStartX = null;
+  var dragStartY = null;
+  var dragging = false;
+  var dragX = 0;
 
   function ensureOverlay() {
     if (overlay) return overlay;
@@ -14,22 +20,31 @@
       '<button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
       '<div class="lightbox-content">' +
-      '<img class="lightbox-img" alt="">' +
+      '<div class="lightbox-stage">' +
+      '<div class="lightbox-track">' +
+      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
+      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
+      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
+      "</div>" +
+      "</div>" +
       '<p class="lightbox-credit" hidden></p>' +
-      '</div>' +
+      "</div>" +
       '<button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
     document.body.appendChild(overlay);
 
+    track = overlay.querySelector(".lightbox-track");
+    slideImgs = Array.prototype.slice.call(overlay.querySelectorAll(".lightbox-img"));
+
     overlay.addEventListener("click", function (e) {
       if (e.target.closest(".lightbox-prev")) {
         e.stopPropagation();
-        show(index - 1, "prev");
+        go(-1);
         return;
       }
       if (e.target.closest(".lightbox-next")) {
         e.stopPropagation();
-        show(index + 1, "next");
+        go(1);
         return;
       }
       if (e.target === overlay || e.target.classList.contains("lightbox-close")) {
@@ -39,51 +54,98 @@
     document.addEventListener("keydown", function (e) {
       if (!overlay.classList.contains("is-open")) return;
       if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") show(index - 1, "prev");
-      if (e.key === "ArrowRight") show(index + 1, "next");
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
     });
 
-    var touchStartX = null;
-    var touchStartY = null;
+    var stage = overlay.querySelector(".lightbox-stage");
 
-    overlay.addEventListener(
+    stage.addEventListener(
       "touchstart",
       function (e) {
-        if (e.touches.length !== 1) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
+        if (e.touches.length !== 1 || items.length <= 1) return;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+        dragging = false;
+        dragX = 0;
+        stageWidth = stage.getBoundingClientRect().width;
       },
       { passive: true }
     );
 
-    overlay.addEventListener(
-      "touchend",
+    stage.addEventListener(
+      "touchmove",
       function (e) {
-        if (touchStartX === null) return;
-        var touch = e.changedTouches[0];
-        var dx = touch.clientX - touchStartX;
-        var dy = touch.clientY - touchStartY;
-        touchStartX = null;
-        touchStartY = null;
-        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-          e.preventDefault();
-          if (dx < 0) show(index + 1, "next");
-          else show(index - 1, "prev");
+        if (dragStartX === null) return;
+        var touch = e.touches[0];
+        var dx = touch.clientX - dragStartX;
+        var dy = touch.clientY - dragStartY;
+        if (!dragging) {
+          if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+          if (Math.abs(dy) > Math.abs(dx)) {
+            dragStartX = null;
+            return;
+          }
+          dragging = true;
+          track.style.transition = "none";
         }
+        e.preventDefault();
+        dragX = dx;
+        track.style.transform = "translateX(calc(-33.3333% + " + dx + "px))";
       },
       { passive: false }
     );
+
+    stage.addEventListener("touchend", function () {
+      if (dragStartX === null) return;
+      var wasDragging = dragging;
+      dragStartX = null;
+      dragStartY = null;
+      dragging = false;
+      if (!wasDragging) return;
+
+      var threshold = Math.min(90, stageWidth * 0.18);
+      if (dragX <= -threshold) {
+        settleTo(-66.6667, 1);
+      } else if (dragX >= threshold) {
+        settleTo(0, -1);
+      } else {
+        settleTo(-33.3333, 0);
+      }
+    });
+
     return overlay;
   }
 
-  function renderImage(ov, trigger) {
-    var img = ov.querySelector(".lightbox-img");
+  function settleTo(targetPercent, step) {
+    track.style.transition = "transform " + ANIM_MS + "ms ease";
+    track.style.transform = "translateX(" + targetPercent + "%)";
+    window.setTimeout(function () {
+      if (step) index = (index + step + items.length) % items.length;
+      renderSlides();
+      track.style.transition = "none";
+      track.style.transform = "translateX(-33.3333%)";
+    }, ANIM_MS);
+  }
+
+  function fillSlide(i, offset) {
+    var img = slideImgs[offset + 1];
+    var trigger = items[(i + offset + items.length * 2) % items.length];
     var triggerImg = trigger.tagName === "IMG" ? trigger : trigger.querySelector("img");
     img.src = trigger.getAttribute("data-lightbox");
     img.alt = triggerImg ? triggerImg.alt : "";
   }
 
-  function renderChrome(ov, trigger) {
+  function renderSlides() {
+    fillSlide(index, -1);
+    fillSlide(index, 0);
+    fillSlide(index, 1);
+    renderChrome();
+  }
+
+  function renderChrome() {
+    var ov = overlay;
+    var trigger = items[index];
     var multi = items.length > 1;
     ov.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
     ov.querySelector(".lightbox-next").style.display = multi ? "" : "none";
@@ -118,44 +180,9 @@
     }
   }
 
-  function show(i, direction) {
-    if (!items.length) return;
-    var newIndex = (i + items.length) % items.length;
-    var ov = ensureOverlay();
-    var img = ov.querySelector(".lightbox-img");
-
-    if (!direction) {
-      index = newIndex;
-      var trigger = items[index];
-      renderImage(ov, trigger);
-      renderChrome(ov, trigger);
-      return;
-    }
-
-    var outX = direction === "next" ? -ANIM_DIST : ANIM_DIST;
-    var inX = direction === "next" ? ANIM_DIST : -ANIM_DIST;
-
-    img.style.transition = "transform " + ANIM_MS + "ms ease, opacity " + ANIM_MS + "ms ease";
-    img.style.transform = "translateX(" + outX + "px)";
-    img.style.opacity = "0";
-
-    window.setTimeout(function () {
-      index = newIndex;
-      var nextTrigger = items[index];
-      renderImage(ov, nextTrigger);
-      renderChrome(ov, nextTrigger);
-
-      img.style.transition = "none";
-      img.style.transform = "translateX(" + inX + "px)";
-      // eslint-disable-next-line no-unused-expressions
-      img.offsetWidth;
-
-      window.setTimeout(function () {
-        img.style.transition = "transform " + ANIM_MS + "ms ease, opacity " + ANIM_MS + "ms ease";
-        img.style.transform = "translateX(0)";
-        img.style.opacity = "1";
-      }, 16);
-    }, ANIM_MS);
+  function go(step) {
+    if (!items.length || items.length <= 1) return;
+    settleTo(step > 0 ? -66.6667 : 0, step);
   }
 
   function open(trigger) {
@@ -166,11 +193,9 @@
     index = items.indexOf(trigger);
     if (index === -1) index = 0;
     var ov = ensureOverlay();
-    var img = ov.querySelector(".lightbox-img");
-    img.style.transition = "none";
-    img.style.transform = "translateX(0)";
-    img.style.opacity = "1";
-    show(index);
+    track.style.transition = "none";
+    track.style.transform = "translateX(-33.3333%)";
+    renderSlides();
     ov.classList.add("is-open");
     document.body.style.overflow = "hidden";
   }

@@ -343,28 +343,39 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
-- Lightbox-Bildwechsel hat jetzt einen Slide-Übergang (Leos Wunsch: bisher
-  wechselte das Bild ohne jeden Übergang). Bei "next" schiebt sich das alte
-  Bild nach links raus, das neue kommt von rechts rein — bei "prev"
-  umgekehrt. Gilt für **alle** Navigationswege (Pfeil-Klick, Pfeiltasten,
-  Wisch-Geste) und bewusst für alle Bildgruppen inkl. Album-Cover
-  (`.epk-covers`), da die Animation direkt in der gemeinsamen `show()`-
-  Funktion in `assets/js/lightbox.js` sitzt, keine Sonderbehandlung pro
-  Gruppe nötig. Technik: einzelnes `<img>`-Element, zweiphasig animiert
-  (kein zweites Bild-Element nötig) — Phase 1: aktuelles Bild per
-  CSS-Transition nach links/rechts raus + ausblenden (220ms); nach Ablauf
-  Bild-`src`/Credit/Pfeil-Sichtbarkeit aktualisieren, während das Bild
-  unsichtbar ist (`opacity:0`) via `transition:none` sofort an den
-  gegenüberliegenden Rand versetzen (`translateX`), dann Transition wieder
-  aktivieren und zurück zur Mitte animieren. Der erste Öffnen-Aufruf
-  (`open()`) bleibt bewusst ohne Übergang (kein `direction`-Parameter).
-  **Stolperfall bei der Umsetzung:** `requestAnimationFrame` feuerte in
-  diesem Browser-Tool (Hintergrund-/Automatisierungs-Tab) unzuverlässig
-  bzw. mit variabler Verzögerung — durch einen simplen `setTimeout(…, 16)`
-  ersetzt, robuster für inaktive Tabs. Falls in echten Browsern doch mal
-  ein Ruckler auffällt: erster Verdächtiger wäre dieser Timing-Ansatz,
-  ggf. dann doch auf `requestAnimationFrame` zurück (in echten,
-  aktiven Browser-Tabs zuverlässiger als in diesem Testtool) (2026-08-12)
+- Lightbox-Slide-Übergang komplett neu gebaut als echtes Karussell (Leos
+  Feedback zur ersten Version: der Fade+kleiner-Versatz-Effekt war ihm zu
+  wenig „normal" — er wollte, dass beim Wischen das Bild live mit dem
+  Finger mitwandert und das nächste Foto dabei gleichzeitig sichtbar
+  nachrückt, und dass ein Klick auf die Pfeile exakt dieselbe Bewegung
+  auslöst). Neue Struktur in `assets/js/lightbox.js` +
+  `assets/css/style.css`: `.lightbox-stage` (fester Viewport,
+  `min(92vw, 1200px)` × `calc(100vh - 8rem)`, `overflow:hidden`) enthält
+  `.lightbox-track` (3 `.lightbox-slide`s nebeneinander, je 33.33% Breite,
+  für prev/current/next), Track ist 300% breit und ruht bei
+  `translateX(-33.3333%)` auf der mittleren Slide. Bilder pro Slide per
+  `object-fit:contain` eingepasst (dadurch jetzt fester Stage-Rahmen statt
+  bild-individueller Boxgröße — leichtes Letterboxing bei stark
+  abweichenden Seitenverhältnissen, akzeptabler Trade-off für einen
+  echten Karussell-Effekt).
+  - **Wischen:** `touchmove` setzt `track.style.transform` live auf
+    `calc(-33.3333% + <dx>px)` (Transition währenddessen `none`) — 1:1
+    Finger-Following. `touchend` entscheidet anhand Schwellwert
+    (`min(90px, 18% der Stage-Breite)`): drüber → Rest des Wegs zur
+    nächsten/vorherigen Slide animieren (`settleTo`), drunter → zurück zur
+    Mitte snappen. Vertikale Wischgesten (`|dy| > |dx|`) brechen die
+    Erkennung sofort ab, damit kein Konflikt mit Scroll-Versuchen entsteht.
+  - **Klick/Tastatur:** `go(±1)` ruft dieselbe `settleTo()`-Funktion mit
+    vollem Weg auf (kein Drag-Ausgangspunkt nötig) — dadurch identische
+    Bewegung wie beim committeten Wischen, wie gewünscht.
+  - Nach jeder abgeschlossenen Navigation: Index aktualisieren, alle 3
+    Slides mit den (neuen) Nachbarfotos neu befüllen, Track ohne Transition
+    sofort zurück auf die Mitte setzen — da die neu befüllte Mittel-Slide
+    exakt das Foto zeigt, das gerade sichtbar war, gibt es dabei keinen
+    optischen Sprung. Funktioniert unverändert für alle Gruppen inkl.
+    Album-Cover (`.epk-covers`), da `open()`/`go()` gruppenunabhängig sind.
+    Frühere Fade-Version (Commit davor) komplett ersetzt, nicht nur
+    angepasst (2026-08-12)
 - Credit-Datenmodell aufgeteilt in Präfix + Name, damit bei Ketzberg nur
   der Name/Handle unterstrichen ist, nicht das „©"-Zeichen (Leos Wunsch).
   Aus `data-credit="© @shotbysvenja"` wurde
