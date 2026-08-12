@@ -88,20 +88,27 @@
     ov.querySelector(".lightbox-next").style.display = multi ? "" : "none";
 
     var galleryEl = trigger.closest(".epk-gallery");
-    var credit = trigger.getAttribute("data-credit") || (galleryEl && galleryEl.getAttribute("data-credit"));
-    var creditUrl = trigger.getAttribute("data-credit-url") || (galleryEl && galleryEl.getAttribute("data-credit-url"));
+    function creditAttr(name) {
+      return trigger.getAttribute(name) || (galleryEl && galleryEl.getAttribute(name));
+    }
+    var credit = creditAttr("data-credit");
+    var creditName = creditAttr("data-credit-name");
+    var creditUrl = creditAttr("data-credit-url");
     var creditEl = ov.querySelector(".lightbox-credit");
     if (credit) {
-      if (creditUrl) {
-        creditEl.innerHTML = "";
-        var link = document.createElement("a");
-        link.href = creditUrl;
-        link.target = "_blank";
-        link.rel = "noopener";
-        link.textContent = credit;
-        creditEl.appendChild(link);
-      } else {
-        creditEl.textContent = credit;
+      creditEl.innerHTML = "";
+      creditEl.appendChild(document.createTextNode(creditName ? credit + " " : credit));
+      if (creditName) {
+        if (creditUrl) {
+          var link = document.createElement("a");
+          link.href = creditUrl;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.textContent = creditName;
+          creditEl.appendChild(link);
+        } else {
+          creditEl.appendChild(document.createTextNode(creditName));
+        }
       }
       creditEl.hidden = false;
     } else {

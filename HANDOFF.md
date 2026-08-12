@@ -343,6 +343,19 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Credit-Datenmodell aufgeteilt in Präfix + Name, damit bei Ketzberg nur
+  der Name/Handle unterstrichen ist, nicht das „©"-Zeichen (Leos Wunsch).
+  Aus `data-credit="© @shotbysvenja"` wurde
+  `data-credit="©" data-credit-name="@shotbysvenja"` (+ weiterhin
+  `data-credit-url`). `assets/js/lightbox.js` rendert jetzt: Präfix als
+  reiner Textknoten, danach `data-credit-name` entweder als `<a>` (wenn
+  `data-credit-url` gesetzt, dadurch automatisch nur dieser Teil
+  unterstrichen dank `.lightbox-credit a { text-decoration: underline }`)
+  oder ebenfalls als Textknoten. Alle 5 Projektseiten mit Credit auf das
+  neue Attributpaar umgestellt (nur Ketzberg hat aktuell eine URL). Dabei
+  auch Härtel/Asal-Duo-Credit korrigiert: Leo hatte sich beim Fotografen
+  vertan, jetzt `© Johannes Napp` statt der vorherigen (falschen)
+  „Anika Maierhöfer (@frauanikafotografiert)" (2026-08-12)
 - Foto-Credits fertig ausgerollt: Loft Arts (`© Loft Arts`), Jakob Bänsch
   (`© Vincent Sima`). Zusätzlich neues optionales `data-credit-url`-Attribut
   (gleiche Fallback-Logik wie `data-credit`: erst am Trigger, dann am
