@@ -343,6 +343,9 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Härtel/Asal-Duo-Bilder-Galerie (die 4 Recording-Fotos) bekam ebenfalls
+  einen `data-credit`: „© Anika Maierhöfer (@frauanikafotografiert)" —
+  Album-Cover-Block bleibt wie bei Yamuna ohne Credit-Zeile (2026-08-12)
 - Lightbox zeigt jetzt optional eine kleine Credit-Zeile unter dem Foto in
   der Großansicht (z.B. „© Henk Aaron Szanto"). Mechanik: `data-credit="…"`
   Attribut auf dem `.epk-gallery`-Container (gilt für alle Fotos darin) oder
