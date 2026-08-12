@@ -2,6 +2,8 @@
   var overlay = null;
   var items = [];
   var index = 0;
+  var ANIM_MS = 220;
+  var ANIM_DIST = 36;
 
   function ensureOverlay() {
     if (overlay) return overlay;
@@ -22,12 +24,12 @@
     overlay.addEventListener("click", function (e) {
       if (e.target.closest(".lightbox-prev")) {
         e.stopPropagation();
-        show(index - 1);
+        show(index - 1, "prev");
         return;
       }
       if (e.target.closest(".lightbox-next")) {
         e.stopPropagation();
-        show(index + 1);
+        show(index + 1, "next");
         return;
       }
       if (e.target === overlay || e.target.classList.contains("lightbox-close")) {
@@ -37,8 +39,8 @@
     document.addEventListener("keydown", function (e) {
       if (!overlay.classList.contains("is-open")) return;
       if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") show(index - 1);
-      if (e.key === "ArrowRight") show(index + 1);
+      if (e.key === "ArrowLeft") show(index - 1, "prev");
+      if (e.key === "ArrowRight") show(index + 1, "next");
     });
 
     var touchStartX = null;
@@ -65,8 +67,8 @@
         touchStartY = null;
         if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
           e.preventDefault();
-          if (dx < 0) show(index + 1);
-          else show(index - 1);
+          if (dx < 0) show(index + 1, "next");
+          else show(index - 1, "prev");
         }
       },
       { passive: false }
@@ -74,15 +76,14 @@
     return overlay;
   }
 
-  function show(i) {
-    if (!items.length) return;
-    index = (i + items.length) % items.length;
-    var ov = ensureOverlay();
+  function renderImage(ov, trigger) {
     var img = ov.querySelector(".lightbox-img");
-    var trigger = items[index];
     var triggerImg = trigger.tagName === "IMG" ? trigger : trigger.querySelector("img");
     img.src = trigger.getAttribute("data-lightbox");
     img.alt = triggerImg ? triggerImg.alt : "";
+  }
+
+  function renderChrome(ov, trigger) {
     var multi = items.length > 1;
     ov.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
     ov.querySelector(".lightbox-next").style.display = multi ? "" : "none";
@@ -117,6 +118,46 @@
     }
   }
 
+  function show(i, direction) {
+    if (!items.length) return;
+    var newIndex = (i + items.length) % items.length;
+    var ov = ensureOverlay();
+    var img = ov.querySelector(".lightbox-img");
+
+    if (!direction) {
+      index = newIndex;
+      var trigger = items[index];
+      renderImage(ov, trigger);
+      renderChrome(ov, trigger);
+      return;
+    }
+
+    var outX = direction === "next" ? -ANIM_DIST : ANIM_DIST;
+    var inX = direction === "next" ? ANIM_DIST : -ANIM_DIST;
+
+    img.style.transition = "transform " + ANIM_MS + "ms ease, opacity " + ANIM_MS + "ms ease";
+    img.style.transform = "translateX(" + outX + "px)";
+    img.style.opacity = "0";
+
+    window.setTimeout(function () {
+      index = newIndex;
+      var nextTrigger = items[index];
+      renderImage(ov, nextTrigger);
+      renderChrome(ov, nextTrigger);
+
+      img.style.transition = "none";
+      img.style.transform = "translateX(" + inX + "px)";
+      // eslint-disable-next-line no-unused-expressions
+      img.offsetWidth;
+
+      window.setTimeout(function () {
+        img.style.transition = "transform " + ANIM_MS + "ms ease, opacity " + ANIM_MS + "ms ease";
+        img.style.transform = "translateX(0)";
+        img.style.opacity = "1";
+      }, 16);
+    }, ANIM_MS);
+  }
+
   function open(trigger) {
     var group = trigger.closest(".epk-gallery, .epk-covers");
     var scope = group || document;
@@ -125,6 +166,10 @@
     index = items.indexOf(trigger);
     if (index === -1) index = 0;
     var ov = ensureOverlay();
+    var img = ov.querySelector(".lightbox-img");
+    img.style.transition = "none";
+    img.style.transform = "translateX(0)";
+    img.style.opacity = "1";
     show(index);
     ov.classList.add("is-open");
     document.body.style.overflow = "hidden";
