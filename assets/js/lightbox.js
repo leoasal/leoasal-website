@@ -11,7 +11,10 @@
       '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>' +
       '<button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<div class="lightbox-content">' +
       '<img class="lightbox-img" alt="">' +
+      '<p class="lightbox-credit" hidden></p>' +
+      '</div>' +
       '<button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
     document.body.appendChild(overlay);
@@ -83,6 +86,20 @@
     var multi = items.length > 1;
     ov.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
     ov.querySelector(".lightbox-next").style.display = multi ? "" : "none";
+
+    var credit = trigger.getAttribute("data-credit");
+    if (!credit) {
+      var galleryEl = trigger.closest(".epk-gallery");
+      if (galleryEl) credit = galleryEl.getAttribute("data-credit");
+    }
+    var creditEl = ov.querySelector(".lightbox-credit");
+    if (credit) {
+      creditEl.textContent = credit;
+      creditEl.hidden = false;
+    } else {
+      creditEl.textContent = "";
+      creditEl.hidden = true;
+    }
   }
 
   function open(trigger) {

@@ -343,6 +343,22 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Lightbox zeigt jetzt optional eine kleine Credit-Zeile unter dem Foto in
+  der Großansicht (z.B. „© Henk Aaron Szanto"). Mechanik: `data-credit="…"`
+  Attribut auf dem `.epk-gallery`-Container (gilt für alle Fotos darin) oder
+  optional auf einzelnen `[data-lightbox]`-Buttons für Overrides pro Foto;
+  `assets/js/lightbox.js` sucht beim Anzeigen zuerst am Trigger, dann am
+  nächsten `.epk-gallery`-Vorfahren — bewusst **nicht** an `.epk-covers`
+  (Album-Cover bleiben ohne Credit-Zeile, wie von Leo gewünscht). Ohne
+  `data-credit` bleibt die Zeile per `hidden`-Attribut unsichtbar, keine
+  Änderung für Galerien ohne Credit-Angabe. Bisher nur bei Yamunas
+  Pressefoto-Galerie gesetzt (`© Henk Aaron Szanto`); bei Bedarf gleiches
+  Attribut auf den anderen `.epk-gallery`-Containern (Bänsch, Ketzberg,
+  Härtel/Asal, Loft Arts) ergänzen, sobald Leo die Fotografen-Credits dafür
+  nennt. Neuer Wrapper `.lightbox-content` (flex-column: Bild + Credit)
+  um `.lightbox-img`, `.lightbox-img` cappt jetzt auf
+  `calc(100vh - 8rem)` statt `100%`, damit unter dem Bild Platz für die
+  Credit-Zeile bleibt (2026-08-11)
 - Lightbox unterstützt jetzt Wisch-Gesten auf Touch-Geräten (Leos Wunsch:
   auf Mobile musste man bisher auf die Pfeile tippen, Wischen ging nicht).
   `assets/js/lightbox.js`: `touchstart`/`touchend`-Listener auf dem Overlay,
