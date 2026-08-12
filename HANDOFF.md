@@ -343,6 +343,8 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Ketzberg-Galerie bekam ebenfalls einen `data-credit`: „© @shotbysvenja"
+  (Leo hat nur den Instagram-Handle genannt, kein Klarname) (2026-08-12)
 - Härtel/Asal-Duo-Bilder-Galerie (die 4 Recording-Fotos) bekam ebenfalls
   einen `data-credit`: „© Anika Maierhöfer (@frauanikafotografiert)" —
   Album-Cover-Block bleibt wie bei Yamuna ohne Credit-Zeile (2026-08-12)
