@@ -2,7 +2,13 @@ name: Sync calendar
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # every 6 hours
+    # Weekly fallback, Fridays ~17:30 CEST/16:30 CET (15:30 UTC, cron is UTC
+    # so this drifts 1h across DST) — timed ~30min after the local
+    # "leoasal-calendar-weekly-sync" scheduled task (Fridays 17:00 local),
+    # which already triggers this workflow itself via workflow_dispatch once
+    # it's done editing "WEBSITE TERMINE". This cron only matters as a
+    # fallback if that local task didn't run (e.g. Claude app was closed).
+    - cron: "30 15 * * 5"
   workflow_dispatch: {}
 
 permissions:

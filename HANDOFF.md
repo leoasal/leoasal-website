@@ -152,8 +152,15 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   freigegeben (webcal-Link → https:// umgeschrieben).
 - Link liegt als Repo-Secret `CALENDAR_URL` (Settings → Secrets and
   variables → Actions) — nicht im Code, nicht im Chat wiederholen.
-- `.github/workflows/sync-calendar.yml` läuft alle 6h + manuell auslösbar
-  (`gh workflow run sync-calendar.yml` oder im Actions-Tab).
+- `.github/workflows/sync-calendar.yml` läuft **1x/Woche, freitags ~17:30
+  CEST/16:30 CET (15:30 UTC fix im Cron, daher der DST-Versatz)** + manuell
+  auslösbar (`gh workflow run sync-calendar.yml` oder im Actions-Tab). War
+  bis 2026-08-20 alle 6h, auf Leos Wunsch reduziert — der lokale
+  `leoasal-calendar-weekly-sync`-Task (Freitags 17:00 lokal, siehe
+  `Website Kalender/leoasal-calendar-handoff.md`) triggert diesen Workflow
+  nach jedem Durchlauf ohnehin selbst per `workflow_dispatch`; der
+  Wochen-Cron hier ist nur der Fallback, falls die Claude-App an dem Tag
+  nicht offen war.
 - `scripts/sync-calendar.js` parst das ics, schreibt `data/dates.json`:
   `{ title, location, start (ISO), allDay (bool), url }`. `url` kommt primär
   aus dem **URL-Feld** des Kalendereintrags (ics-Property `URL:`), Fallback:
@@ -216,7 +223,7 @@ Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
   `sync-calendar.yml` am Ende jetzt explizit `gh workflow run deploy-pages.yml`,
   wenn sich `dates.json` geändert hat (Schritt "Trigger Pages deploy",
   braucht `permissions: actions: write`). Ohne das würde jeder automatische
-  6h-Sync zwar committen, aber nie live gehen.
+  automatische Sync zwar committen, aber nie live gehen.
 
 ### Kalender-Abo (2026-08-08)
 
@@ -343,6 +350,10 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- `sync-calendar.yml`-Schedule von alle-6h auf 1x/Woche (freitags ~15:30
+  UTC) reduziert, auf Leos Wunsch — soll zusammen mit dem lokalen
+  `leoasal-calendar-weekly-sync`-Task laufen statt unabhängig alle 6h
+  (2026-08-22).
 - Lightbox-Slide-Übergang komplett neu gebaut als echtes Karussell (Leos
   Feedback zur ersten Version: der Fade+kleiner-Versatz-Effekt war ihm zu
   wenig „normal" — er wollte, dass beim Wischen das Bild live mit dem
