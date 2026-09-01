@@ -1,10 +1,22 @@
 {
+  "nav.blog": "Blog",
   "nav.bio": "Bio",
   "nav.dates": "Dates",
   "nav.projects": "Projects",
   "nav.contact": "Contact",
 
-  "head.index.title": "Leo Asal – Drummer & Composer",
+  "head.blog.title": "Blog – Leo Asal",
+  "blog.eyebrow": "Highlights",
+  "blog.heading": "Blog",
+  "blog.yamuna.eyebrow": "New release",
+  "blog.yamuna.heading": "YAMUNA — „Focus &amp; Distraction“",
+  "blog.yamuna.text": "YAMUNA's debut album blends electronic sounds with free improvisation — out now.",
+  "blog.yamuna.cta": "More about YAMUNA",
+  "blog.jazzopen.eyebrow": "Live",
+  "blog.jazzopen.heading": "The Jakob Manz Project live @ Jazzopen Stuttgart",
+  "blog.jazzopen.text": "Two performances from this summer's Jazzopen Stuttgart with The Jakob Manz Project: „The Answer“ and „Pumped“.",
+
+  "head.index.title": "Leo Asal",
   "head.index.description": "Leo Asal is a drummer and composer based in Cologne, moving between jazz, hip-hop and electronic music.",
   "home.eyebrow": "Drummer · Composer",
 

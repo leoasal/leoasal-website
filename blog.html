@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="head.baensch.title">Jakob Bänsch Quartett – Leo Asal</title>
+<title data-i18n="head.blog.title">Blog – Leo Asal</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
@@ -34,10 +34,10 @@
     </div>
     <nav class="site-nav" aria-label="Main navigation">
       <ul>
-        <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="blog.html" aria-current="page" data-i18n="nav.blog">Blog</a></li>
         <li><a href="index.html#bio" data-i18n="nav.bio">Bio</a></li>
         <li><a href="index.html#dates" data-i18n="nav.dates">Dates</a></li>
-        <li><a href="index.html#projects" aria-current="page" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="index.html#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="lang-switch" role="group" aria-label="Language">
@@ -52,59 +52,43 @@
 <main id="main">
   <div class="container">
     <div class="page-header">
-      <a class="eyebrow back-link" href="index.html#projects">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span data-i18n="nav.projects">Projects</span>
+      <span class="eyebrow" data-i18n="blog.eyebrow">Highlights</span>
+      <h1 data-i18n="blog.heading">Blog</h1>
+    </div>
+
+    <article class="blog-post">
+      <span class="eyebrow" data-i18n="blog.yamuna.eyebrow">New release</span>
+      <a class="blog-post-cover" href="yamuna.html">
+        <img src="assets/images/yamuna-album-cover.jpg" alt="Yamuna – Focus &amp; Distraction (album cover)">
       </a>
-      <h1>Jakob Bänsch Quartett</h1>
-    </div>
+      <h2><a href="yamuna.html" data-i18n="blog.yamuna.heading">YAMUNA — „Focus &amp; Distraction“</a></h2>
+      <p data-i18n="blog.yamuna.text">YAMUNA's debut album blends electronic sounds with free improvisation — out now.</p>
+      <a class="date-link blog-post-cta" href="yamuna.html">
+        <span data-i18n="blog.yamuna.cta">More about YAMUNA</span>
+      </a>
+    </article>
 
-    <p class="bio-text" style="max-width:68ch" data-i18n="baensch.description1">The Jakob Bänsch Quartet (including the band featured on their debut album „Opening“) consists of Jakob Bänsch (trumpet, flugelhorn), Niklas Roever (piano), Jakob Obleser (bass), and Leo Asal (drums). They primarily perform compositions by the band leader, drawing inspiration from composers such as Herbie Hancock, Richie Beirach, Maria Schneider, Maurice Ravel, and Gustav Mahler.</p>
-    <p class="bio-text" style="max-width:68ch" data-i18n="baensch.description2">Their music combines lyrical melodies, virtuosic jazz, atmospheric soundscapes, and symphonic classical elements. The concert program, influenced by classical works and structured with leitmotifs and acts, creates a truly immersive experience.</p>
-
-    <div class="project-link">
-      <span class="date-detail-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      <a class="date-link" href="https://jakobbaensch.com" target="_blank" rel="noopener">jakobbaensch.com</a>
-    </div>
-
-    <h2 data-i18n="project.photosHeading">Photos</h2>
-    <div class="epk-gallery epk-gallery--color" data-credit="©" data-credit-name="Vincent Sima">
-      <button type="button" class="cover-trigger" data-lightbox="assets/images/baensch-photo-1.jpg">
-        <img src="assets/images/baensch-photo-1.jpg" alt="Jakob Bänsch Quartett photo" loading="lazy">
-      </button>
-      <button type="button" class="cover-trigger" data-lightbox="assets/images/baensch-photo-2.jpg">
-        <img src="assets/images/baensch-photo-2.jpg" alt="Jakob Bänsch Quartett photo" loading="lazy">
-      </button>
-      <button type="button" class="cover-trigger" data-lightbox="assets/images/baensch-photo-3.jpg">
-        <img src="assets/images/baensch-photo-3.jpg" alt="Jakob Bänsch Quartett photo" loading="lazy">
-      </button>
-      <button type="button" class="cover-trigger" data-lightbox="assets/images/baensch-photo-4.jpg">
-        <img src="assets/images/baensch-photo-4.jpg" alt="Jakob Bänsch Quartett photo" loading="lazy">
-      </button>
-    </div>
-
-    <h2 data-i18n="project.videosHeading">Videos</h2>
-    <div class="video-grid">
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/lfBHJFchUKM" title="Jakob Bänsch Quartett video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <article class="blog-post">
+      <span class="eyebrow" data-i18n="blog.jazzopen.eyebrow">Live</span>
+      <h2 data-i18n="blog.jazzopen.heading">The Jakob Manz Project live @ Jazzopen Stuttgart</h2>
+      <p data-i18n="blog.jazzopen.text">Two performances from this summer's Jazzopen Stuttgart with The Jakob Manz Project: „The Answer“ and „Pumped“.</p>
+      <div class="video-grid">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/vJeJa0fXXoc" title="The Jakob Manz Project – The Answer, live @ Jazzopen Stuttgart" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/JlQZKEHF5pA" title="The Jakob Manz Project – Pumped, live @ Jazzopen Stuttgart" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/rkBqU7Wa2lo" title="Jakob Bänsch Quartett video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/co6MLhcgzjY" title="Jakob Bänsch Quartett video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
+    </article>
   </div>
 </main>
 
 <nav class="mobile-nav" aria-label="Main navigation">
-  <a href="blog.html" data-i18n="nav.blog">Blog</a>
+  <a href="blog.html" aria-current="page" data-i18n="nav.blog">Blog</a>
   <a href="index.html#bio" data-i18n="nav.bio">Bio</a>
   <a href="index.html#dates" data-i18n="nav.dates">Dates</a>
-  <a href="index.html#projects" aria-current="page" data-i18n="nav.projects">Projects</a>
+  <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
   <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
 </nav>
 
@@ -122,7 +106,5 @@
 </footer>
 
 <script src="assets/js/i18n.js"></script>
-<script src="assets/js/lightbox.js"></script>
-<script src="assets/js/gallery-nav.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="head.index.title">Leo Asal – Drummer &amp; Composer</title>
+<title data-i18n="head.index.title">Leo Asal</title>
 <meta name="description" content="Leo Asal is a drummer and composer based in Cologne, moving between jazz, hip-hop and electronic music." data-i18n-attr="content:head.index.description">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
@@ -35,10 +35,11 @@
     </div>
     <nav class="site-nav" aria-label="Main navigation">
       <ul>
-        <li><a href="bio.html" data-i18n="nav.bio">Bio</a></li>
-        <li><a href="dates.html" data-i18n="nav.dates">Dates</a></li>
-        <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="#bio" data-i18n="nav.bio">Bio</a></li>
+        <li><a href="#dates" data-i18n="nav.dates">Dates</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en">EN</button>
@@ -58,11 +59,16 @@
     </div>
   </section>
 
-  <section id="bio" class="container">
+  <section id="bio" class="home-section">
+   <div class="container">
     <div class="page-header">
       <span class="eyebrow" data-i18n="bio.eyebrow">About</span>
       <h2 data-i18n="bio.heading">Bio</h2>
     </div>
+
+    <figure class="bio-portrait">
+      <img src="assets/images/hero.jpg" alt="Leo Asal" loading="lazy">
+    </figure>
 
     <div class="bio-text">
       <p data-i18n="bio.p1">Leo Asal, a drummer with roots in jazz and hip-hop, studied in Mainz and Cologne with renowned musicians such as Hendrik Smock and Prof. Jonas Burgwinkel. He has performed with jazz greats like Emil Mangelsdorff, Diane Schuur, and Nathan East and has collaborated with rap and R&amp;B artists such as Megaloh, OG Keemo, and MAJAN.</p>
@@ -84,9 +90,11 @@
         <p data-i18n="bio.long.p5">From 2023 to 2025, Leo Asal was a member of the Bundesjazzorchester.</p>
       </details>
     </div>
+   </div>
   </section>
 
-  <section id="dates" class="container">
+  <section id="dates" class="home-section home-section--alt">
+   <div class="container">
     <div class="page-header">
       <span class="eyebrow" data-i18n="dates.eyebrow">Live</span>
       <h2 data-i18n="dates.heading">Dates</h2>
@@ -113,9 +121,11 @@
       <a class="date-link" href="webcal://leoasal.com/data/dates.ics" data-i18n="dates.subscribe">Subscribe to this calendar</a>
     </div>
     <p class="dates-subscribe-hint" data-i18n="dates.subscribeGoogleHint">For Google Calendar: Settings → Add calendar → From URL, then paste https://leoasal.com/data/dates.ics</p>
+   </div>
   </section>
 
-  <section id="projects" class="container">
+  <section id="projects" class="home-section">
+   <div class="container">
     <div class="page-header">
       <span class="eyebrow" data-i18n="projects.eyebrow">Work</span>
       <h2 data-i18n="projects.heading">Projects</h2>
@@ -170,9 +180,11 @@
         </div>
       </a>
     </div>
+   </div>
   </section>
 
-  <section id="contact" class="container">
+  <section id="contact" class="home-section home-section--alt">
+   <div class="container">
     <div class="page-header">
       <span class="eyebrow" data-i18n="contact.eyebrow">Get in touch</span>
       <h2 data-i18n="contact.heading">Contact</h2>
@@ -180,14 +192,16 @@
 
     <p data-i18n="contact.reachMe">Reach me</p>
     <a class="contact-email" href="mailto:mail@leoasal.com">mail@leoasal.com</a>
+   </div>
   </section>
 </main>
 
 <nav class="mobile-nav" aria-label="Main navigation">
-  <a href="bio.html" data-i18n="nav.bio">Bio</a>
-  <a href="dates.html" data-i18n="nav.dates">Dates</a>
-  <a href="projects.html" data-i18n="nav.projects">Projects</a>
-  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <a href="blog.html" data-i18n="nav.blog">Blog</a>
+  <a href="#bio" data-i18n="nav.bio">Bio</a>
+  <a href="#dates" data-i18n="nav.dates">Dates</a>
+  <a href="#projects" data-i18n="nav.projects">Projects</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
 </nav>
 
 <footer class="site-footer">
@@ -205,5 +219,6 @@
 
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/dates.js"></script>
+<script src="assets/js/anchor-scroll.js"></script>
 </body>
 </html>

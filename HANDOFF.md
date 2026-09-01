@@ -63,13 +63,39 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 
 ## Seitenstruktur
 
+**WICHTIGE ARCHITEKTUR-ÄNDERUNG (2026-09-01): Bio/Termine/Projekte/Kontakt
+sind keine eigenständigen Seiten mehr.** Leo wollte, dass Klicken in der
+Nav und Runterscrollen auf der Startseite zum exakt selben Ergebnis führen
+("die Unterscheidung zwischen Scrollen und den einzelnen Seiten soll es
+nicht mehr geben"). Der komplette Inhalt dieser 4 Bereiche lebt jetzt
+ausschließlich als Sektionen in `index.html` (`#bio`, `#dates`,
+`#projects`, `#contact`). `bio.html`/`dates.html`/`projects.html`/
+`contact.html` existieren nur noch als minimale Redirect-Stubs (`<meta
+http-equiv="refresh">` + `location.replace(...)`) auf
+`index.html#<section>`, damit alte Bookmarks/Backlinks nicht ins Leere
+laufen. **Nicht versehentlich wieder "echte" Seiten daraus machen** — jede
+Änderung an Bio/Termine/Projekten/Kontakt gehört jetzt ausschließlich in
+die passende Sektion von `index.html`.
+
 ```
-index.html                    Startseite: Foto + Name + Nav, kein Intro-Text (bewusst leer)
-bio.html                      Bio kurz + ausklappbare Langfassung, Portraitfoto
-dates.html                    Termine, gespeist aus data/dates.json (siehe unten)
-projects.html                 Projekt-Grid: Yamuna, Jakob Manz, Härtel/Asal Duo,
-                               Jakob Bänsch, Ketzberg, Loft Arts — jede eigene Unterseite,
-                               jede Karte hat ein Bild + Subtitle
+blog.html                     Erste Nav-Seite: Highlights/News/Events als Blog-Posts
+                               (`.blog-post`), aktuell YAMUNA-Album groß (Cover,
+                               `.blog-post-cover`) + "The Jakob Manz Project live @ Jazzopen
+                               Stuttgart" mit 2 Videos. Kein Datum/keine Chronologie-Logik,
+                               einfach Artikel nacheinander im HTML — neue Einträge oben
+                               einfügen. Einzige "echte" Extra-Seite außer index.html selbst
+index.html                    Startseite: Hero (Foto + Name), danach direkt im Anschluss
+                               die vollständigen Sektionen #bio/#dates/#projects/#contact
+                               (siehe Architektur-Hinweis oben) — abwechselnd weißer/
+                               hellgrauer Hintergrund (`.home-section`/`.home-section--alt`)
+                               zur optischen Trennung, großzügiger Abstand (`padding: 5rem
+                               0`). Überschriften dort bewusst zwischen h2- und h1-Größe
+                               (`.home-section .page-header h2`, `clamp(2rem,5.5vw,3.2rem)`)
+                               — Leo fand die h1-Größe der alten Einzelseiten schön, aber
+                               beim Scrollen durch mehrere Sektionen hintereinander zu groß
+bio.html, dates.html,         NUR NOCH REDIRECT-STUBS auf index.html#bio/#dates/#projects/
+projects.html, contact.html   #contact (s. Architektur-Hinweis oben) — kein echter Inhalt
+                               mehr, keine Nav/Header/Footer, kein data-i18n
 yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschrift oben,
                                dann Album-Block ("Out now" + Front-/Back-Cover, beide als
                                Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
@@ -113,13 +139,17 @@ stand der Umschalter darunter statt daneben).
 - **Mobil** (`.site-nav` ist `display:none`): nur 2 sichtbare Items →
   Logo links, Icons rechts, Lücke dazwischen frei.
 - **Desktop** (`.site-nav` sichtbar): 3 Items → `space-between` verteilt
-  den Icons-Block **exakt mittig** in die Lücke zwischen Logo und "Bio"
-  (dem ersten Nav-Link). Das war explizit so gewünscht — nicht wieder auf
-  eine `.brand-group`-Wrapper-Lösung umbauen, die zieht die Icons direkt
-  neben den Logo-Text statt sie mittig zu verteilen (2026-08-07).
+  den Icons-Block **exakt mittig** in die Lücke zwischen Logo und "Blog"
+  (dem ersten Nav-Link, seit 2026-09-01 — vorher "Bio"). Das war explizit
+  so gewünscht — nicht wieder auf eine `.brand-group`-Wrapper-Lösung
+  umbauen, die zieht die Icons direkt neben den Logo-Text statt sie mittig
+  zu verteilen (2026-08-07).
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
-identisch in allen 12 HTML-Dateien. Bei neuen Seiten unbedingt aus einer
+identisch in allen Seiten mit echtem Header (index.html, blog.html, die 5
+Projekt-Unterseiten, impressum.html, datenschutz.html — **nicht** in
+bio.html/dates.html/projects.html/contact.html, die sind seit 2026-09-01
+nur noch Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths). Frühere Versuche (nur auf der Startseite im Hero-
 Bild, nur auf der Kontaktseite inline im Content, dann eine Zwischenlösung
@@ -128,9 +158,10 @@ mit `.brand-group`-Wrapper) wurden alle verworfen und entfernt.
 Die 5 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
 Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
 klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
-`projects.html` — bei neuen Projekt-Unterseiten dieses Pattern übernehmen,
-nicht wieder einen reinen Text-Eyebrow einbauen (2026-08-07). Die Haupt-
-Nav-Seiten (Bio/Dates/Projects/Contact) behalten ihren normalen Text-Eyebrow.
+`index.html#projects` (bis 2026-09-01: `projects.html`) — bei neuen
+Projekt-Unterseiten dieses Pattern übernehmen, nicht wieder einen reinen
+Text-Eyebrow einbauen (2026-08-07). Bio/Dates/Projects/Contact als
+Homepage-Sektionen behalten ihren normalen Text-Eyebrow.
 
 ## i18n (EN/DE/ES)
 
@@ -344,12 +375,96 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Offene Punkte / mögliche nächste Schritte
 
-- Kein offener inhaltlicher Task-Rückstand; alles unten in "Erledigt" ist
-  umgesetzt und live verifiziert. Neue Wünsche einfach hier oben ergänzen,
-  sobald sie reinkommen, und nach Erledigung nach unten verschieben.
+- **Bio-Portraitfoto auf der Startseite** (`#bio`-Sektion in `index.html`)
+  ist aktuell nur ein Platzhalter (`assets/images/hero.jpg`, identisch zum
+  Hero-Bild direkt darüber). Leo hat angekündigt, ein anderes Foto dafür zu
+  schicken — sobald es da ist, in `index.html` bei `<figure
+  class="bio-portrait">` den `src` austauschen (bio.html selbst existiert
+  nicht mehr als eigene Seite, s. Architektur-Hinweis oben).
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Große Umbauten am selben Tag (2026-09-01), chronologisch:**
+  1. Neue erste Nav-Seite `blog.html` (Highlights/News/Alben) angelegt, s.
+     "Seitenstruktur" oben. Nav-Link "Blog" per Skript in allen damals 13
+     bestehenden Seiten (Desktop- + Mobile-Nav) ergänzt.
+  2. Browser-Tab-Titel der Startseite auf reines "Leo Asal" gekürzt (vorher
+     "Leo Asal – Drummer & Composer" etc., Leo fand den Untertitel im Tab
+     überflüssig) — `head.index.title` in allen 3 Sprachen + `<title>`-
+     Fallback in `index.html`.
+  3. Homepage-Sektionen (Bio/Termine/Projekte/Kontakt) bekamen mehr
+     Zeilenabstand und alternierenden weiß/hellgrau-Hintergrund zur
+     optischen Trennung beim Scrollen — neue Wrapper-Klassen
+     `.home-section`/`.home-section--alt` (nutzt `--bg`/`--bg-soft`,
+     dieselben Farbvariablen wie der Rest der Seite, keine neue Farbe
+     erfunden), `padding: 5rem 0`, `scroll-margin-top: 80px` (Ausgleich für
+     den `position: sticky`-Header, `--nav-height: 64px`).
+  4. **Größter Umbau: Bio/Termine/Projekte/Kontakt sind keine eigenständigen
+     Seiten mehr**, siehe fetten Architektur-Hinweis oben bei
+     "Seitenstruktur" — bitte unbedingt zuerst lesen, bevor an einem
+     dieser 4 Bereiche etwas geändert wird. Auslöser: Leo wollte, dass
+     Klick auf "Projekte" oben in der Nav zur exakt selben Stelle führt wie
+     Runterscrollen bis dorthin — "die Unterscheidung soll es nicht mehr
+     geben". Umsetzung: `bio.html`/`dates.html`/`projects.html`/
+     `contact.html` → Redirect-Stubs auf `index.html#<section>`; alle
+     Nav-Links (Desktop + Mobile, auf allen anderen Seiten) und die
+     Projekt-Unterseiten-Zurück-Links zeigen jetzt auf
+     `index.html#bio/#dates/#projects/#contact`; auf `index.html` selbst
+     nur `#bio` usw. (kein `index.html`-Präfix nötig/sinnvoll bei
+     Selbstverweis). Neues `assets/js/anchor-scroll.js` (nur auf
+     `index.html` eingebunden) übernimmt das Scrollen zum Anker robust
+     selbst, statt sich auf natives Browser-Verhalten zu verlassen:
+     - Beim Laden mit vorhandenem `location.hash` (Ankunft über einen
+       Redirect-Stub oder einen Cross-Page-Nav-Klick): **sofortiger**
+       Sprung (`behavior:"instant"`, kein Smooth) nach 60ms Verzögerung
+       (Layout muss sich gesetzt haben).
+     - Bei Klick auf einen `a[href^="#"]`-Link während man bereits auf der
+       Seite ist: `preventDefault`, `history.pushState`, dann
+       **smooth** `scrollIntoView` — dadurch fühlt sich ein Nav-Klick
+       genauso an wie manuelles Scrollen, wie von Leo gewünscht.
+     - Setzt nach dem Scrollen `tabindex="-1"` + Fokus aufs Zielelement,
+       da das Abfangen der Klicks (für den Smooth-Scroll) sonst den
+       nativen Fokus-Sprung verhindert hätte — wichtig für
+       Tastatur-/Screenreader-Nutzer, betrifft auch den Skip-Link
+       (`#main`).
+     - **Wichtiger Debugging-Fund:** `scroll-behavior: smooth` (neu global
+       auf `html` gesetzt) UND `scrollIntoView({behavior:"smooth"})`
+       liefen im Browser-Test-Tool dieser Session überhaupt nicht (Seite
+       blieb bei `scrollY:0`, egal wie lange gewartet) — mit
+       `behavior:"instant"` funktionierte es hingegen sofort exakt richtig
+       (`scrollY` sprang korrekt, Zielelement landete exakt bei den
+       vorgesehenen 80px unter dem Header). Sehr wahrscheinlich dieselbe
+       Eigenheit wie beim Karussell-Lightbox-Feature weiter unten
+       (`requestAnimationFrame` lief im Hintergrund-Tab dieses Tools nicht
+       zuverlässig) — smooth-scroll-Animationen scheinen in diesem
+       Testtool grundsätzlich nicht zu rendern. Deshalb bewusst nur der
+       initiale Sprung auf `instant` gestellt (der Fall, der zuverlässig
+       funktionieren MUSS, unabhängig vom Tool-Verhalten), während
+       In-Page-Klicks smooth bleiben (dort ist die Animation ein
+       Nice-to-have, kein Korrektheits-Kriterium) — in echten,
+       aktiven Browser-Tabs ist smooth `scrollIntoView` Standardverhalten
+       und sollte dort einwandfrei animieren.
+  5. Bio-Portraitfoto ist zurück (Leo: "das fand ich schön, dass da ein
+     Bild war, während man liest") — als Platzhalter aktuell wieder
+     `assets/images/hero.jpg` (dasselbe Foto wie im Hero direkt darüber,
+     nicht ideal, aber Leo schickt ein anderes Foto nach, dann einfach die
+     Datei/den Pfad in der `#bio`-Sektion in `index.html` ersetzen).
+     `.bio-portrait` floatet ab 800px rechts neben dem Fließtext (bestehende
+     CSS-Regel, unverändert) — genau der "Bild während man liest"-Effekt.
+  6. Homepage-Sektionsüberschriften (`.home-section .page-header h2`) auf
+     einen Mittelweg zwischen normaler h2- (`clamp(1.6rem,4vw,2.2rem)`) und
+     h1-Größe (`clamp(2.5rem,8vw,4.5rem)`) gebracht:
+     `clamp(2rem,5.5vw,3.2rem)` — Leo fand die große h1-Größe der früheren
+     Einzelseiten schön, aber beim Scrollen durch mehrere Sektionen
+     hintereinander etwas zu wuchtig.
+  - Lokal ausführlich verifiziert: alle 4 Redirect-Stubs landen korrekt bei
+    `index.html#<section>`, Anker-Scroll trifft exakt die vorgesehene
+    Position (80px Abstand), Bio-Portrait floatet ab 800px korrekt,
+    Fokus-Handling funktioniert, keine Konsolenfehler. Screenshot-
+    Verifikation nach Scroll-Aktionen war im Browser-Tool wie erwartet
+    unzuverlässig (bekannter Blank-Screenshot-Bug) — stattdessen
+    durchgehend per `getBoundingClientRect`/`scrollY`/computed style im
+    DOM verifiziert.
 - Termine-Sektion auf der Startseite zeigt jetzt nur die ersten 4 kommenden
   Termine, Rest hinter „Show more"/„Mehr anzeigen" (Leos Wunsch — die volle
   Liste war ihm auf der Startseite zu lang). **Nur die Startseite betroffen,

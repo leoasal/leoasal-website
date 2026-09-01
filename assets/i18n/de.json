@@ -1,10 +1,22 @@
 {
+  "nav.blog": "Blog",
   "nav.bio": "Bio",
   "nav.dates": "Termine",
   "nav.projects": "Projekte",
   "nav.contact": "Kontakt",
 
-  "head.index.title": "Leo Asal – Schlagzeuger &amp; Komponist",
+  "head.blog.title": "Blog – Leo Asal",
+  "blog.eyebrow": "Aktuelles",
+  "blog.heading": "Blog",
+  "blog.yamuna.eyebrow": "Neu erschienen",
+  "blog.yamuna.heading": "YAMUNA — „Focus &amp; Distraction“",
+  "blog.yamuna.text": "Das Debütalbum von YAMUNA verbindet elektronische Klänge mit freier Improvisation — ab jetzt erhältlich.",
+  "blog.yamuna.cta": "Mehr über YAMUNA",
+  "blog.jazzopen.eyebrow": "Live",
+  "blog.jazzopen.heading": "The Jakob Manz Project live @ Jazzopen Stuttgart",
+  "blog.jazzopen.text": "Zwei Auftritte vom diesjährigen Sommer beim Jazzopen Stuttgart mit The Jakob Manz Project: „The Answer“ und „Pumped“.",
+
+  "head.index.title": "Leo Asal",
   "head.index.description": "Leo Asal ist Schlagzeuger und Komponist aus Köln – zuhause zwischen Jazz, Hip-Hop und elektronischer Musik.",
   "home.eyebrow": "Schlagzeuger · Komponist",
 

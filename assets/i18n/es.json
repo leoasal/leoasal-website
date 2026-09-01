@@ -1,10 +1,22 @@
 {
+  "nav.blog": "Blog",
   "nav.bio": "Bio",
   "nav.dates": "Fechas",
   "nav.projects": "Proyectos",
   "nav.contact": "Contacto",
 
-  "head.index.title": "Leo Asal – Baterista y Compositor",
+  "head.blog.title": "Blog – Leo Asal",
+  "blog.eyebrow": "Novedades",
+  "blog.heading": "Blog",
+  "blog.yamuna.eyebrow": "Nuevo lanzamiento",
+  "blog.yamuna.heading": "YAMUNA — „Focus &amp; Distraction“",
+  "blog.yamuna.text": "El álbum debut de YAMUNA combina sonidos electrónicos con improvisación libre — ya disponible.",
+  "blog.yamuna.cta": "Más sobre YAMUNA",
+  "blog.jazzopen.eyebrow": "En directo",
+  "blog.jazzopen.heading": "The Jakob Manz Project live @ Jazzopen Stuttgart",
+  "blog.jazzopen.text": "Dos actuaciones de este verano en el Jazzopen Stuttgart con The Jakob Manz Project: „The Answer“ y „Pumped“.",
+
+  "head.index.title": "Leo Asal",
   "head.index.description": "Leo Asal es baterista y compositor afincado en Colonia, entre el jazz, el hip-hop y la música electrónica.",
   "home.eyebrow": "Baterista · Compositor",
 
