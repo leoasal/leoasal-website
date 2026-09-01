@@ -350,6 +350,55 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Startseite (`index.html`) ist jetzt eine lange scrollbare Seite: nach dem
+  Hero folgen direkt die Inhalte von Bio, Termine, Projekte und Kontakt als
+  eigene `<section id="bio/dates/projects/contact">`-Blöcke (Leos Wunsch:
+  auf dem Laptop UND mobil soll man sich per Scrollen automatisch durch
+  alle Bereiche bewegen können — die einzelnen Unterseiten bio.html/
+  dates.html/projects.html/contact.html bleiben unverändert eigenständig
+  aufrufbar, Header-/Mobile-Nav verlinkt weiterhin dorthin, keine Änderung
+  am Verlinkungsverhalten).
+  - **Bewusste Architekturentscheidung gegen ein Fetch-Include-System:**
+    Die Sektionen sind direkt als HTML in `index.html` dupliziert (gleiches
+    Muster wie Header/Footer, die laut diesem Dokument schon länger über
+    alle 12 Seiten kopiert werden), **nicht** per `fetch()` aus den
+    Einzelseiten nachgeladen. Grund: der eigentliche Text kommt so oder so
+    aus den i18n-JSONs (`assets/i18n/*.json`) — Textänderungen an einer
+    Stelle wirken automatisch auf Homepage UND Einzelseite, keine
+    Text-Duplikation. Nur die HTML-Struktur/Bildpfade/Hrefs sind doppelt
+    vorhanden (ändert sich selten). Ein Fetch-Ansatz hätte zusätzliche
+    Requests, DOM-Parsing-Fragilität und vor allem ein Henne-Ei-Problem bei
+    den Terminen bedeutet (dates.js müsste dann zweimal laufen/die
+    gerenderte dates.html nachträglich re-hydrieren).
+    **Wichtig für künftige Änderungen:** Wenn Bio-Absätze, der Termine-
+    Block, die Projekt-Karten (neues Projekt, neue Reihenfolge, geänderter
+    Href) oder der Kontakt-Block strukturell geändert werden, **immer
+    beide Stellen aktualisieren** — die jeweilige Einzelseite UND den
+    passenden Abschnitt in `index.html`. Reine Text-/Bild-Änderungen
+    (i18n-JSON bearbeiten, Bilddatei ersetzen) wirken dagegen automatisch
+    überall.
+  - `assets/js/dates.js` läuft jetzt zusätzlich auf `index.html`
+    (Script-Tag ergänzt) — funktioniert unverändert, da es rein über
+    `document.getElementById("dates-list")` etc. arbeitet, ohne
+    Seiten-Check.
+  - Bio-Sektion auf der Startseite **ohne** das Portraitfoto
+    (`bio-portrait`-Figure) eingebaut — direkt unter dem großformatigen
+    Hero-Bild (das dasselbe Foto `hero.jpg` zeigt) wäre dasselbe Bild ein
+    zweites Mal direkt darunter aufgetaucht, das wirkt wie ein Fehler.
+    `bio.html` selbst behält das Portrait, nur die Homepage-Sektion nicht.
+    Falls Leo dort doch ein (anderes) Bild möchte: einfach Bescheid geben.
+  - Überschriften-Hierarchie: Hero behält das einzige `<h1>` ("Leo Asal")
+    der Seite, die vier neuen Abschnitte nutzen `<h2>` (vorher auf den
+    Einzelseiten jeweils `<h1>`) — semantisch korrekt, `.page-header`-CSS
+    ist nicht ans Element gebunden, sieht also identisch aus.
+  - Lokal verifiziert: alle vier Sektionen rendern mit korrektem Inhalt,
+    Termine laden live nach (`dates.json`), Sprachumschalter wirkt auf
+    Überschriften UND auf die bereits gerenderten Termin-Strings, Mobile-
+    Layout (375px) zeigt den Projekt-Grid einspaltig und die mobile Nav
+    korrekt. Screenshot-Verifikation nach dem Scrollen war im Browser-Tool
+    wie gewohnt unzuverlässig (bekannter Blank-Screenshot-Bug dieser
+    Preview-Pane) — stattdessen per `getBoundingClientRect`/computed style
+    direkt im DOM geprüft (2026-08-12)
 - `sync-calendar.yml`-Schedule von alle-6h auf 1x/Woche (freitags ~15:30
   UTC) reduziert, auf Leos Wunsch — soll zusammen mit dem lokalen
   `leoasal-calendar-weekly-sync`-Task laufen statt unabhängig alle 6h
