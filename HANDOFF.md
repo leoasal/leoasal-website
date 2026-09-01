@@ -350,6 +350,28 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- Termine-Sektion auf der Startseite zeigt jetzt nur die ersten 4 kommenden
+  Termine, Rest hinter „Show more"/„Mehr anzeigen" (Leos Wunsch — die volle
+  Liste war ihm auf der Startseite zu lang). **Nur die Startseite betroffen,
+  `dates.html` zeigt weiterhin die komplette Liste unverändert.**
+  Umsetzung: `<ul id="dates-list" data-limit="4">` + neuer Block
+  `<details id="dates-more" hidden><summary>…</summary><ul id="dates-list-
+  more">…</ul></details>` direkt danach in `index.html` — exakt das gleiche
+  `<details>`-Aufklapp-Muster wie das bereits bestehende „Vorherige
+  Termine". `assets/js/dates.js` prüft in `render()`, ob `#dates-more`/
+  `#dates-list-more` überhaupt existieren UND `data-limit` gesetzt ist —
+  nur dann wird die Liste gesplittet (erste N in `#dates-list`, Rest in
+  `#dates-list-more`, `#dates-more` sichtbar gemacht); ohne diese Elemente
+  (wie auf `dates.html`) läuft exakt der alte Code-Pfad, komplett
+  unverändert. CSS-Selektoren von `.dates-previous` auf `.dates-more`
+  miterweitert (gleicher Chevron-Look), aber bewusst **nicht** die
+  `.dates-list--previous`-Klasse (die dimmt die Vergangenheits-Termine
+  optisch ab — die "mehr"-Termine sind ja weiterhin normale anstehende
+  Termine, sollen also normal aussehen). Neuer i18n-Key
+  `dates.showMore` in allen 3 Sprachen. Lokal verifiziert: Startseite
+  zeigt 4/26, Rest korrekt in "Show more", `dates.html` weiterhin alle 26,
+  Aufklapp-Zustand + Übersetzung bleiben nach Sprachwechsel korrekt
+  (2026-09-01)
 - Startseite (`index.html`) ist jetzt eine lange scrollbare Seite: nach dem
   Hero folgen direkt die Inhalte von Bio, Termine, Projekte und Kontakt als
   eigene `<section id="bio/dates/projects/contact">`-Blöcke (Leos Wunsch:

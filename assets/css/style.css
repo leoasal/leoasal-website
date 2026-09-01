@@ -563,11 +563,13 @@ details.long-bio summary {
   padding: 1.1rem 0;
 }
 
-.dates-previous {
+.dates-previous,
+.dates-more {
   margin-top: 1.5rem;
 }
 
-.dates-previous > summary {
+.dates-previous > summary,
+.dates-more > summary {
   cursor: pointer;
   list-style: none;
   display: inline-flex;
@@ -578,11 +580,13 @@ details.long-bio summary {
   position: relative;
 }
 
-.dates-previous > summary::-webkit-details-marker {
+.dates-previous > summary::-webkit-details-marker,
+.dates-more > summary::-webkit-details-marker {
   display: none;
 }
 
-.dates-previous > summary::after {
+.dates-previous > summary::after,
+.dates-more > summary::after {
   content: "+";
   position: absolute;
   right: 0;
@@ -592,7 +596,8 @@ details.long-bio summary {
   line-height: 1;
 }
 
-.dates-previous[open] > summary::after {
+.dates-previous[open] > summary::after,
+.dates-more[open] > summary::after {
   content: "–";
 }
 

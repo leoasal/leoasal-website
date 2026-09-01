@@ -19,6 +19,8 @@
 
   var previousDetails = document.getElementById("dates-previous");
   var previousList = document.getElementById("dates-list-previous");
+  var moreDetails = document.getElementById("dates-more");
+  var moreList = document.getElementById("dates-list-more");
 
   function render(events) {
     var now = new Date();
@@ -34,8 +36,21 @@
 
     if (upcoming.length === 0) {
       list.innerHTML = '<li class="dates-empty" data-i18n="dates.empty">No upcoming dates right now.</li>';
+      if (moreDetails) moreDetails.hidden = true;
     } else {
-      list.innerHTML = upcoming.map(renderEvent).join("");
+      // Truncated preview (e.g. the homepage): only present when the page
+      // provides #dates-more/#dates-list-more and the list carries
+      // data-limit — dates.html itself has neither, so it always renders
+      // the full list, unaffected.
+      var limit = moreDetails && moreList ? parseInt(list.getAttribute("data-limit"), 10) : 0;
+      if (limit && upcoming.length > limit) {
+        list.innerHTML = upcoming.slice(0, limit).map(renderEvent).join("");
+        moreList.innerHTML = upcoming.slice(limit).map(renderEvent).join("");
+        moreDetails.hidden = false;
+      } else {
+        list.innerHTML = upcoming.map(renderEvent).join("");
+        if (moreDetails) moreDetails.hidden = true;
+      }
     }
 
     if (previousDetails && previousList) {

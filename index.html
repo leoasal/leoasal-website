@@ -92,9 +92,14 @@
       <h2 data-i18n="dates.heading">Dates</h2>
     </div>
 
-    <ul class="dates-list" id="dates-list">
+    <ul class="dates-list" id="dates-list" data-limit="4">
       <li class="dates-empty" data-i18n="dates.loading">Loading dates…</li>
     </ul>
+
+    <details class="dates-more" id="dates-more" hidden>
+      <summary data-i18n="dates.showMore">Show more</summary>
+      <ul class="dates-list" id="dates-list-more"></ul>
+    </details>
 
     <details class="dates-previous" id="dates-previous" hidden>
       <summary data-i18n="dates.previous">Previous dates</summary>
