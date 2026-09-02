@@ -17,10 +17,28 @@
     if (cachedEvents) render(cachedEvents);
   });
 
-  var previousDetails = document.getElementById("dates-previous");
+  var previousToggle = document.getElementById("dates-previous-toggle");
   var previousList = document.getElementById("dates-list-previous");
   var moreDetails = document.getElementById("dates-more");
   var moreList = document.getElementById("dates-list-more");
+
+  // "Previous dates" grows UPWARD from a fixed arrow: the past-dates list
+  // sits above the toggle in the DOM, so revealing it inserts content above
+  // the current viewport. Compensate the scroll offset so the arrow (and
+  // everything below it) stays put on screen — the visitor then scrolls up
+  // to walk back through older gigs. Same on collapse, in reverse.
+  if (previousToggle && previousList) {
+    previousToggle.addEventListener("click", function () {
+      var expanded = previousToggle.getAttribute("aria-expanded") === "true";
+      var beforeHeight = document.documentElement.scrollHeight;
+      var beforeY = window.scrollY;
+      previousList.hidden = expanded;
+      previousToggle.setAttribute("aria-expanded", String(!expanded));
+      var delta = document.documentElement.scrollHeight - beforeHeight;
+      window.scrollTo(0, Math.max(0, beforeY + delta));
+      previousToggle.focus({ preventScroll: true });
+    });
+  }
 
   function render(events) {
     var now = new Date();
@@ -55,13 +73,17 @@
       }
     }
 
-    if (previousDetails && previousList) {
+    if (previousToggle && previousList) {
       if (previous.length === 0) {
-        previousDetails.hidden = true;
+        previousToggle.hidden = true;
+        previousToggle.setAttribute("aria-expanded", "false");
+        previousList.hidden = true;
         previousList.innerHTML = "";
       } else {
-        previousDetails.hidden = false;
+        previousToggle.hidden = false;
         previousList.innerHTML = previous.map(renderEvent).join("");
+        // keep collapsed unless the visitor already opened it
+        previousList.hidden = previousToggle.getAttribute("aria-expanded") !== "true";
       }
     }
 

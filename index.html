@@ -140,13 +140,13 @@
       <h2 data-i18n="dates.heading">Dates</h2>
     </div>
 
-    <details class="dates-previous" id="dates-previous" hidden>
-      <summary class="dates-toggle dates-toggle--up">
-        <span class="visually-hidden" data-i18n="dates.previous">Previous dates</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </summary>
-      <ul class="dates-list dates-list--previous" id="dates-list-previous"></ul>
-    </details>
+    <ul class="dates-list dates-list--previous" id="dates-list-previous" hidden></ul>
+
+    <button type="button" class="dates-toggle dates-toggle--up" id="dates-previous-toggle"
+            aria-expanded="false" aria-controls="dates-list-previous" hidden>
+      <span class="visually-hidden" data-i18n="dates.previous">Previous dates</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
 
     <ul class="dates-list" id="dates-list" data-limit="4">
       <li class="dates-empty" data-i18n="dates.loading">Loading dates…</li>

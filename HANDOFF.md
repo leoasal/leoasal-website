@@ -219,17 +219,19 @@ Homepage-Sektionen behalten ihren normalen Text-Eyebrow.
 - **Vergangene Termine**: `sync-calendar.js` schreibt sie seit 2026-08-09
   mit in `data/dates.json` (vorher hart auf "Startdatum ≥ jetzt-1Tag"
   gefiltert). `dates.js` teilt beim Rendern in `upcoming`/`previous` auf;
-  `previous` (seit 2026-09-02 **älteste zuerst**, aufsteigend) landet als
-  flache Liste in einem eingeklappten `<details id="dates-previous">` /
-  `<ul id="dates-list-previous">`, das seit 2026-09-02 **oberhalb** der
-  normalen Liste sitzt (Aufklapp-Toggle = Aufwärts-Chevron über dem
-  nächsten anstehenden Termin, s. "Erledigt" 2026-09-02) — komplett
-  versteckt wenn leer. Aufsteigende Sortierung, damit die Liste beim
-  Aufklappen chronologisch direkt in den nächsten kommenden Termin
-  übergeht. (Kurzzeitig gab es hier eine Gruppierung nach Jahr mit
-  verschachtelten `<details>` pro Jahr — auf Leos Wunsch am selben Tag
-  wieder auf die flache Liste zurückgebaut, falls das Bedürfnis nochmal
-  aufkommt.) Der
+  `previous` (seit 2026-09-02 **älteste zuerst**, aufsteigend) rendert in
+  `<ul id="dates-list-previous">`, das **oberhalb** der kommenden Liste
+  UND oberhalb des Toggle-Buttons `#dates-previous-toggle` (Aufwärts-
+  Chevron) sitzt. Der Button ist **kein `<details>` mehr** (Stand
+  2026-09-02, s. "Erledigt"): Klick blendet die Liste ein/aus und
+  `dates.js` kompensiert dabei den Scroll-Offset, damit der Pfeil optisch
+  an Ort und Stelle bleibt (die ~220 alten Termine wachsen nach oben weg,
+  man scrollt hoch um sie zu sehen). Aufsteigende Sortierung = beim
+  Hochscrollen kommen die Termine chronologisch rückwärts. Button + Liste
+  komplett versteckt, wenn keine vergangenen Termine da sind.
+  (Kurzzeitig gab es hier eine Gruppierung nach Jahr mit verschachtelten
+  `<details>` pro Jahr — auf Leos Wunsch am selben Tag wieder auf die
+  flache Liste zurückgebaut, falls das Bedürfnis nochmal aufkommt.) Der
   öffentliche `dates.ics`-Abo-Feed bleibt bewusst nur-zukünftig gefiltert
   (niemand will hunderte vergangene Konzerte in seiner Kalender-App).
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
@@ -405,31 +407,39 @@ statt iframe zeigen, iframe erst per Klick nachladen.
      `flex-wrap:wrap`), die einzelnen `.blog-post-cover` bekommen darin
      `flex:1 1 12rem` + `margin:0`. Beide verlinken auf yamuna.html (kein
      Lightbox auf der Startseite). Mobil stapeln sie full-width.
-  2. **Beide Termin-Aufklapper sind zentrierte Chevron-Toggles** statt
-     Text-Links (Leo fand "Mehr anzeigen"/"Ver más" zu unauffällig):
-     - **Kommende Termine über der 4er-Vorschau hinaus:** Chevron **unter**
-       der Liste, klappt den Rest inline auf.
-     - **Vergangene Termine:** `#dates-previous` sitzt jetzt **oberhalb**
-       der kommenden Liste (vorher ganz unten), Toggle direkt über dem
-       nächsten anstehenden Termin (Leos Wunsch: "über dem Termin, der als
-       nächstes kommt, ein Pfeil nach oben"). `previous`-Sortierung dafür
-       auf **aufsteigend** (älteste zuerst) umgestellt, damit die Liste
-       beim Aufklappen chronologisch in den ersten kommenden Termin
-       übergeht.
-     - **Beide Toggles teilen sich EINE Klasse `.dates-toggle`** (Leo:
-       "das Design soll äquivalent sein zu dem Pfeil nach unten") — exakt
+  2. **Termin-Aufklapper sind zentrierte Chevron-Toggles** statt Text-Links
+     (Leo fand "Mehr anzeigen"/"Ver más" zu unauffällig):
+     - **Kommende Termine über der 4er-Vorschau hinaus** (`#dates-more`):
+       weiterhin ein `<details>`, Chevron **unter** der Liste, klappt den
+       Rest inline nach unten auf.
+     - **Vergangene Termine** (`#dates-previous-toggle` + `#dates-list-
+       previous`): **kein `<details>` mehr**, sondern ein `<button>` mit
+       `aria-expanded`, und die Liste `<ul id="dates-list-previous">` steht
+       im DOM **über** dem Button (der wiederum über der kommenden Liste
+       steht). Leo wollte: Pfeil bleibt fix an Ort und Stelle, die alten
+       Termine erscheinen darüber, man scrollt hoch um sie nach und nach
+       zu sehen, Fokus bleibt am Pfeil, und man kann wieder zuklappen. Der
+       Klick-Handler in `dates.js` blendet die Liste per `hidden` ein/aus
+       und **kompensiert dabei `window.scrollY` um die Höhendifferenz**
+       (`scrollHeight` vorher/nachher), sodass der Button optisch exakt
+       stehen bleibt (verifiziert: Viewport-Position ±1px auf Desktop und
+       375px). `previous`-Sortierung **aufsteigend** (älteste zuerst) →
+       beim Hochscrollen läuft man chronologisch rückwärts. Der frühere
+       `<details>`-Ansatz sprang beim Öffnen zum ältesten Termin und ließ
+       sich nicht mehr zuklappen — deshalb der Umbau.
+     - **Beide Toggles teilen EINE Klasse `.dates-toggle`** (Leo: "das
+       Design soll äquivalent sein zu dem Pfeil nach unten") — exakt
        dasselbe SVG (Pfad `M5 9l7 7 7-7`, Abwärts-Chevron), identisches
-       Padding/Border/Größe/Farbe/Hover (`:hover → var(--accent)`). Der
-       Modifier `.dates-toggle--up` dreht bei "Vergangene Termine" nur das
-       SVG per `transform: rotate(180deg)` → zeigt nach oben. `[open]`
-       dreht jeweils in die Gegenrichtung (= zuklappen):
-       `.dates-more[open] .dates-toggle svg { rotate(180deg) }`,
-       `.dates-previous[open] .dates-toggle--up svg { rotate(0) }`. Der
-       alte `+`/`–`-Look und die getrennten
-       `.dates-more-toggle`/`.dates-previous-toggle`-Klassen sind weg.
+       Padding/Border/Größe/Farbe/Hover. `.dates-toggle` resettet
+       zusätzlich `<button>`-Defaults (`background:none; border:0;
+       width:100%; font:inherit`) + `:focus-visible`-Outline. Modifier
+       `.dates-toggle--up` dreht das SVG per `rotate(180deg)` (zeigt hoch).
+       Auf-/zugeklappt dreht der jeweilige Chevron in die Gegenrichtung
+       (= "zuklappen"): `.dates-more[open] > .dates-toggle svg { rotate(180deg) }`
+       bzw. `.dates-toggle--up[aria-expanded="true"] svg { rotate(0deg) }`.
+       Alter `+`/`–`-Look weg.
      - Textlabels (`dates.showMore` / `dates.previous`) bleiben als
-       `.visually-hidden`-Span (a11y, `i18nRefresh` unverändert). `dates.js`
-       togglet weiterhin nur `#dates-more.hidden` / `#dates-previous.hidden`.
+       `.visually-hidden`-Span (a11y, `i18nRefresh` unverändert).
   3. **Übergang von einer Projekt-Unterseite zurück zur Startseite** (Klick
      auf den `‹ Projects`-Back-Link → `index.html#projects`). War erst
      "hektisch" (Browser smooth-scrollte die ganze Seite von oben runter),

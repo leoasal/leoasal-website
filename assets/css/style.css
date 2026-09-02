@@ -684,19 +684,24 @@ details.long-bio summary {
   padding: 1.1rem 0;
 }
 
-/* One shared chevron toggle: "show more" future dates sit BELOW the list;
-   "previous dates" sit ABOVE it (--up flips the same chevron 180°),
-   identical in every other respect. Each rotates on [open] to point the
-   opposite way (= collapse). */
+/* One shared chevron toggle, used on a <summary> ("show more" future dates,
+   sit BELOW the list) and on a <button> ("previous dates", sit ABOVE it —
+   --up flips the same chevron 180°). Identical in every other respect.
+   Each rotates when its section is open to point the other way (= collapse). */
 .dates-toggle {
   cursor: pointer;
   list-style: none;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   padding: 0.85rem 0;
-  color: var(--accent-dark);
+  margin: 0;
+  background: none;
+  border: 0;
   border-bottom: 1px solid var(--line);
+  color: var(--accent-dark);
+  font: inherit;
 }
 
 .dates-toggle::-webkit-details-marker {
@@ -713,15 +718,22 @@ details.long-bio summary {
   color: var(--accent);
 }
 
+.dates-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* resting: "more" points down, "previous" (--up) points up */
 .dates-toggle--up svg {
   transform: rotate(180deg);
 }
 
+/* open/expanded: flip to point the other way (= "collapse me") */
 .dates-more[open] > .dates-toggle svg {
   transform: rotate(180deg);
 }
 
-.dates-previous[open] > .dates-toggle--up svg {
+.dates-toggle--up[aria-expanded="true"] svg {
   transform: rotate(0deg);
 }
 
