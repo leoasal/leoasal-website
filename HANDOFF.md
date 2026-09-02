@@ -25,11 +25,27 @@ Framework, kein CMS). Live seit 2026-08-06.
 
 **Privater Ordner `Website Kalender/`** liegt in diesem Repo-Verzeichnis,
 ist aber bewusst in `.gitignore` eingetragen und wird **nie committet** —
-das Repo ist öffentlich, der Ordner enthält private Notizen (aktuell: ein
-Handoff-Dokument für einen separaten Agenten, der Leos persönlichen
-Kalender nach Konzerten durchsucht und öffentliche Termine in "Website
-Termine" einträgt). Nicht versehentlich mit `git add -A` o.ä. doch
-committen (2026-08-08).
+das Repo ist öffentlich, der Ordner enthält private Notizen. Darin:
+`leoasal-calendar-handoff.md` — das Playbook für die zweite Aufgabe dieses
+Agenten (Kalenderpflege, s. Abschnitt "Kalenderpflege" unten). Nicht
+versehentlich mit `git add -A` o.ä. doch committen (2026-08-08).
+
+## Zwei Aufgabenbereiche (ein Agent, zusammengeführt 2026-09-02)
+
+Früher zwei getrennte Agenten/Chats, seit 2026-09-02 **einer**:
+
+1. **Website-Code & Design** — dieses Dokument. Repo, HTML/CSS/JS, i18n,
+   Deploy, Sync-Pipeline-Technik.
+2. **"Website Termine"-Kalenderpflege** — Leos öffentlichen iCloud-Kalender
+   aus seinen persönlichen Kalendern pflegen (der die Termine auf
+   leoasal.com speist). Ablauf, Gig-Cluster, Ausschlussregeln, Fallstricke
+   und die osascript-Technik stehen im **privaten** Playbook
+   `Website Kalender/leoasal-calendar-handoff.md` (gitignored, weil es
+   Leos Kalenderstruktur + interne Booking-Infos enthält) — bei
+   Kalenderarbeit zuerst das komplett lesen und danach dort aktualisieren.
+   Kurzüberblick unten unter "Kalenderpflege". Läuft zusätzlich 1×/Woche
+   automatisch als geplanter Task `leoasal-calendar-weekly-sync` (bleibt
+   bestehen — reine Automatisierung).
 
 ## Lokal arbeiten
 
@@ -39,6 +55,9 @@ python3 -m http.server 5173
 ```
 → http://localhost:5173 (Doppelklick auf `index.html` funktioniert NICHT,
 `fetch()` für i18n/Termine braucht einen echten HTTP-Server, kein `file://`).
+**Port 5173 ist teils von einem anderen lokalen Projekt ("Buchhaltung")
+belegt** — dann einfach einen anderen Port nehmen (z.B. 5178) und dort
+testen (2026-09-02).
 
 Nach Änderungen immer lokal im Browser gegenprüfen (Mobile **und** Desktop-
 Breite), dann committen und pushen — GitHub Pages baut automatisch.
@@ -202,6 +221,30 @@ Homepage-Sektionen behalten ihren normalen Text-Eyebrow.
   (vorher nur `data-i18n`/innerHTML) — nötig, damit dynamisch eingefügte
   Elemente wie das Location-Icon ein übersetztes `aria-label` bekommen.
 - Neuen Text immer in **allen drei** JSON-Dateien ergänzen, nicht nur Englisch.
+
+## Kalenderpflege (Website Termine) — zweiter Aufgabenbereich
+
+Vollständiges Playbook: **`Website Kalender/leoasal-calendar-handoff.md`**
+(privat, gitignored). Dort stehen die etablierten Projekte, bekannten
+Gig-Cluster, Ausschlusskategorien, Fallstricke, der Ablauf (Schritte 0–6)
+und die osascript-Muster. Bei jeder Kalender-Session zuerst komplett lesen
+und danach dort aktualisieren ("Zuletzt bearbeitet"-Datum + Verlauf-Eintrag).
+
+Kurz:
+- Leo trägt neue Gigs in seine **persönlichen** Kalender ein (ein
+  Unterkalender pro Band + ein Sammelkalender "Gig"). Dieser Agent
+  übernimmt die öffentlich-relevanten davon in den Kalender
+  **"WEBSITE TERMINE"** — per osascript gegen Calendar.app auf Leos Mac
+  (geht nicht cloudseitig; die Claude-App muss offen sein).
+- Danach den Sync-Workflow auslösen (`gh workflow run sync-calendar.yml`,
+  s. "Kalender-Sync" unten für die Pipeline) und live gegenchecken.
+- **Nie raten:** unbekannte Gig-Cluster, zwei verschiedene Bands am selben
+  Tag, verschwundene Quelltermine → überspringen und Leo berichten.
+- Reine Kalenderpflege braucht **keinen** Git-Commit hier (der Workflow
+  committet `dates.json`/`dates.ics` selbst). Nur das private Playbook
+  lokal aktualisieren.
+- Läuft zusätzlich 1×/Woche automatisch (`leoasal-calendar-weekly-sync`),
+  dieser Task bleibt bestehen.
 
 ## Kalender-Sync (Apple Calendar → dates.html)
 
@@ -417,6 +460,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Website- und Kalender-Agent zusammengeführt (2026-09-02).** Auf Leos
+  Wunsch gibt es nur noch **einen** leoasal.com-Agenten für beide Aufgaben
+  (Website-Code + "Website Termine"-Kalenderpflege). Handoffs
+  zusammengelegt: neuer Abschnitt "Zwei Aufgabenbereiche" + "Kalenderpflege"
+  hier oben, "separater Agent"-Formulierungen entfernt; das private
+  Playbook `Website Kalender/leoasal-calendar-handoff.md` bleibt eine
+  eigene (gitignored) Datei, weil es private Kalenderdetails enthält, ist
+  aber jetzt explizit als "Kalender-Hälfte **dieses** Agenten" gerahmt und
+  verweist auf HANDOFF.md für den Rest. Der geplante Task
+  `leoasal-calendar-weekly-sync` bleibt unverändert (reine Automatisierung).
+  Der separate Kalender-Agent/Chat kann gelöscht werden.
 - **Scrollspy: Nav zeigt jetzt, wo man ist (2026-09-02).** Beim Scrollen
   durch die Startseite bekommt der Nav-Link der aktuell sichtbaren Sektion
   `aria-current="location"` — in Desktop- UND Mobile-Nav, gleicher
@@ -1127,11 +1181,12 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   Projekt-Unterseiten übernehmen (2026-08-08)
 - Kalender-Abo-Link von oberhalb nach **unterhalb** der Terminliste
   verschoben (mit deutlich mehr Abstand zum letzten Termin, `margin-top:
-  3.5rem`). Separates, nicht-committetes Handoff-Dokument für einen neuen
-  Agenten angelegt (`Website Kalender/`-Ordner, per `.gitignore` vom
-  öffentlichen Repo ausgeschlossen), der Leos persönlichen Kalender nach
-  Konzerten durchsuchen und öffentliche Termine in "Website Termine"
-  eintragen soll (2026-08-08)
+  3.5rem`). Nicht-committetes Handoff-Dokument für die Kalenderpflege
+  angelegt (`Website Kalender/`-Ordner, per `.gitignore` vom öffentlichen
+  Repo ausgeschlossen) — Leos persönlichen Kalender nach Konzerten
+  durchsuchen und öffentliche Termine in "Website Termine" eintragen. War
+  bis 2026-09-02 ein separater Agent, seitdem Teil dieses Agenten
+  (s. "Zwei Aufgabenbereiche" oben) (2026-08-08)
 - Header-Layout korrigiert: `.brand-group`-Wrapper wieder entfernt, Logo/
   Icons/Nav sind jetzt direkte Flex-Geschwister — dadurch landen die Icons
   auf Mobil rechts (Logo links, Lücke dazwischen) und auf Desktop exakt
