@@ -68,9 +68,14 @@
 
     <article class="blog-post">
       <span class="eyebrow" data-i18n="blog.yamuna.eyebrow">New release</span>
-      <a class="blog-post-cover" href="yamuna.html">
-        <img src="assets/images/yamuna-album-cover.jpg" alt="Yamuna – Focus &amp; Distraction (album cover)" loading="lazy">
-      </a>
+      <div class="blog-post-covers">
+        <a class="blog-post-cover" href="yamuna.html">
+          <img src="assets/images/yamuna-album-cover.jpg" alt="Yamuna – Focus &amp; Distraction (album cover, front)" loading="lazy">
+        </a>
+        <a class="blog-post-cover" href="yamuna.html">
+          <img src="assets/images/yamuna-album-back.jpg" alt="Yamuna – Focus &amp; Distraction (album cover, back)" loading="lazy">
+        </a>
+      </div>
       <h3><a href="yamuna.html" data-i18n="blog.yamuna.heading">YAMUNA — „Focus &amp; Distraction“</a></h3>
       <p data-i18n="blog.yamuna.text">YAMUNA's debut album blends electronic sounds with free improvisation — out now.</p>
       <a class="date-link blog-post-cta" href="yamuna.html">
@@ -140,7 +145,10 @@
     </ul>
 
     <details class="dates-more" id="dates-more" hidden>
-      <summary data-i18n="dates.showMore">Show more</summary>
+      <summary class="dates-more-toggle">
+        <span class="visually-hidden" data-i18n="dates.showMore">Show more</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
       <ul class="dates-list" id="dates-list-more"></ul>
     </details>
 

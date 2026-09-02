@@ -93,8 +93,10 @@ index.html                    Startseite: Hero (Foto + Name), danach direkt im A
                                `clamp(2rem,5.5vw,3.2rem)`) — Leo fand die h1-Größe der
                                alten Einzelseiten schön, aber beim Scrollen durch mehrere
                                Sektionen hintereinander zu groß. Blog-Sektion: die 2
-                               `.blog-post`-Artikel (YAMUNA-Album groß mit `.blog-post-cover`
-                               + "Jakob Manz Project @ Jazzopen Stuttgart" mit 2 Videos),
+                               `.blog-post`-Artikel (YAMUNA-Album — Front- UND Back-Cover
+                               nebeneinander in `.blog-post-covers`, beide verlinken auf
+                               yamuna.html + "Jakob Manz Project @ Jazzopen Stuttgart" mit
+                               2 Videos),
                                Artikel-Titel sind hier `h3` (`clamp(1.4rem,3vw,1.75rem)`,
                                eigene Größe da globales h3 nur 1.2rem wäre). Neue
                                Blog-Einträge oben in der `#blog`-Sektion einfügen.
@@ -391,6 +393,47 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Nachzieher am 2026-09-02:**
+  3. **Anker-Sprung bei Ankunft von einer Projekt-Unterseite war "hektisch"**
+     (die ganze Seite scrollte animiert von oben bis `#projects` runter) UND
+     **an jedem Farb-/Sektionswechsel erschien kurz eine blaue Linie, die
+     beim ersten Klick verschwand.** Beides waren Nebenwirkungen des
+     Anker-Scroll-Setups:
+     - Global `html { scroll-behavior: smooth }` (Zeile ~22 in `style.css`)
+       **entfernt**. Dadurch macht der Browser den Fragment-Sprung beim
+       Laden (`index.html#projects` etc.) wieder **instant** statt animiert.
+       In-Page-Nav-Klicks bleiben smooth — die Animation kommt aus
+       `anchor-scroll.js` via `scrollIntoView({behavior:"smooth"})`, nicht
+       aus dem CSS. `.epk-gallery--row` behält sein eigenes lokales
+       `scroll-behavior: smooth` (Foto-Karussell, unberührt).
+     - Die "blaue Linie" war der **UA-Fokusring**: `anchor-scroll.js` setzt
+       `tabindex="-1"` + `.focus()` aufs Zielelement (damit Tastatur-/
+       SR-Nutzer ihren Platz behalten). Bei den full-bleed `.home-section`s
+       las sich der Outline als farbiges Band am Sektionsrand. Neue Regel
+       `.home-section:focus, #main:focus { outline: none }` — Fokus wird
+       weiterhin geparkt (nur eben unsichtbar; diese Elemente sind nie in
+       der Tab-Reihenfolge, also kein Verlust für Tastaturnutzer).
+     - Der veraltete Debugging-Fund weiter unten ("`scroll-behavior: smooth`
+       neu global gesetzt") ist damit überholt — s. korrigierte Notiz dort.
+  1. Blog-Sektion zeigt jetzt **beide** YAMUNA-Album-Cover (Front +
+     `yamuna-album-back.jpg`) nebeneinander statt nur der Front — neuer
+     Flex-Wrapper `.blog-post-covers` (`gap:1rem`, `max-width:34rem`,
+     `flex-wrap:wrap`), die einzelnen `.blog-post-cover` bekommen darin
+     `flex:1 1 12rem` + `margin:0`. Beide verlinken weiterhin auf
+     yamuna.html (kein Lightbox auf der Startseite). Mobil stapeln sie
+     full-width.
+  2. Der „Mehr anzeigen"/„Ver más"-Aufklapper der Termine-Sektion war Leo
+     als Text zu unauffällig — jetzt ein **reiner Abwärts-Chevron** (SVG,
+     zentriert, volle Breite) direkt unter dem letzten sichtbaren Termin,
+     der beim Öffnen um 180° dreht (zeigt dann nach oben = zuklappen).
+     `.dates-more` aus den geteilten `.dates-previous`-Summary-Regeln
+     herausgelöst und eigene `.dates-more-toggle`-Regeln bekommen; das
+     `„Mehr anzeigen"`-Label bleibt als `.visually-hidden`-Span erhalten
+     (neue a11y-Utility-Klasse in `style.css`, Screenreader/`i18nRefresh`
+     unverändert). „Vorherige Termine" behält bewusst seinen `+`/`–`-Look.
+     Funktional unverändert — `dates.js` togglet weiterhin nur
+     `#dates-more.hidden`. Lokal per DOM verifiziert (4 sichtbar / 22 im
+     Aufklapper, Chevron dreht bei `[open]`, kein Overflow bei 375px).
 - **Blog ist jetzt auch eine Homepage-Sektion (`#blog`), als erstes direkt
   nach dem Hero** (Leo: "füge die Seite Blog auch auf die Startseite hinzu,
   wie die anderen Seiten, sie soll als erstes erscheinen"). Damit ist der
@@ -465,9 +508,20 @@ statt iframe zeigen, iframe erst per Klick nachladen.
        da das Abfangen der Klicks (für den Smooth-Scroll) sonst den
        nativen Fokus-Sprung verhindert hätte — wichtig für
        Tastatur-/Screenreader-Nutzer, betrifft auch den Skip-Link
-       (`#main`).
-     - **Wichtiger Debugging-Fund:** `scroll-behavior: smooth` (neu global
-       auf `html` gesetzt) UND `scrollIntoView({behavior:"smooth"})`
+       (`#main`). **Der dabei entstehende UA-Fokusring wird seit 2026-09-02
+       per `.home-section:focus, #main:focus { outline: none }` unterdrückt**
+       (sah sonst aus wie eine blaue Trennlinie am Sektionsrand) — Fokus
+       wird weiterhin geparkt, nur unsichtbar.
+     - **Korrektur 2026-09-02:** Das früher hier global auf `html` gesetzte
+       `scroll-behavior: smooth` ist **wieder entfernt** — es ließ den
+       Browser den Fragment-Sprung beim Laden animiert von oben bis zur
+       Sektion runterscrollen ("hektisch", Leos Wort). Ohne die Regel ist
+       der Lade-Sprung wieder instant; In-Page-Klicks bleiben smooth, weil
+       die Animation aus `scrollIntoView({behavior:"smooth"})` im JS kommt,
+       nicht aus dem CSS. Der ursprüngliche Debugging-Fund (Tool rendert
+       keine Smooth-Scroll-Animation) bleibt gültig:
+     - `scroll-behavior: smooth` (damals global gesetzt, s.o.) UND
+       `scrollIntoView({behavior:"smooth"})`
        liefen im Browser-Test-Tool dieser Session überhaupt nicht (Seite
        blieb bei `scrollY:0`, egal wie lange gewartet) — mit
        `behavior:"instant"` funktionierte es hingegen sofort exakt richtig
