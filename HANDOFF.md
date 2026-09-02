@@ -63,39 +63,46 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 
 ## Seitenstruktur
 
-**WICHTIGE ARCHITEKTUR-ÄNDERUNG (2026-09-01): Bio/Termine/Projekte/Kontakt
-sind keine eigenständigen Seiten mehr.** Leo wollte, dass Klicken in der
-Nav und Runterscrollen auf der Startseite zum exakt selben Ergebnis führen
-("die Unterscheidung zwischen Scrollen und den einzelnen Seiten soll es
-nicht mehr geben"). Der komplette Inhalt dieser 4 Bereiche lebt jetzt
-ausschließlich als Sektionen in `index.html` (`#bio`, `#dates`,
-`#projects`, `#contact`). `bio.html`/`dates.html`/`projects.html`/
-`contact.html` existieren nur noch als minimale Redirect-Stubs (`<meta
-http-equiv="refresh">` + `location.replace(...)`) auf
-`index.html#<section>`, damit alte Bookmarks/Backlinks nicht ins Leere
-laufen. **Nicht versehentlich wieder "echte" Seiten daraus machen** — jede
-Änderung an Bio/Termine/Projekten/Kontakt gehört jetzt ausschließlich in
-die passende Sektion von `index.html`.
+**WICHTIGE ARCHITEKTUR-ÄNDERUNG (2026-09-01, erweitert 2026-09-02):
+Blog/Bio/Termine/Projekte/Kontakt sind keine eigenständigen Seiten mehr.**
+Leo wollte, dass Klicken in der Nav und Runterscrollen auf der Startseite
+zum exakt selben Ergebnis führen ("die Unterscheidung zwischen Scrollen und
+den einzelnen Seiten soll es nicht mehr geben"). Der komplette Inhalt
+dieser 5 Bereiche lebt jetzt ausschließlich als Sektionen in `index.html`
+(`#blog`, `#bio`, `#dates`, `#projects`, `#contact` — in dieser
+Reihenfolge, Blog zuerst direkt nach dem Hero). `blog.html`/`bio.html`/
+`dates.html`/`projects.html`/`contact.html` existieren nur noch als
+minimale Redirect-Stubs (`<meta http-equiv="refresh">` +
+`location.replace(...)`) auf `index.html#<section>`, damit alte
+Bookmarks/Backlinks nicht ins Leere laufen. **Nicht versehentlich wieder
+"echte" Seiten daraus machen** — jede Änderung an
+Blog/Bio/Termine/Projekten/Kontakt gehört jetzt ausschließlich in die
+passende Sektion von `index.html` (Text weiter über die i18n-JSONs).
+Blog war bis 2026-09-01 die "einzige echte Extra-Seite" — ist jetzt auch
+eine reine Homepage-Sektion (Leo: "wie die anderen Seiten, als erstes").
 
 ```
-blog.html                     Erste Nav-Seite: Highlights/News/Events als Blog-Posts
-                               (`.blog-post`), aktuell YAMUNA-Album groß (Cover,
-                               `.blog-post-cover`) + "The Jakob Manz Project live @ Jazzopen
-                               Stuttgart" mit 2 Videos. Kein Datum/keine Chronologie-Logik,
-                               einfach Artikel nacheinander im HTML — neue Einträge oben
-                               einfügen. Einzige "echte" Extra-Seite außer index.html selbst
 index.html                    Startseite: Hero (Foto + Name), danach direkt im Anschluss
-                               die vollständigen Sektionen #bio/#dates/#projects/#contact
-                               (siehe Architektur-Hinweis oben) — abwechselnd weißer/
-                               hellgrauer Hintergrund (`.home-section`/`.home-section--alt`)
+                               die vollständigen Sektionen #blog/#bio/#dates/#projects/
+                               #contact (siehe Architektur-Hinweis oben) — abwechselnd
+                               weißer/hellgrauer Hintergrund (`.home-section`/
+                               `.home-section--alt`, Reihenfolge weiß/grau/weiß/grau/weiß)
                                zur optischen Trennung, großzügiger Abstand (`padding: 5rem
-                               0`). Überschriften dort bewusst zwischen h2- und h1-Größe
-                               (`.home-section .page-header h2`, `clamp(2rem,5.5vw,3.2rem)`)
-                               — Leo fand die h1-Größe der alten Einzelseiten schön, aber
-                               beim Scrollen durch mehrere Sektionen hintereinander zu groß
-bio.html, dates.html,         NUR NOCH REDIRECT-STUBS auf index.html#bio/#dates/#projects/
-projects.html, contact.html   #contact (s. Architektur-Hinweis oben) — kein echter Inhalt
-                               mehr, keine Nav/Header/Footer, kein data-i18n
+                               0`). Sektions-Überschriften (`h2`) bewusst zwischen h2- und
+                               h1-Größe (`.home-section .page-header h2`,
+                               `clamp(2rem,5.5vw,3.2rem)`) — Leo fand die h1-Größe der
+                               alten Einzelseiten schön, aber beim Scrollen durch mehrere
+                               Sektionen hintereinander zu groß. Blog-Sektion: die 2
+                               `.blog-post`-Artikel (YAMUNA-Album groß mit `.blog-post-cover`
+                               + "Jakob Manz Project @ Jazzopen Stuttgart" mit 2 Videos),
+                               Artikel-Titel sind hier `h3` (`clamp(1.4rem,3vw,1.75rem)`,
+                               eigene Größe da globales h3 nur 1.2rem wäre). Neue
+                               Blog-Einträge oben in der `#blog`-Sektion einfügen.
+                               ACHTUNG: dadurch lädt die Startseite jetzt 2 youtube-nocookie-
+                               iframes beim Laden (vorher 0 externe Embeds auf der Startseite)
+blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#dates/
+dates.html, projects.html,    #projects/#contact (s. Architektur-Hinweis oben) — kein echter
+contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
 yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschrift oben,
                                dann Album-Block ("Out now" + Front-/Back-Cover, beide als
                                Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
@@ -146,10 +153,10 @@ stand der Umschalter darunter statt daneben).
   zu verteilen (2026-08-07).
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
-identisch in allen Seiten mit echtem Header (index.html, blog.html, die 5
+identisch in allen Seiten mit echtem Header (index.html, die 5
 Projekt-Unterseiten, impressum.html, datenschutz.html — **nicht** in
-bio.html/dates.html/projects.html/contact.html, die sind seit 2026-09-01
-nur noch Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
+blog.html/bio.html/dates.html/projects.html/contact.html, die sind
+Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths). Frühere Versuche (nur auf der Startseite im Hero-
 Bild, nur auf der Kontaktseite inline im Content, dann eine Zwischenlösung
@@ -160,7 +167,7 @@ Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
 klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
 `index.html#projects` (bis 2026-09-01: `projects.html`) — bei neuen
 Projekt-Unterseiten dieses Pattern übernehmen, nicht wieder einen reinen
-Text-Eyebrow einbauen (2026-08-07). Bio/Dates/Projects/Contact als
+Text-Eyebrow einbauen (2026-08-07). Blog/Bio/Dates/Projects/Contact als
 Homepage-Sektionen behalten ihren normalen Text-Eyebrow.
 
 ## i18n (EN/DE/ES)
@@ -384,6 +391,38 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Blog ist jetzt auch eine Homepage-Sektion (`#blog`), als erstes direkt
+  nach dem Hero** (Leo: "füge die Seite Blog auch auf die Startseite hinzu,
+  wie die anderen Seiten, sie soll als erstes erscheinen"). Damit ist der
+  2026-09-01-Umbau konsequent zu Ende geführt — Blog war die letzte
+  verbliebene "echte" Extra-Seite. Umsetzung analog zu Bio/Termine/…:
+  - Neue `<section id="blog" class="home-section">` in `index.html` vor
+    `#bio`, mit den 2 bestehenden `.blog-post`-Artikeln (gleiche
+    i18n-Keys `blog.*`, keine neuen Keys nötig). Sektions-Titel `h2`,
+    Artikel-Titel von `h2` → `h3` heruntergestuft (Hierarchie unter dem
+    Sektions-`h2`), dafür `.blog-post h3` eine eigene Größe
+    `clamp(1.4rem,3vw,1.75rem)` in `style.css` gegeben (globales `h3` wäre
+    nur 1.2rem). `.blog-post h2`-Regeln um `h3` erweitert.
+  - `blog.html` → Redirect-Stub auf `index.html#blog` (wie bio.html etc.).
+  - Alle Nav-Links `href="blog.html"` → `index.html#blog` (bzw. `#blog` auf
+    index.html selbst), Desktop- + Mobile-Nav, alle 9 Seiten mit Header +
+    impressum/datenschutz.
+  - Alternierende Hintergründe neu ausgerichtet (blog weiß, bio grau, dates
+    weiß, projects grau, contact weiß) — `home-section--alt` bei bio+projects
+    ergänzt, bei dates+contact entfernt.
+  - **Nebeneffekt:** die Startseite lädt jetzt 2 youtube-nocookie-iframes
+    beim Laden (Jazzopen-Videos). Vorher hatte die Startseite 0 externe
+    Embeds. In `datenschutz.html` sind die YT-Embeds bereits generell
+    offengelegt; falls Leo die Startseite embed-frei halten will, wäre die
+    Option die Jazzopen-Videos nur zu verlinken statt einzubetten.
+  - Lokal verifiziert (Server auf :5173): Sektions-Reihenfolge
+    `#blog/#bio/#dates/#projects/#contact`, Nav (Desktop+Mobile) Blog zuerst,
+    i18n greift auf der Blog-Sektion (DE "Aktuelles" / "Das Debütalbum…"),
+    Redirect-Stub `blog.html` → `index.html#blog` inkl. Sprung zur Sektion,
+    kein horizontaler Overflow bei 375px, Video-Grid 1-spaltig mobil /
+    2-spaltig Desktop, Cover 416px, keine Konsolenfehler. Screenshot/Scroll
+    nach unten wie gewohnt unzuverlässig im Browser-Tool (YT-iframes) —
+    durchgehend per DOM/computed-style geprüft (2026-09-02)
 - **Große Umbauten am selben Tag (2026-09-01), chronologisch:**
   1. Neue erste Nav-Seite `blog.html` (Highlights/News/Alben) angelegt, s.
      "Seitenstruktur" oben. Nav-Link "Blog" per Skript in allen damals 13

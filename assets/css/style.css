@@ -422,16 +422,23 @@ main {
   margin-bottom: 0.75em;
 }
 
-.blog-post h2 {
+.blog-post h2,
+.blog-post h3 {
   margin-bottom: 0.5em;
 }
 
-.blog-post h2 a {
+.blog-post h3 {
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+}
+
+.blog-post h2 a,
+.blog-post h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.blog-post h2 a:hover {
+.blog-post h2 a:hover,
+.blog-post h3 a:hover {
   color: var(--accent-dark);
 }
 
