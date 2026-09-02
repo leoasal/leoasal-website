@@ -182,7 +182,8 @@ p { margin: 0 0 1em; }
 }
 
 .site-nav a:hover,
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current="page"],
+.site-nav a[aria-current="location"] {
   color: var(--accent-dark);
   border-color: var(--accent);
 }
@@ -265,7 +266,8 @@ p { margin: 0 0 1em; }
   border-top: 2px solid transparent;
 }
 
-.mobile-nav a[aria-current="page"] {
+.mobile-nav a[aria-current="page"],
+.mobile-nav a[aria-current="location"] {
   color: var(--accent-dark);
   border-top-color: var(--accent);
 }

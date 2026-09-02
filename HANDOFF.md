@@ -417,6 +417,22 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Scrollspy: Nav zeigt jetzt, wo man ist (2026-09-02).** Beim Scrollen
+  durch die Startseite bekommt der Nav-Link der aktuell sichtbaren Sektion
+  `aria-current="location"` — in Desktop- UND Mobile-Nav, gleicher
+  Accent-Look wie `aria-current="page"` auf den Projekt-Unterseiten
+  (CSS-Selektoren `.site-nav a` / `.mobile-nav a` um `[aria-current=
+  "location"]` erweitert). Logik am Ende von `assets/js/anchor-scroll.js`
+  (`evaluateSpy`): reiner Scroll-Listener + `getBoundingClientRect` (bewusst
+  **kein** IntersectionObserver — der feuert im hidden Preview-Tab dieser
+  Session gar nicht, Scroll-Listener schon; und die Logik ist so simpel
+  genug). "Aktuell" = die unterste Sektion, deren Oberkante über einer
+  Linie bei ~33% Viewport-Höhe liegt; ganz oben (Hero, `scrollY<40`) ist
+  nichts markiert, ganz unten immer die letzte Sektion (`#contact`).
+  Sektionen fest verdrahtet: `blog/bio/dates/projects/contact`. Lokal für
+  alle 5 Sektionen + oben/unten auf Mobile und Desktop verifiziert (im
+  Test `scroll`-Event manuell dispatchen, da `window.scrollTo` im Pane
+  keins auslöst).
 - **Mobiler Sprachumschalter in die Header-Leiste (2026-09-02):** Auf
   `<800px` sitzt EN/DE/ES jetzt permanent im Sticky-Header, mittig zwischen
   Logo und Social-Icons (`.lang-switch.lang-switch--mobile`, DOM-Position
@@ -575,6 +591,9 @@ statt iframe zeigen, iframe erst per Klick nachladen.
        **smooth** `scrollIntoView` — dadurch fühlt sich ein Nav-Klick
        genauso an wie manuelles Scrollen, wie von Leo gewünscht.
        (Dieser Teil ist unverändert.)
+     - **Scrollspy** (seit 2026-09-02, s. Eintrag oben): markiert beim
+       Scrollen den Nav-Link der sichtbaren Sektion mit
+       `aria-current="location"` (Desktop + Mobile).
      - Setzt nach dem Scrollen `tabindex="-1"` + Fokus aufs Zielelement,
        da das Abfangen der Klicks (für den Smooth-Scroll) sonst den
        nativen Fokus-Sprung verhindert hätte — wichtig für

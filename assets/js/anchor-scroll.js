@@ -76,4 +76,60 @@
     el.scrollIntoView({ block: "start", behavior: "smooth" });
     parkFocus(el);
   });
+
+  // ---- Scrollspy: mark the nav link for the section currently in view, so
+  //      you can always see where you are (desktop + mobile nav). ----
+  var spyIds = ["blog", "bio", "dates", "projects", "contact"];
+  var spySections = spyIds
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  if (spySections.length) {
+    var linksFor = {};
+    spySections.forEach(function (sec) {
+      linksFor[sec.id] = Array.prototype.slice.call(document.querySelectorAll(
+        '.site-nav a[href="#' + sec.id + '"], .mobile-nav a[href="#' + sec.id + '"]'
+      ));
+    });
+
+    var activeId;
+    function setActive(id) {
+      if (id === activeId) return;
+      activeId = id;
+      spySections.forEach(function (sec) {
+        var on = sec.id === id;
+        linksFor[sec.id].forEach(function (a) {
+          if (on) a.setAttribute("aria-current", "location");
+          else if (a.getAttribute("aria-current") === "location") a.removeAttribute("aria-current");
+        });
+      });
+    }
+
+    function evaluateSpy() {
+      // Nothing is "current" while the hero still fills the top of the view.
+      if (window.pageYOffset < 40) { setActive(null); return; }
+      // At the very bottom the last section counts even though it has
+      // scrolled above the reference line.
+      if (window.innerHeight + window.pageYOffset >=
+          document.documentElement.scrollHeight - 2) {
+        setActive(spyIds[spyIds.length - 1]);
+        return;
+      }
+      // Otherwise: the last section whose top has passed a line ~1/3 down
+      // the viewport is the one you're looking at.
+      var line = window.innerHeight * 0.33;
+      var current = spySections[0].id;
+      for (var i = 0; i < spySections.length; i++) {
+        if (spySections[i].getBoundingClientRect().top <= line) current = spySections[i].id;
+        else break;
+      }
+      setActive(current);
+    }
+
+    window.addEventListener("scroll", evaluateSpy, { passive: true });
+    window.addEventListener("resize", evaluateSpy, { passive: true });
+    window.addEventListener("load", evaluateSpy);
+    window.addEventListener("dates:rendered", evaluateSpy);
+    evaluateSpy();
+  }
 })();
