@@ -684,42 +684,12 @@ details.long-bio summary {
   padding: 1.1rem 0;
 }
 
-.dates-previous {
-  margin-top: 1.5rem;
-}
-
-.dates-previous > summary {
-  cursor: pointer;
-  list-style: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.6rem 1.5rem 0.6rem 0;
-  color: var(--plum);
-  font-weight: 600;
-  position: relative;
-}
-
-.dates-previous > summary::-webkit-details-marker {
-  display: none;
-}
-
-.dates-previous > summary::after {
-  content: "+";
-  position: absolute;
-  right: 0;
-  color: var(--accent-dark);
-  font-weight: 600;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.dates-previous[open] > summary::after {
-  content: "–";
-}
-
-/* "Show more" dates: a plain down-chevron directly below the last visible
-   date, expanding the rest inline (rotates to point up when open). */
-.dates-more > summary.dates-more-toggle {
+/* "Show more" (future) and "Previous dates" (past) both use a plain centred
+   chevron toggle instead of a text link: future dates sit BELOW the list
+   with a down-chevron, past dates sit ABOVE it with an up-chevron. Each
+   chevron rotates 180° when its own section is open (= collapse). */
+.dates-more > summary.dates-more-toggle,
+.dates-previous > summary.dates-previous-toggle {
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -730,11 +700,13 @@ details.long-bio summary {
   border-bottom: 1px solid var(--line);
 }
 
-.dates-more > summary.dates-more-toggle::-webkit-details-marker {
+.dates-more > summary.dates-more-toggle::-webkit-details-marker,
+.dates-previous > summary.dates-previous-toggle::-webkit-details-marker {
   display: none;
 }
 
-.dates-more > summary.dates-more-toggle svg {
+.dates-more > summary.dates-more-toggle svg,
+.dates-previous > summary.dates-previous-toggle svg {
   width: 1.6rem;
   height: 1.6rem;
   transition: transform 0.2s ease;
@@ -744,17 +716,22 @@ details.long-bio summary {
   transform: translateY(2px);
 }
 
-.dates-more[open] > summary.dates-more-toggle svg {
+.dates-previous > summary.dates-previous-toggle:hover svg {
+  transform: translateY(-2px);
+}
+
+.dates-more[open] > summary.dates-more-toggle svg,
+.dates-previous[open] > summary.dates-previous-toggle svg {
   transform: rotate(180deg);
 }
 
-.dates-more[open] > summary.dates-more-toggle:hover svg {
+.dates-more[open] > summary.dates-more-toggle:hover svg,
+.dates-previous[open] > summary.dates-previous-toggle:hover svg {
   transform: rotate(180deg) translateY(2px);
 }
 
 .dates-list--previous {
   opacity: 0.8;
-  margin-top: 0.5rem;
 }
 
 @media (max-width: 480px) {

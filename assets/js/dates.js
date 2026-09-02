@@ -31,8 +31,10 @@
       else previous.push(e);
     });
     upcoming.sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
-    // Most recent first, like a history/archive rather than a schedule.
-    previous.sort(function (a, b) { return new Date(b.start) - new Date(a.start); });
+    // Oldest first: the previous-dates list renders directly above the
+    // upcoming list, so ascending order flows chronologically straight into
+    // the next upcoming gig.
+    previous.sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
 
     if (upcoming.length === 0) {
       list.innerHTML = '<li class="dates-empty" data-i18n="dates.empty">No upcoming dates right now.</li>';

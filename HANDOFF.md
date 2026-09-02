@@ -219,12 +219,17 @@ Homepage-Sektionen behalten ihren normalen Text-Eyebrow.
 - **Vergangene Termine**: `sync-calendar.js` schreibt sie seit 2026-08-09
   mit in `data/dates.json` (vorher hart auf "Startdatum ≥ jetzt-1Tag"
   gefiltert). `dates.js` teilt beim Rendern in `upcoming`/`previous` auf;
-  `previous` (neuestes zuerst) landet als flache Liste in einem
-  eingeklappten `<details id="dates-previous">` / `<ul id="dates-list-
-  previous">` unter der normalen Liste, komplett versteckt wenn leer.
-  (Kurzzeitig gab es hier eine Gruppierung nach Jahr mit verschachtelten
-  `<details>` pro Jahr — auf Leos Wunsch am selben Tag wieder auf die
-  flache Liste zurückgebaut, falls das Bedürfnis nochmal aufkommt.) Der
+  `previous` (seit 2026-09-02 **älteste zuerst**, aufsteigend) landet als
+  flache Liste in einem eingeklappten `<details id="dates-previous">` /
+  `<ul id="dates-list-previous">`, das seit 2026-09-02 **oberhalb** der
+  normalen Liste sitzt (Aufklapp-Toggle = Aufwärts-Chevron über dem
+  nächsten anstehenden Termin, s. "Erledigt" 2026-09-02) — komplett
+  versteckt wenn leer. Aufsteigende Sortierung, damit die Liste beim
+  Aufklappen chronologisch direkt in den nächsten kommenden Termin
+  übergeht. (Kurzzeitig gab es hier eine Gruppierung nach Jahr mit
+  verschachtelten `<details>` pro Jahr — auf Leos Wunsch am selben Tag
+  wieder auf die flache Liste zurückgebaut, falls das Bedürfnis nochmal
+  aufkommt.) Der
   öffentliche `dates.ics`-Abo-Feed bleibt bewusst nur-zukünftig gefiltert
   (niemand will hunderte vergangene Konzerte in seiner Kalender-App).
 - `dates.json` wird **nur vom Workflow verwaltet** — nicht von Hand
@@ -422,18 +427,35 @@ statt iframe zeigen, iframe erst per Klick nachladen.
      `flex:1 1 12rem` + `margin:0`. Beide verlinken weiterhin auf
      yamuna.html (kein Lightbox auf der Startseite). Mobil stapeln sie
      full-width.
-  2. Der „Mehr anzeigen"/„Ver más"-Aufklapper der Termine-Sektion war Leo
-     als Text zu unauffällig — jetzt ein **reiner Abwärts-Chevron** (SVG,
-     zentriert, volle Breite) direkt unter dem letzten sichtbaren Termin,
-     der beim Öffnen um 180° dreht (zeigt dann nach oben = zuklappen).
-     `.dates-more` aus den geteilten `.dates-previous`-Summary-Regeln
-     herausgelöst und eigene `.dates-more-toggle`-Regeln bekommen; das
-     `„Mehr anzeigen"`-Label bleibt als `.visually-hidden`-Span erhalten
-     (neue a11y-Utility-Klasse in `style.css`, Screenreader/`i18nRefresh`
-     unverändert). „Vorherige Termine" behält bewusst seinen `+`/`–`-Look.
-     Funktional unverändert — `dates.js` togglet weiterhin nur
-     `#dates-more.hidden`. Lokal per DOM verifiziert (4 sichtbar / 22 im
-     Aufklapper, Chevron dreht bei `[open]`, kein Overflow bei 375px).
+  2. **Beide Termin-Aufklapper sind jetzt zentrierte Chevron-Toggles**
+     statt Text-Links (Leo fand "Mehr anzeigen"/"Ver más" zu unauffällig):
+     - **Kommende Termine über der 4er-Vorschau hinaus:** Abwärts-Chevron
+       (`.dates-more-toggle`, SVG-Pfad `M5 9l7 7 7-7`) **unter** der Liste,
+       klappt den Rest inline auf.
+     - **Vergangene Termine:** `#dates-previous` sitzt jetzt **oberhalb**
+       der kommenden Liste (vorher ganz unten), Toggle ist ein
+       **Aufwärts-Chevron** (`.dates-previous-toggle`, Pfad `M5 15l7-7 7 7`)
+       direkt über dem nächsten anstehenden Termin (Leos Wunsch: "über dem
+       Termin, der als nächstes kommt, ein Pfeil nach oben, um die
+       vorherigen Termine anzuzeigen"). `previous`-Sortierung dafür auf
+       **aufsteigend** (älteste zuerst) umgestellt, damit die Liste beim
+       Aufklappen chronologisch in den ersten kommenden Termin übergeht.
+     - Beide Chevrons drehen bei `[open]` um 180° (= zuklappen). Geteilte
+       CSS-Regeln für `.dates-more-toggle` + `.dates-previous-toggle`
+       (zentriert, volle Breite, `border-bottom`, `::-webkit-details-marker`
+       aus). Der alte `+`/`–`-Look von `.dates-previous > summary` ist weg.
+     - Beide Textlabels (`dates.showMore` / `dates.previous`) bleiben als
+       `.visually-hidden`-Span erhalten (a11y, `i18nRefresh` unverändert).
+     - `dates.js` togglet weiterhin nur `#dates-more.hidden` /
+       `#dates-previous.hidden` — reine Struktur-/CSS-Änderung.
+     - Lokal per DOM verifiziert: `#dates-previous` rendert oberhalb, fließt
+       chronologisch in den ersten kommenden Termin, Chevron-Pfade korrekt,
+       Toggle full-width + zentriert, kein Overflow bei 375px, keine
+       Konsolenfehler. Chevron-Rotation bei `[open]` ließ sich in der
+       0-Pixel-Preview-Pane dieser Session nicht messen (SVG-`transform`
+       rendert dort nicht — gleiche bekannte Einschränkung wie bei
+       Smooth-Scroll; Selektor greift nachweislich, in echten Browsern
+       Standardverhalten).
 - **Blog ist jetzt auch eine Homepage-Sektion (`#blog`), als erstes direkt
   nach dem Hero** (Leo: "füge die Seite Blog auch auf die Startseite hinzu,
   wie die anderen Seiten, sie soll als erstes erscheinen"). Damit ist der
