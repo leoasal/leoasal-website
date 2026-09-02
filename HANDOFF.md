@@ -131,28 +131,45 @@ impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusst
 
 Gemeinsames Muster pro Seite: Header mit Logo + Nav + Sprachumschalter,
 Content in `<main>`, `<nav class="mobile-nav">` (nur <800px sichtbar),
-Footer mit Impressum/Datenschutz/Sprachumschalter-Kopie fürs Handy. Neue
-Seiten am besten von einer bestehenden ähnlichen Seite kopieren statt neu
-aufbauen, damit nichts vergessen wird.
+Footer mit Impressum/Datenschutz + Copyright. Neue Seiten am besten von
+einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
+nichts vergessen wird.
 
 Header-Nav (ab `min-width: 800px`): `.site-nav` ist `display: flex`, Haupt-
 links (`ul`) und Sprachumschalter (`.lang-switch`) sitzen dadurch auf einer
 Zeile, Sprachumschalter rechtsbündig mit Trennstrich (2026-08-07, vorher
 stand der Umschalter darunter statt daneben).
 
-**Social-Icons sind Teil des Headers**: `.logo`, `.site-social` und
-`.site-nav` sind **direkte Flex-Geschwister** in `.site-header .container`
-(kein Wrapper-Div mehr — bewusst entfernt, siehe unten). `.container` ist
-`display:flex; justify-content:space-between` **immer** (nicht nur ab
-800px). Das ergibt automatisch:
-- **Mobil** (`.site-nav` ist `display:none`): nur 2 sichtbare Items →
-  Logo links, Icons rechts, Lücke dazwischen frei.
-- **Desktop** (`.site-nav` sichtbar): 3 Items → `space-between` verteilt
-  den Icons-Block **exakt mittig** in die Lücke zwischen Logo und "Blog"
-  (dem ersten Nav-Link, seit 2026-09-01 — vorher "Bio"). Das war explizit
-  so gewünscht — nicht wieder auf eine `.brand-group`-Wrapper-Lösung
-  umbauen, die zieht die Icons direkt neben den Logo-Text statt sie mittig
-  zu verteilen (2026-08-07).
+**Sprachumschalter (2026-09-02):** Es gibt jetzt ZWEI Kopien im Header,
+je nach Breite genau eine sichtbar:
+- `<800px`: `.lang-switch.lang-switch--mobile` — direktes Flex-Geschwister
+  von `.logo`/`.site-social`/`.site-nav` in `.site-header .container`,
+  steht im DOM zwischen `.logo` und `.site-social`. Da `.site-nav` mobil
+  `display:none` ist, verteilt `justify-content:space-between` die drei
+  sichtbaren Blöcke: Logo links, Sprachumschalter mittig, Social-Icons
+  rechts. `--mobile` entfernt nur `border-left`/`padding-left` der Basis-
+  `.lang-switch` und ist ab 800px `display:none`.
+- `≥800px`: die Kopie in `.site-nav` (rechtsbündig mit Trennstrich, s.o.);
+  `.lang-switch--mobile` ist dann ausgeblendet.
+- Der **frühere Footer-Umschalter `.mobile-lang-switch` ist ersatzlos weg**
+  (war redundant, jetzt permanent im Sticky-Header oben). i18n.js hört per
+  Event-Delegation auf jedes `[data-lang]`, also keine JS-Änderung nötig.
+- Impressum/Datenschutz haben **weiterhin gar keinen** Umschalter.
+
+**Social-Icons sind Teil des Headers**: `.logo`, `.lang-switch--mobile`,
+`.site-social` und `.site-nav` sind **direkte Flex-Geschwister** in
+`.site-header .container` (kein Wrapper-Div mehr — bewusst entfernt, siehe
+unten). `.container` ist `display:flex; justify-content:space-between`
+**immer** (nicht nur ab 800px). Das ergibt automatisch:
+- **Mobil** (`.site-nav` `display:none`, `.lang-switch--mobile` sichtbar):
+  3 sichtbare Items → Logo links, Sprachumschalter mittig, Icons rechts
+  (seit 2026-09-02; vorher nur Logo + Icons).
+- **Desktop** (`.site-nav` sichtbar, `.lang-switch--mobile` `display:none`):
+  3 Items → `space-between` verteilt den Icons-Block **exakt mittig** in
+  die Lücke zwischen Logo und "Blog" (dem ersten Nav-Link, seit 2026-09-01
+  — vorher "Bio"). Das war explizit so gewünscht — nicht wieder auf eine
+  `.brand-group`-Wrapper-Lösung umbauen, die zieht die Icons direkt neben
+  den Logo-Text statt sie mittig zu verteilen (2026-08-07).
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
 identisch in allen Seiten mit echtem Header (index.html, die 5
@@ -400,6 +417,16 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Mobiler Sprachumschalter in die Header-Leiste (2026-09-02):** Auf
+  `<800px` sitzt EN/DE/ES jetzt permanent im Sticky-Header, mittig zwischen
+  Logo und Social-Icons (`.lang-switch.lang-switch--mobile`, DOM-Position
+  zwischen `.logo` und `.site-social`, `space-between` verteilt die drei).
+  Der alte Footer-Umschalter `.mobile-lang-switch` ist ersatzlos entfernt
+  (aus allen 7 Seiten mit Header + aus `style.css`). Desktop unverändert
+  (nutzt weiter die Kopie in `.site-nav`). Details oben unter
+  "Seitenstruktur → Sprachumschalter". Lokal auf 375px + 1000px verifiziert
+  (mittig, gleichmäßige Abstände, kein Overflow, Klick schaltet + merkt
+  sich die Sprache, Impressum/Datenschutz weiterhin ohne Umschalter).
 - **Nachzieher am 2026-09-02 (mehrere Iterationen, hier der Endstand):**
   1. Blog-Sektion zeigt **beide** YAMUNA-Album-Cover (Front +
      `yamuna-album-back.jpg`) nebeneinander statt nur der Front — neuer

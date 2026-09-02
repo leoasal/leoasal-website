@@ -219,35 +219,23 @@ p { margin: 0 0 1em; }
   text-underline-offset: 3px;
 }
 
-.mobile-lang-switch {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.6rem 0 0.9rem;
+/* Mobile: the language switch sits in the header bar, between the logo and
+   the social icons (space-between spreads the three apart). Desktop uses
+   the copy inside .site-nav instead. */
+.lang-switch--mobile {
+  border-left: none;
+  padding-left: 0;
+  gap: 0.1rem;
 }
 
-.mobile-lang-switch button {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--plum);
+.lang-switch--mobile button {
+  font-size: 0.68rem;
+  padding: 0.3em 0.3em;
   opacity: 0.55;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.2em 0.4em;
-}
-
-.mobile-lang-switch button[aria-pressed="true"] {
-  opacity: 1;
-  color: var(--accent-dark);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 @media (min-width: 800px) {
-  .mobile-lang-switch { display: none; }
+  .lang-switch--mobile { display: none; }
 }
 
 /* Mobile bottom nav */
