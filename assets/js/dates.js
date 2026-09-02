@@ -66,6 +66,9 @@
     }
 
     if (window.i18nRefresh) window.i18nRefresh();
+    // Lets anchor-scroll.js wait for the list to stop growing before it
+    // settles on a #dates / #projects / #contact target.
+    window.dispatchEvent(new Event("dates:rendered"));
   }
 
   var ICON_PIN =

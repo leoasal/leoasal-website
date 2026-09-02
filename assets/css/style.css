@@ -684,12 +684,11 @@ details.long-bio summary {
   padding: 1.1rem 0;
 }
 
-/* "Show more" (future) and "Previous dates" (past) both use a plain centred
-   chevron toggle instead of a text link: future dates sit BELOW the list
-   with a down-chevron, past dates sit ABOVE it with an up-chevron. Each
-   chevron rotates 180° when its own section is open (= collapse). */
-.dates-more > summary.dates-more-toggle,
-.dates-previous > summary.dates-previous-toggle {
+/* One shared chevron toggle: "show more" future dates sit BELOW the list;
+   "previous dates" sit ABOVE it (--up flips the same chevron 180°),
+   identical in every other respect. Each rotates on [open] to point the
+   opposite way (= collapse). */
+.dates-toggle {
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -700,34 +699,30 @@ details.long-bio summary {
   border-bottom: 1px solid var(--line);
 }
 
-.dates-more > summary.dates-more-toggle::-webkit-details-marker,
-.dates-previous > summary.dates-previous-toggle::-webkit-details-marker {
+.dates-toggle::-webkit-details-marker {
   display: none;
 }
 
-.dates-more > summary.dates-more-toggle svg,
-.dates-previous > summary.dates-previous-toggle svg {
+.dates-toggle svg {
   width: 1.6rem;
   height: 1.6rem;
   transition: transform 0.2s ease;
 }
 
-.dates-more > summary.dates-more-toggle:hover svg {
-  transform: translateY(2px);
+.dates-toggle:hover {
+  color: var(--accent);
 }
 
-.dates-previous > summary.dates-previous-toggle:hover svg {
-  transform: translateY(-2px);
-}
-
-.dates-more[open] > summary.dates-more-toggle svg,
-.dates-previous[open] > summary.dates-previous-toggle svg {
+.dates-toggle--up svg {
   transform: rotate(180deg);
 }
 
-.dates-more[open] > summary.dates-more-toggle:hover svg,
-.dates-previous[open] > summary.dates-previous-toggle:hover svg {
-  transform: rotate(180deg) translateY(2px);
+.dates-more[open] > .dates-toggle svg {
+  transform: rotate(180deg);
+}
+
+.dates-previous[open] > .dates-toggle--up svg {
+  transform: rotate(0deg);
 }
 
 .dates-list--previous {

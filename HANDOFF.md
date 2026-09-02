@@ -398,64 +398,72 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
-- **Nachzieher am 2026-09-02:**
-  3. **Anker-Sprung bei Ankunft von einer Projekt-Unterseite war "hektisch"**
-     (die ganze Seite scrollte animiert von oben bis `#projects` runter) UND
-     **an jedem Farb-/Sektionswechsel erschien kurz eine blaue Linie, die
-     beim ersten Klick verschwand.** Beides waren Nebenwirkungen des
-     Anker-Scroll-Setups:
-     - Global `html { scroll-behavior: smooth }` (Zeile ~22 in `style.css`)
-       **entfernt**. Dadurch macht der Browser den Fragment-Sprung beim
-       Laden (`index.html#projects` etc.) wieder **instant** statt animiert.
-       In-Page-Nav-Klicks bleiben smooth — die Animation kommt aus
-       `anchor-scroll.js` via `scrollIntoView({behavior:"smooth"})`, nicht
-       aus dem CSS. `.epk-gallery--row` behält sein eigenes lokales
-       `scroll-behavior: smooth` (Foto-Karussell, unberührt).
-     - Die "blaue Linie" war der **UA-Fokusring**: `anchor-scroll.js` setzt
-       `tabindex="-1"` + `.focus()` aufs Zielelement (damit Tastatur-/
-       SR-Nutzer ihren Platz behalten). Bei den full-bleed `.home-section`s
-       las sich der Outline als farbiges Band am Sektionsrand. Neue Regel
-       `.home-section:focus, #main:focus { outline: none }` — Fokus wird
-       weiterhin geparkt (nur eben unsichtbar; diese Elemente sind nie in
-       der Tab-Reihenfolge, also kein Verlust für Tastaturnutzer).
-     - Der veraltete Debugging-Fund weiter unten ("`scroll-behavior: smooth`
-       neu global gesetzt") ist damit überholt — s. korrigierte Notiz dort.
-  1. Blog-Sektion zeigt jetzt **beide** YAMUNA-Album-Cover (Front +
+- **Nachzieher am 2026-09-02 (mehrere Iterationen, hier der Endstand):**
+  1. Blog-Sektion zeigt **beide** YAMUNA-Album-Cover (Front +
      `yamuna-album-back.jpg`) nebeneinander statt nur der Front — neuer
      Flex-Wrapper `.blog-post-covers` (`gap:1rem`, `max-width:34rem`,
      `flex-wrap:wrap`), die einzelnen `.blog-post-cover` bekommen darin
-     `flex:1 1 12rem` + `margin:0`. Beide verlinken weiterhin auf
-     yamuna.html (kein Lightbox auf der Startseite). Mobil stapeln sie
-     full-width.
-  2. **Beide Termin-Aufklapper sind jetzt zentrierte Chevron-Toggles**
-     statt Text-Links (Leo fand "Mehr anzeigen"/"Ver más" zu unauffällig):
-     - **Kommende Termine über der 4er-Vorschau hinaus:** Abwärts-Chevron
-       (`.dates-more-toggle`, SVG-Pfad `M5 9l7 7 7-7`) **unter** der Liste,
-       klappt den Rest inline auf.
+     `flex:1 1 12rem` + `margin:0`. Beide verlinken auf yamuna.html (kein
+     Lightbox auf der Startseite). Mobil stapeln sie full-width.
+  2. **Beide Termin-Aufklapper sind zentrierte Chevron-Toggles** statt
+     Text-Links (Leo fand "Mehr anzeigen"/"Ver más" zu unauffällig):
+     - **Kommende Termine über der 4er-Vorschau hinaus:** Chevron **unter**
+       der Liste, klappt den Rest inline auf.
      - **Vergangene Termine:** `#dates-previous` sitzt jetzt **oberhalb**
-       der kommenden Liste (vorher ganz unten), Toggle ist ein
-       **Aufwärts-Chevron** (`.dates-previous-toggle`, Pfad `M5 15l7-7 7 7`)
-       direkt über dem nächsten anstehenden Termin (Leos Wunsch: "über dem
-       Termin, der als nächstes kommt, ein Pfeil nach oben, um die
-       vorherigen Termine anzuzeigen"). `previous`-Sortierung dafür auf
-       **aufsteigend** (älteste zuerst) umgestellt, damit die Liste beim
-       Aufklappen chronologisch in den ersten kommenden Termin übergeht.
-     - Beide Chevrons drehen bei `[open]` um 180° (= zuklappen). Geteilte
-       CSS-Regeln für `.dates-more-toggle` + `.dates-previous-toggle`
-       (zentriert, volle Breite, `border-bottom`, `::-webkit-details-marker`
-       aus). Der alte `+`/`–`-Look von `.dates-previous > summary` ist weg.
-     - Beide Textlabels (`dates.showMore` / `dates.previous`) bleiben als
-       `.visually-hidden`-Span erhalten (a11y, `i18nRefresh` unverändert).
-     - `dates.js` togglet weiterhin nur `#dates-more.hidden` /
-       `#dates-previous.hidden` — reine Struktur-/CSS-Änderung.
-     - Lokal per DOM verifiziert: `#dates-previous` rendert oberhalb, fließt
-       chronologisch in den ersten kommenden Termin, Chevron-Pfade korrekt,
-       Toggle full-width + zentriert, kein Overflow bei 375px, keine
-       Konsolenfehler. Chevron-Rotation bei `[open]` ließ sich in der
-       0-Pixel-Preview-Pane dieser Session nicht messen (SVG-`transform`
-       rendert dort nicht — gleiche bekannte Einschränkung wie bei
-       Smooth-Scroll; Selektor greift nachweislich, in echten Browsern
-       Standardverhalten).
+       der kommenden Liste (vorher ganz unten), Toggle direkt über dem
+       nächsten anstehenden Termin (Leos Wunsch: "über dem Termin, der als
+       nächstes kommt, ein Pfeil nach oben"). `previous`-Sortierung dafür
+       auf **aufsteigend** (älteste zuerst) umgestellt, damit die Liste
+       beim Aufklappen chronologisch in den ersten kommenden Termin
+       übergeht.
+     - **Beide Toggles teilen sich EINE Klasse `.dates-toggle`** (Leo:
+       "das Design soll äquivalent sein zu dem Pfeil nach unten") — exakt
+       dasselbe SVG (Pfad `M5 9l7 7 7-7`, Abwärts-Chevron), identisches
+       Padding/Border/Größe/Farbe/Hover (`:hover → var(--accent)`). Der
+       Modifier `.dates-toggle--up` dreht bei "Vergangene Termine" nur das
+       SVG per `transform: rotate(180deg)` → zeigt nach oben. `[open]`
+       dreht jeweils in die Gegenrichtung (= zuklappen):
+       `.dates-more[open] .dates-toggle svg { rotate(180deg) }`,
+       `.dates-previous[open] .dates-toggle--up svg { rotate(0) }`. Der
+       alte `+`/`–`-Look und die getrennten
+       `.dates-more-toggle`/`.dates-previous-toggle`-Klassen sind weg.
+     - Textlabels (`dates.showMore` / `dates.previous`) bleiben als
+       `.visually-hidden`-Span (a11y, `i18nRefresh` unverändert). `dates.js`
+       togglet weiterhin nur `#dates-more.hidden` / `#dates-previous.hidden`.
+  3. **Übergang von einer Projekt-Unterseite zurück zur Startseite** (Klick
+     auf den `‹ Projects`-Back-Link → `index.html#projects`). War erst
+     "hektisch" (Browser smooth-scrollte die ganze Seite von oben runter),
+     dann nach dem ersten Fix "nicht smooth" (harter Sprung + kurzes
+     Aufblitzen des Seitenanfangs, plus Ziel wanderte, während die
+     Terminliste noch async nachrenderte). **Endstand in
+     `anchor-scroll.js`:** bei Ankunft mit `location.hash`
+     - sofort ~110px oberhalb der Zielsektion positionieren (kein
+       Seitenanfang-Blitz), und das per `requestAnimationFrame`-Schleife
+       durch jeden Layout-Shift halten;
+     - erst wenn `window.load` UND ein neues `dates:rendered`-Event (feuert
+       `dates.js` am Ende von `render()`) beide durch sind (Fallback
+       `setTimeout` 1200 ms), **einmal** die letzten ~110px per
+       `scrollIntoView({behavior:"smooth"})` sanft reingleiten — kurze,
+       gleichbleibende Bewegung statt Ganzseiten-Scroll.
+     - Bricht ab, sobald der Nutzer vorher selbst scrollt/tippt/tastet
+       (`wheel`/`touchstart`/`keydown`, `once`).
+     - In-Page-Nav-Klicks unverändert: direkt `scrollIntoView` smooth.
+     - `HEADER_OFFSET = 80` muss mit `scroll-margin-top` der
+       `.home-section` synchron bleiben.
+  - **Außerdem (Fix aus derselben Serie):** globales
+     `html { scroll-behavior: smooth }` ist **entfernt** (verursachte den
+     "hektischen" Browser-Auto-Scroll); die blaue "Trennlinie" an
+     Farbwechseln war der UA-Fokusring des von `anchor-scroll.js`
+     geparkten Fokus → `.home-section:focus, #main:focus { outline: none }`
+     (Fokus wird weiterhin geparkt, nur unsichtbar; die Sektionen sind nie
+     in der Tab-Reihenfolge). `.epk-gallery--row` behält sein lokales
+     `scroll-behavior: smooth`.
+  - Alles per DOM verifiziert (Chevron-Pfade/Rotation, Sektions-Reihenfolge,
+     Fokus-Parken, kein Overflow 375px, keine Konsolenfehler). Die
+     eigentlichen Scroll-/Transform-**Animationen** sind in der 0-Pixel-
+     Preview-Pane dieser Session nicht darstellbar (bekannte Einschränkung)
+     — Leo bitte live gegenchecken: (a) Chevron dreht beim Auf-/Zuklappen,
+     (b) Rücksprung von einer Projektseite gleitet sanft rein.
 - **Blog ist jetzt auch eine Homepage-Sektion (`#blog`), als erstes direkt
   nach dem Hero** (Leo: "füge die Seite Blog auch auf die Startseite hinzu,
   wie die anderen Seiten, sie soll als erstes erscheinen"). Damit ist der
@@ -519,13 +527,17 @@ statt iframe zeigen, iframe erst per Klick nachladen.
      `index.html` eingebunden) übernimmt das Scrollen zum Anker robust
      selbst, statt sich auf natives Browser-Verhalten zu verlassen:
      - Beim Laden mit vorhandenem `location.hash` (Ankunft über einen
-       Redirect-Stub oder einen Cross-Page-Nav-Klick): **sofortiger**
-       Sprung (`behavior:"instant"`, kein Smooth) nach 60ms Verzögerung
-       (Layout muss sich gesetzt haben).
+       Redirect-Stub oder einen Cross-Page-Nav-Klick): **VERALTETE
+       Beschreibung** — die Lade-Ankunft wurde am 2026-09-02 mehrfach
+       überarbeitet (instant-Sprung 60ms → dann "preposition + sanftes
+       Reingleiten der letzten 110px nach `load`+`dates:rendered`"). Der
+       **aktuelle Stand** steht im 2026-09-02-Eintrag oben, Punkt 3 —
+       dort nachlesen, nicht hier.
      - Bei Klick auf einen `a[href^="#"]`-Link während man bereits auf der
        Seite ist: `preventDefault`, `history.pushState`, dann
        **smooth** `scrollIntoView` — dadurch fühlt sich ein Nav-Klick
        genauso an wie manuelles Scrollen, wie von Leo gewünscht.
+       (Dieser Teil ist unverändert.)
      - Setzt nach dem Scrollen `tabindex="-1"` + Fokus aufs Zielelement,
        da das Abfangen der Klicks (für den Smooth-Scroll) sonst den
        nativen Fokus-Sprung verhindert hätte — wichtig für
