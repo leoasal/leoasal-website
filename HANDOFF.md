@@ -487,6 +487,15 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   - Neue Caption-Styles `.discography-item`/`.discography-title`/
     `.discography-year` (Titel in `--font-display`, Jahr klein/gedimmt,
     analog zu `.project-card h3`/`.subtitle`).
+  - **Nachzieher (Leo, selber Tag):** "mehr Abstand zwischen den Abschnitten"
+    — `.epk-covers` selbst trägt **kein** Margin (steckt auch in
+    `.epk-hero` auf Yamuna/Härtel-Asal, das über Flex-`gap` spacet), dadurch
+    saß der neue Cover-Block ohne jeden Abstand direkt vor der
+    "Photos"-Überschrift. Fix: `.discography { margin: 2rem 0 2.5rem }` —
+    **nur** auf die neue `.discography`-Klasse, nicht auf `.epk-covers`
+    selbst, damit Yamuna/Härtel-Asal unangetastet bleiben. Passt die
+    Rhythmik jetzt an `.epk-gallery`s bestehendes `margin: 2rem 0` an (eher
+    noch etwas großzügiger unten Richtung "Photos").
   - Neuer geteilter i18n-Key `project.releasesHeading` (wie
     `project.photosHeading`/`project.videosHeading`, für künftige
     Discography-Sektionen auf anderen Projektseiten wiederverwendbar) in

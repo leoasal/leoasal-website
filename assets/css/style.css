@@ -899,7 +899,14 @@ a.project-card:hover {
 }
 
 /* Discography: reuses .epk-covers for the grid/lightbox-grouping, adds a
-   title + year caption under each release. */
+   title + year caption under each release. .epk-covers itself carries no
+   margin (it also lives inside .epk-hero, which spaces via flex gap) —
+   .discography adds its own so the section doesn't sit flush against the
+   heading above and "Photos" below, matching .epk-gallery's rhythm. */
+.discography {
+  margin: 2rem 0 2.5rem;
+}
+
 .discography-item {
   margin: 0;
 }
