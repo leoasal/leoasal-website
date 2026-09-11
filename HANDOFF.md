@@ -131,7 +131,10 @@ yamuna.html                   YAMUNA (nicht mehr "YAMUNA EPK"): eigene Überschr
 jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
                                `.project-link`) + 5 YouTube-Videos
 jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
-                               5 Fotos als Farbgalerie + 3 YouTube-Videos
+                               "Releases"-Sektion (2 Alben: „All the Others" 2025, „Opening"
+                               2023, Cover als `.discography`/`.epk-covers`-Grid, s.
+                               "Erledigt") + 4 Fotos als Farbgalerie + 3 YouTube-Videos
+                               (Fotoanzahl korrigiert, war fälschlich als 5 dokumentiert)
 haertel-asal-duo.html         Album-Block oben ("Out now" + Cover + 4 Fotos daneben als
                                2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link
                                darunter), dann Beschreibung + 4 YouTube-Videos
@@ -460,6 +463,44 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Jakob-Bänsch-Quartett-Seite: neue "Releases"-Sektion (2026-09-11).**
+  Zwei Alben-Cover zwischen der Beschreibung/dem Domain-Link und "Photos"
+  eingefügt — „All the Others" (2025, zuerst) und „Opening" (2023, ihr
+  Debütalbum, im Beschreibungstext schon erwähnt). Cover kamen als
+  Bild-Anhänge direkt im Chat (keine Datei mit höherer Auflösung in Leos
+  iCloud-Projektordner gefunden, `Jakob Bänsch`-Ordner enthält nur
+  Studio-/Live-Fotos und Rohmixe, keine fertigen Cover) — aus dem
+  Session-Transcript extrahiert (Base64 im JSONL) und unverändert
+  (1155×1035, kein manueller Crop, da unklar ob das Cover-Design bewusst
+  leicht nicht-quadratisch ist und ein Crop Text hätte anschneiden können)
+  als `assets/images/baensch-album-all-the-others.jpg` /
+  `-opening.jpg` gespeichert.
+  - Markup: `<div class="discography epk-covers">` mit zwei
+    `<figure class="discography-item">` (je `.cover-trigger` +
+    `<figcaption>` mit Titel/Jahr). Die zusätzliche `epk-covers`-Klasse ist
+    **notwendig, nicht kosmetisch** — `lightbox.js` gruppiert Lightbox-
+    Geschwister nur innerhalb des nächsten `.epk-gallery`/`.epk-covers`-
+    Vorfahren; ohne die Klasse hätte ein Klick auf ein Cover **alle**
+    `[data-lightbox]`-Elemente der Seite gruppiert (inkl. der 4 unabhängigen
+    Fotos weiter unten) statt nur die 2 Cover. Lokal verifiziert: Lightbox
+    zeigt nur die 2 Cover im Karussell, nicht die Fotogalerie.
+  - Neue Caption-Styles `.discography-item`/`.discography-title`/
+    `.discography-year` (Titel in `--font-display`, Jahr klein/gedimmt,
+    analog zu `.project-card h3`/`.subtitle`).
+  - Neuer geteilter i18n-Key `project.releasesHeading` (wie
+    `project.photosHeading`/`project.videosHeading`, für künftige
+    Discography-Sektionen auf anderen Projektseiten wiederverwendbar) in
+    allen 3 Sprachen.
+  - Dabei aufgefallen und mitkorrigiert: Die Tabelle unten unter
+    "Seitenstruktur" hatte für diese Seite "5 Fotos" stehen, tatsächlich
+    sind es 4 (seit dem 2026-08-10-Umbau) — Dokufehler behoben.
+  - Lokal verifiziert (Desktop 1000px + Mobile 375px): 2-spaltiges Grid,
+    Cover laden (200 OK, korrekte Byte-Größen), Caption/Jahr korrekt,
+    i18n-Heading in DE/ES übersetzt, kein horizontaler Overflow, Lightbox-
+    Gruppierung isoliert. Screenshot nach `scrollIntoView` zunächst leere
+    Platzhalter-Boxen (bekannter Render-Bug dieser Preview-Pane nach
+    Scroll-Aktionen) — nach `scrollTo(0,0)` + erneutem `scrollIntoView`
+    rendert es korrekt, beide Cover sichtbar.
 - **Website- und Kalender-Agent zusammengeführt (2026-09-02).** Auf Leos
   Wunsch gibt es nur noch **einen** leoasal.com-Agenten für beide Aufgaben
   (Website-Code + "Website Termine"-Kalenderpflege). Handoffs

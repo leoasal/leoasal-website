@@ -898,6 +898,30 @@ a.project-card:hover {
   height: 100%;
 }
 
+/* Discography: reuses .epk-covers for the grid/lightbox-grouping, adds a
+   title + year caption under each release. */
+.discography-item {
+  margin: 0;
+}
+
+.discography-item figcaption {
+  margin-top: 0.6rem;
+}
+
+.discography-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.discography-year {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--plum);
+  opacity: 0.7;
+}
+
 .cover-trigger {
   display: block;
   width: 100%;
