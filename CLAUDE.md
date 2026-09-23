@@ -129,16 +129,16 @@ blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#
 dates.html, projects.html,    #projects/#contact (s. Architektur-Hinweis oben) — kein echter
 contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
 yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben, dann
-                               Album-Block ("Out now" + Front-/Back-Cover, beide als Lightbox
-                               anklickbar, "Listen/Buy Vinyl" UNTER den Covern, grauer
-                               `.epk-hero`-Hintergrund). Danach alternierende
-                               `.home-section`/`.home-section--alt`-Bänder (s. "Alternierende
-                               Sektions-Hintergründe" unten), Reihenfolge: **"The Making of
-                               the Album Cover"** (weiß, 2026-09-23 direkt unter den
-                               Album-Block verschoben — 2 Fotos + 2 stumme Boomerang-Loop-
-                               Videos vom Cover-Entstehungsprozess, Gemälde von Estelle
-                               Müller, s. "Cover-Making-of-Galerie" unten) → Beschreibung
-                               (grau) → Pressefotos (weiß) → Videos (grau) → Downloads (weiß)
+                               (2026-09-23) **Beschreibung direkt unter dem Titel** (weiß, s.
+                               "Infotext zuerst" unten) → Album-Block ("Out now" +
+                               Front-/Back-Cover, beide als Lightbox anklickbar, "Listen/Buy
+                               Vinyl" UNTER den Covern, grauer `.epk-hero`-Hintergrund).
+                               Danach alternierende `.home-section`/`.home-section--alt`-
+                               Bänder (s. "Alternierende Sektions-Hintergründe" unten):
+                               **"The Making of the Album Cover"** (weiß — 2 Fotos + 2 stumme
+                               Boomerang-Loop-Videos vom Cover-Entstehungsprozess, Gemälde von
+                               Estelle Müller, s. "Cover-Making-of-Galerie" unten) →
+                               Pressefotos (grau) → Videos (weiß) → Downloads (grau)
 jakob-manz-project.html       Alternierende Bänder: Beschreibung + kleiner Icon+Domain-Link
                                (jakobmanz.de, `.project-link`) (weiß) → 5 YouTube-Videos (grau)
 jakob-baensch-quartett.html   Alternierende Bänder: Beschreibung + Icon+Domain-Link
@@ -146,10 +146,11 @@ jakob-baensch-quartett.html   Alternierende Bänder: Beschreibung + Icon+Domain-
                                the Others" 2025, „Opening" 2023, Cover als
                                `.discography`/`.epk-covers`-Grid) (grau) → 4 Fotos als
                                Farbgalerie (weiß) → 3 YouTube-Videos (grau)
-haertel-asal-duo.html         Album-Block oben ("Out now" + Cover + 4 Fotos daneben als
-                               2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link darunter,
-                               grauer `.epk-hero`-Hintergrund). Danach alternierend:
-                               Beschreibung (weiß) → 4 Fotos (grau) → 4 YouTube-Videos (weiß)
+haertel-asal-duo.html         (2026-09-23) Beschreibung direkt unter dem Titel (weiß, s.
+                               "Infotext zuerst" unten) → Album-Block ("Out now" + Cover +
+                               4 Fotos daneben als 2x2-Grid, alle klickbar via Lightbox,
+                               "Buy CD"-Link darunter, grauer `.epk-hero`-Hintergrund).
+                               Danach alternierend: 4 Fotos (weiß) → 4 YouTube-Videos (grau)
 ketzberg.html                 Alternierende Bänder: Beschreibung + Icon+Domain-Link
                                (ketzberg.com) (weiß) → 5 Bandfotos als Graustufen-Galerie
                                (grau) → 7 YouTube-Videos (weiß)
@@ -164,6 +165,17 @@ contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Hea
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
+
+**Infotext zuerst (2026-09-23):** Hat ein Projekt einen beschreibenden
+Fließtext (Bandbeschreibung/Bio-Absatz), steht der **immer als allererstes
+Band direkt unter dem Seitentitel** (`.page-header`), noch vor einem
+eventuellen Album-Block (`.epk-hero`) — nicht erst irgendwo weiter unten.
+Bei jakob-manz-project.html/jakob-baensch-quartett.html/ketzberg.html/
+loft-arts.html war das schon immer so (kein `.epk-hero` auf diesen Seiten).
+Bei yamuna.html und haertel-asal-duo.html (die einen Album-Block haben)
+wurde die Beschreibung dafür 2026-09-23 von weiter unten auf der Seite
+direkt vor den Album-Block verschoben. Bei neuen Projektseiten mit
+Beschreibungstext dieses Muster übernehmen.
 
 **Alternierende Sektions-Hintergründe auf Projekt-Unterseiten (2026-09-23):**
 Leo wollte "die einzelnen Punkte" jeder Projektseite genauso weiß/grau
