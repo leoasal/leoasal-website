@@ -929,31 +929,15 @@ a.project-card:hover {
   opacity: 0.7;
 }
 
-/* Cover-making-of process grid (Yamuna): mixes photos and short muted,
-   looping local videos, always 2 columns (like .epk-covers itself, e.g.
-   front/back album cover above) so it reads the same on mobile and
-   desktop instead of reflowing to 1 or 4 per row. Reuses .epk-covers only
-   for lightbox grouping of the photos (see lightbox.js) — the grid layout
-   here is its own, not the shared one. */
-.process-grid.epk-covers {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  max-width: 34rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
+/* Cover-making-of process gallery (Yamuna): mixes photos and short, muted,
+   looping local videos in a plain .epk-gallery — "like the other gallery"
+   (same responsive grid/row behaviour as the Photos section) rather than a
+   bespoke layout. .epk-gallery--color is required here (the base
+   .epk-gallery forces grayscale) since these are full-colour process shots.
+   Each item keeps its own caption underneath via a wrapping <figure>. */
 .process-item {
   margin: 0;
-}
-
-.process-item video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 4px;
-  background: var(--bg-soft);
+  min-width: 0;
 }
 
 .process-caption {
@@ -962,6 +946,19 @@ a.project-card:hover {
   font-size: 0.82rem;
   color: var(--plum);
   opacity: 0.75;
+}
+
+.cover-trigger video {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.cover-trigger:hover video,
+.cover-trigger:focus-visible video {
+  transform: scale(1.06);
 }
 
 .cover-trigger {

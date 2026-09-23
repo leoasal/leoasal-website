@@ -4,7 +4,6 @@
   var index = 0;
   var ANIM_MS = 300;
   var track = null;
-  var slideImgs = [];
   var stageWidth = 0;
   var dragStartX = null;
   var dragStartY = null;
@@ -22,9 +21,9 @@
       '<div class="lightbox-content">' +
       '<div class="lightbox-stage">' +
       '<div class="lightbox-track">' +
-      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
-      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
-      '<div class="lightbox-slide"><img class="lightbox-img" alt=""></div>' +
+      '<div class="lightbox-slide"></div>' +
+      '<div class="lightbox-slide"></div>' +
+      '<div class="lightbox-slide"></div>' +
       "</div>" +
       "</div>" +
       '<p class="lightbox-credit" hidden></p>' +
@@ -34,7 +33,6 @@
     document.body.appendChild(overlay);
 
     track = overlay.querySelector(".lightbox-track");
-    slideImgs = Array.prototype.slice.call(overlay.querySelectorAll(".lightbox-img"));
 
     overlay.addEventListener("click", function (e) {
       if (e.target.closest(".lightbox-prev")) {
@@ -128,12 +126,46 @@
     }, ANIM_MS);
   }
 
+  // Video items (data-lightbox-video) only get real playback in the centered
+  // slide (offset 0) — side slides always show the poster (data-lightbox-poster)
+  // as a plain image, same as everything else. Keeps the swipe/drag mechanics
+  // below untouched (they only ever animate <img>-shaped content) and avoids
+  // autoplaying an off-screen video during the transition.
   function fillSlide(i, offset) {
-    var img = slideImgs[offset + 1];
+    var slide = overlay.querySelectorAll(".lightbox-slide")[offset + 1];
     var trigger = items[(i + offset + items.length * 2) % items.length];
     var triggerImg = trigger.tagName === "IMG" ? trigger : trigger.querySelector("img");
-    img.src = trigger.getAttribute("data-lightbox");
-    img.alt = triggerImg ? triggerImg.alt : "";
+    var isVideo = trigger.hasAttribute("data-lightbox-video");
+    var playVideo = isVideo && offset === 0;
+    var src = playVideo
+      ? trigger.getAttribute("data-lightbox")
+      : isVideo
+      ? trigger.getAttribute("data-lightbox-poster")
+      : trigger.getAttribute("data-lightbox");
+    var alt = triggerImg ? triggerImg.alt : "";
+
+    var wantTag = playVideo ? "VIDEO" : "IMG";
+    var el = slide.firstElementChild;
+    if (!el || el.tagName !== wantTag) {
+      slide.innerHTML = "";
+      el = document.createElement(playVideo ? "video" : "img");
+      el.className = "lightbox-img";
+      if (playVideo) {
+        el.muted = true;
+        el.loop = true;
+        el.playsInline = true;
+        el.autoplay = true;
+      }
+      slide.appendChild(el);
+    }
+    if (playVideo) {
+      el.setAttribute("aria-label", alt);
+    } else {
+      el.alt = alt;
+    }
+    if (el.getAttribute("src") !== src) {
+      el.src = src;
+    }
   }
 
   function renderSlides() {
@@ -204,6 +236,8 @@
     if (!overlay) return;
     overlay.classList.remove("is-open");
     document.body.style.overflow = "";
+    var video = overlay.querySelector(".lightbox-slide video");
+    if (video) video.pause();
     if (items[index]) {
       items[index].scrollIntoView({ block: "nearest", inline: "nearest" });
     }

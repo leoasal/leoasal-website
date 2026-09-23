@@ -5,6 +5,62 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Cover-Galerie überarbeitet + Video-Lightbox + alternierende Sektions-
+  Hintergründe auf allen 6 Projekt-Unterseiten (2026-09-23, Folge-Session
+  zum Making-of-Cover-Feature).** Leo wollte vier Dinge:
+  1. Beim Anklicken von Foto **und** Video die Bildunterschrift auch in der
+     Großansicht sehen.
+  2. Die Cover-Galerie "in einer Reihe, wie die andere Galerie".
+  3. Die ganze Sektion vor den Beschreibungstext, direkt unters
+     Album-Announcement.
+  4. Alle "Punkte" der Seite weiß/grau unterlegt wie auf der Startseite —
+     per Folgeanfrage auch auf den anderen 5 Projektseiten.
+  Umsetzung:
+  - **Cover-Galerie ist jetzt eine normale `.epk-gallery.epk-gallery--color`**
+    statt eines bespoke `.process-grid` — dadurch automatisch dasselbe
+    responsive Verhalten wie die Photos-Sektion (2/4 Spalten, ab >4 Fotos
+    Row+Pfeile). `min-width:0` auf `.process-item` ergänzt (sonst verzerrt
+    ein `<video>`-Kind die Grid-Spalten ungleich — echter, wenn auch
+    kleiner CSS-Grid-Fallstrick, nicht nur ein Artefakt der 0-Pixel-
+    Preview-Pane dieser Session).
+  - **`lightbox.js` unterstützt jetzt Video-Slides** (`data-lightbox-video`
+    + `data-lightbox-poster`): der zentrierte Slide eines Video-Triggers
+    spielt echtes `<video autoplay muted loop playsinline>`, die
+    Nachbar-Slides zeigen weiterhin nur das Poster-Bild (kein zweites,
+    unsichtbares Video, keine Änderung an der Swipe-Mechanik). `close()`
+    pausiert ein laufendes Video. Rückwärtskompatibel — jede andere
+    Galerie auf der Seite verhält sich unverändert (verifiziert an Yamuna-
+    Pressefotos + Bänsch-Discography/-Photos).
+  - **Bildunterschrift = Lightbox-Credit:** jeder Trigger bekommt
+    `data-credit` + `data-i18n-attr="data-credit:<key>"`, sodass die
+    Lightbox dieselbe (übersetzte) Unterschrift zeigt wie das Grid darunter.
+  - **Reihenfolge geändert:** "The Making of the Album Cover" (umbenannt
+    von "The Making of the Cover", Leos Wunsch) sitzt jetzt direkt nach dem
+    `.epk-hero`-Album-Block, **vor** der YAMUNA-Beschreibung.
+  - **Alternierende `.home-section`/`.home-section--alt`-Bänder** (exakt
+    das Homepage-Pattern) um jeden inhaltlichen Block auf **allen 6**
+    Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
+    Ketzberg, Loft Arts) gelegt — der obere Seiten-Header (Zurück-Link + h1)
+    bleibt außerhalb, unverändert. Details/Reihenfolge pro Seite in
+    `CLAUDE.md` unter "Seitenstruktur"/"Alternierende Sektions-
+    Hintergründe".
+  - **Wichtiger Debugging-Fund dieser Session:** Das Browser-Test-Tool
+    cachte `assets/js/lightbox.js` hartnäckig über mehrere
+    `location.reload()`/`navigate()`-Aufrufe hinweg, obwohl der Server per
+    `fetch(..., {cache:'no-store'})` nachweislich schon den neuen Code
+    auslieferte — führte kurzzeitig zur Fehldiagnose "Video-Support
+    funktioniert nicht". Workaround (`?t=2`-Query-String am Script-Tag,
+    danach wieder entfernt) und Notiz dazu in `CLAUDE.md` unter "Bekannte
+    Eigenheiten", damit das nicht nochmal Zeit kostet.
+  - Lokal ausführlich verifiziert (Desktop 1000px + Mobile 375px, jeweils
+    frisch navigiert wegen des Cache-Fundes): Sektionsreihenfolge + weiß/
+    grau-Alternation auf allen 6 Seiten, Cover-Galerie 2x2 mobil / 4-in-
+    einer-Reihe Desktop, komplettes Durchklicken aller 4 Cover-Elemente in
+    der Lightbox (Foto→Video→Foto→Video, jeweils korrekte Unterschrift),
+    Video pausiert beim Schließen, keine Regression auf bestehenden reinen
+    Foto-Galerien (Yamuna-Pressefotos, Bänsch-Discography/-Photos,
+    Loft-Arts-Row-Galerie mit Pfeil-Nav), kein horizontaler Overflow,
+    keine Konsolenfehler.
 - **YAMUNA-Seite: neue Sektion "The Making of the Cover" (2026-09-23).**
   Leo hat 2 Fotos + 2 Videos aus dem Entstehungsprozess des Albumcovers in
   den Projektordner hochgeladen (Cover ist eigentlich ein Gemälde der

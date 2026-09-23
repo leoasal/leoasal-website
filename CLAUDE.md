@@ -128,33 +128,59 @@ index.html                    Startseite: Hero (Foto + Name), danach direkt im A
 blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#dates/
 dates.html, projects.html,    #projects/#contact (s. Architektur-Hinweis oben) — kein echter
 contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
-yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben,
-                               dann Album-Block ("Out now" + Front-/Back-Cover, beide als
-                               Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
-                               dann Beschreibung, **"The Making of the Cover"** (2026-09-23:
-                               2 Fotos + 2 stumme Loop-Videos vom Cover-Entstehungsprozess,
-                               s. "Process-Grid-Pattern" unten), Pressefotos, Videos, Downloads
-jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
-                               `.project-link`) + 5 YouTube-Videos
-jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
-                               "Releases"-Sektion (2 Alben: „All the Others" 2025, „Opening"
-                               2023, Cover als `.discography`/`.epk-covers`-Grid) + 4 Fotos
-                               als Farbgalerie + 3 YouTube-Videos
+yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben, dann
+                               Album-Block ("Out now" + Front-/Back-Cover, beide als Lightbox
+                               anklickbar, "Listen/Buy Vinyl" UNTER den Covern, grauer
+                               `.epk-hero`-Hintergrund). Danach alternierende
+                               `.home-section`/`.home-section--alt`-Bänder (s. "Alternierende
+                               Sektions-Hintergründe" unten), Reihenfolge: **"The Making of
+                               the Album Cover"** (weiß, 2026-09-23 direkt unter den
+                               Album-Block verschoben — 2 Fotos + 2 stumme Boomerang-Loop-
+                               Videos vom Cover-Entstehungsprozess, Gemälde von Estelle
+                               Müller, s. "Cover-Making-of-Galerie" unten) → Beschreibung
+                               (grau) → Pressefotos (weiß) → Videos (grau) → Downloads (weiß)
+jakob-manz-project.html       Alternierende Bänder: Beschreibung + kleiner Icon+Domain-Link
+                               (jakobmanz.de, `.project-link`) (weiß) → 5 YouTube-Videos (grau)
+jakob-baensch-quartett.html   Alternierende Bänder: Beschreibung + Icon+Domain-Link
+                               (jakobbaensch.com) (weiß) → "Releases"-Sektion (2 Alben: „All
+                               the Others" 2025, „Opening" 2023, Cover als
+                               `.discography`/`.epk-covers`-Grid) (grau) → 4 Fotos als
+                               Farbgalerie (weiß) → 3 YouTube-Videos (grau)
 haertel-asal-duo.html         Album-Block oben ("Out now" + Cover + 4 Fotos daneben als
-                               2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link
-                               darunter), dann Beschreibung + 4 YouTube-Videos
-ketzberg.html                 Beschreibung + kleiner Icon+Domain-Link (ketzberg.com) +
-                               5 Bandfotos als Graustufen-Galerie + 7 YouTube-Videos
-loft-arts.html                Echter Beschreibungstext (Agentur-Info + Leos Rolle als
-                               Schlagzeuger/Musical Director) + Icon+Domain-Link
-                               (loft-arts.com) + 12 YouTube-Videos (Reihenfolge: 4x
-                               Megaloh, Novaa, Teesy, MAJAN, Woodie Smalls, OG Keemo,
-                               Lostboi Lino, Buffala, Joshua J)
+                               2x2-Grid, alle klickbar via Lightbox, "Buy CD"-Link darunter,
+                               grauer `.epk-hero`-Hintergrund). Danach alternierend:
+                               Beschreibung (weiß) → 4 Fotos (grau) → 4 YouTube-Videos (weiß)
+ketzberg.html                 Alternierende Bänder: Beschreibung + Icon+Domain-Link
+                               (ketzberg.com) (weiß) → 5 Bandfotos als Graustufen-Galerie
+                               (grau) → 7 YouTube-Videos (weiß)
+loft-arts.html                Alternierende Bänder: echter Beschreibungstext (Agentur-Info +
+                               Leos Rolle als Schlagzeuger/Musical Director) + Icon+Domain-Link
+                               (loft-arts.com) (weiß) → 7 Fotos (grau, >4 Fotos → automatisch
+                               `.epk-gallery--row` mit Pfeil-Nav) → 12 YouTube-Videos (weiß,
+                               Reihenfolge: 4x Megaloh, Novaa, Teesy, MAJAN, Woodie Smalls,
+                               OG Keemo, Lostboi Lino, Buffala, Joshua J)
 contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
                                nicht mehr extra auf dieser Seite
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
+
+**Alternierende Sektions-Hintergründe auf Projekt-Unterseiten (2026-09-23):**
+Leo wollte "die einzelnen Punkte" jeder Projektseite genauso weiß/grau
+unterlegt sehen wie die Homepage-Sektionen. Jeder inhaltliche Block (jede
+Beschreibung, jedes `<h2>`-Kapitel: Releases/Photos/Videos/Downloads) steckt
+jetzt in einem eigenen `<section class="home-section">` bzw.
+`<section class="home-section home-section--alt">` mit eigenem
+`<div class="container">` darin — exakt dieselben Klassen wie auf der
+Homepage, alternierend weiß/grau, erstes Band nach einem `.epk-hero`
+(falls vorhanden) ist weiß. Der **obere Seiten-Header** (Zurück-Link + h1,
+ggf. + Social-Icons) bleibt **außerhalb** jeder Sektion, unverändert in
+seinem eigenen `<div class="container">` — analog zum Hero-Foto auf der
+Homepage, das auch kein `.home-section` ist. Bei neuen Projektseiten
+dieses Muster übernehmen: pro inhaltlichem Block eine eigene
+`<section class="home-section[ home-section--alt]"><div class="container">
+…</div></section>`, alternierend, nicht wieder alles in einen
+gemeinsamen `<div class="container">` packen.
 
 Gemeinsames Muster pro Seite: Header mit Logo + Nav + Sprachumschalter,
 Content in `<main>`, `<nav class="mobile-nav">` (nur <800px sichtbar),
@@ -204,8 +230,8 @@ Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths).
 
-Die 5 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
-Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
+Die 6 Projekt-Unterseiten (Yamuna, Jakob Manz, Jakob Bänsch, Härtel/Asal,
+Ketzberg, Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes einen
 klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
 `index.html#projects` — bei neuen Projekt-Unterseiten dieses Pattern
 übernehmen, nicht wieder einen reinen Text-Eyebrow einbauen. Blog/Bio/
@@ -222,21 +248,47 @@ würde ein Klick **alle** `[data-lightbox]`-Elemente der Seite gruppieren.
 `.discography` selbst trägt eigenes Margin (`.epk-covers` hat keins, weil
 es auch in `.epk-hero` steckt, das per Flex-`gap` spaced).
 
-**Process-Grid-Pattern** (Yamuna "The Making of the Cover", erstmals
-2026-09-23): mischt Fotos und kurze, stumme Loop-Videos in einem
-`<div class="process-grid epk-covers">` (immer 2 Spalten fest per
-`grid-template-columns: repeat(2, 1fr)`, **kein** Flex-Wrap — das reflowt
-sonst je nach Breite zu 1 oder 4 Spalten). Gleiches `epk-covers`-Prinzip
-wie beim Discography-Pattern: Klasse nur fürs Lightbox-Grouping der Fotos
-(`<button class="cover-trigger" data-lightbox="...">`), Layout kommt von
-`.process-grid` selbst. Videos sind lokale `<video autoplay muted loop
-playsinline poster="...">`-Elemente (kein YouTube-Iframe, kein
-`.video-embed`/`.video-grid` — die sind für 16:9-Embeds, hier ist alles
-quadratisch wie die Fotos). **Boomerang-Loop-Technik:** Quellvideos (meist
-Handy-Clips, z.B. WhatsApp-Export mit Ton) werden mit ffmpeg
-vorwärts+rückwärts aneinandergehängt (`reverse`+`concat`-Filter), quadratisch
-zugeschnitten/skaliert und ohne Audiospur neu kodiert — mit
-`loop`-Attribut ergibt das einen nahtlosen Pingpong-Loop. Kommandozeile:
+**Cover-Making-of-Galerie** (Yamuna "The Making of the Album Cover",
+erstmals 2026-09-11 als bespoke `.process-grid`, seit 2026-09-23 auf Leos
+Wunsch ("die Galerie auch in einer Reihe, wie die andere Galerie")
+umgebaut): mischt Fotos und kurze, stumme Boomerang-Loop-Videos in einer
+**ganz normalen `.epk-gallery.epk-gallery--color`** (dieselbe Komponente
+wie jede Photos-Sektion — 2/4 Spalten responsiv, ab >4 Elementen
+automatisch `.epk-gallery--row` mit Pfeil-Nav, s. `gallery-nav.js`).
+**Kein eigenes `.process-grid` mehr.** Jedes Element ist ein
+`<figure class="process-item">` (nur `margin:0; min-width:0` — Letzteres
+nötig, sonst verzerrt ein enthaltenes `<video>` die Grid-Spaltenbreiten
+ungleich, klassischer CSS-Grid-Fallstrick bei Replaced Elements) mit
+`.cover-trigger` (Foto: `<img>`, Video: `<video autoplay muted loop
+playsinline poster="...">` — beide gleich gestylt via `.cover-trigger img`/
+`.cover-trigger video`) + `<figcaption class="process-caption">` für die
+Unterschrift.
+
+**Bild-/Video-Credit in der Lightbox = die Bildunterschrift selbst:** jeder
+Trigger bekommt zusätzlich `data-credit="<Fallback-Text>"
+data-i18n-attr="data-credit:<gleicher-i18n-key-wie-figcaption>"` — dadurch
+zeigt die Lightbox (`.lightbox-credit`) beim Anklicken dieselbe
+(sprachabhängige) Unterschrift, die auch unter dem Grid-Thumbnail steht.
+
+**Videos in der Lightbox (lightbox.js, erweitert 2026-09-23):** ein Trigger
+mit `data-lightbox="pfad/zum/video.mp4" data-lightbox-video
+data-lightbox-poster="pfad/zum/poster.jpg"` spielt beim Anklicken ein
+echtes `<video>` **nur im zentrierten Slide** ab (autoplay/muted/loop/
+playsinline) — die beiden Nachbar-Slides (links/rechts beim Swipen) zeigen
+immer nur `data-lightbox-poster` als normales `<img>`, nie ein zweites
+Video. So bleibt die bestehende Swipe-/Drag-Mechanik (die nur mit
+Bild-Slides rechnet) unverändert, und es autoplayt nie ein unsichtbares
+Video im Hintergrund. `close()` pausiert ein evtl. noch laufendes Video
+explizit. **Rückwärtskompatibel** — alle anderen Galerien setzen
+`data-lightbox-video` nie, verhalten sich exakt wie vorher (verifiziert:
+Yamuna-Pressefotos, Bänsch-Discography, Bänsch-Photos zeigen nach dem
+Umbau weiterhin nur `<img>`-Slides).
+
+**Boomerang-Loop-Technik:** Quellvideos (meist Handy-Clips, z.B.
+WhatsApp-Export mit Ton) werden mit ffmpeg vorwärts+rückwärts
+aneinandergehängt (`reverse`+`concat`-Filter), quadratisch
+zugeschnitten/skaliert und ohne Audiospur neu kodiert — mit `loop`-Attribut
+ergibt das einen nahtlosen Pingpong-Loop. Kommandozeile:
 ```
 ffmpeg -i in.mp4 -filter_complex \
   "[0:v]crop=w='min(iw,ih)':h='min(iw,ih)',scale=640:640,setsar=1,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0[out]" \
@@ -405,6 +457,23 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 
 ## Bekannte Eigenheiten dieser Umgebung
 
+- **KRITISCH — Browser-Tool cached `assets/js/*.js` hartnäckig, auch über
+  `location.reload()` UND `navigate()` zur exakt selben URL hinweg**
+  (2026-09-23, hat in dieser Session zu einer kompletten Fehldiagnose
+  geführt: ein frisch geschriebener `lightbox.js`-Fix sah nach mehreren
+  Reloads immer noch "kaputt" aus, obwohl der Server per `curl`/`fetch(...,
+  {cache:'no-store'})` nachweislich schon den korrigierten Code auslieferte
+  — das Tab führte einfach weiter die alte, im Speicher/Cache gehaltene
+  Version aus). **Verlässlicher Test, ob eine JS-Änderung wirklich aktiv
+  ist:** `fetch(url, {cache:'no-store'}).then(r=>r.text())` und auf den
+  neuen Code-Inhalt prüfen — falls das jünger aussieht als das beobachtete
+  Verhalten, liegt es am Cache, nicht am Code. **Fix:** an den
+  `<script src="...">`-Tag temporär einen Query-String hängen (z.B.
+  `?t=2`), neu navigieren, testen — **danach unbedingt wieder entfernen**,
+  bevor committet wird. CSS-Änderungen (`assets/css/style.css`) scheinen
+  davon nicht in gleichem Maß betroffen zu sein, HTML-Seiten selbst auch
+  nicht spürbar — bisher nur bei `assets/js/*.js` beobachtet, im Zweifel
+  aber für jede Skript-Änderung mit einplanen.
 - **Browser-Tool-Screenshots werden manchmal komplett weiß** nach `scroll`,
   besonders auf Seiten mit mehreren YouTube-iframes — kein echter Bug,
   einfach per `javascript_tool` den DOM-Zustand direkt prüfen
