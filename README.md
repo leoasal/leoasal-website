@@ -1,64 +1,76 @@
 # leoasal.com
 
-Schlanke, statische Website (reines HTML/CSS/JS, kein Build-Schritt, kein CMS). Ersetzt die alte WordPress-Seite.
+Schlanke, statische Website für Leo Asal (Schlagzeuger/Komponist, Köln) —
+reines HTML/CSS/JS, kein Build-Schritt, kein Framework, kein CMS. Ersetzt
+die frühere WordPress/Elementor-Seite, live seit 2026-08-06.
 
-## Lokal ansehen
-
-Da die Seite `fetch()` für Übersetzungen und Termine nutzt, muss sie über einen lokalen Server laufen (nicht per Doppelklick auf `index.html` öffnen):
+## Setup / Lokal starten
 
 ```bash
+cd leoasal-website
 python3 -m http.server 5173
 ```
-
-Dann [http://localhost:5173](http://localhost:5173) öffnen.
+Dann [http://localhost:5173](http://localhost:5173) öffnen — nicht per
+Doppelklick auf `index.html`, die Seite nutzt `fetch()` für Übersetzungen
+und Termine und braucht dafür einen echten HTTP-Server.
 
 ## Struktur
 
-- `index.html`, `bio.html`, `dates.html`, `projects.html`, `contact.html`, `yamuna.html` — Hauptseiten (EN/DE/ES)
-- `impressum.html`, `datenschutz.html` — rechtlich verbindlich, bleiben immer Deutsch
-- `assets/css/style.css` — gesamtes Styling
-- `assets/js/i18n.js` — Sprachumschalter-Logik (liest `assets/i18n/{en,de,es}.json`)
-- `assets/js/dates.js` — lädt `data/dates.json` und rendert die Termine
-- `assets/fonts/` — selbst gehostete Schriften (Playfair Display, Source Code Pro)
-- `scripts/sync-calendar.js` — holt den öffentlichen Apple-Kalender-Feed und schreibt `data/dates.json`
-- `.github/workflows/sync-calendar.yml` — führt den Sync automatisch alle 6h aus
+- `index.html` — Startseite: Hero + die Sektionen `#blog`/`#bio`/`#dates`/
+  `#projects`/`#contact`. Die "Seiten" Blog/Bio/Termine/Projekte/Kontakt
+  leben inhaltlich hier, nicht als eigene Dateien.
+- `blog.html`, `bio.html`, `dates.html`, `projects.html`, `contact.html` —
+  reine Redirect-Stubs auf die jeweilige `index.html#…`-Sektion, für alte
+  Bookmarks/Links.
+- `yamuna.html`, `jakob-manz-project.html`, `jakob-baensch-quartett.html`,
+  `haertel-asal-duo.html`, `ketzberg.html`, `loft-arts.html` —
+  eigenständige Projekt-Unterseiten.
+- `impressum.html`, `datenschutz.html` — rechtlich verbindlich, bleiben
+  immer Deutsch (kein Sprachumschalter).
+- `assets/css/style.css` — gesamtes Styling.
+- `assets/js/i18n.js` — Sprachumschalter-Logik (liest
+  `assets/i18n/{en,de,es}.json`).
+- `assets/js/dates.js` — lädt `data/dates.json` und rendert die Termine.
+- `assets/js/anchor-scroll.js` — Scrollen zu Homepage-Sektionen + zeigt in
+  der Nav an, welche Sektion gerade sichtbar ist.
+- `assets/js/lightbox.js`, `assets/js/gallery-nav.js` — Bildergalerien.
+- `assets/fonts/` — selbst gehostete Schriften (Playfair Display, Source
+  Code Pro).
+- `scripts/sync-calendar.js` + `.github/workflows/sync-calendar.yml` —
+  holt Leos öffentlichen Apple-Kalender-Feed und schreibt
+  `data/dates.json`/`data/dates.ics` (läuft automatisch, s. unten).
+- `data/dates.json`, `data/dates.ics` — vom Sync-Workflow generiert, nicht
+  von Hand bearbeiten.
+- `Inbox/` — Ablage für noch nicht einsortierte Dateien (Fotos, Notizen).
 
-## Deployment (GitHub Pages)
+Architektur-Entscheidungen, Konventionen und der aktuelle Stand stehen in
+[`CLAUDE.md`](CLAUDE.md); der Verlauf abgeschlossener Änderungen in
+[`CHANGELOG.md`](CHANGELOG.md).
 
-1. Auf [github.com](https://github.com) ein neues, öffentliches Repo anlegen (z.B. `leoasal-website`).
-2. Dieses Verzeichnis dorthin pushen:
-   ```bash
-   git remote add origin git@github.com:<dein-github-name>/leoasal-website.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. Im Repo unter **Settings → Pages**: Source auf „Deploy from a branch“, Branch `main` / `root` einstellen.
-4. Unter **Settings → Pages → Custom domain**: `leoasal.com` eintragen (die Datei `CNAME` im Repo ist dafür schon vorbereitet).
-5. Bei deinem Domain-/DNS-Anbieter für `leoasal.com` folgende Records setzen:
-   - 4× **A-Record** auf `@` (Apex-Domain), Ziel-IPs:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - Optional zusätzlich **AAAA-Records** (IPv6) auf:
-     `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - Falls du auch `www.leoasal.com` willst: **CNAME-Record** `www` → `<dein-github-name>.github.io`
-   - DNS-Änderungen können bis zu 24h brauchen, bis sie überall greifen.
-6. In GitHub Pages-Settings „Enforce HTTPS“ aktivieren, sobald das Zertifikat bereitsteht.
+## Deployment
 
-## Kalender-Sync einrichten (Apple Calendar → /dates)
-
-1. In der Apple Kalender-App (Mac/iPhone) oder auf [icloud.com/calendar](https://icloud.com/calendar) einen neuen Kalender anlegen, z.B. **„Website Termine“**.
-2. Nur die Termine eintragen, die öffentlich auf der Website erscheinen sollen.
-3. Für jeden Termin optional die **Website des Veranstalters als erste Zeile in die Notizen** schreiben (z.B. `https://smoothjazzfestival.com`) — die wird dann als Link auf der Website angezeigt.
-4. Kalender freigeben: Rechtsklick auf den Kalender → „Freigabe“ → „Öffentlichen Kalender“ aktivieren. Du bekommst eine `webcal://…`-URL.
-5. `webcal://` durch `https://` ersetzen.
-6. Im GitHub-Repo unter **Settings → Secrets and variables → Actions → New repository secret**:
-   - Name: `CALENDAR_URL`
-   - Wert: die `https://…`-URL aus Schritt 5
-7. Fertig — der Workflow läuft automatisch alle 6h und bei manuellem Anstoß (Actions-Tab → „Sync calendar“ → „Run workflow“).
-
-Nur Titel, Ort, Datum/Uhrzeit und (falls vorhanden) die Veranstalter-Website werden übernommen — keine weiteren Kalenderdetails.
+GitHub Pages, deployt automatisch bei jedem Push auf `main`
+(`.github/workflows/deploy-pages.yml`). Domain `leoasal.com` läuft über
+Strato-DNS (A-Record → `185.199.108.153`), SSL-Zertifikat von GitHub/
+Let's Encrypt, HTTPS erzwungen. Die Datei `CNAME` im Repo-Root hält die
+Custom-Domain-Konfiguration.
 
 ## Sprachumschalter
 
-Standardsprache ist Englisch. Nutzer:innen können auf Deutsch oder Spanisch wechseln (oben rechts / im Footer auf Mobile); die Wahl wird lokal im Browser gespeichert. Impressum und Datenschutz bleiben unabhängig davon immer auf Deutsch (rechtlich verbindliche Fassung).
+Standardsprache ist Englisch, Besucher:innen können auf Deutsch oder
+Spanisch wechseln (im Header — auf Mobile mittig zwischen Logo und
+Social-Icons, auf Desktop rechts neben der Nav); die Wahl wird lokal im
+Browser gespeichert. Impressum und Datenschutz bleiben unabhängig davon
+immer auf Deutsch (rechtlich verbindliche Fassung).
 
-Texte anpassen: in `assets/i18n/en.json`, `de.json`, `es.json` den jeweiligen Schlüssel bearbeiten.
+Texte anpassen: in `assets/i18n/en.json`, `de.json`, `es.json` den
+jeweiligen Schlüssel bearbeiten (immer in allen drei Dateien).
+
+## Kalender
+
+Die Termine unter „Dates" kommen aus Leos privatem iCloud-Kalender
+„Website Termine" — ein GitHub-Actions-Workflow synchronisiert sie
+automatisch (1×/Woche + manuell). Die Pipeline-Technik steht in
+`CLAUDE.md`; die private Playbook-Datei für die inhaltliche Kalenderpflege
+(welche Termine übernommen werden, bekannte Ausnahmen) ist nicht Teil
+dieses öffentlichen Repos.

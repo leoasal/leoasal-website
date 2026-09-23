@@ -122,7 +122,9 @@ index.html                    Startseite: Hero (Foto + Name), danach direkt im A
                                eigene Größe da globales h3 nur 1.2rem wäre). Neue
                                Blog-Einträge oben in der `#blog`-Sektion einfügen.
                                ACHTUNG: dadurch lädt die Startseite 2 youtube-nocookie-
-                               iframes beim Laden
+                               iframes beim Laden. Nav zeigt per Scrollspy
+                               (`assets/js/anchor-scroll.js`) an, in welcher Sektion man
+                               gerade ist (`aria-current="location"` auf dem Nav-Link)
 blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#dates/
 dates.html, projects.html,    #projects/#contact (s. Architektur-Hinweis oben) — kein echter
 contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
@@ -207,6 +209,16 @@ klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
 übernehmen, nicht wieder einen reinen Text-Eyebrow einbauen. Blog/Bio/
 Dates/Projects/Contact als Homepage-Sektionen behalten ihren normalen
 Text-Eyebrow.
+
+**Discography-Pattern** (Jakob Bänsch, erstmals 2026-09-11): mehrere
+Alben-Cover einer Projektseite als `<div class="discography epk-covers">`
+mit je `<figure class="discography-item">` (`.cover-trigger` +
+`<figcaption>` für Titel/Jahr). Die `epk-covers`-Klasse ist **notwendig,
+nicht kosmetisch** — `lightbox.js` gruppiert Lightbox-Geschwister nur
+innerhalb des nächsten `.epk-gallery`/`.epk-covers`-Vorfahren; ohne sie
+würde ein Klick **alle** `[data-lightbox]`-Elemente der Seite gruppieren.
+`.discography` selbst trägt eigenes Margin (`.epk-covers` hat keins, weil
+es auch in `.epk-hero` steckt, das per Flex-`gap` spaced).
 
 ## i18n (EN/DE/ES)
 
@@ -414,6 +426,35 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 - **Kein Homebrew, kein Node lokal** in diesem Environment — gh CLI läuft
   als portable Binary (s.o.), der Kalender-Sync läuft nur in der GitHub
   Action (dort ist Node vorhanden), nicht lokal testbar ohne eigenes Node.
+
+## Inbox
+
+`Inbox/` ist der Ablageort für alles, was noch nicht einsortiert ist —
+Fotos, Notizen, Links, Dateien, die Leo jederzeit reinlegen kann, ohne
+selbst zu entscheiden, wo es hingehört (Alternative zum direkten
+Chat-Paste, den er bisher meistens nutzt). **Am Anfang jeder Session
+zuerst prüfen, ob `Inbox/` Dateien enthält, und diese vor der eigentlichen
+Aufgabe abarbeiten.**
+
+Verarbeitungsregeln für dieses Projekt:
+- **Fotos** (Bandfotos, Album-Cover, Projektbilder): der passenden
+  Projektseite zuordnen, nach `assets/images/` mit dem etablierten
+  Namensschema kopieren (z.B. `<projekt>-photo-N.jpg`,
+  `<projekt>-album-<titel>.jpg`), in die passende Galerie/Sektion
+  einbinden (Muster einer ähnlichen bestehenden Seite kopieren, s.
+  "Seitenstruktur"). Bei Unsicherheit, ob Farbe oder Graustufen original
+  war, Kanal-Differenz-Analyse statt raten (siehe CHANGELOG,
+  Yamuna/Ketzberg-Fälle).
+- **Text-/Link-Notizen** (neue Bio-Absätze, Tourdaten, Projektbeschreibungen):
+  Inhalt lesen und in die passende i18n-JSON (alle 3 Sprachen!) bzw.
+  Sektion von `index.html`/der jeweiligen Projektseite übernehmen.
+- **Kalender-relevantes** (Flyer, Datum/Ort-Infos): siehe stattdessen
+  "Kalenderpflege" oben — das läuft über Calendar.app, nicht über Inbox.
+
+Nach der Verarbeitung die Originaldatei **nicht löschen**, sondern nach
+`Inbox/processed/` verschieben (Audit-Trail, falls doch mal was fehlt) —
+außer Leo sagt ausdrücklich, dass gelöscht werden soll. Jede verarbeitete
+Datei kurz in `CHANGELOG.md` festhalten (was reinkam, was draus wurde).
 
 ## Offene Punkte / mögliche nächste Schritte
 
