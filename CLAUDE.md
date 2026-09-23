@@ -223,7 +223,7 @@ eine sichtbar:
   mittig zu verteilen.
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
-identisch in allen Seiten mit echtem Header (index.html, die 5
+identisch in allen Seiten mit echtem Header (index.html, die 6
 Projekt-Unterseiten, impressum.html, datenschutz.html — **nicht** in
 blog.html/bio.html/dates.html/projects.html/contact.html, die sind
 Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
