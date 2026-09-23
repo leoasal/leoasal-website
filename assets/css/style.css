@@ -370,6 +370,11 @@ main {
   background: var(--bg-soft);
 }
 
+/* Projekt-Unterseiten: engerer Abstand zwischen den Bändern als auf der Startseite */
+.project-page .home-section {
+  padding: 3rem 0;
+}
+
 .home-section .page-header h2 {
   font-size: clamp(2rem, 5.5vw, 3.2rem);
 }
