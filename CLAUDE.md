@@ -177,6 +177,15 @@ wurde die Beschreibung dafür 2026-09-23 von weiter unten auf der Seite
 direkt vor den Album-Block verschoben. Bei neuen Projektseiten mit
 Beschreibungstext dieses Muster übernehmen.
 
+Zusätzlich (2026-09-23, selbe Session): der Infotext soll optisch **nah am
+Titel** sitzen, nicht mit vollem Standard-Abstand abgesetzt sein. Dafür in
+`style.css` `.project-page .page-header` (reduziertes `padding-bottom`/
+`margin-bottom`, statt der 1.5rem/2.5rem auf anderen Seiten) und
+`.project-page main > section:first-of-type` (reduziertes `padding-top`,
+statt der 3rem der übrigen Bänder) — nur das allererste Band nach dem
+Header rückt näher, alle weiteren Bänder behalten den normalen
+Bänder-Abstand (s. oben, 3rem).
+
 **Alternierende Sektions-Hintergründe auf Projekt-Unterseiten (2026-09-23):**
 Leo wollte "die einzelnen Punkte" jeder Projektseite genauso weiß/grau
 unterlegt sehen wie die Homepage-Sektionen. Jeder inhaltliche Block (jede

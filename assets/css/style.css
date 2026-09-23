@@ -375,6 +375,16 @@ main {
   padding: 3rem 0;
 }
 
+/* Projekt-Unterseiten: Infotext direkt unter dem Titel naeher an den Header ruecken */
+.project-page .page-header {
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-page main > section:first-of-type {
+  padding-top: 1.5rem;
+}
+
 .home-section .page-header h2 {
   font-size: clamp(2rem, 5.5vw, 3.2rem);
 }
