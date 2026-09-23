@@ -131,7 +131,9 @@ contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i1
 yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben,
                                dann Album-Block ("Out now" + Front-/Back-Cover, beide als
                                Lightbox anklickbar, "Listen/Buy Vinyl" UNTER den Covern),
-                               dann Beschreibung, Pressefotos, Videos, Downloads
+                               dann Beschreibung, **"The Making of the Cover"** (2026-09-23:
+                               2 Fotos + 2 stumme Loop-Videos vom Cover-Entstehungsprozess,
+                               s. "Process-Grid-Pattern" unten), Pressefotos, Videos, Downloads
 jakob-manz-project.html       Beschreibung + kleiner Icon+Domain-Link (jakobmanz.de,
                                `.project-link`) + 5 YouTube-Videos
 jakob-baensch-quartett.html   Beschreibung + kleiner Icon+Domain-Link (jakobbaensch.com) +
@@ -219,6 +221,29 @@ innerhalb des nächsten `.epk-gallery`/`.epk-covers`-Vorfahren; ohne sie
 würde ein Klick **alle** `[data-lightbox]`-Elemente der Seite gruppieren.
 `.discography` selbst trägt eigenes Margin (`.epk-covers` hat keins, weil
 es auch in `.epk-hero` steckt, das per Flex-`gap` spaced).
+
+**Process-Grid-Pattern** (Yamuna "The Making of the Cover", erstmals
+2026-09-23): mischt Fotos und kurze, stumme Loop-Videos in einem
+`<div class="process-grid epk-covers">` (immer 2 Spalten fest per
+`grid-template-columns: repeat(2, 1fr)`, **kein** Flex-Wrap — das reflowt
+sonst je nach Breite zu 1 oder 4 Spalten). Gleiches `epk-covers`-Prinzip
+wie beim Discography-Pattern: Klasse nur fürs Lightbox-Grouping der Fotos
+(`<button class="cover-trigger" data-lightbox="...">`), Layout kommt von
+`.process-grid` selbst. Videos sind lokale `<video autoplay muted loop
+playsinline poster="...">`-Elemente (kein YouTube-Iframe, kein
+`.video-embed`/`.video-grid` — die sind für 16:9-Embeds, hier ist alles
+quadratisch wie die Fotos). **Boomerang-Loop-Technik:** Quellvideos (meist
+Handy-Clips, z.B. WhatsApp-Export mit Ton) werden mit ffmpeg
+vorwärts+rückwärts aneinandergehängt (`reverse`+`concat`-Filter), quadratisch
+zugeschnitten/skaliert und ohne Audiospur neu kodiert — mit
+`loop`-Attribut ergibt das einen nahtlosen Pingpong-Loop. Kommandozeile:
+```
+ffmpeg -i in.mp4 -filter_complex \
+  "[0:v]crop=w='min(iw,ih)':h='min(iw,ih)',scale=640:640,setsar=1,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0[out]" \
+  -map "[out]" -an -c:v libx264 -crf 26 -preset medium -pix_fmt yuv420p -movflags +faststart out.mp4
+```
+(ffmpeg-Binary s. "Bekannte Eigenheiten" unten). Rohe Quelldateien danach
+nach `Inbox/processed/` (gitignored, s. "Inbox").
 
 ## i18n (EN/DE/ES)
 
@@ -426,6 +451,14 @@ statt iframe zeigen, iframe erst per Klick nachladen.
 - **Kein Homebrew, kein Node lokal** in diesem Environment — gh CLI läuft
   als portable Binary (s.o.), der Kalender-Sync läuft nur in der GitHub
   Action (dort ist Node vorhanden), nicht lokal testbar ohne eigenes Node.
+- **ffmpeg lokal verfügbar über pip** (2026-09-23 entdeckt, für Video-
+  Verarbeitung aus der Inbox — z.B. Boomerang-Loops für die YAMUNA-Cover-
+  Prozess-Videos): `python3 -m pip install --user imageio-ffmpeg` installiert
+  ein echtes statisches ffmpeg-7.x-Binary (mit libx264) ohne Homebrew, Pfad
+  per `python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())"`.
+  `python3 -m pip` selbst ist vorhanden (pip 26, Python 3.9); `cv2`
+  (OpenCV) ist ebenfalls schon installiert, falls mal reine Bildverarbeitung
+  ohne ffmpeg reicht.
 
 ## Inbox
 
@@ -453,8 +486,12 @@ Verarbeitungsregeln für dieses Projekt:
 
 Nach der Verarbeitung die Originaldatei **nicht löschen**, sondern nach
 `Inbox/processed/` verschieben (Audit-Trail, falls doch mal was fehlt) —
-außer Leo sagt ausdrücklich, dass gelöscht werden soll. Jede verarbeitete
-Datei kurz in `CHANGELOG.md` festhalten (was reinkam, was draus wurde).
+außer Leo sagt ausdrücklich, dass gelöscht werden soll. `Inbox/processed/`
+ist **gitignored** (2026-09-23 ergänzt) — die rohen Originaldateien (oft
+mehrere MB, unbearbeitet) sollen nicht das öffentliche Repo aufblähen, nur
+lokal als Audit-Trail liegen bleiben. Jede verarbeitete Datei kurz in
+`CHANGELOG.md` festhalten (was reinkam, was draus wurde, wie/wohin
+verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
 
 ## Offene Punkte / mögliche nächste Schritte
 

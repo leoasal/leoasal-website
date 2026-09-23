@@ -89,6 +89,12 @@
   "yamuna.albumLine": "„Focus &amp; Distraction“ (Album)",
   "yamuna.listenBuy": "Listen / Buy Vinyl",
   "yamuna.description": "YAMUNA takes the listeners on a sonic journey through a landscape of various interwoven styles. The music primarily moves within the realm of hip-hop and naturally pushes the boundaries into jazz, drum and bass, lo-fi, and improvised music. YAMUNA invites you to question your own perception and explore the intersections between human and machine. The fusion of electronic elements with freely improvised passages creates a unique atmosphere that is both challenging and captivating.",
+  "yamuna.coverProcessHeading": "The Making of the Cover",
+  "yamuna.coverProcessText": "The album cover started out as a painting by Estelle Müller — photographed under blacklight, then reworked digitally into its final form.",
+  "yamuna.coverProcess.daylight": "The painting",
+  "yamuna.coverProcess.shoot": "Photographing it under blacklight",
+  "yamuna.coverProcess.blacklight": "Under blacklight",
+  "yamuna.coverProcess.retouch": "Digital retouching",
   "yamuna.downloadsHeading": "Downloads",
   "yamuna.presskit": "Press kit (photos &amp; words)"
 }

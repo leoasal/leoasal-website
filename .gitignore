@@ -3,3 +3,7 @@ node_modules/
 
 # Private notes, not for the public repo
 /Website Kalender/
+
+# Inbox audit trail: raw originals kept locally after processing, not
+# meant to bloat the public repo with unprocessed source photos/videos
+/Inbox/processed/

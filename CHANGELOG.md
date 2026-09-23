@@ -5,6 +5,48 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **YAMUNA-Seite: neue Sektion "The Making of the Cover" (2026-09-23).**
+  Leo hat 2 Fotos + 2 Videos aus dem Entstehungsprozess des Albumcovers in
+  den Projektordner hochgeladen (Cover ist eigentlich ein Gemälde der
+  Künstlerin **Estelle Müller**, das unter Schwarzlicht abfotografiert und
+  digital nachbearbeitet wurde). Neue Sektion zwischen Beschreibung und
+  "Photos": Überschrift + kurzer Credit-Text (nennt Estelle Müller
+  explizit, in allen 3 Sprachen), dann ein 2×2-Grid mit
+  `.process-grid.epk-covers` (neues Pattern, Details in `CLAUDE.md`) —
+  Gemälde bei Tageslicht (Foto) → Fotografieren unter Schwarzlicht (Video)
+  → Gemälde unter Schwarzlicht (Foto) → digitale Nachbearbeitung in
+  Photoshop (Video).
+  - Fotos auf 1600px lange Kante skaliert (PIL), unverändert sonst.
+  - Videos (WhatsApp-Export, 720×1280, mit Ton) zu stummen, quadratischen
+    **Boomerang-Loops** verarbeitet: ffmpeg (lokal via
+    `pip install imageio-ffmpeg` besorgt, kein Homebrew nötig — Fund
+    dieser Session, s. `CLAUDE.md` "Bekannte Eigenheiten") schneidet
+    zentriert quadratisch zu, skaliert auf 640×640, hängt Vorwärts- und
+    Rückwärts-Wiedergabe aneinander (`reverse`+`concat`-Filter) und kodiert
+    ohne Audiospur neu (H.264, `crf 26`, `+faststart`). Mit `loop`
+    ergibt das einen nahtlosen Pingpong-Effekt statt eines harten
+    Schnitts zurück auf Frame 1. `<video autoplay muted loop playsinline
+    poster="...">`, kein YouTube-Embed. Ergebnis: 10,1s-Clip → 2,3MB/20,2s-
+    Loop, 2,77s-Clip → 0,35MB/5,5s-Loop.
+  - Rohe Original-Uploads (JPEG/MP4, mit Ton) nach `Inbox/processed/`
+    verschoben (neu gitignored, s. `CLAUDE.md`/`.gitignore` — sollen als
+    unbearbeitete Mehrfach-MB-Dateien nicht das öffentliche Repo aufblähen).
+  - Neuer i18n-Key-Block `yamuna.coverProcess*` (Heading, Credit-Text, 4
+    Bildunterschriften) in allen 3 Sprachen — bewusst Yamuna-eigene Keys
+    statt eines geteilten `project.*`-Headings wie bei Photos/Videos/
+    Releases, weil der Text die Estelle-Müller-Nennung fest enthält.
+  - Lokal verifiziert (Desktop 1000px + Mobile 375px): 2×2-Grid stabil auf
+    beiden Breiten (bewusst CSS-Grid statt Flex-Wrap, das reflowt sonst
+    zu 1 oder 4 Spalten), Lightbox gruppiert nur die 2 Fotos dieser
+    Sektion (nicht die 14 Pressefotos weiter unten, nicht das Album-Cover
+    oben — beide nutzen ebenfalls `.epk-covers`/`.epk-gallery`, aber als
+    eigene DOM-Vorfahren korrekt isoliert), Videos laden/dekodieren
+    korrekt (640×640, `readyState 4`, spielten bei Verifikation bereits
+    mehrere Sekunden), i18n inkl. Credit-Text auf Deutsch/Spanisch
+    übersetzt, kein horizontaler Overflow, keine Konsolenfehler.
+    Video-Wiedergabe selbst im Screenshot nicht sichtbar (bekannte
+    Einschränkung dieser Preview-Pane bei Video-/Scroll-Zuständen) —
+    per DOM-Properties statt Screenshot verifiziert.
 - **Jakob-Bänsch-Quartett-Seite: neue "Releases"-Sektion (2026-09-11).**
   Zwei Alben-Cover zwischen der Beschreibung/dem Domain-Link und "Photos"
   eingefügt — „All the Others" (2025, zuerst) und „Opening" (2023, ihr
