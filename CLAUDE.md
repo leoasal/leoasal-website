@@ -582,12 +582,3 @@ mehrere MB, unbearbeitet) sollen nicht das öffentliche Repo aufblähen, nur
 lokal als Audit-Trail liegen bleiben. Jede verarbeitete Datei kurz in
 `CHANGELOG.md` festhalten (was reinkam, was draus wurde, wie/wohin
 verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
-
-## Offene Punkte / mögliche nächste Schritte
-
-- **Bio-Portraitfoto auf der Startseite** (`#bio`-Sektion in `index.html`)
-  ist aktuell nur ein Platzhalter (`assets/images/hero.jpg`, identisch zum
-  Hero-Bild direkt darüber). Leo hat angekündigt, ein anderes Foto dafür zu
-  schicken — sobald es da ist, in `index.html` bei `<figure
-  class="bio-portrait">` den `src` austauschen (bio.html selbst existiert
-  nicht mehr als eigene Seite, s. Architektur-Hinweis oben).

@@ -5,6 +5,19 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Echtes Bio-Portraitfoto statt Platzhalter (2026-09-28).** Leo hatte
+  `hero.jpg` (dasselbe Bild wie im Hero) als Platzhalter für die
+  `#bio`-Sektion in `index.html` hinterlegt und ein eigenes Foto
+  angekündigt (s. "Offene Punkte" in CLAUDE.md). Aus der Inbox verarbeitet:
+  `Leo Asal © Florian Fries 2023-197.jpg` (Querformat, 4896×3264,
+  S/W-Portrait in einer Baumgabel). Mit PIL auf einen 4:5-Hochformat-
+  Ausschnitt zugeschnitten (Kopf bis Hände, zentriert aufs Gesicht,
+  Box `1568,490,3626,3062` im Originalbild), auf 1400×1750 skaliert und
+  als `assets/images/bio-portrait.jpg` gespeichert (JPEG q=78, ~415 KB).
+  `index.html` `.bio-portrait img` von `hero.jpg` auf `bio-portrait.jpg`
+  umgestellt (Hero-Bild oben auf der Seite bleibt unverändert `hero.jpg`).
+  Original nach `Inbox/processed/` verschoben.
+
 - **Cover-Galerie überarbeitet + Video-Lightbox + alternierende Sektions-
   Hintergründe auf allen 6 Projekt-Unterseiten (2026-09-23, Folge-Session
   zum Making-of-Cover-Feature).** Leo wollte vier Dinge:
