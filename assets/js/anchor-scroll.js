@@ -79,7 +79,7 @@
 
   // ---- Scrollspy: mark the nav link for the section currently in view, so
   //      you can always see where you are (desktop + mobile nav). ----
-  var spyIds = ["blog", "bio", "dates", "projects", "contact", "gear"];
+  var spyIds = ["blog", "bio", "dates", "projects", "gear", "contact"];
   var spySections = spyIds
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);

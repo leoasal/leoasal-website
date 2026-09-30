@@ -5,6 +5,17 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear-Sektion von letzter auf 5. Position (vor Contact) verschoben
+  (2026-09-30, zweite Folgekorrektur derselben Session).** Leo: "gear
+  soll als 5. punkt, vor kontakt, sein". `#gear`- und `#contact`-Sektion
+  in `index.html` getauscht, Hintergrundfarben neu durchgezählt (`#gear`
+  jetzt weiß als 5. Band, `#contact` jetzt grau als 6. Band — vorher
+  umgekehrt), Nav-Reihenfolge (`site-nav`+`mobile-nav`) auf allen 9 Seiten
+  mit echtem Header von "…Contact, Gear" auf "…Gear, Contact" getauscht,
+  `spyIds`-Array in `anchor-scroll.js` entsprechend umsortiert (die Reihen-
+  folge dort muss die DOM-Reihenfolge widerspiegeln, sonst bricht der
+  Scrollspy).
+
 - **Korrektur: Gear von eigenständiger Seite zu Homepage-Sektion umgebaut
   (2026-09-30, direkte Folgekorrektur zum Eintrag darunter).** Leo:
   "Missverständnis. Gear soll auch nur ein Marker auf dem One-Pager sein"

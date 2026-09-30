@@ -87,16 +87,18 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 
 ## Seitenstruktur
 
-**Architektur: Blog/Bio/Termine/Projekte/Kontakt/Gear sind keine
+**Architektur: Blog/Bio/Termine/Projekte/Gear/Kontakt sind keine
 eigenständigen Seiten.** Leo wollte, dass Klicken in der Nav und
 Runterscrollen auf der Startseite zum exakt selben Ergebnis führen ("die
 Unterscheidung zwischen Scrollen und den einzelnen Seiten soll es nicht
 mehr geben"). Der komplette Inhalt dieser 6 Bereiche lebt ausschließlich
 als Sektionen in `index.html` (`#blog`, `#bio`, `#dates`, `#projects`,
-`#contact`, `#gear` — in dieser Reihenfolge, Blog zuerst direkt nach dem
-Hero, Gear zuletzt). `blog.html`/`bio.html`/`dates.html`/`projects.html`/
-`contact.html`/`gear.html` existieren nur noch als minimale Redirect-Stubs
-(`<meta http-equiv="refresh">` + `location.replace(...)`) auf
+`#gear`, `#contact` — in dieser Reihenfolge, Blog zuerst direkt nach dem
+Hero, Gear vor Contact — 2026-09-30 auf Leos Wunsch von "letzter Punkt"
+auf "5. Punkt, vor Contact" korrigiert). `blog.html`/`bio.html`/
+`dates.html`/`projects.html`/`gear.html`/`contact.html` existieren nur
+noch als minimale Redirect-Stubs (`<meta http-equiv="refresh">` +
+`location.replace(...)`) auf
 `index.html#<section>`, damit alte Bookmarks/Backlinks nicht ins Leere
 laufen. **Nicht versehentlich wieder "echte" Seiten daraus machen** —
 jede Änderung an Blog/Bio/Termine/Projekten/Kontakt/Gear gehört
@@ -112,7 +114,7 @@ prüfen, nicht automatisch eine eigenständige Seite bauen.
 ```
 index.html                    Startseite: Hero (Foto + Name), danach direkt im Anschluss
                                die vollständigen Sektionen #blog/#bio/#dates/#projects/
-                               #contact/#gear (siehe Architektur-Hinweis oben) — abwechselnd
+                               #gear/#contact (siehe Architektur-Hinweis oben) — abwechselnd
                                weißer/hellgrauer Hintergrund (`.home-section`/
                                `.home-section--alt`, Reihenfolge weiß/grau/weiß/grau/weiß/grau)
                                zur optischen Trennung, großzügiger Abstand (`padding: 5rem
@@ -133,8 +135,8 @@ index.html                    Startseite: Hero (Foto + Name), danach direkt im A
                                (`assets/js/anchor-scroll.js`) an, in welcher Sektion man
                                gerade ist (`aria-current="location"` auf dem Nav-Link)
 blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#dates/
-dates.html, projects.html,    #projects/#contact/#gear (s. Architektur-Hinweis oben) — kein
-contact.html, gear.html       echter Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
+dates.html, projects.html,    #projects/#gear/#contact (s. Architektur-Hinweis oben) — kein
+gear.html, contact.html       echter Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
 yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben, dann
                                (2026-09-23) **Beschreibung direkt unter dem Titel** (weiß, s.
                                "Infotext zuerst" unten) → Album-Block ("Out now" +
@@ -263,7 +265,7 @@ Ketzberg, Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes
 klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
 `index.html#projects` — bei neuen Projekt-Unterseiten dieses Pattern
 übernehmen, nicht wieder einen reinen Text-Eyebrow einbauen. Blog/Bio/
-Dates/Projects/Contact/Gear als Homepage-Sektionen behalten ihren normalen
+Dates/Projects/Gear/Contact als Homepage-Sektionen behalten ihren normalen
 Text-Eyebrow.
 
 **Discography-Pattern** (Jakob Bänsch, erstmals 2026-09-11): mehrere
@@ -327,21 +329,32 @@ nach `Inbox/processed/` (gitignored, s. "Inbox").
 
 **Gear-Sektion (`#gear` in index.html, neu 2026-09-30):** Leo wollte eine
 Sektion für Marken/Ausrüstung, mit der er kooperiert (erster Eintrag:
-Vision Ears, In-Ear-Monitore) — als **6. Punkt im One-Pager**, genau wie
+Vision Ears, In-Ear-Monitore) — als eigener Punkt im One-Pager, genau wie
 Blog/Bio/Dates/Projects/Contact (s. Architektur-Hinweis ganz oben in
-diesem Abschnitt). **Erster Entwurf war eine eigenständige `gear.html`
-mit eigenem Header/6.-Nav-Link `gear.html`** — von Leo direkt korrigiert
-("soll auch nur ein Marker auf dem One-Pager sein"); jetzt `gear.html`
-nur noch Redirect-Stub auf `index.html#gear` wie die anderen 5. Nav-Link
-auf allen Seiten mit echtem Header ist jetzt `index.html#gear` (bzw. auf
-index.html selbst nur `#gear`) + `nav.gear`-i18n-Key (auch auf
-impressum.html/datenschutz.html, dort wie die anderen Nav-Labels
-hartcodiert ohne `data-i18n`). `site-nav`+`mobile-nav`-Liste ist jetzt
-**6 Einträge** statt 5 — `.mobile-nav a { flex: 1 }` verteilt automatisch
-neu, kein CSS-Fix nötig. `assets/js/anchor-scroll.js`: `"gear"` zu
-`spyIds` ergänzt, sonst bekäme der Gear-Nav-Link nie `aria-current`.
-`index.html` lädt jetzt zusätzlich `assets/js/lightbox.js` (vorher nicht
-nötig, da die Homepage bis dahin keine Lightbox-Galerie hatte).
+diesem Abschnitt), **Position 5 von 6, direkt vor Contact** (2026-09-30
+per Rückfrage zunächst ans Ende gesetzt, dann von Leo explizit vor
+Contact korrigiert: "gear soll als 5. punkt, vor kontakt, sein"). **Erster
+Entwurf war außerdem eine eigenständige `gear.html` mit eigenem
+Header/Nav-Link `gear.html`** — von Leo direkt korrigiert ("soll auch nur
+ein Marker auf dem One-Pager sein"); jetzt `gear.html` nur noch
+Redirect-Stub auf `index.html#gear` wie die anderen 5. Nav-Link auf allen
+Seiten mit echtem Header ist `index.html#gear` (bzw. auf index.html
+selbst nur `#gear`), **eingefügt zwischen Projects und Contact** +
+`nav.gear`-i18n-Key (auch auf impressum.html/datenschutz.html, dort wie
+die anderen Nav-Labels hartcodiert ohne `data-i18n`). `site-nav`+
+`mobile-nav`-Liste ist jetzt **6 Einträge** statt 5 — `.mobile-nav a
+{ flex: 1 }` verteilt automatisch neu, kein CSS-Fix nötig.
+`assets/js/anchor-scroll.js`: `spyIds`-Array ist
+`["blog","bio","dates","projects","gear","contact"]` — **die Reihenfolge
+in diesem Array muss immer exakt der DOM-Reihenfolge der Sektionen
+entsprechen**, sonst bricht die "letztes Element, dessen Top-Kante die
+33%-Linie passiert hat"-Logik des Scrollspy. `index.html` lädt jetzt
+zusätzlich `assets/js/lightbox.js` (vorher nicht nötig, da die Homepage
+bis dahin keine Lightbox-Galerie hatte). Hintergrund-Alternierung dadurch
+`#gear` = weiß (5. Band), `#contact` = grau (6. Band, vorher weiß als
+5. Band) — bei künftigem Verschieben von Sektionen immer beide
+Hintergrundklassen der betroffenen Sektionen neu durchzählen, nicht nur
+die neue Sektion isoliert einfärben.
 
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
