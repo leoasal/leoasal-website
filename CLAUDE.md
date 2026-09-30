@@ -162,6 +162,17 @@ loft-arts.html                Alternierende Bänder: echter Beschreibungstext (A
                                OG Keemo, Lostboi Lino, Buffala, Joshua J)
 contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
                                nicht mehr extra auf dieser Seite
+gear.html                     (neu, 2026-09-30) EIGENSTÄNDIGE Seite, aber **kein**
+                               Projekt-Unterseiten-Pattern (kein Zurück-Link, kein
+                               Eintrag im Projects-Grid) — stattdessen 6. Punkt in der
+                               Hauptnav (s. "Gear-Seite" unten). `<body class="project-page">`
+                               trotzdem gesetzt, rein wegen der kompakten Band-Abstände
+                               (s. "Infotext zuerst" oben) — die Klasse ist inzwischen
+                               eine reine Spacing-Utility, kein exklusives Projekt-Marker
+                               mehr. Bisher 1 Band: "Vision Ears" (Endorsement-Zitat +
+                               2 Fotos + Link), als erweiterbare Liste angelegt — weitere
+                               Marken (Drums/Cymbals/Sticks) als zusätzliche
+                               `.home-section`-Bänder ergänzbar, s. "Gear-Seite" unten
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
@@ -245,9 +256,9 @@ eine sichtbar:
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
 identisch in allen Seiten mit echtem Header (index.html, die 6
-Projekt-Unterseiten, impressum.html, datenschutz.html — **nicht** in
-blog.html/bio.html/dates.html/projects.html/contact.html, die sind
-Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
+Projekt-Unterseiten, gear.html, impressum.html, datenschutz.html —
+**nicht** in blog.html/bio.html/dates.html/projects.html/contact.html, die
+sind Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths).
 
@@ -317,6 +328,54 @@ ffmpeg -i in.mp4 -filter_complex \
 ```
 (ffmpeg-Binary s. "Bekannte Eigenheiten" unten). Rohe Quelldateien danach
 nach `Inbox/processed/` (gitignored, s. "Inbox").
+
+**Gear-Seite (`gear.html`, neu 2026-09-30):** Leo wollte eine Seite für
+Marken/Ausrüstung, mit der er kooperiert (erster Eintrag: Vision Ears,
+In-Ear-Monitore) — als **6. Punkt in der Hauptnav** (Blog/Bio/Dates/
+Projects/Contact/**Gear**), nicht nur aus der Bio heraus verlinkt (Leo hat
+sich das bei Rückfrage explizit so gewünscht). Nav-Link ist `gear.html`
+(kein Anchor), daher auf jeder Seite mit echtem Header + `nav.gear`-i18n-Key
+ergänzt (auch impressum.html/datenschutz.html, dort wie die anderen
+Nav-Labels hartcodiert ohne `data-i18n`, s. deren bestehendes Muster).
+`site-nav`+`mobile-nav`-`<ul>`/`<a>`-Liste ist jetzt **6 Einträge** statt 5
+— `.mobile-nav a { flex: 1 }` verteilt automatisch neu, kein CSS-Fix nötig.
+
+Seitenstruktur: **kein** Projekt-Unterseiten-Pattern (kein Zurück-Link zu
+Projects, keine Karte im Projects-Grid) — `.page-header` nur mit `<h1>`,
+analog zu impressum.html/datenschutz.html. `<body class="project-page">`
+trotzdem gesetzt, rein für die kompakten Band-Abstände/Infotext-Spacing
+(s. "Infotext zuerst" oben) — diese CSS-Klasse ist also keine exklusive
+Markierung mehr für die 6 Projekt-Unterseiten, sondern eine allgemeine
+Spacing-Utility für "Content-Unterseiten mit dem alternierenden
+Band-Layout". Bei künftigen neuen Nicht-Projekt-Seiten mit diesem Layout
+genauso verfahren.
+
+**Als erweiterbare Liste angelegt:** jede Marke/jedes Endorsement ist ein
+eigenes `<section class="home-section">`-Band (weiß/grau alternierend wie
+bei den Projekt-Unterseiten) mit eigenem `<h2>`-Markennamen. Bisher nur
+"Vision Ears" (1 Band, weiß). Neue Marke ergänzen: neues Band anhängen,
+Hintergrund alternieren lassen (s. "Alternierende Sektions-Hintergründe"
+oben). Vision-Ears-Band enthält: kurzer Intro-Satz (`gear.visionears.text`,
+i18n), Zitat (`.gear-quote`, neue CSS-Klasse — linker Akzent-Strich +
+kursiv, s. `style.css`) **unübersetzt im Original-Deutsch** (echtes,
+öffentlich auf vision-ears.de veröffentlichtes Testimonial-Zitat, wird wie
+ein Bandname/Albumtitel als Originalzitat behandelt statt in EN/ES
+übersetzt — nur der Intro-Satz drumherum ist dreisprachig), 2 Fotos
+(`.epk-gallery` mit inline `style="grid-template-columns:repeat(2,1fr);
+max-width:32rem"`, weil die Standard-4-Spalten-Grid bei nur 2 Bildern eine
+hässliche Lücke lässt — kein neuer CSS-Regel nötig, nur inline für diesen
+Sonderfall), Link auf vision-ears.de (`.project-link`-Pattern wie bei
+Ketzberg/Jakob Manz/Loft Arts).
+
+Fotos (`assets/images/visionears-photo-1.jpg`/`-2.jpg`): stammen aus 2
+Instagram-Posts, die Leo verlinkt hat (`_leoasal_`, Fotos von
+`@smoothjazzphoto`) — per `curl` das `og:image` der öffentlichen
+Post-URL gezogen (klappt ohne Login, liefert aber nur eine von Instagram
+quadratisch zugeschnittene 640×640-Version, nicht das Originalfoto in
+voller Auflösung — für diesen kleinen Zwei-Bild-Callout ausreichend, bei
+zukünftigem Bedarf an höherer Auflösung Leo nach dem Originalfoto fragen).
+Credit im Gallery-`data-credit-name`/`-url` auf `@smoothjazzphoto`/
+`instagram.com/smoothjazzphoto` gesetzt.
 
 ## i18n (EN/DE/ES)
 

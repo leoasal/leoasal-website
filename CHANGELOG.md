@@ -5,6 +5,29 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Neue Gear-Seite mit Vision-Ears-Endorsement (2026-09-30).** Leo schickte
+  einen Screenshot der Vision-Ears-Website (er ist dort als Artist mit
+  Testimonial-Zitat gelistet) plus 2 Instagram-Links als Beleg-Fotos und
+  bat um eine neue "Gear"-Seite. Da das quer über die ganze Nav geht,
+  vorab per Rückfrage geklärt: (1) Gear als 6. Punkt in der Hauptnav
+  (nicht nur aus Bio verlinkt) und (2) als erweiterbare Liste für künftige
+  Marken angelegt (nicht nur ein Vision-Ears-Einzeiler). Umsetzung:
+  - Neue `gear.html`, Struktur wie eine Projekt-Unterseite (alternierende
+    `.home-section`-Bänder, `.project-page`-Spacing), aber ohne
+    Zurück-Link/Projects-Grid-Karte, da kein Projekt.
+  - `nav.gear`-i18n-Key + `<li>`/`<a>` in `site-nav` und `mobile-nav` auf
+    **allen** 9 Seiten mit echtem Header ergänzt (index + 6 Projektseiten +
+    impressum + datenschutz), auf impressum/datenschutz wie die anderen
+    Nav-Labels dort hartcodiert ohne i18n.
+  - Vision-Ears-Band: Intro-Satz (i18n, alle 3 Sprachen), das echte
+    deutsche Testimonial-Zitat unübersetzt als `.gear-quote` (neue
+    Blockquote-CSS-Klasse), 2 Fotos + Link auf vision-ears.de.
+  - Fotos: `og:image` der beiden von Leo verlinkten `_leoasal_`-Instagram-
+    Posts per `curl` gezogen (klappt ohne Login, liefert aber nur
+    Instagrams quadratisch zugeschnittene 640×640-Version, nicht das
+    Originalfoto) → `assets/images/visionears-photo-1.jpg`/`-2.jpg`,
+    Credit `@smoothjazzphoto`.
+
 - **Echtes Bio-Portraitfoto statt Platzhalter (2026-09-28).** Leo hatte
   `hero.jpg` (dasselbe Bild wie im Hero) als Platzhalter für die
   `#bio`-Sektion in `index.html` hinterlegt und ein eigenes Foto

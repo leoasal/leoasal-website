@@ -828,6 +828,27 @@ a.project-card:hover {
   margin: 0.5rem 0 1.5rem;
 }
 
+/* ---------- Gear ---------- */
+
+.gear-quote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent);
+  max-width: 60ch;
+  font-style: italic;
+}
+
+.gear-quote p {
+  margin: 0;
+}
+
+.gear-quote footer {
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+}
+
 /* ---------- Yamuna EPK ---------- */
 
 .video-grid {

@@ -4,6 +4,7 @@
   "nav.dates": "Termine",
   "nav.projects": "Projekte",
   "nav.contact": "Kontakt",
+  "nav.gear": "Gear",
 
   "head.blog.title": "Blog – Leo Asal",
   "blog.eyebrow": "Aktuelles",
@@ -96,5 +97,9 @@
   "yamuna.coverProcess.blacklight": "Unter Schwarzlicht",
   "yamuna.coverProcess.retouch": "Digitale Nachbearbeitung",
   "yamuna.downloadsHeading": "Downloads",
-  "yamuna.presskit": "Presskit (Fotos &amp; Texte)"
+  "yamuna.presskit": "Presskit (Fotos &amp; Texte)",
+
+  "head.gear.title": "Gear – Leo Asal",
+  "gear.heading": "Gear",
+  "gear.visionears.text": "Leo spielt mit individuell angepassten In-Ear-Monitoren von Vision Ears."
 }
