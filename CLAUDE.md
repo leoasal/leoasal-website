@@ -87,27 +87,34 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 
 ## Seitenstruktur
 
-**Architektur: Blog/Bio/Termine/Projekte/Kontakt sind keine eigenständigen
-Seiten.** Leo wollte, dass Klicken in der Nav und Runterscrollen auf der
-Startseite zum exakt selben Ergebnis führen ("die Unterscheidung zwischen
-Scrollen und den einzelnen Seiten soll es nicht mehr geben"). Der komplette
-Inhalt dieser 5 Bereiche lebt ausschließlich als Sektionen in `index.html`
-(`#blog`, `#bio`, `#dates`, `#projects`, `#contact` — in dieser
-Reihenfolge, Blog zuerst direkt nach dem Hero). `blog.html`/`bio.html`/
-`dates.html`/`projects.html`/`contact.html` existieren nur noch als
-minimale Redirect-Stubs (`<meta http-equiv="refresh">` +
-`location.replace(...)`) auf `index.html#<section>`, damit alte
-Bookmarks/Backlinks nicht ins Leere laufen. **Nicht versehentlich wieder
-"echte" Seiten daraus machen** — jede Änderung an
-Blog/Bio/Termine/Projekten/Kontakt gehört ausschließlich in die
-passende Sektion von `index.html` (Text weiter über die i18n-JSONs).
+**Architektur: Blog/Bio/Termine/Projekte/Kontakt/Gear sind keine
+eigenständigen Seiten.** Leo wollte, dass Klicken in der Nav und
+Runterscrollen auf der Startseite zum exakt selben Ergebnis führen ("die
+Unterscheidung zwischen Scrollen und den einzelnen Seiten soll es nicht
+mehr geben"). Der komplette Inhalt dieser 6 Bereiche lebt ausschließlich
+als Sektionen in `index.html` (`#blog`, `#bio`, `#dates`, `#projects`,
+`#contact`, `#gear` — in dieser Reihenfolge, Blog zuerst direkt nach dem
+Hero, Gear zuletzt). `blog.html`/`bio.html`/`dates.html`/`projects.html`/
+`contact.html`/`gear.html` existieren nur noch als minimale Redirect-Stubs
+(`<meta http-equiv="refresh">` + `location.replace(...)`) auf
+`index.html#<section>`, damit alte Bookmarks/Backlinks nicht ins Leere
+laufen. **Nicht versehentlich wieder "echte" Seiten daraus machen** —
+jede Änderung an Blog/Bio/Termine/Projekten/Kontakt/Gear gehört
+ausschließlich in die passende Sektion von `index.html` (Text weiter über
+die i18n-JSONs). **Das gilt auch für neue Bereiche dieser Art** — bei der
+Gear-Seite (2026-09-30) war der erste Entwurf fälschlich eine echte
+eigenständige `gear.html`-Seite mit eigenem Header/Footer und einem
+6. Punkt in der Nav, der auf `gear.html` statt auf `#gear` zeigte; Leo
+korrigierte das ausdrücklich ("soll auch nur ein Marker auf dem One-Pager
+sein") — bei jedem neuen Nav-Punkt zuerst dieses Architektur-Prinzip
+prüfen, nicht automatisch eine eigenständige Seite bauen.
 
 ```
 index.html                    Startseite: Hero (Foto + Name), danach direkt im Anschluss
                                die vollständigen Sektionen #blog/#bio/#dates/#projects/
-                               #contact (siehe Architektur-Hinweis oben) — abwechselnd
+                               #contact/#gear (siehe Architektur-Hinweis oben) — abwechselnd
                                weißer/hellgrauer Hintergrund (`.home-section`/
-                               `.home-section--alt`, Reihenfolge weiß/grau/weiß/grau/weiß)
+                               `.home-section--alt`, Reihenfolge weiß/grau/weiß/grau/weiß/grau)
                                zur optischen Trennung, großzügiger Abstand (`padding: 5rem
                                0`). Sektions-Überschriften (`h2`) bewusst zwischen h2- und
                                h1-Größe (`.home-section .page-header h2`,
@@ -126,8 +133,8 @@ index.html                    Startseite: Hero (Foto + Name), danach direkt im A
                                (`assets/js/anchor-scroll.js`) an, in welcher Sektion man
                                gerade ist (`aria-current="location"` auf dem Nav-Link)
 blog.html, bio.html,          NUR NOCH REDIRECT-STUBS auf index.html#blog/#bio/#dates/
-dates.html, projects.html,    #projects/#contact (s. Architektur-Hinweis oben) — kein echter
-contact.html                  Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
+dates.html, projects.html,    #projects/#contact/#gear (s. Architektur-Hinweis oben) — kein
+contact.html, gear.html       echter Inhalt mehr, keine Nav/Header/Footer, kein data-i18n
 yamuna.html                   YAMUNA (nicht "YAMUNA EPK"): eigene Überschrift oben, dann
                                (2026-09-23) **Beschreibung direkt unter dem Titel** (weiß, s.
                                "Infotext zuerst" unten) → Album-Block ("Out now" +
@@ -162,17 +169,6 @@ loft-arts.html                Alternierende Bänder: echter Beschreibungstext (A
                                OG Keemo, Lostboi Lino, Buffala, Joshua J)
 contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
                                nicht mehr extra auf dieser Seite
-gear.html                     (neu, 2026-09-30) EIGENSTÄNDIGE Seite, aber **kein**
-                               Projekt-Unterseiten-Pattern (kein Zurück-Link, kein
-                               Eintrag im Projects-Grid) — stattdessen 6. Punkt in der
-                               Hauptnav (s. "Gear-Seite" unten). `<body class="project-page">`
-                               trotzdem gesetzt, rein wegen der kompakten Band-Abstände
-                               (s. "Infotext zuerst" oben) — die Klasse ist inzwischen
-                               eine reine Spacing-Utility, kein exklusives Projekt-Marker
-                               mehr. Bisher 1 Band: "Vision Ears" (Endorsement-Zitat +
-                               2 Fotos + Link), als erweiterbare Liste angelegt — weitere
-                               Marken (Drums/Cymbals/Sticks) als zusätzliche
-                               `.home-section`-Bänder ergänzbar, s. "Gear-Seite" unten
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
@@ -256,8 +252,8 @@ eine sichtbar:
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
 identisch in allen Seiten mit echtem Header (index.html, die 6
-Projekt-Unterseiten, gear.html, impressum.html, datenschutz.html —
-**nicht** in blog.html/bio.html/dates.html/projects.html/contact.html, die
+Projekt-Unterseiten, impressum.html, datenschutz.html — **nicht** in
+blog.html/bio.html/dates.html/projects.html/contact.html/gear.html, die
 sind Redirect-Stubs ohne Header). Bei neuen Seiten unbedingt aus einer
 bestehenden Seite kopieren, nicht neu tippen (sonst Copy-Paste-Fehler bei
 den langen SVG-Paths).
@@ -267,7 +263,7 @@ Ketzberg, Loft Arts) haben im `.page-header` statt eines reinen "Project"-Textes
 klickbaren Zurück-Link (`.back-link`, Pfeil-SVG + `nav.projects`-Text) auf
 `index.html#projects` — bei neuen Projekt-Unterseiten dieses Pattern
 übernehmen, nicht wieder einen reinen Text-Eyebrow einbauen. Blog/Bio/
-Dates/Projects/Contact als Homepage-Sektionen behalten ihren normalen
+Dates/Projects/Contact/Gear als Homepage-Sektionen behalten ihren normalen
 Text-Eyebrow.
 
 **Discography-Pattern** (Jakob Bänsch, erstmals 2026-09-11): mehrere
@@ -329,43 +325,45 @@ ffmpeg -i in.mp4 -filter_complex \
 (ffmpeg-Binary s. "Bekannte Eigenheiten" unten). Rohe Quelldateien danach
 nach `Inbox/processed/` (gitignored, s. "Inbox").
 
-**Gear-Seite (`gear.html`, neu 2026-09-30):** Leo wollte eine Seite für
-Marken/Ausrüstung, mit der er kooperiert (erster Eintrag: Vision Ears,
-In-Ear-Monitore) — als **6. Punkt in der Hauptnav** (Blog/Bio/Dates/
-Projects/Contact/**Gear**), nicht nur aus der Bio heraus verlinkt (Leo hat
-sich das bei Rückfrage explizit so gewünscht). Nav-Link ist `gear.html`
-(kein Anchor), daher auf jeder Seite mit echtem Header + `nav.gear`-i18n-Key
-ergänzt (auch impressum.html/datenschutz.html, dort wie die anderen
-Nav-Labels hartcodiert ohne `data-i18n`, s. deren bestehendes Muster).
-`site-nav`+`mobile-nav`-`<ul>`/`<a>`-Liste ist jetzt **6 Einträge** statt 5
-— `.mobile-nav a { flex: 1 }` verteilt automatisch neu, kein CSS-Fix nötig.
+**Gear-Sektion (`#gear` in index.html, neu 2026-09-30):** Leo wollte eine
+Sektion für Marken/Ausrüstung, mit der er kooperiert (erster Eintrag:
+Vision Ears, In-Ear-Monitore) — als **6. Punkt im One-Pager**, genau wie
+Blog/Bio/Dates/Projects/Contact (s. Architektur-Hinweis ganz oben in
+diesem Abschnitt). **Erster Entwurf war eine eigenständige `gear.html`
+mit eigenem Header/6.-Nav-Link `gear.html`** — von Leo direkt korrigiert
+("soll auch nur ein Marker auf dem One-Pager sein"); jetzt `gear.html`
+nur noch Redirect-Stub auf `index.html#gear` wie die anderen 5. Nav-Link
+auf allen Seiten mit echtem Header ist jetzt `index.html#gear` (bzw. auf
+index.html selbst nur `#gear`) + `nav.gear`-i18n-Key (auch auf
+impressum.html/datenschutz.html, dort wie die anderen Nav-Labels
+hartcodiert ohne `data-i18n`). `site-nav`+`mobile-nav`-Liste ist jetzt
+**6 Einträge** statt 5 — `.mobile-nav a { flex: 1 }` verteilt automatisch
+neu, kein CSS-Fix nötig. `assets/js/anchor-scroll.js`: `"gear"` zu
+`spyIds` ergänzt, sonst bekäme der Gear-Nav-Link nie `aria-current`.
+`index.html` lädt jetzt zusätzlich `assets/js/lightbox.js` (vorher nicht
+nötig, da die Homepage bis dahin keine Lightbox-Galerie hatte).
 
-Seitenstruktur: **kein** Projekt-Unterseiten-Pattern (kein Zurück-Link zu
-Projects, keine Karte im Projects-Grid) — `.page-header` nur mit `<h1>`,
-analog zu impressum.html/datenschutz.html. `<body class="project-page">`
-trotzdem gesetzt, rein für die kompakten Band-Abstände/Infotext-Spacing
-(s. "Infotext zuerst" oben) — diese CSS-Klasse ist also keine exklusive
-Markierung mehr für die 6 Projekt-Unterseiten, sondern eine allgemeine
-Spacing-Utility für "Content-Unterseiten mit dem alternierenden
-Band-Layout". Bei künftigen neuen Nicht-Projekt-Seiten mit diesem Layout
-genauso verfahren.
-
-**Als erweiterbare Liste angelegt:** jede Marke/jedes Endorsement ist ein
-eigenes `<section class="home-section">`-Band (weiß/grau alternierend wie
-bei den Projekt-Unterseiten) mit eigenem `<h2>`-Markennamen. Bisher nur
-"Vision Ears" (1 Band, weiß). Neue Marke ergänzen: neues Band anhängen,
-Hintergrund alternieren lassen (s. "Alternierende Sektions-Hintergründe"
-oben). Vision-Ears-Band enthält: kurzer Intro-Satz (`gear.visionears.text`,
-i18n), Zitat (`.gear-quote`, neue CSS-Klasse — linker Akzent-Strich +
-kursiv, s. `style.css`) **unübersetzt im Original-Deutsch** (echtes,
-öffentlich auf vision-ears.de veröffentlichtes Testimonial-Zitat, wird wie
-ein Bandname/Albumtitel als Originalzitat behandelt statt in EN/ES
-übersetzt — nur der Intro-Satz drumherum ist dreisprachig), 2 Fotos
-(`.epk-gallery` mit inline `style="grid-template-columns:repeat(2,1fr);
-max-width:32rem"`, weil die Standard-4-Spalten-Grid bei nur 2 Bildern eine
-hässliche Lücke lässt — kein neuer CSS-Regel nötig, nur inline für diesen
-Sonderfall), Link auf vision-ears.de (`.project-link`-Pattern wie bei
-Ketzberg/Jakob Manz/Loft Arts).
+Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
+(`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
+Spanisch "Equipo", wie `nav.gear`). **Als erweiterbare Liste angelegt:**
+jede Marke/jedes Endorsement kriegt darunter einen eigenen Eyebrow +
+`<h3>`-Markennamen-Block (nicht als eigenes `.home-section`-Band, da Gear
+insgesamt schon eine einzelne Homepage-Sektion ist — analog zu den
+`.blog-post`-Artikeln unter der Blog-Sektion). Bisher nur "Vision Ears":
+Badge-Eyebrow **"Vision Ears Artist"** (bewusst NICHT übersetzt/kein
+`data-i18n` — feste Bezeichnung, wie ein Markenname), `<h3>Vision
+Ears</h3>`, Intro-Satz (`gear.visionears.text`, i18n), Zitat
+(`.gear-quote`, neue CSS-Klasse — linker Akzent-Strich + kursiv, s.
+`style.css`) als **echtes, übersetztes** `gear.visionears.quote`
+(i18n in allen 3 Sprachen — das deutsche Original ist das tatsächliche,
+öffentlich auf vision-ears.de veröffentlichte Testimonial-Zitat, EN/ES
+sind Übersetzungen davon), 2 Fotos (`.epk-gallery` mit inline
+`style="grid-template-columns:repeat(2,1fr);max-width:32rem"`, weil die
+Standard-4-Spalten-Grid bei nur 2 Bildern eine hässliche Lücke lässt —
+kein neue CSS-Regel nötig, nur inline für diesen Sonderfall), Link auf
+vision-ears.de (`.project-link`-Pattern wie bei Ketzberg/Jakob Manz/Loft
+Arts). Neue Marke ergänzen: denselben Eyebrow+h3+Text-Block unter dem
+Vision-Ears-Block anhängen (kein Alternieren nötig, da nur eine Sektion).
 
 Fotos (`assets/images/visionears-photo-1.jpg`/`-2.jpg`): stammen aus 2
 Instagram-Posts, die Leo verlinkt hat (`_leoasal_`, Fotos von

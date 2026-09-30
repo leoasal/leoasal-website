@@ -5,6 +5,29 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Korrektur: Gear von eigenständiger Seite zu Homepage-Sektion umgebaut
+  (2026-09-30, direkte Folgekorrektur zum Eintrag darunter).** Leo:
+  "Missverständnis. Gear soll auch nur ein Marker auf dem One-Pager sein"
+  — er wollte Gear von Anfang an wie Blog/Bio/Dates/Projects/Contact als
+  Sektion in `index.html`, nicht als eigenständige `gear.html` mit
+  eigenem Header und einem 6. Nav-Link, der auf eine andere Seite
+  springt. Das widersprach dem zentralen Architektur-Prinzip dieses
+  Repos ("Scrollen und einzelne Seiten sollen dasselbe Ergebnis liefern",
+  s. CLAUDE.md), das bei der ursprünglichen Rückfrage übersehen wurde.
+  Korrektur: `gear.html` zu einem Redirect-Stub auf `index.html#gear`
+  reduziert (wie blog.html/bio.html/etc.), der komplette Vision-Ears-
+  Inhalt als neue `#gear`-Sektion direkt in `index.html` eingefügt (nach
+  `#contact`, grauer Hintergrund als 6. alternierendes Band). Nav-Links
+  auf allen Seiten von `gear.html` auf `index.html#gear` (bzw. auf
+  index.html selbst auf `#gear`) umgestellt, `anchor-scroll.js`-Scrollspy
+  um `"gear"` ergänzt, `index.html` lädt jetzt zusätzlich `lightbox.js`
+  für die Foto-Galerie. Gleichzeitig zwei weitere Korrekturen aus
+  derselben Nachricht: das Testimonial-Zitat ist jetzt **wirklich in
+  allen 3 Sprachen übersetzt** (`gear.visionears.quote`, vorher nur
+  unübersetztes Deutsch) und ein Badge **"Vision Ears Artist"** über dem
+  "Vision Ears"-Markennamen ergänzt (bewusst nicht übersetzt, feste
+  Bezeichnung wie ein Markenname).
+
 - **Neue Gear-Seite mit Vision-Ears-Endorsement (2026-09-30).** Leo schickte
   einen Screenshot der Vision-Ears-Website (er ist dort als Artist mit
   Testimonial-Zitat gelistet) plus 2 Instagram-Links als Beleg-Fotos und

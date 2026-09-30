@@ -45,7 +45,7 @@
         <li><a href="#dates" data-i18n="nav.dates">Dates</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        <li><a href="gear.html" data-i18n="nav.gear">Gear</a></li>
+        <li><a href="#gear" data-i18n="nav.gear">Gear</a></li>
       </ul>
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en">EN</button>
@@ -246,6 +246,40 @@
     <a class="contact-email" href="mailto:mail@leoasal.com">mail@leoasal.com</a>
    </div>
   </section>
+
+  <section id="gear" class="home-section home-section--alt">
+   <div class="container">
+    <div class="page-header">
+      <span class="eyebrow" data-i18n="gear.eyebrow">Endorsements</span>
+      <h2 data-i18n="gear.heading">Gear</h2>
+    </div>
+
+    <span class="eyebrow">Vision Ears Artist</span>
+    <h3>Vision Ears</h3>
+    <p class="bio-text" style="max-width:68ch" data-i18n="gear.visionears.text">Leo performs with custom in-ear monitors by Vision Ears.</p>
+
+    <blockquote class="gear-quote">
+      <p data-i18n="gear.visionears.quote">„Ich bin total begeistert von meinen neuen VE8! Durch die individuelle Anpassung vergesse ich jedes Mal, dass ich sie überhaupt trage — doch von außen macht sich die elegante Topas-Faceplate dann doch bemerkbar. ;-) Mit Vision Ears verbinde ich herausragende Handwerkskunst, innovative Technologie und ein super freundliches Service-Team!“</p>
+      <footer>— Leo Asal, <a href="https://vision-ears.de" target="_blank" rel="noopener">vision-ears.de</a></footer>
+    </blockquote>
+
+    <div class="epk-gallery" style="grid-template-columns:repeat(2,1fr);max-width:32rem" data-credit="©" data-credit-name="@smoothjazzphoto" data-credit-url="https://www.instagram.com/smoothjazzphoto/">
+      <button type="button" class="cover-trigger" data-lightbox="assets/images/visionears-photo-1.jpg">
+        <img src="assets/images/visionears-photo-1.jpg" alt="Leo Asal performing, wearing Vision Ears in-ear monitors" loading="lazy">
+      </button>
+      <button type="button" class="cover-trigger" data-lightbox="assets/images/visionears-photo-2.jpg">
+        <img src="assets/images/visionears-photo-2.jpg" alt="Leo Asal performing, wearing Vision Ears in-ear monitors" loading="lazy">
+      </button>
+    </div>
+
+    <div class="project-link">
+      <span class="date-detail-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a class="date-link" href="https://vision-ears.de" target="_blank" rel="noopener">vision-ears.de</a>
+    </div>
+   </div>
+  </section>
 </main>
 
 <nav class="mobile-nav" aria-label="Main navigation">
@@ -254,7 +288,7 @@
   <a href="#dates" data-i18n="nav.dates">Dates</a>
   <a href="#projects" data-i18n="nav.projects">Projects</a>
   <a href="#contact" data-i18n="nav.contact">Contact</a>
-  <a href="gear.html" data-i18n="nav.gear">Gear</a>
+  <a href="#gear" data-i18n="nav.gear">Gear</a>
 </nav>
 
 <footer class="site-footer">
@@ -268,5 +302,6 @@
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/dates.js"></script>
 <script src="assets/js/anchor-scroll.js"></script>
+<script src="assets/js/lightbox.js"></script>
 </body>
 </html>
