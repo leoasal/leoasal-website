@@ -359,23 +359,27 @@ die neue Sektion isoliert einfärben.
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
 Spanisch "Equipo", wie `nav.gear`). **Als erweiterbare Liste angelegt:**
-jede Marke/jedes Endorsement kriegt darunter einen eigenen Eyebrow +
-`<h3>`-Markennamen-Block (nicht als eigenes `.home-section`-Band, da Gear
-insgesamt schon eine einzelne Homepage-Sektion ist — analog zu den
-`.blog-post`-Artikeln unter der Blog-Sektion). Bisher nur "Vision Ears":
-Badge-Eyebrow **"Vision Ears Artist"** (bewusst NICHT übersetzt/kein
-`data-i18n` — feste Bezeichnung, wie ein Markenname), `<h3>Vision
-Ears</h3>`, Intro-Satz (`gear.visionears.text`, i18n), Zitat
+jede Marke/jedes Endorsement kriegt darunter einen eigenen `<h3>`-Block
+(nicht als eigenes `.home-section`-Band, da Gear insgesamt schon eine
+einzelne Homepage-Sektion ist — analog zu den `.blog-post`-Artikeln unter
+der Blog-Sektion). Bisher nur Vision Ears: `<h3>Vision Ears Artist</h3>`
+(2026-09-30 — ursprünglich `<h3>Vision Ears</h3>` mit separatem
+Eyebrow-Badge "Vision Ears Artist" darüber, auf Leos Wunsch
+zusammengelegt: Badge raus, Markenname selbst heißt jetzt "Vision Ears
+Artist"), Intro-Satz (`gear.visionears.text`, i18n), Zitat
 (`.gear-quote`, neue CSS-Klasse — linker Akzent-Strich + kursiv, s.
 `style.css`) als **echtes, übersetztes** `gear.visionears.quote`
 (i18n in allen 3 Sprachen — das deutsche Original ist das tatsächliche,
 öffentlich auf vision-ears.de veröffentlichte Testimonial-Zitat, EN/ES
-sind Übersetzungen davon), 2 Fotos (`.epk-gallery` mit inline
-`style="grid-template-columns:repeat(2,1fr);max-width:32rem"`, weil die
-Standard-4-Spalten-Grid bei nur 2 Bildern eine hässliche Lücke lässt —
-kein neue CSS-Regel nötig, nur inline für diesen Sonderfall), Link auf
-vision-ears.de (`.project-link`-Pattern wie bei Ketzberg/Jakob Manz/Loft
-Arts). Neue Marke ergänzen: denselben Eyebrow+h3+Text-Block unter dem
+sind Übersetzungen davon), Zitat-Footer ist nur noch `— Leo Asal`
+(2026-09-30 den vision-ears.de-Link dort entfernt — er stand direkt
+neben dem separaten `.project-link` weiter unten, war doppelt), 2 Fotos
+(`.epk-gallery` mit inline `style="grid-template-columns:repeat(2,1fr);
+max-width:32rem"`, weil die Standard-4-Spalten-Grid bei nur 2 Bildern
+eine hässliche Lücke lässt — kein neue CSS-Regel nötig, nur inline für
+diesen Sonderfall), Link auf vision-ears.de (`.project-link`-Pattern wie
+bei Ketzberg/Jakob Manz/Loft
+Arts). Neue Marke ergänzen: denselben h3+Text-Block unter dem
 Vision-Ears-Block anhängen (kein Alternieren nötig, da nur eine Sektion).
 
 Fotos (`assets/images/visionears-photo-1.jpg`/`-2.jpg`): stammen aus 2

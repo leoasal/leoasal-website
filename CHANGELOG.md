@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear/Vision-Ears-Block: Badge weg, Markenname umbenannt, doppelter
+  Link entfernt (2026-09-30, dritte Folgekorrektur derselben Session).**
+  Leo: Link im Zitat-Footer raus (stand doppelt neben dem separaten
+  vision-ears.de-Link weiter unten), Eyebrow-Badge "Vision Ears Artist"
+  raus, stattdessen die `<h3>`-Überschrift selbst von "Vision Ears" zu
+  "Vision Ears Artist" umbenannt.
+
 - **Gear-Sektion von letzter auf 5. Position (vor Contact) verschoben
   (2026-09-30, zweite Folgekorrektur derselben Session).** Leo: "gear
   soll als 5. punkt, vor kontakt, sein". `#gear`- und `#contact`-Sektion
