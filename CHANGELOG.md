@@ -5,6 +5,43 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision-Ears-Fotos ausgetauscht: 2 Instagram-Crops raus, 4 echte Fotos
+  aus der Inbox rein (2026-09-30).** Leo legte 4 neue Dateien in die
+  Inbox (ein Foto von Christian Nordström/smoothjazzphoto.com identisch
+  zum auf vision-ears.de gezeigten Testimonial-Foto, plus 3 Smooth-Jazz-
+  Festival-2023-Livefotos desselben Fotografen, alle mit sichtbarem
+  In-Ear) und bat, die alten beiden Instagram-Crops von der Seite zu
+  entfernen. Die beiden Querformat-Fotos (1800×1200) mit PIL auf ein
+  zentriertes 1200×1200-Quadrat zugeschnitten, alle 4 als
+  `visionears-photo-1.jpg` bis `-4.jpg` gespeichert (vorherige `-1.jpg`/
+  `-2.jpg` dabei überschrieben). Gallery von der 2-Bild-Sonderlösung
+  (inline 2-Spalten-Grid) zurück auf die normale 4-Spalten-`.epk-gallery`
+  gestellt, Credit von `@smoothjazzphoto` (Instagram-Handle) auf
+  "Christian Nordström" / smoothjazzphoto.com umgestellt. Originale nach
+  `Inbox/processed/` verschoben.
+
+- **Header/Nav komplett umgebaut: Sprachauswahl neben die Social-Icons,
+  Hauptnav als scrollende "Marker-Galerie" links (2026-09-30).** Leo fand
+  die Hauptnav mit 6 Punkten (bald 7 mit geplantem "Unterricht") zu voll
+  und bat um ein Experiment: Sprachumschalter rechts neben die Social-
+  Media-Icons, Hauptnav auf die linke Seite, aber nicht als starre Leiste
+  — "eher als Marker-Galerie, die sich weiterbewegt beim Scrollen".
+  Umsetzung (direkt live gebaut und getestet, kein separater Mockup, s.
+  CLAUDE.md "Header/Nav-Layout" für die volle Doku):
+  - Neue `.header-actions`-Gruppe (Social-Icons + EIN Sprachumschalter,
+    vorher zwei Breakpoint-Kopien `.lang-switch`/`.lang-switch--mobile`)
+    sitzt jetzt an jedem Breakpoint rechts im Header.
+  - Neue `.side-rail`: fixe vertikale Nav-Leiste links am Viewport-Rand
+    ab `1100px`, mit gleitendem Akzent-Indikator (`translateY`-Transition
+    in `anchor-scroll.js`, synchron zum bestehenden Scrollspy) — das ist
+    die "Marker-Galerie". Frosted-Glass-Hintergrund ergänzt, nachdem der
+    erste Entwurf auf dunklen Fotos (Hero-Bild) unlesbar war.
+  - `800–1099px`-Fallback: die alte horizontale `.site-nav`-Leiste bleibt
+    hier bestehen (zu schmal für den Rail ohne Content-Kollision).
+  - `anchor-scroll.js` läuft jetzt auch auf allen Unterseiten (vorher nur
+    index.html) für die statische Indikator-Positionierung dort.
+  - Alle 9 Seiten mit echtem Header entsprechend umgebaut.
+
 - **Gear/Vision-Ears-Block: Badge weg, Markenname umbenannt, doppelter
   Link entfernt (2026-09-30, dritte Folgekorrektur derselben Session).**
   Leo: Link im Zitat-Footer raus (stand doppelt neben dem separaten

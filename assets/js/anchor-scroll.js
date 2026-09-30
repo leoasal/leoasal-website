@@ -88,9 +88,22 @@
     var linksFor = {};
     spySections.forEach(function (sec) {
       linksFor[sec.id] = Array.prototype.slice.call(document.querySelectorAll(
-        '.site-nav a[href="#' + sec.id + '"], .mobile-nav a[href="#' + sec.id + '"]'
+        '.site-nav a[href="#' + sec.id + '"], .mobile-nav a[href="#' + sec.id + '"], .side-rail a[href="#' + sec.id + '"]'
       ));
     });
+
+    // Side rail indicator: a thin bar that glides along the rail to sit
+    // beside the active link as you scroll (the ">=1100px" nav gallery).
+    var railIndicator = document.querySelector(".side-rail-indicator");
+    var railTrack = document.querySelector(".side-rail-track");
+    function moveRailIndicator(id) {
+      if (!railIndicator || !railTrack) return;
+      var link = id && document.querySelector('.side-rail a[href="#' + id + '"]');
+      if (!link) { railIndicator.style.opacity = 0; return; }
+      var linkTop = link.offsetTop + link.offsetHeight / 2 - railIndicator.offsetHeight / 2;
+      railIndicator.style.transform = "translateY(" + linkTop + "px)";
+      railIndicator.style.opacity = 1;
+    }
 
     var activeId;
     function setActive(id) {
@@ -103,6 +116,7 @@
           else if (a.getAttribute("aria-current") === "location") a.removeAttribute("aria-current");
         });
       });
+      moveRailIndicator(id);
     }
 
     function evaluateSpy() {
@@ -131,5 +145,21 @@
     window.addEventListener("load", evaluateSpy);
     window.addEventListener("dates:rendered", evaluateSpy);
     evaluateSpy();
+  } else {
+    // Subpages (project pages, impressum, datenschutz): no scrollspy, but the
+    // rail's current item is hardcoded via aria-current="page" — position the
+    // indicator once for it instead of leaving it hidden.
+    var railIndicator = document.querySelector(".side-rail-indicator");
+    var railTrack = document.querySelector(".side-rail-track");
+    var currentLink = document.querySelector('.side-rail a[aria-current="page"]');
+    function positionStaticIndicator() {
+      if (!railIndicator || !railTrack || !currentLink) return;
+      var linkTop = currentLink.offsetTop + currentLink.offsetHeight / 2 - railIndicator.offsetHeight / 2;
+      railIndicator.style.transform = "translateY(" + linkTop + "px)";
+      railIndicator.style.opacity = 1;
+    }
+    positionStaticIndicator();
+    window.addEventListener("load", positionStaticIndicator);
+    window.addEventListener("resize", positionStaticIndicator);
   }
 })();

@@ -132,6 +132,12 @@ p { margin: 0 0 1em; }
   color: var(--ink);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
 .site-social {
   display: flex;
   align-items: center;
@@ -220,19 +226,76 @@ p { margin: 0 0 1em; }
   text-underline-offset: 3px;
 }
 
-/* Mobile: the language switch sits in the header bar, between the logo and
-   the social icons (space-between spreads the three apart). Desktop uses
-   the copy inside .site-nav instead. */
-.lang-switch--mobile {
-  border-left: none;
-  padding-left: 0;
-  gap: 0.1rem;
+/* Side rail (>=1100px): vertical "gallery" of section markers fixed to the
+   left edge, replacing .site-nav on wide viewports. A thin indicator glides
+   along the rail to the active section as you scroll (see anchor-scroll.js). */
+.side-rail {
+  display: none;
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 15;
 }
 
-.lang-switch--mobile button {
-  font-size: 0.68rem;
-  padding: 0.3em 0.3em;
-  opacity: 0.55;
+.side-rail-track {
+  position: relative;
+  padding: 0.85rem 1.25rem 0.85rem 1.7rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+}
+
+.side-rail-line {
+  position: absolute;
+  left: 0.6rem;
+  top: calc(0.85rem + 0.3em);
+  bottom: calc(0.85rem + 0.3em);
+  width: 1px;
+  background: var(--line);
+}
+
+.side-rail-indicator {
+  position: absolute;
+  left: calc(0.6rem - 1px);
+  width: 3px;
+  height: 1em;
+  background: var(--accent-dark);
+  border-radius: 1px;
+  transform: translateY(0);
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.side-rail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.side-rail a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--plum);
+  opacity: 0.5;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.side-rail a:hover {
+  opacity: 0.85;
+}
+
+.side-rail a[aria-current="page"],
+.side-rail a[aria-current="location"] {
+  opacity: 1;
+  color: var(--accent-dark);
 }
 
 @media (min-width: 800px) {
@@ -276,14 +339,24 @@ main {
   padding-bottom: 4.5rem; /* room for mobile nav */
 }
 
+/* 800-1099px: viewport too narrow for the side rail to clear the centered
+   960px container without crowding page content, so this band keeps the
+   plain horizontal .site-nav as a fallback. >=1100px switches to the rail. */
 @media (min-width: 800px) {
+  .mobile-nav { display: none; }
+  main { padding-bottom: 0; }
+}
+
+@media (min-width: 800px) and (max-width: 1099.98px) {
   .site-nav {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
   }
-  .mobile-nav { display: none; }
-  main { padding-bottom: 0; }
+}
+
+@media (min-width: 1100px) {
+  .side-rail { display: block; }
 }
 
 /* ---------- Hero (home) ---------- */

@@ -218,39 +218,75 @@ Footer mit Impressum/Datenschutz + Copyright. Neue Seiten am besten von
 einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
 nichts vergessen wird.
 
-Header-Nav (ab `min-width: 800px`): `.site-nav` ist `display: flex`, Haupt-
-links (`ul`) und Sprachumschalter (`.lang-switch`) sitzen dadurch auf einer
-Zeile, Sprachumschalter rechtsbündig mit Trennstrich.
+**Header/Nav-Layout, dreistufig responsiv (2026-09-30 komplett umgebaut,**
+Vorgänger-Version mit `.lang-switch--mobile`-Doppelkopie und mittig
+schwebenden Social-Icons existiert nicht mehr): Leo fand die Hauptnav "zu
+voll" (6 Punkte, bald 7 mit "Unterricht", s. "Offene Punkte" weiter unten)
+und wollte die Sprachauswahl rechts neben die Social-Icons und die
+Hauptnav als linke, beim Scrollen mitwandernde "Marker-Galerie" statt
+einer horizontalen Leiste. Ergebnis — drei Breakpoints:
 
-**Sprachumschalter:** Es gibt ZWEI Kopien im Header, je nach Breite genau
-eine sichtbar:
-- `<800px`: `.lang-switch.lang-switch--mobile` — direktes Flex-Geschwister
-  von `.logo`/`.site-social`/`.site-nav` in `.site-header .container`,
-  steht im DOM zwischen `.logo` und `.site-social`. Da `.site-nav` mobil
-  `display:none` ist, verteilt `justify-content:space-between` die drei
-  sichtbaren Blöcke: Logo links, Sprachumschalter mittig, Social-Icons
-  rechts. `--mobile` entfernt nur `border-left`/`padding-left` der Basis-
-  `.lang-switch` und ist ab 800px `display:none`.
-- `≥800px`: die Kopie in `.site-nav` (rechtsbündig mit Trennstrich, s.o.);
-  `.lang-switch--mobile` ist dann ausgeblendet.
-- Es gibt **keinen** Footer-Umschalter mehr (war redundant, jetzt
-  permanent im Sticky-Header oben). i18n.js hört per Event-Delegation auf
-  jedes `[data-lang]`, also keine JS-Änderung nötig.
-- Impressum/Datenschutz haben **weiterhin gar keinen** Umschalter.
+- **`<800px` (mobil):** `.site-header .container` ist `display:flex;
+  justify-content:space-between` mit genau 2 sichtbaren Kindern —
+  `.logo` links, `.header-actions` (wrapt `.site-social` + `.lang-switch`)
+  rechts. `.site-nav` und `.side-rail` sind hier `display:none`.
+  Haupt-Navigation läuft über die bestehende `.mobile-nav` (fixe
+  Bottom-Bar, unverändert, 6 Items durch `.mobile-nav a { flex:1 }`
+  automatisch gleich verteilt — kein CSS-Fix nötig beim Hinzufügen eines
+  7. Punkts).
+- **`800–1099px` (schmales Desktop/Tablet, Fallback-Stufe):** zu schmal,
+  damit ein `position:fixed`-Rail links neben dem zentrierten
+  960px-`.container` Platz hat, ohne Seiteninhalt zu überlappen (bei
+  ~800px hat der Container praktisch keinen Außenabstand). Deshalb hier
+  stattdessen die **alte horizontale `.site-nav`-Leiste** als dritter
+  Flex-Punkt zwischen `.logo` und `.header-actions` (`.site-header
+  .container` hat in dieser Stufe 3 sichtbare Kinder statt 2,
+  `space-between` verteilt sie).
+- **`≥1100px`:** `.site-nav` versteckt sich, stattdessen erscheint
+  `.side-rail` — eine **fixe vertikale Leiste links am Viewport-Rand**
+  (`position:fixed; left:2rem; top:50%; transform:translateY(-50%)`),
+  eigenständiges `<nav>` außerhalb von `.site-header` (nicht Teil des
+  Headers, bleibt beim Scrollen stehen). Enthält dieselben Punkte wie
+  `.site-nav`/`.mobile-nav`, aber vertikal gestapelt in einer
+  `.side-rail-track`-Box mit halbtransparentem weißem Frosted-Glass-
+  Hintergrund (`rgba(255,255,255,0.85)` + `backdrop-filter:blur(6px)`,
+  **notwendig, nicht kosmetisch** — ohne Hintergrund sind die Labels auf
+  dunklen Foto-Hintergründen wie dem Hero-Bild unlesbar, das war der erste
+  Entwurf und musste korrigiert werden). Eine dünne vertikale Linie
+  (`.side-rail-line`) plus ein gleitender Akzent-Balken
+  (`.side-rail-indicator`, 3px breit, `transition: transform 0.3s ease`)
+  markieren den aktiven Punkt — das ist die "Marker-Galerie, die sich
+  beim Scrollen weiterbewegt": `assets/js/anchor-scroll.js` verschiebt den
+  Indikator per `translateY(px)` auf die Y-Position des aktiven Links
+  (`link.offsetTop` relativ zu `.side-rail-track`, die `position:relative`
+  ist), synchron mit dem bestehenden Scrollspy (`setActive()` ruft jetzt
+  zusätzlich `moveRailIndicator(id)`). Auf Unterseiten ohne Scrollspy
+  (Projektseiten, impressum/datenschutz — dort gibt es keine `#blog`
+  o.ä.-Elemente im DOM) positioniert ein separater `else`-Zweig in
+  `anchor-scroll.js` den Indikator einmalig anhand des hartcodierten
+  `aria-current="page"`-Links (analog zum alten `.site-nav`-Verhalten).
+  **Deshalb laden jetzt auch alle Unterseiten `anchor-scroll.js`**
+  (vorher nur index.html) — ohne das Skript bliebe der Indikator dort
+  unsichtbar (`opacity:0` ist der Default-Zustand).
 
-**Social-Icons sind Teil des Headers**: `.logo`, `.lang-switch--mobile`,
-`.site-social` und `.site-nav` sind **direkte Flex-Geschwister** in
-`.site-header .container` (kein Wrapper-Div). `.container` ist
-`display:flex; justify-content:space-between` **immer** (nicht nur ab
-800px). Das ergibt automatisch:
-- **Mobil** (`.site-nav` `display:none`, `.lang-switch--mobile` sichtbar):
-  3 sichtbare Items → Logo links, Sprachumschalter mittig, Icons rechts.
-- **Desktop** (`.site-nav` sichtbar, `.lang-switch--mobile` `display:none`):
-  3 Items → `space-between` verteilt den Icons-Block **exakt mittig** in
-  die Lücke zwischen Logo und "Blog" (dem ersten Nav-Link). Das ist
-  explizit so gewünscht — nicht wieder auf eine `.brand-group`-Wrapper-
-  Lösung umbauen, die zieht die Icons direkt neben den Logo-Text statt sie
-  mittig zu verteilen.
+**Sprachumschalter — jetzt nur noch EINE Kopie, an allen Breakpoints
+an derselben Stelle** (in `.header-actions`, direkt nach den Social-Icons,
+mit dem alten Trennstrich `border-left`): `.lang-switch--mobile` und die
+alte Breakpoint-Logik dafür (`@media (min-width:800px){display:none}`)
+sind komplett entfernt — durch den Wegfall der Nav aus dem Header war die
+alte "drei Items, Sprache in der Mitte"-Notlösung nicht mehr nötig.
+Impressum/Datenschutz haben weiterhin **gar keinen** Umschalter (bewusst).
+Es gibt weiterhin **keinen** Footer-Umschalter (redundant, permanent im
+Header). i18n.js hört per Event-Delegation auf jedes `[data-lang]`, keine
+JS-Änderung nötig gewesen.
+
+**`.header-actions`** (`display:flex; align-items:center; gap:1.1rem`)
+wrapt `.site-social` + `.lang-switch` zu einer Gruppe — dadurch landen
+Icons und Sprache **immer zusammen** rechts, an jedem Breakpoint, statt
+wie vorher einzeln über `justify-content:space-between` verteilt zu
+werden. Kein `.brand-group`-Wrapper um Logo+Icons nötig (das war die alte,
+bewusst vermiedene Lösung aus der Vorgänger-Version — jetzt obsolet, da
+die Icons nicht mehr mittig schweben müssen).
 
 Aktuell: Instagram, Facebook, Spotify, Apple Music, Tidal — inline SVGs,
 identisch in allen Seiten mit echtem Header (index.html, die 6
@@ -373,24 +409,32 @@ Artist"), Intro-Satz (`gear.visionears.text`, i18n), Zitat
 öffentlich auf vision-ears.de veröffentlichte Testimonial-Zitat, EN/ES
 sind Übersetzungen davon), Zitat-Footer ist nur noch `— Leo Asal`
 (2026-09-30 den vision-ears.de-Link dort entfernt — er stand direkt
-neben dem separaten `.project-link` weiter unten, war doppelt), 2 Fotos
-(`.epk-gallery` mit inline `style="grid-template-columns:repeat(2,1fr);
-max-width:32rem"`, weil die Standard-4-Spalten-Grid bei nur 2 Bildern
-eine hässliche Lücke lässt — kein neue CSS-Regel nötig, nur inline für
-diesen Sonderfall), Link auf vision-ears.de (`.project-link`-Pattern wie
-bei Ketzberg/Jakob Manz/Loft
-Arts). Neue Marke ergänzen: denselben h3+Text-Block unter dem
-Vision-Ears-Block anhängen (kein Alternieren nötig, da nur eine Sektion).
+neben dem separaten `.project-link` weiter unten, war doppelt), 4 Fotos
+in einer ganz normalen `.epk-gallery` (Standard-4-Spalten-Grid, kein
+inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
+(`.project-link`-Pattern wie bei Ketzberg/Jakob Manz/Loft Arts). Neue
+Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block
+anhängen (kein Alternieren nötig, da nur eine Sektion).
 
-Fotos (`assets/images/visionears-photo-1.jpg`/`-2.jpg`): stammen aus 2
-Instagram-Posts, die Leo verlinkt hat (`_leoasal_`, Fotos von
-`@smoothjazzphoto`) — per `curl` das `og:image` der öffentlichen
-Post-URL gezogen (klappt ohne Login, liefert aber nur eine von Instagram
-quadratisch zugeschnittene 640×640-Version, nicht das Originalfoto in
-voller Auflösung — für diesen kleinen Zwei-Bild-Callout ausreichend, bei
-zukünftigem Bedarf an höherer Auflösung Leo nach dem Originalfoto fragen).
-Credit im Gallery-`data-credit-name`/`-url` auf `@smoothjazzphoto`/
-`instagram.com/smoothjazzphoto` gesetzt.
+Fotos (`assets/images/visionears-photo-1.jpg` bis `-4.jpg`, seit
+2026-09-30): ursprünglich 2 von Instagram gezogene 640×640-Crops (s.
+Git-Historie/CHANGELOG), dann von Leo durch 4 echte, hochauflösende
+Fotos aus der Inbox ersetzt (Originaldateien: `medium_Leo_Asal_c_
+Christian_Nordstroem_...png`, `SJM2023-C15-RuedigerBaldauf-017.jpg`,
+`SJM2023-C5-MichaelManson-021.jpg`/`-022.jpg` — Smooth-Jazz-Festival-
+Livefotos, alle mit sichtbarem In-Ear). Die beiden `SJM2023-C5-*`-Fotos
+sind Querformat (1800×1200) und wurden mit PIL auf ein zentriertes
+1200×1200-Quadrat zugeschnitten (Leo leicht rechts der Mitte im Original,
+daher Crop-Box `x=[350,1550]` statt striktem Mittig-Crop), die anderen
+beiden waren schon quadratisch. Weil jetzt 4 statt 2 Bilder da sind, ist
+der frühere `.epk-gallery`-Sonderfall (`style="grid-template-columns:
+repeat(2,1fr);max-width:32rem"`, s.o.) wieder entfernt — die Standard-
+4-Spalten-Grid passt jetzt exakt. Credit `data-credit-name`/`-url` auf
+"Christian Nordström" / `https://www.smoothjazzphoto.com` umgestellt
+(vorher `@smoothjazzphoto`-Instagram-Handle) — der Name steht auch als
+sichtbares Wasserzeichen in den Originalfotos. Die alten 2
+Instagram-Crops wurden von der Seite entfernt (Leo: "die alten beiden
+Fotos kannst du dann löschen").
 
 ## i18n (EN/DE/ES)
 
@@ -656,3 +700,20 @@ mehrere MB, unbearbeitet) sollen nicht das öffentliche Repo aufblähen, nur
 lokal als Audit-Trail liegen bleiben. Jede verarbeitete Datei kurz in
 `CHANGELOG.md` festhalten (was reinkam, was draus wurde, wie/wohin
 verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
+
+## Offene Punkte / mögliche nächste Schritte
+
+- **Neuer Nav-Punkt "Unterricht"** (angekündigt 2026-09-30, noch nicht
+  umgesetzt): Leo will später einen 7. Punkt in der Hauptnav für
+  Drum-Unterricht ergänzen. Wenn er das anstößt: neue `#unterricht`-Sektion
+  in `index.html` nach dem Muster der bestehenden Sektionen (s.
+  "Seitenstruktur" oben), `nav.unterricht`-i18n-Key in allen 3 JSONs, Link
+  in **drei** Stellen pro Seite mit echtem Header ergänzen (`.site-nav`-
+  `<ul>`, `.side-rail`-`<ul>`, `.mobile-nav`) auf **allen 9** Seiten (s.
+  "Header/Nav-Layout" oben), `spyIds`-Array in `anchor-scroll.js` um
+  `"unterricht"` an der richtigen Position erweitern (Reihenfolge muss der
+  DOM-Reihenfolge der Sektionen entsprechen, sonst bricht der Scrollspy),
+  Hintergrund-Alternierung der betroffenen Sektionen neu durchzählen.
+  Noch nicht geklärt: an welcher Position in der Reihenfolge (vermutlich
+  nicht einfach ans Ende, s. Präzedenzfall Gear, das explizit vor statt
+  nach Contact eingeordnet wurde) — bei Umsetzung nachfragen statt raten.
