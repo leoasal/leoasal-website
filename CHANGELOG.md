@@ -5,6 +5,17 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Doku-Abgleich mit dem tatsächlichen Stand (2026-10-02, Skill
+  update-project).** Alle vier Dateien (README/CLAUDE/CHANGELOG/.gitignore)
+  waren schon vorhanden, kein Handoff-Dokument zum Aufteilen. Korrigiert:
+  README (Sektionen inkl. `#home`/`#gear`, `gear.html`-Stub, neuer
+  Abschnitt "Navigation", Sprachumschalter-Position, `anchor-scroll.js`-
+  Beschreibung); CLAUDE.md (veraltete `contact.html`-Zeile entfernt,
+  "Gemeinsames Muster pro Seite" um Side-Rail/`anchor-scroll.js` ergänzt,
+  Gear-Position "6 von 7", Browser-Cache gilt auch für CSS, neue Fallen
+  "verborgene Pane = kein rAF" und "Neue Tabs landen auf `file://`", Node
+  ist lokal vorhanden). `.gitignore` geprüft, passt.
+
 - **Marker-Menü: Balken exakt auf Marker-Höhe, proportional mitwandernd,
   ziehbar; Navigation landet bündig (2026-10-02).** Leos Punkte: (1) Der
   Streifen saß immer etwas unterhalb des Markers → `top:0` fehlte am

@@ -172,8 +172,6 @@ loft-arts.html                Alternierende Bänder: echter Beschreibungstext (A
                                `.epk-gallery--row` mit Pfeil-Nav) → 12 YouTube-Videos (weiß,
                                Reihenfolge: 4x Megaloh, Novaa, Teesy, MAJAN, Woodie Smalls,
                                OG Keemo, Lostboi Lino, Buffala, Joshua J)
-contact.html                  Nur noch E-Mail — Social-Icons sind jetzt im Header (s.u.),
-                               nicht mehr extra auf dieser Seite
 impressum.html, datenschutz.html   IMMER Deutsch, kein Sprachumschalter (bewusste
                                Entscheidung: rechtlich verbindliche Fassung)
 ```
@@ -215,9 +213,12 @@ dieses Muster übernehmen: pro inhaltlichem Block eine eigene
 …</div></section>`, alternierend, nicht wieder alles in einen
 gemeinsamen `<div class="container">` packen.
 
-Gemeinsames Muster pro Seite: Header mit Logo + Nav + Sprachumschalter,
-Content in `<main>`, `<nav class="mobile-nav">` (nur <800px sichtbar),
-Footer mit Impressum/Datenschutz + Copyright. Neue Seiten am besten von
+Gemeinsames Muster pro Seite: Header (Logo, `.site-nav`, `.header-actions`
+mit Social-Icons + Sprachumschalter), direkt danach `<nav class="side-rail">`
+(nur ≥1100px sichtbar), Content in `<main>`, `<nav class="mobile-nav">` (nur
+<800px sichtbar), Footer mit Impressum/Datenschutz + Copyright, Skripte
+(`i18n.js`, `anchor-scroll.js`, …). Details zu den drei Navs s. "Header/
+Nav-Layout" unten. Neue Seiten am besten von
 einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
 nichts vergessen wird.
 
@@ -439,7 +440,7 @@ nach `Inbox/processed/` (gitignored, s. "Inbox").
 Sektion für Marken/Ausrüstung, mit der er kooperiert (erster Eintrag:
 Vision Ears, In-Ear-Monitore) — als eigener Punkt im One-Pager, genau wie
 Blog/Bio/Dates/Projects/Contact (s. Architektur-Hinweis ganz oben in
-diesem Abschnitt), **Position 5 von 6, direkt vor Contact** (2026-09-30
+diesem Abschnitt), **Position 6 von 7 (Home/Blog/Bio/Dates/Projects/Gear/Contact), direkt vor Contact** (2026-09-30
 per Rückfrage zunächst ans Ende gesetzt, dann von Leo explizit vor
 Contact korrigiert: "gear soll als 5. punkt, vor kontakt, sein"). **Erster
 Entwurf war außerdem eine eigenständige `gear.html` mit eigenem
@@ -682,10 +683,21 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   Verhalten, liegt es am Cache, nicht am Code. **Fix:** an den
   `<script src="...">`-Tag temporär einen Query-String hängen (z.B.
   `?t=2`), neu navigieren, testen — **danach unbedingt wieder entfernen**,
-  bevor committet wird. CSS-Änderungen (`assets/css/style.css`) scheinen
-  davon nicht in gleichem Maß betroffen zu sein, HTML-Seiten selbst auch
-  nicht spürbar — bisher nur bei `assets/js/*.js` beobachtet, im Zweifel
-  aber für jede Skript-Änderung mit einplanen.
+  bevor committet wird. **Gilt genauso für `assets/css/style.css`** (am
+  2026-10-02 beobachtet: geänderte `scroll-margin-top`-Werte kamen im Tab
+  nicht an, bis `style.css?t=N` angehängt wurde) — für jede JS- **und**
+  CSS-Änderung ein temporäres `?t=N` an `<link>`/`<script>` einplanen und
+  danach per `grep -rn '?t=' *.html assets/js/*.js` sicherstellen, dass nichts
+  davon committet wird. HTML-Seiten selbst waren bisher nicht betroffen.
+- **Verborgene Browser-Pane = kein `requestAnimationFrame`:** ist
+  `document.visibilityState === "hidden"`, laufen rAF-basierte Handler
+  (Scrollspy/Rail-Balken) nicht — Tests zeigen dann stale Zustände, kein
+  Code-Fehler. Tab vorher per `tabs_select` nach vorn holen.
+- **Neue Tabs landen auf `file://`:** Nach `Edit`/`Write` öffnet sich ein
+  `file://`-Preview-Tab ohne CSS; `navigate` weicht manchmal auf ihn aus
+  ("Tab … shows a local file"). Dann `tabs_context`, Stray-Tabs schließen,
+  `tabs_select` auf den `localhost`-Tab und per `javascript_tool`
+  (`location.href`) prüfen, dass man auf der richtigen Seite ist.
 - **Browser-Tool-Screenshots werden manchmal komplett weiß** nach `scroll`,
   besonders auf Seiten mit mehreren YouTube-iframes — kein echter Bug,
   einfach per `javascript_tool` den DOM-Zustand direkt prüfen
@@ -729,9 +741,11 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   `last-modified`), nicht nur dem Workflow-Status vertrauen — und **beim
   Session-Start immer erstmal prüfen, ob es noch unerledigte/hängende
   Deploys vom letzten Mal gibt**, bevor man annimmt, der letzte Push sei live.
-- **Kein Homebrew, kein Node lokal** in diesem Environment — gh CLI läuft
-  als portable Binary (s.o.), der Kalender-Sync läuft nur in der GitHub
-  Action (dort ist Node vorhanden), nicht lokal testbar ohne eigenes Node.
+- **Kein Homebrew**; gh CLI läuft als portable Binary (s.o.). **Node ist
+  lokal vorhanden** (v24, Stand 2026-10-02) — nützlich für `node --check
+  assets/js/*.js scripts/sync-calendar.js` (Syntaxcheck vor dem Commit). Der
+  Kalender-Sync selbst läuft weiterhin nur in der GitHub Action, weil er das
+  Secret `CALENDAR_URL` braucht (Secrets nie lokal ablegen).
 - **ffmpeg lokal verfügbar über pip** (2026-09-23 entdeckt, für Video-
   Verarbeitung aus der Inbox — z.B. Boomerang-Loops für die YAMUNA-Cover-
   Prozess-Videos): `python3 -m pip install --user imageio-ffmpeg` installiert
