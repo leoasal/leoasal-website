@@ -264,22 +264,63 @@ drei Breakpoints:
   Entwurf und musste korrigiert werden). Text ist rechtsbündig
   (`.side-rail a { text-align:right }`), die dünne vertikale Linie
   (`.side-rail-line`) und der gleitende Akzent-Balken
-  (`.side-rail-indicator`, 3px breit, `transition: transform 0.3s ease`)
-  sitzen dafür **rechts** in der Box (`right:` statt `left:`, gespiegelt
-  seit dem Seitenwechsel) — markieren den aktiven Punkt, das ist die
-  "Marker-Galerie, die sich beim Scrollen weiterbewegt":
-  `assets/js/anchor-scroll.js` verschiebt den Indikator per
-  `translateY(px)` auf die Y-Position des aktiven Links (`link.offsetTop`
-  relativ zu `.side-rail-track`, die `position:relative` ist), synchron
-  mit dem bestehenden Scrollspy (`setActive()` ruft jetzt zusätzlich
-  `moveRailIndicator(id)`). Auf Unterseiten ohne Scrollspy (Projektseiten,
-  impressum/datenschutz — dort gibt es keine `#blog` o.ä.-Elemente im DOM)
-  positioniert ein separater `else`-Zweig in `anchor-scroll.js` den
-  Indikator einmalig anhand des hartcodierten `aria-current="page"`-Links
-  (analog zum alten `.site-nav`-Verhalten). **Deshalb laden jetzt auch
-  alle Unterseiten `anchor-scroll.js`** (vorher nur index.html) — ohne das
-  Skript bliebe der Indikator dort unsichtbar (`opacity:0` ist der
-  Default-Zustand).
+  (`.side-rail-indicator`, 3px breit, 1.15rem hoch) sitzen dafür
+  **rechts** in der Box (`right:` statt `left:`, gespiegelt seit dem
+  Seitenwechsel) — das ist die "Marker-Galerie, die sich beim Scrollen
+  weiterbewegt".
+
+**Scrollspy + Rail-Balken, kontinuierlich statt sprunghaft (2026-10-02,
+auf Leos Wunsch: "beim Runterscrollen bewegt sich der Streifen langsam und
+proportional nach unten", "genau auf Höhe des Markers", "Streifen selbst
+bewegen als Navigation", "navigiert nicht exakt zum Marker"):**
+- **Balken-Position proportional zur Scrollposition:**
+  `anchor-scroll.js` berechnet pro Frame (`requestAnimationFrame`-gedrosselt,
+  **kein** CSS-`transition` mehr auf dem Balken — die Bewegung kommt direkt
+  vom Scrollen) die "Landing-Position" jeder Sektion (`absTop(sec) -
+  scroll-margin-top`, geklemmt auf das Seitenende). Zwischen zwei
+  Landing-Positionen wird der Balken linear zwischen den Mitten der beiden
+  Marker interpoliert (`railCentres()` = Link-Mitte relativ zur Oberkante
+  von `.side-rail-track`, per `getBoundingClientRect`). Das aktive Label
+  (`aria-current="location"`, auch in `.site-nav`/`.mobile-nav`) ist die
+  *nächstgelegene* Sektion (`t >= 0.5 ? i+1 : i`). Verifiziert: bei 0/25/50/
+  75/100 % Weg zwischen Bio und Dates steht der Balken exakt bei
+  0/0.25/0.5/0.75/1 des Marker-Abstands.
+- **Balken exakt auf Marker-Höhe:** `.side-rail-indicator` braucht
+  `top: 0` — ohne explizites `top` sitzt ein `position:absolute`-Element an
+  seiner statischen Position, also um das `padding-top` der Box (0.85rem)
+  zu tief; das war der Grund für "immer etwas unterhalb des Markers".
+  Gemessen: Abweichung Balkenmitte ↔ Link-Mitte ≤ 0.2px an allen Markern.
+- **Balken ziehbar (nur index.html):** `anchor-scroll.js` setzt
+  `.side-rail-track.is-draggable`; Pointer-Events (`pointerdown/move/up`
+  mit `setPointerCapture`) auf dem Balken, vergrößerte Trefferfläche per
+  `::before`. Beim Ziehen wird die Rail-Y-Position per Umkehrabbildung in
+  eine Scrollposition umgerechnet (`window.scrollTo({behavior:"instant"})`);
+  der Balken folgt über den normalen Scroll-Handler. Magnetzone ±6px um jede
+  Marker-Mitte, damit man beim Zielen exakt bündig landet. Auf Unterseiten
+  ist der Balken **nicht** ziehbar (`pointer-events:none`, statische
+  Markierung).
+- **Landung bündig unter dem Header:** `scroll-margin-top` von
+  `.home-section`/`.hero` ist jetzt `var(--header-h)` (= `--nav-height + 1px`
+  Border = 65px, vorher fest 80px → 15px vom vorherigen Abschnitt lugten
+  oben heraus). `anchor-scroll.js` liest den Offset aus dem Header
+  (`HEADER_OFFSET = header.offsetHeight`) bzw. aus dem berechneten
+  `scroll-margin-top`, **nie mehr hartkodiert** — Header-Höhe nur noch an
+  einer Stelle (CSS) ändern. `#contact` hat `min-height: calc(100vh -
+  var(--header-h))`, sonst endet die Seite vor der Landung und "Contact"
+  kann nicht bündig angefahren werden (leere Fläche unter dem Kontakt-Text
+  ist Absicht).
+- **Nachjustieren nach Seitenwechsel:** Nach Ankunft über `index.html#...`
+  wächst Inhalt oberhalb teils nach (Termine, Lazy-Bilder) und schiebt die
+  Sektion nach unten; `settle()` korrigiert 2.5 s lang per `scrollTo`,
+  solange der Nutzer nicht selbst scrollt (`userTookOver`).
+- Auf Unterseiten ohne Scrollspy positioniert ein `else`-Zweig den Balken
+  einmalig an den hartcodierten `aria-current="page"`-Link (`opacity:0`
+  bleibt, wenn es keinen gibt, z.B. impressum/datenschutz). **Deshalb laden
+  alle Unterseiten `anchor-scroll.js`.**
+- **Test-Falle:** Ist die Browser-Pane verborgen (`document.visibilityState
+  === "hidden"`), läuft `requestAnimationFrame` nicht — Scrollspy-Tests
+  zeigen dann stale Zustände, kein Code-Fehler. Tab vorher mit `tabs_select`
+  nach vorn holen.
 
 **"Home"-Punkt / `#home`:** `<section id="home" class="hero">` (statt nur
 `<section class="hero">`) — die Hero-Sektion selbst ist jetzt ein
@@ -287,10 +328,9 @@ Scrollspy-Ziel wie jede andere Sektion. `spyIds` in `anchor-scroll.js`
 beginnt jetzt mit `"home"` statt `"blog"`. Die alte Sonderregel "nichts ist
 aktiv, solange der Hero oben im View ist" (`pageYOffset < 40 →
 setActive(null)`) ist **entfernt** — die normale Scrollspy-Schleife
-markiert "Home" jetzt korrekt selbst, da `spySections[0]` jetzt `#home`
-ist und dessen Top beim Laden immer `<= line` ist. `.hero` hat wie
-`.home-section` jetzt `scroll-margin-top: 80px`, damit ein Klick auf
-"Home" von weiter unten konsistent unter dem Sticky-Header landet. Auf
+markiert "Home" jetzt korrekt selbst (`spySections[0]` ist `#home`, Landing-
+Position 0). `.hero` hat wie `.home-section` `scroll-margin-top:
+var(--header-h)`. Auf
 Unterseiten ist der Link `index.html#home` (kein `aria-current`, wie bei
 Blog/Bio/Dates/Gear/Contact — nur "Projects" wird dort hartcodiert
 markiert).
@@ -305,6 +345,12 @@ Impressum/Datenschutz haben weiterhin **gar keinen** Umschalter (bewusst).
 Es gibt weiterhin **keinen** Footer-Umschalter (redundant, permanent im
 Header). i18n.js hört per Event-Delegation auf jedes `[data-lang]`, keine
 JS-Änderung nötig gewesen.
+
+**Mobil-Header (<480px):** `.logo` hat `white-space:nowrap; flex-shrink:0`
+(sonst brach "LEO ASAL" bei 375px in zwei Zeilen um, weil Icons + Sprache
+zusammen 238px brauchten); `@media (max-width:479px)` macht
+`.header-actions`/`.site-social`/`.lang-switch` kompakter (kleinere Gaps,
+Padding) → zusammen ~211px.
 
 **`.header-actions`** (`display:flex; align-items:center; gap:1.1rem`)
 wrapt `.site-social` + `.lang-switch` zu einer Gruppe — dadurch landen
@@ -407,10 +453,11 @@ die anderen Nav-Labels hartcodiert ohne `data-i18n`). `site-nav`+
 `mobile-nav`-Liste ist jetzt **6 Einträge** statt 5 — `.mobile-nav a
 { flex: 1 }` verteilt automatisch neu, kein CSS-Fix nötig.
 `assets/js/anchor-scroll.js`: `spyIds`-Array ist
-`["blog","bio","dates","projects","gear","contact"]` — **die Reihenfolge
-in diesem Array muss immer exakt der DOM-Reihenfolge der Sektionen
-entsprechen**, sonst bricht die "letztes Element, dessen Top-Kante die
-33%-Linie passiert hat"-Logik des Scrollspy. `index.html` lädt jetzt
+`["home","blog","bio","dates","projects","gear","contact"]` — **die
+Reihenfolge in diesem Array muss immer exakt der DOM-Reihenfolge der
+Sektionen entsprechen** (die Landing-Positionen müssen aufsteigend sein,
+sonst bricht die Interpolation des Rail-Balkens, s. "Scrollspy +
+Rail-Balken"). `index.html` lädt jetzt
 zusätzlich `assets/js/lightbox.js` (vorher nicht nötig, da die Homepage
 bis dahin keine Lightbox-Galerie hatte). Hintergrund-Alternierung dadurch
 `#gear` = weiß (5. Band), `#contact` = grau (6. Band, vorher weiß als

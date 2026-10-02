@@ -1,5 +1,7 @@
 (function () {
-  var HEADER_OFFSET = 80; // keep in sync with .home-section scroll-margin-top
+  // Sticky header height; same value as the CSS scroll-margin-top of the
+  // sections (--header-h), so arrival and clicks land flush under the header.
+  var HEADER_OFFSET = (document.querySelector(".site-header") || { offsetHeight: 65 }).offsetHeight;
 
   function absTop(el) {
     return el.getBoundingClientRect().top + window.pageYOffset;
@@ -57,6 +59,20 @@
         target.scrollIntoView({ block: "start", behavior: "smooth" });
         parkFocus(target);
       });
+      setTimeout(settle, 900);
+    }
+
+    // Content above the target (dates list, lazy images) can still grow after
+    // the glide and push the section down — keep it flush for a moment.
+    function settle() {
+      var until = performance.now() + 2500;
+      (function fix() {
+        if (userTookOver || performance.now() > until) return;
+        var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || HEADER_OFFSET;
+        var want = Math.max(0, absTop(target) - margin);
+        if (Math.abs(window.pageYOffset - want) > 2) window.scrollTo(0, want);
+        requestAnimationFrame(fix);
+      })();
     }
 
     window.addEventListener("load", function () { pageLoaded = true; glide(); });
@@ -77,12 +93,35 @@
     parkFocus(el);
   });
 
-  // ---- Scrollspy: mark the nav link for the section currently in view, so
-  //      you can always see where you are (desktop + mobile nav). ----
+  // ---- Scrollspy + side rail ------------------------------------------------
+  // The rail's bar follows the scroll position continuously: between two
+  // section "landing" positions it is interpolated between the two matching
+  // marker centres, so it glides proportionally while you scroll. The bar can
+  // also be dragged — the inverse mapping (rail Y -> scroll position) is used.
   var spyIds = ["home", "blog", "bio", "dates", "projects", "gear", "contact"];
   var spySections = spyIds
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
+
+  var railTrack = document.querySelector(".side-rail-track");
+  var railIndicator = document.querySelector(".side-rail-indicator");
+
+  // Vertical centre of a link relative to the top of the rail track.
+  function railCentres(ids) {
+    var tr = railTrack.getBoundingClientRect();
+    return ids.map(function (id) {
+      var a = document.querySelector('.side-rail a[href="#' + id + '"]');
+      if (!a) return null;
+      var r = a.getBoundingClientRect();
+      return r.top - tr.top + r.height / 2;
+    });
+  }
+
+  function placeIndicator(centre) {
+    railIndicator.style.transform =
+      "translateY(" + (centre - railIndicator.offsetHeight / 2) + "px)";
+    railIndicator.style.opacity = 1;
+  }
 
   if (spySections.length) {
     var linksFor = {};
@@ -92,17 +131,14 @@
       ));
     });
 
-    // Side rail indicator: a thin bar that glides along the rail to sit
-    // beside the active link as you scroll (the ">=1100px" nav gallery).
-    var railIndicator = document.querySelector(".side-rail-indicator");
-    var railTrack = document.querySelector(".side-rail-track");
-    function moveRailIndicator(id) {
-      if (!railIndicator || !railTrack) return;
-      var link = id && document.querySelector('.side-rail a[href="#' + id + '"]');
-      if (!link) { railIndicator.style.opacity = 0; return; }
-      var linkTop = link.offsetTop + link.offsetHeight / 2 - railIndicator.offsetHeight / 2;
-      railIndicator.style.transform = "translateY(" + linkTop + "px)";
-      railIndicator.style.opacity = 1;
+    // Scroll position at which each section lands flush under the header
+    // (clamped: the last sections can't scroll further than the page end).
+    function landingPositions() {
+      var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      return spySections.map(function (sec) {
+        var margin = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
+        return Math.min(max, Math.max(0, absTop(sec) - margin));
+      });
     }
 
     var activeId;
@@ -116,46 +152,94 @@
           else if (a.getAttribute("aria-current") === "location") a.removeAttribute("aria-current");
         });
       });
-      moveRailIndicator(id);
     }
 
     function evaluateSpy() {
-      // At the very bottom the last section counts even though it has
-      // scrolled above the reference line.
-      if (window.innerHeight + window.pageYOffset >=
-          document.documentElement.scrollHeight - 2) {
-        setActive(spyIds[spyIds.length - 1]);
-        return;
+      var y = window.pageYOffset;
+      var pos = landingPositions();
+      var i = 0;
+      for (var k = 0; k < pos.length; k++) {
+        if (pos[k] <= y + 1) i = k; else break;
       }
-      // Otherwise: the last section whose top has passed a line ~1/3 down
-      // the viewport is the one you're looking at.
-      var line = window.innerHeight * 0.33;
-      var current = spySections[0].id;
-      for (var i = 0; i < spySections.length; i++) {
-        if (spySections[i].getBoundingClientRect().top <= line) current = spySections[i].id;
-        else break;
+      var t = 0;
+      if (i < pos.length - 1 && pos[i + 1] > pos[i]) {
+        t = Math.min(1, Math.max(0, (y - pos[i]) / (pos[i + 1] - pos[i])));
       }
-      setActive(current);
+      setActive(spySections[t >= 0.5 ? i + 1 : i].id);
+
+      if (railTrack && railIndicator && railTrack.offsetHeight) {
+        var c = railCentres(spyIds.filter(function (id) { return document.getElementById(id); }));
+        if (c[i] != null) {
+          var next = i < c.length - 1 && c[i + 1] != null ? c[i + 1] : c[i];
+          placeIndicator(c[i] + t * (next - c[i]));
+        }
+      }
     }
 
-    window.addEventListener("scroll", evaluateSpy, { passive: true });
-    window.addEventListener("resize", evaluateSpy, { passive: true });
+    var ticking = false;
+    function requestSpy() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { ticking = false; evaluateSpy(); });
+    }
+
+    window.addEventListener("scroll", requestSpy, { passive: true });
+    window.addEventListener("resize", requestSpy, { passive: true });
     window.addEventListener("load", evaluateSpy);
     window.addEventListener("dates:rendered", evaluateSpy);
     evaluateSpy();
-  } else {
-    // Subpages (project pages, impressum, datenschutz): no scrollspy, but the
-    // rail's current item is hardcoded via aria-current="page" — position the
-    // indicator once for it instead of leaving it hidden.
-    var railIndicator = document.querySelector(".side-rail-indicator");
-    var railTrack = document.querySelector(".side-rail-track");
-    var currentLink = document.querySelector('.side-rail a[aria-current="page"]');
-    function positionStaticIndicator() {
-      if (!railIndicator || !railTrack || !currentLink) return;
-      var linkTop = currentLink.offsetTop + currentLink.offsetHeight / 2 - railIndicator.offsetHeight / 2;
-      railIndicator.style.transform = "translateY(" + linkTop + "px)";
-      railIndicator.style.opacity = 1;
+
+    // Drag the bar to scroll the page.
+    if (railTrack && railIndicator) {
+      railTrack.classList.add("is-draggable");
+      var dragging = false;
+
+      function scrollToRailY(clientY) {
+        var ids = spyIds.filter(function (id) { return document.getElementById(id); });
+        var c = railCentres(ids);
+        var pos = landingPositions();
+        var py = clientY - railTrack.getBoundingClientRect().top;
+        py = Math.min(c[c.length - 1], Math.max(c[0], py));
+        // Small magnetic zone: aiming at a marker lands exactly on it.
+        for (var m = 0; m < c.length; m++) {
+          if (Math.abs(py - c[m]) <= 6) { py = c[m]; break; }
+        }
+        var j = 0;
+        for (var k = 0; k < c.length; k++) { if (c[k] <= py) j = k; else break; }
+        var t = j < c.length - 1 ? (py - c[j]) / (c[j + 1] - c[j]) : 0;
+        var y = pos[j] + (j < pos.length - 1 ? t * (pos[j + 1] - pos[j]) : 0);
+        window.scrollTo({ top: y, behavior: "instant" });
+      }
+
+      railIndicator.addEventListener("pointerdown", function (e) {
+        dragging = true;
+        railIndicator.setPointerCapture(e.pointerId);
+        railTrack.classList.add("is-dragging");
+        e.preventDefault();
+      });
+      railIndicator.addEventListener("pointermove", function (e) {
+        if (dragging) scrollToRailY(e.clientY);
+      });
+      function endDrag(e) {
+        if (!dragging) return;
+        dragging = false;
+        railTrack.classList.remove("is-dragging");
+        if (railIndicator.hasPointerCapture(e.pointerId)) railIndicator.releasePointerCapture(e.pointerId);
+      }
+      railIndicator.addEventListener("pointerup", endDrag);
+      railIndicator.addEventListener("pointercancel", endDrag);
     }
+  } else if (railTrack && railIndicator) {
+    // Subpages (project pages, impressum, datenschutz): no scrollspy, the
+    // rail's current item is hardcoded via aria-current="page" — place the
+    // bar once beside it (stays hidden if the page has none).
+    var currentLink = document.querySelector('.side-rail a[aria-current="page"]');
+    var positionStaticIndicator = function () {
+      if (!currentLink || !railTrack.offsetHeight) return;
+      var tr = railTrack.getBoundingClientRect();
+      var r = currentLink.getBoundingClientRect();
+      placeIndicator(r.top - tr.top + r.height / 2);
+    };
     positionStaticIndicator();
     window.addEventListener("load", positionStaticIndicator);
     window.addEventListener("resize", positionStaticIndicator);

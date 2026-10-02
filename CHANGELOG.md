@@ -5,6 +5,23 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Marker-Menü: Balken exakt auf Marker-Höhe, proportional mitwandernd,
+  ziehbar; Navigation landet bündig (2026-10-02).** Leos Punkte: (1) Der
+  Streifen saß immer etwas unterhalb des Markers → `top:0` fehlte am
+  `position:absolute`-Balken (er startete am Padding der Box, 13.6px zu
+  tief); jetzt ≤0.2px Abweichung. (2) Navigation lag leicht über dem Ziel,
+  der Vorgängerabschnitt lugte heraus → `scroll-margin-top` war 80px bei
+  65px Header; jetzt `var(--header-h)`, JS liest den Wert statt ihn
+  hartzukodieren; `#contact` bekam Viewport-Mindesthöhe, damit auch der
+  letzte Punkt bündig landet; nach Seitenwechsel korrigiert `settle()` das
+  Nachwachsen von Inhalt. (3) Balken ist per Maus/Touch ziehbar
+  (Pointer-Events, Umkehrabbildung Rail-Y → Scrollposition, Magnetzone
+  ±6px). (4) Beim Scrollen wandert der Balken kontinuierlich proportional
+  (Interpolation zwischen den Marker-Mitten statt Sprung + 0.3s-
+  Transition); aktives Label = nächstgelegene Sektion. Außerdem: Mobil-
+  Header-Regression behoben (Logo brach bei 375px in zwei Zeilen um).
+  Details/Fallstricke s. CLAUDE.md "Scrollspy + Rail-Balken".
+
 - **Marker-Menü von links nach rechts, "Home" als erster Punkt (2026-09-30,
   direkte Folgekorrektur zum Header-Umbau).** Leo: "mache das menü auf die
   rechte seite und füge ganz oben noch Home hinzu, da kommt man ganz an den
