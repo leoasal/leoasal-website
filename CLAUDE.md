@@ -272,10 +272,15 @@ drei Breakpoints:
   weiterbewegt".
 
 **Rail blendet sich aus (nur index.html, 2026-10-02):** `<nav class="side-rail
-side-rail--autohide">` ist beim Laden unsichtbar (`opacity:0`, bleibt aber
-hit-testbar, damit Hover auf die leere Stelle es einblendet). `anchor-scroll.js`
-setzt bei jedem Scroll `.is-visible` und entfernt es 1 s nach dem letzten
-Scroll-Event; `:hover`/`:focus-within` halten es per CSS sichtbar. Auf den
+side-rail--autohide">` ist beim Laden unsichtbar (`opacity:0`, Überblendung
+0.9 s, bleibt hit-testbar). `anchor-scroll.js` setzt bei jedem Scroll
+`.is-visible` und entfernt es `HIDE_DELAY_MS` (400 ms) nach dem letzten
+Scroll-Event; `.is-near` kommt dazu, solange der Mauszeiger höchstens
+`NEAR_PX` (170 px) Abstand zum Rail-Kasten hat (mousemove, rAF-gedrosselt) —
+also schon vor dem eigentlichen Hover. `:focus-within` hält es per CSS
+sichtbar. Test-Falle: `is-near` per synthetischem `mousemove` testen und
+rAF vorher stubben (`window.requestAnimationFrame=f=>setTimeout(f,0)`),
+sonst bleibt `pointerTicking` in der verborgenen Pane hängen.
 **Unterseiten (6 Projektseiten, Impressum, Datenschutz) haben gar keine
 `.side-rail` mehr** (2026-10-02, Leo: "Kein Menü auf den Unterseiten") — das
 `<nav>` ist dort aus dem HTML entfernt. Heißt: ab ≥1100px (`.site-nav`

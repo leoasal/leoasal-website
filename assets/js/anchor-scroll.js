@@ -94,16 +94,46 @@
   });
 
   // ---- Side rail visibility -------------------------------------------------
-  // Hidden on load; shown while scrolling and fades out 1s after the last
-  // scroll event. Hover / keyboard focus keep it visible via CSS.
+  // Hidden on load; shown while scrolling and fades out shortly after the last
+  // scroll event. Also shown when the pointer approaches it (NEAR_PX from the
+  // rail's box). Keyboard focus keeps it visible via CSS.
   var rail = document.querySelector(".side-rail");
   if (rail) {
+    var HIDE_DELAY_MS = 400;
+    var NEAR_PX = 170;
     var hideTimer;
     window.addEventListener("scroll", function () {
       rail.classList.add("is-visible");
       clearTimeout(hideTimer);
-      hideTimer = setTimeout(function () { rail.classList.remove("is-visible"); }, 1000);
+      hideTimer = setTimeout(function () { rail.classList.remove("is-visible"); }, HIDE_DELAY_MS);
     }, { passive: true });
+
+    var pointer = null;
+    var pointerTicking = false;
+    function evaluatePointer() {
+      pointerTicking = false;
+      var r = rail.getBoundingClientRect();
+      var near = false;
+      if (pointer && r.width) {
+        var dx = Math.max(r.left - pointer.x, 0, pointer.x - r.right);
+        var dy = Math.max(r.top - pointer.y, 0, pointer.y - r.bottom);
+        near = Math.sqrt(dx * dx + dy * dy) <= NEAR_PX;
+      }
+      rail.classList.toggle("is-near", near);
+    }
+    function requestPointer() {
+      if (pointerTicking) return;
+      pointerTicking = true;
+      requestAnimationFrame(evaluatePointer);
+    }
+    window.addEventListener("mousemove", function (e) {
+      pointer = { x: e.clientX, y: e.clientY };
+      requestPointer();
+    }, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function () {
+      pointer = null;
+      requestPointer();
+    });
   }
 
   // ---- Scrollspy + side rail ------------------------------------------------

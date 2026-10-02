@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Marker-Menü: früher ein-, schneller und sanfter ausblenden (2026-10-02).**
+  Einblenden schon bei Annäherung des Zeigers (170 px Radius um das Menü statt
+  erst bei Hover), Ausblenden 400 ms nach dem letzten Scrollen (vorher 1 s),
+  Überblendung 0.9 s (vorher 0.4 s).
+
 - **Marker-Menü blendet sich aus; Unterseiten ohne Menü (2026-10-02).** Auf
   der Startseite ist die rechte Rail beim Laden unsichtbar, erscheint beim
   Scrollen und bei Hover über ihr Feld, fadet 1 s nach dem letzten Scrollen

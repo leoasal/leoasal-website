@@ -249,15 +249,16 @@ p { margin: 0 0 1em; }
 }
 
 /* Index page only: hidden at rest; anchor-scroll.js adds .is-visible while
-   scrolling (and for 1s after). Stays hit-testable so hovering the empty spot
-   reveals it. Subpages keep the rail permanently visible. */
+   scrolling (shortly after the last scroll event it fades out again) and
+   .is-near while the pointer is within ~170px of it. Stays hit-testable even
+   when invisible. */
 .side-rail--autohide {
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.9s ease;
 }
 
 .side-rail--autohide.is-visible,
-.side-rail--autohide:hover,
+.side-rail--autohide.is-near,
 .side-rail--autohide:focus-within {
   opacity: 1;
 }
