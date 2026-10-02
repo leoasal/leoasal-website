@@ -1596,10 +1596,10 @@
     "url": "https://ruedigerbaldauf.de"
   },
   {
-    "title": "Rüdiger Baldauf Trumpet Night @ Altes Kulturhaus",
-    "location": "Altes Kulturhaus\nBad Füssing, Bayern, Deutschland",
-    "start": "2026-10-04T00:00:00",
-    "allDay": true,
+    "title": "Rüdiger Baldauf Trumpet Night @ Großes Kurhaus Bad Füssing",
+    "location": "Großes Kurhaus Bad Füssing\nKurhausstr. 2, 94072 Bad Füssing, Deutschland",
+    "start": "2026-10-04T19:30:00",
+    "allDay": false,
     "url": "https://ruedigerbaldauf.de"
   },
   {
@@ -1611,7 +1611,7 @@
   },
   {
     "title": "Rüdiger Baldauf Trumpet Night @ Kulturmuschel, Brückenkopf-Park",
-    "location": "Kulturmuschel, Brückenkopf-Park\nRurauenstraße 11, 52428 Jülich, Deutschland",
+    "location": "Kulturmuschel, Brückenkopf-Park\nGroße Rurstraße 152, 52428 Jülich, Deutschland",
     "start": "2026-10-06T20:00:00",
     "allDay": false,
     "url": "https://ruedigerbaldauf.de"
@@ -1633,7 +1633,7 @@
   {
     "title": "Rüdiger Baldauf Trumpet Night @ Lindenhalle",
     "location": "Lindenhalle\nLindenstraße 51, 89584 Ehingen (Donau), Deutschland",
-    "start": "2026-10-09T19:00:00",
+    "start": "2026-10-09T20:40:00",
     "allDay": false,
     "url": "https://ruedigerbaldauf.de"
   },
@@ -1676,24 +1676,10 @@
   },
   {
     "title": "The Jakob Manz Project @ Nica Jazz Club",
-    "location": "Nica Jazz Club, Alter Wall 20, 20457 Hamburg, Deutschland",
-    "start": "2027-03-08T00:00:00",
-    "allDay": true,
-    "url": "https://jakobmanz.de"
-  },
-  {
-    "title": "The Jakob Manz Project @ Nica Jazz Club",
     "location": "Nica Jazz Club\nAlter Wall 20, 20457 Hamburg, Deutschland",
     "start": "2027-03-08T20:00:00",
     "allDay": false,
     "url": "https://jakobmanz.de"
-  },
-  {
-    "title": "The Jakob Manz Project @ Nica Jazz Club",
-    "location": "Nica Jazz Club\nAlter Wall 20, 20457 Hamburg, Deutschland",
-    "start": "2027-03-08T20:00:00",
-    "allDay": false,
-    "url": ""
   },
   {
     "title": "The Jakob Manz Project @ Haus des Gastes Baabe",
