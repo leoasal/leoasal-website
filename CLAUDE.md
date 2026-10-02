@@ -223,6 +223,19 @@ Nav-Layout" unten. Neue Seiten am besten von
 einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
 nichts vergessen wird.
 
+> **BRANCH `menu-option-dropdown` (Experiment, nicht auf main):** Dieser Branch
+> ersetzt die gesamte Navigation unten (`.site-nav`, `.side-rail`,
+> `.mobile-nav`, Rail-Scrollspy/Drag/Autohide) durch **ein klassisches
+> Dropdown**: Hamburger-Button (`.menu-toggle`) rechts in der Kopfzeile nach
+> der Sprachwahl, klappt `.menu-panel` (die 7 Punkte untereinander) unter der
+> Leiste auf — auf allen 9 Seiten und allen Breiten gleich (Vorbild:
+> julius-asal.com). `assets/js/menu.js` steuert Auf/Zu (Klick, Außenklick,
+> Esc, Klick auf Eintrag); <480px zieht es die Social-Icons ins Dropdown
+> (kein Platz in der Leiste). `anchor-scroll.js` hält nur noch den Scrollspy
+> (`aria-current="location"` auf `.menu-panel`-Links). Der Rail-Stand liegt
+> unverändert auf dem Branch `menu-option-side-rail`. Wenn Leo sich für eine
+> Variante entscheidet: Gewinner nach main mergen und diese Doku bereinigen.
+
 **Header/Nav-Layout, dreistufig responsiv (2026-09-30 komplett umgebaut,**
 Vorgänger-Version mit `.lang-switch--mobile`-Doppelkopie und mittig
 schwebenden Social-Icons existiert nicht mehr): Leo fand die Hauptnav "zu
