@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Marker-Menü blendet sich aus (2026-10-02).** Auf der Startseite ist die
+  rechte Rail beim Laden unsichtbar, erscheint beim Scrollen und bei Hover
+  über ihr Feld, fadet 1 s nach dem letzten Scrollen aus. Erster Entwurf
+  galt global und ließ das Menü auf den Projektseiten verschwinden — jetzt
+  nur auf index.html (`.side-rail--autohide`).
+
 - **Doku-Abgleich mit dem tatsächlichen Stand (2026-10-02, Skill
   update-project).** Alle vier Dateien (README/CLAUDE/CHANGELOG/.gitignore)
   waren schon vorhanden, kein Handoff-Dokument zum Aufteilen. Korrigiert:

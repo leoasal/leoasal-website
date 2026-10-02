@@ -270,6 +270,15 @@ drei Breakpoints:
   Seitenwechsel) — das ist die "Marker-Galerie, die sich beim Scrollen
   weiterbewegt".
 
+**Rail blendet sich aus (nur index.html, 2026-10-02):** `<nav class="side-rail
+side-rail--autohide">` ist beim Laden unsichtbar (`opacity:0`, bleibt aber
+hit-testbar, damit Hover auf die leere Stelle es einblendet). `anchor-scroll.js`
+setzt bei jedem Scroll `.is-visible` und entfernt es 1 s nach dem letzten
+Scroll-Event; `:hover`/`:focus-within` halten es per CSS sichtbar. Auf den
+Unterseiten (Projekte, Impressum, Datenschutz) fehlt `--autohide` bewusst —
+dort bleibt das Menü dauerhaft sichtbar (Leo: "auf den Projektseiten kommt
+das Menü komplett weg" war der erste, falsche Entwurf).
+
 **Scrollspy + Rail-Balken, kontinuierlich statt sprunghaft (2026-10-02,
 auf Leos Wunsch: "beim Runterscrollen bewegt sich der Streifen langsam und
 proportional nach unten", "genau auf Höhe des Markers", "Streifen selbst

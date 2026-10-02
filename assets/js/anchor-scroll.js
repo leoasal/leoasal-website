@@ -93,6 +93,19 @@
     parkFocus(el);
   });
 
+  // ---- Side rail visibility -------------------------------------------------
+  // Hidden on load; shown while scrolling and fades out 1s after the last
+  // scroll event. Hover / keyboard focus keep it visible via CSS.
+  var rail = document.querySelector(".side-rail");
+  if (rail) {
+    var hideTimer;
+    window.addEventListener("scroll", function () {
+      rail.classList.add("is-visible");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { rail.classList.remove("is-visible"); }, 1000);
+    }, { passive: true });
+  }
+
   // ---- Scrollspy + side rail ------------------------------------------------
   // The rail's bar follows the scroll position continuously: between two
   // section "landing" positions it is interpolated between the two matching

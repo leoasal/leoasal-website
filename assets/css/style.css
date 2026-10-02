@@ -248,6 +248,20 @@ p { margin: 0 0 1em; }
   z-index: 15;
 }
 
+/* Index page only: hidden at rest; anchor-scroll.js adds .is-visible while
+   scrolling (and for 1s after). Stays hit-testable so hovering the empty spot
+   reveals it. Subpages keep the rail permanently visible. */
+.side-rail--autohide {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.side-rail--autohide.is-visible,
+.side-rail--autohide:hover,
+.side-rail--autohide:focus-within {
+  opacity: 1;
+}
+
 .side-rail-track {
   position: relative;
   padding: 0.85rem 1.7rem 0.85rem 1.25rem;
