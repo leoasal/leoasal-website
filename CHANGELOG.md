@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Marker-Menü: Einblenden bei jeder Mausbewegung (2026-10-02).** Der
+  170-px-Annäherungsradius ist entfernt; sobald sich der Zeiger irgendwo
+  bewegt, blendet das Menü ein und fadet 1.5 s nach Stillstand wieder aus.
+
 - **Marker-Menü: früher ein-, schneller und sanfter ausblenden (2026-10-02).**
   Einblenden schon bei Annäherung des Zeigers (170 px Radius um das Menü statt
   erst bei Hover), Ausblenden 400 ms nach dem letzten Scrollen (vorher 1 s),

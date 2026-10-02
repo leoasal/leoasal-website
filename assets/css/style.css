@@ -249,16 +249,17 @@ p { margin: 0 0 1em; }
 }
 
 /* Index page only: hidden at rest; anchor-scroll.js adds .is-visible while
-   scrolling (shortly after the last scroll event it fades out again) and
-   .is-near while the pointer is within ~170px of it. Stays hit-testable even
-   when invisible. */
+   scrolling, .is-pointer-active while the mouse moves anywhere (both fade out
+   again after a short idle, see anchor-scroll.js). Stays hit-testable even
+   when invisible, so hovering its spot also reveals it. */
 .side-rail--autohide {
   opacity: 0;
   transition: opacity 0.9s ease;
 }
 
 .side-rail--autohide.is-visible,
-.side-rail--autohide.is-near,
+.side-rail--autohide.is-pointer-active,
+.side-rail--autohide:hover,
 .side-rail--autohide:focus-within {
   opacity: 1;
 }
