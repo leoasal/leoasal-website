@@ -79,7 +79,7 @@
 
   // ---- Scrollspy: mark the nav link for the section currently in view, so
   //      you can always see where you are (desktop + mobile nav). ----
-  var spyIds = ["blog", "bio", "dates", "projects", "gear", "contact"];
+  var spyIds = ["home", "blog", "bio", "dates", "projects", "gear", "contact"];
   var spySections = spyIds
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
@@ -120,8 +120,6 @@
     }
 
     function evaluateSpy() {
-      // Nothing is "current" while the hero still fills the top of the view.
-      if (window.pageYOffset < 40) { setActive(null); return; }
       // At the very bottom the last section counts even though it has
       // scrolled above the reference line.
       if (window.innerHeight + window.pageYOffset >=

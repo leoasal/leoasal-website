@@ -100,7 +100,10 @@ auf "5. Punkt, vor Contact" korrigiert). `blog.html`/`bio.html`/
 noch als minimale Redirect-Stubs (`<meta http-equiv="refresh">` +
 `location.replace(...)`) auf
 `index.html#<section>`, damit alte Bookmarks/Backlinks nicht ins Leere
-laufen. **Nicht versehentlich wieder "echte" Seiten daraus machen** —
+laufen. Zusätzlich gibt es seit 2026-09-30 `#home` (= die `.hero`-Sektion
+ganz oben, kein eigener Inhaltsblock, kein `home.html`-Stub nötig — der
+Nav-Punkt "Home" führt einfach zurück an den Seitenanfang, s.
+"Header/Nav-Layout" unten). **Nicht versehentlich wieder "echte" Seiten daraus machen** —
 jede Änderung an Blog/Bio/Termine/Projekten/Kontakt/Gear gehört
 ausschließlich in die passende Sektion von `index.html` (Text weiter über
 die i18n-JSONs). **Das gilt auch für neue Bereiche dieser Art** — bei der
@@ -221,30 +224,36 @@ nichts vergessen wird.
 **Header/Nav-Layout, dreistufig responsiv (2026-09-30 komplett umgebaut,**
 Vorgänger-Version mit `.lang-switch--mobile`-Doppelkopie und mittig
 schwebenden Social-Icons existiert nicht mehr): Leo fand die Hauptnav "zu
-voll" (6 Punkte, bald 7 mit "Unterricht", s. "Offene Punkte" weiter unten)
+voll" (damals 6 Punkte, seither ist "Home" als 7. dazugekommen, s. unten
+— und irgendwann noch "Unterricht" als 8., s. "Offene Punkte" weiter unten)
 und wollte die Sprachauswahl rechts neben die Social-Icons und die
 Hauptnav als linke, beim Scrollen mitwandernde "Marker-Galerie" statt
-einer horizontalen Leiste. Ergebnis — drei Breakpoints:
+einer horizontalen Leiste — **die Galerie sitzt inzwischen rechts, nicht
+links** (Leo hat das direkt im Anschluss korrigiert: "mache das menü auf
+die rechte seite"). Außerdem gibt es jetzt einen **"Home"-Punkt ganz oben**
+in jeder Nav-Liste (führt zu `#home`, dem `.hero`-Element auf index.html —
+per Klick auf Leo-Wunsch ergänzt: "ganz an den Anfang der Website"),
+**7 Punkte gesamt**: Home/Blog/Bio/Dates/Projects/Gear/Contact. Ergebnis —
+drei Breakpoints:
 
 - **`<800px` (mobil):** `.site-header .container` ist `display:flex;
   justify-content:space-between` mit genau 2 sichtbaren Kindern —
   `.logo` links, `.header-actions` (wrapt `.site-social` + `.lang-switch`)
   rechts. `.site-nav` und `.side-rail` sind hier `display:none`.
   Haupt-Navigation läuft über die bestehende `.mobile-nav` (fixe
-  Bottom-Bar, unverändert, 6 Items durch `.mobile-nav a { flex:1 }`
+  Bottom-Bar, unverändert, 7 Items durch `.mobile-nav a { flex:1 }`
   automatisch gleich verteilt — kein CSS-Fix nötig beim Hinzufügen eines
-  7. Punkts).
+  8. Punkts).
 - **`800–1099px` (schmales Desktop/Tablet, Fallback-Stufe):** zu schmal,
-  damit ein `position:fixed`-Rail links neben dem zentrierten
-  960px-`.container` Platz hat, ohne Seiteninhalt zu überlappen (bei
-  ~800px hat der Container praktisch keinen Außenabstand). Deshalb hier
-  stattdessen die **alte horizontale `.site-nav`-Leiste** als dritter
-  Flex-Punkt zwischen `.logo` und `.header-actions` (`.site-header
-  .container` hat in dieser Stufe 3 sichtbare Kinder statt 2,
-  `space-between` verteilt sie).
+  damit ein `position:fixed`-Rail neben dem zentrierten 960px-`.container`
+  Platz hat, ohne Seiteninhalt zu überlappen (bei ~800px hat der Container
+  praktisch keinen Außenabstand). Deshalb hier stattdessen die **alte
+  horizontale `.site-nav`-Leiste** als dritter Flex-Punkt zwischen `.logo`
+  und `.header-actions` (`.site-header .container` hat in dieser Stufe
+  3 sichtbare Kinder statt 2, `space-between` verteilt sie).
 - **`≥1100px`:** `.site-nav` versteckt sich, stattdessen erscheint
-  `.side-rail` — eine **fixe vertikale Leiste links am Viewport-Rand**
-  (`position:fixed; left:2rem; top:50%; transform:translateY(-50%)`),
+  `.side-rail` — eine **fixe vertikale Leiste rechts am Viewport-Rand**
+  (`position:fixed; right:2rem; top:50%; transform:translateY(-50%)`),
   eigenständiges `<nav>` außerhalb von `.site-header` (nicht Teil des
   Headers, bleibt beim Scrollen stehen). Enthält dieselben Punkte wie
   `.site-nav`/`.mobile-nav`, aber vertikal gestapelt in einer
@@ -252,22 +261,39 @@ einer horizontalen Leiste. Ergebnis — drei Breakpoints:
   Hintergrund (`rgba(255,255,255,0.85)` + `backdrop-filter:blur(6px)`,
   **notwendig, nicht kosmetisch** — ohne Hintergrund sind die Labels auf
   dunklen Foto-Hintergründen wie dem Hero-Bild unlesbar, das war der erste
-  Entwurf und musste korrigiert werden). Eine dünne vertikale Linie
-  (`.side-rail-line`) plus ein gleitender Akzent-Balken
+  Entwurf und musste korrigiert werden). Text ist rechtsbündig
+  (`.side-rail a { text-align:right }`), die dünne vertikale Linie
+  (`.side-rail-line`) und der gleitende Akzent-Balken
   (`.side-rail-indicator`, 3px breit, `transition: transform 0.3s ease`)
-  markieren den aktiven Punkt — das ist die "Marker-Galerie, die sich
-  beim Scrollen weiterbewegt": `assets/js/anchor-scroll.js` verschiebt den
-  Indikator per `translateY(px)` auf die Y-Position des aktiven Links
-  (`link.offsetTop` relativ zu `.side-rail-track`, die `position:relative`
-  ist), synchron mit dem bestehenden Scrollspy (`setActive()` ruft jetzt
-  zusätzlich `moveRailIndicator(id)`). Auf Unterseiten ohne Scrollspy
-  (Projektseiten, impressum/datenschutz — dort gibt es keine `#blog`
-  o.ä.-Elemente im DOM) positioniert ein separater `else`-Zweig in
-  `anchor-scroll.js` den Indikator einmalig anhand des hartcodierten
-  `aria-current="page"`-Links (analog zum alten `.site-nav`-Verhalten).
-  **Deshalb laden jetzt auch alle Unterseiten `anchor-scroll.js`**
-  (vorher nur index.html) — ohne das Skript bliebe der Indikator dort
-  unsichtbar (`opacity:0` ist der Default-Zustand).
+  sitzen dafür **rechts** in der Box (`right:` statt `left:`, gespiegelt
+  seit dem Seitenwechsel) — markieren den aktiven Punkt, das ist die
+  "Marker-Galerie, die sich beim Scrollen weiterbewegt":
+  `assets/js/anchor-scroll.js` verschiebt den Indikator per
+  `translateY(px)` auf die Y-Position des aktiven Links (`link.offsetTop`
+  relativ zu `.side-rail-track`, die `position:relative` ist), synchron
+  mit dem bestehenden Scrollspy (`setActive()` ruft jetzt zusätzlich
+  `moveRailIndicator(id)`). Auf Unterseiten ohne Scrollspy (Projektseiten,
+  impressum/datenschutz — dort gibt es keine `#blog` o.ä.-Elemente im DOM)
+  positioniert ein separater `else`-Zweig in `anchor-scroll.js` den
+  Indikator einmalig anhand des hartcodierten `aria-current="page"`-Links
+  (analog zum alten `.site-nav`-Verhalten). **Deshalb laden jetzt auch
+  alle Unterseiten `anchor-scroll.js`** (vorher nur index.html) — ohne das
+  Skript bliebe der Indikator dort unsichtbar (`opacity:0` ist der
+  Default-Zustand).
+
+**"Home"-Punkt / `#home`:** `<section id="home" class="hero">` (statt nur
+`<section class="hero">`) — die Hero-Sektion selbst ist jetzt ein
+Scrollspy-Ziel wie jede andere Sektion. `spyIds` in `anchor-scroll.js`
+beginnt jetzt mit `"home"` statt `"blog"`. Die alte Sonderregel "nichts ist
+aktiv, solange der Hero oben im View ist" (`pageYOffset < 40 →
+setActive(null)`) ist **entfernt** — die normale Scrollspy-Schleife
+markiert "Home" jetzt korrekt selbst, da `spySections[0]` jetzt `#home`
+ist und dessen Top beim Laden immer `<= line` ist. `.hero` hat wie
+`.home-section` jetzt `scroll-margin-top: 80px`, damit ein Klick auf
+"Home" von weiter unten konsistent unter dem Sticky-Header landet. Auf
+Unterseiten ist der Link `index.html#home` (kein `aria-current`, wie bei
+Blog/Bio/Dates/Gear/Contact — nur "Projects" wird dort hartcodiert
+markiert).
 
 **Sprachumschalter — jetzt nur noch EINE Kopie, an allen Breakpoints
 an derselben Stelle** (in `.header-actions`, direkt nach den Social-Icons,
@@ -704,9 +730,10 @@ verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
 ## Offene Punkte / mögliche nächste Schritte
 
 - **Neuer Nav-Punkt "Unterricht"** (angekündigt 2026-09-30, noch nicht
-  umgesetzt): Leo will später einen 7. Punkt in der Hauptnav für
-  Drum-Unterricht ergänzen. Wenn er das anstößt: neue `#unterricht`-Sektion
-  in `index.html` nach dem Muster der bestehenden Sektionen (s.
+  umgesetzt): Leo will später einen 8. Punkt in der Hauptnav für
+  Drum-Unterricht ergänzen (Home/Blog/Bio/Dates/Projects/Gear/Contact sind
+  aktuell 7). Wenn er das anstößt: neue `#unterricht`-Sektion in
+  `index.html` nach dem Muster der bestehenden Sektionen (s.
   "Seitenstruktur" oben), `nav.unterricht`-i18n-Key in allen 3 JSONs, Link
   in **drei** Stellen pro Seite mit echtem Header ergänzen (`.site-nav`-
   `<ul>`, `.side-rail`-`<ul>`, `.mobile-nav`) auf **allen 9** Seiten (s.

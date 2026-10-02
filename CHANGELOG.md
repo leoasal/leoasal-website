@@ -5,6 +5,16 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Marker-Menü von links nach rechts, "Home" als erster Punkt (2026-09-30,
+  direkte Folgekorrektur zum Header-Umbau).** Leo: "mache das menü auf die
+  rechte seite und füge ganz oben noch Home hinzu, da kommt man ganz an den
+  Anfang der Website". `.side-rail` jetzt `right:2rem` statt `left:2rem`
+  (Text rechtsbündig, Linie + Indikator gespiegelt auf die rechte Boxseite).
+  Neuer Nav-Punkt "Home" (`nav.home`, ES "Inicio") in allen drei Nav-Listen
+  auf allen 9 Seiten; Ziel `#home` = `<section id="home" class="hero">`,
+  `"home"` vorn in `spyIds`, alte "am Anfang nichts aktiv"-Sonderregel im
+  Scrollspy entfernt, `.hero` bekam `scroll-margin-top: 80px`.
+
 - **Vision-Ears-Fotos ausgetauscht: 2 Instagram-Crops raus, 4 echte Fotos
   aus der Inbox rein (2026-09-30).** Leo legte 4 neue Dateien in die
   Inbox (ein Foto von Christian Nordström/smoothjazzphoto.com identisch

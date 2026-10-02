@@ -232,7 +232,7 @@ p { margin: 0 0 1em; }
 .side-rail {
   display: none;
   position: fixed;
-  left: 2rem;
+  right: 2rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 15;
@@ -240,7 +240,7 @@ p { margin: 0 0 1em; }
 
 .side-rail-track {
   position: relative;
-  padding: 0.85rem 1.25rem 0.85rem 1.7rem;
+  padding: 0.85rem 1.7rem 0.85rem 1.25rem;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
   border-radius: 8px;
@@ -248,7 +248,7 @@ p { margin: 0 0 1em; }
 
 .side-rail-line {
   position: absolute;
-  left: 0.6rem;
+  right: 0.6rem;
   top: calc(0.85rem + 0.3em);
   bottom: calc(0.85rem + 0.3em);
   width: 1px;
@@ -257,7 +257,7 @@ p { margin: 0 0 1em; }
 
 .side-rail-indicator {
   position: absolute;
-  left: calc(0.6rem - 1px);
+  right: calc(0.6rem - 1px);
   width: 3px;
   height: 1em;
   background: var(--accent-dark);
@@ -278,6 +278,7 @@ p { margin: 0 0 1em; }
 
 .side-rail a {
   display: inline-block;
+  text-align: right;
   text-decoration: none;
   font-size: 0.72rem;
   font-weight: 600;
@@ -368,6 +369,7 @@ main {
   align-items: flex-end;
   background: var(--ink);
   overflow: hidden;
+  scroll-margin-top: 80px;
 }
 
 .hero img {
