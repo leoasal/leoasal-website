@@ -242,19 +242,5 @@
       railIndicator.addEventListener("pointerup", endDrag);
       railIndicator.addEventListener("pointercancel", endDrag);
     }
-  } else if (railTrack && railIndicator) {
-    // Subpages (project pages, impressum, datenschutz): no scrollspy, the
-    // rail's current item is hardcoded via aria-current="page" — place the
-    // bar once beside it (stays hidden if the page has none).
-    var currentLink = document.querySelector('.side-rail a[aria-current="page"]');
-    var positionStaticIndicator = function () {
-      if (!currentLink || !railTrack.offsetHeight) return;
-      var tr = railTrack.getBoundingClientRect();
-      var r = currentLink.getBoundingClientRect();
-      placeIndicator(r.top - tr.top + r.height / 2);
-    };
-    positionStaticIndicator();
-    window.addEventListener("load", positionStaticIndicator);
-    window.addEventListener("resize", positionStaticIndicator);
   }
 })();

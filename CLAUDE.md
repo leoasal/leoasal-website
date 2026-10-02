@@ -214,8 +214,9 @@ dieses Muster übernehmen: pro inhaltlichem Block eine eigene
 gemeinsamen `<div class="container">` packen.
 
 Gemeinsames Muster pro Seite: Header (Logo, `.site-nav`, `.header-actions`
-mit Social-Icons + Sprachumschalter), direkt danach `<nav class="side-rail">`
-(nur ≥1100px sichtbar), Content in `<main>`, `<nav class="mobile-nav">` (nur
+mit Social-Icons + Sprachumschalter), **nur auf index.html** direkt danach
+`<nav class="side-rail">` (nur ≥1100px sichtbar; Unterseiten haben bewusst
+keine Rail), Content in `<main>`, `<nav class="mobile-nav">` (nur
 <800px sichtbar), Footer mit Impressum/Datenschutz + Copyright, Skripte
 (`i18n.js`, `anchor-scroll.js`, …). Details zu den drei Navs s. "Header/
 Nav-Layout" unten. Neue Seiten am besten von
@@ -275,9 +276,11 @@ side-rail--autohide">` ist beim Laden unsichtbar (`opacity:0`, bleibt aber
 hit-testbar, damit Hover auf die leere Stelle es einblendet). `anchor-scroll.js`
 setzt bei jedem Scroll `.is-visible` und entfernt es 1 s nach dem letzten
 Scroll-Event; `:hover`/`:focus-within` halten es per CSS sichtbar. Auf den
-Unterseiten (Projekte, Impressum, Datenschutz) fehlt `--autohide` bewusst —
-dort bleibt das Menü dauerhaft sichtbar (Leo: "auf den Projektseiten kommt
-das Menü komplett weg" war der erste, falsche Entwurf).
+**Unterseiten (6 Projektseiten, Impressum, Datenschutz) haben gar keine
+`.side-rail` mehr** (2026-10-02, Leo: "Kein Menü auf den Unterseiten") — das
+`<nav>` ist dort aus dem HTML entfernt. Heißt: ab ≥1100px (`.site-nav`
+versteckt, Rail fehlt) gibt es auf Unterseiten keine Hauptnav, nur Logo +
+Zurück-Link; 800–1099px zeigt weiter `.site-nav`, <800px `.mobile-nav`.
 
 **Scrollspy + Rail-Balken, kontinuierlich statt sprunghaft (2026-10-02,
 auf Leos Wunsch: "beim Runterscrollen bewegt sich der Streifen langsam und
@@ -306,9 +309,8 @@ bewegen als Navigation", "navigiert nicht exakt zum Marker"):**
   `::before`. Beim Ziehen wird die Rail-Y-Position per Umkehrabbildung in
   eine Scrollposition umgerechnet (`window.scrollTo({behavior:"instant"})`);
   der Balken folgt über den normalen Scroll-Handler. Magnetzone ±6px um jede
-  Marker-Mitte, damit man beim Zielen exakt bündig landet. Auf Unterseiten
-  ist der Balken **nicht** ziehbar (`pointer-events:none`, statische
-  Markierung).
+  Marker-Mitte, damit man beim Zielen exakt bündig landet. Unterseiten
+  haben keine Rail.
 - **Landung bündig unter dem Header:** `scroll-margin-top` von
   `.home-section`/`.hero` ist jetzt `var(--header-h)` (= `--nav-height + 1px`
   Border = 65px, vorher fest 80px → 15px vom vorherigen Abschnitt lugten
@@ -323,10 +325,6 @@ bewegen als Navigation", "navigiert nicht exakt zum Marker"):**
   wächst Inhalt oberhalb teils nach (Termine, Lazy-Bilder) und schiebt die
   Sektion nach unten; `settle()` korrigiert 2.5 s lang per `scrollTo`,
   solange der Nutzer nicht selbst scrollt (`userTookOver`).
-- Auf Unterseiten ohne Scrollspy positioniert ein `else`-Zweig den Balken
-  einmalig an den hartcodierten `aria-current="page"`-Link (`opacity:0`
-  bleibt, wenn es keinen gibt, z.B. impressum/datenschutz). **Deshalb laden
-  alle Unterseiten `anchor-scroll.js`.**
 - **Test-Falle:** Ist die Browser-Pane verborgen (`document.visibilityState
   === "hidden"`), läuft `requestAnimationFrame` nicht — Scrollspy-Tests
   zeigen dann stale Zustände, kein Code-Fehler. Tab vorher mit `tabs_select`
@@ -806,7 +804,7 @@ verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
   `index.html` nach dem Muster der bestehenden Sektionen (s.
   "Seitenstruktur" oben), `nav.unterricht`-i18n-Key in allen 3 JSONs, Link
   in **drei** Stellen pro Seite mit echtem Header ergänzen (`.site-nav`-
-  `<ul>`, `.side-rail`-`<ul>`, `.mobile-nav`) auf **allen 9** Seiten (s.
+  `<ul>`, `.mobile-nav`, auf index.html zusätzlich `.side-rail`-`<ul>`) auf **allen 9** Seiten (s.
   "Header/Nav-Layout" oben), `spyIds`-Array in `anchor-scroll.js` um
   `"unterricht"` an der richtigen Position erweitern (Reihenfolge muss der
   DOM-Reihenfolge der Sektionen entsprechen, sonst bricht der Scrollspy),
