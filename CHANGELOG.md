@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Menü-Variante "Dropdown" als Branch angelegt (2026-10-02).** Die Rail ist
+  als Branch `menu-option-side-rail` gesichert. Auf `menu-option-dropdown`
+  gibt es stattdessen einen Hamburger rechts in der Kopfzeile, der die 7
+  Punkte als Dropdown aufklappt (alle Seiten/Breiten, <480px mit den
+  Social-Icons im Dropdown). `main` bleibt unverändert, bis Leo entscheidet.
+
 - **Marker-Menü: Einblenden bei jeder Mausbewegung (2026-10-02).** Der
   170-px-Annäherungsradius ist entfernt; sobald sich der Zeiger irgendwo
   bewegt, blendet das Menü ein und fadet 1.5 s nach Stillstand wieder aus.

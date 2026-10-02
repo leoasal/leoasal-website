@@ -223,6 +223,15 @@ Nav-Layout" unten. Neue Seiten am besten von
 einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
 nichts vergessen wird.
 
+> **Menü-Varianten (2026-10-02):** `main` hat die Marker-Rail rechts (diese
+> Doku). Zwei Varianten liegen als Branches vor, damit nichts verloren geht:
+> `menu-option-side-rail` = exakter Stand der Rail (Sicherung) und
+> `menu-option-dropdown` = Experiment mit klassischem Hamburger-Dropdown in
+> der Kopfzeile (Vorbild julius-asal.com). Vorschau der Dropdown-Variante
+> ohne Branch-Wechsel: `git worktree add ../leoasal-website-dropdown
+> menu-option-dropdown` und dort `python3 -m http.server 5179`. Entscheidet
+> Leo sich für eine, den Branch nach main mergen und diese Doku bereinigen.
+
 **Header/Nav-Layout, dreistufig responsiv (2026-09-30 komplett umgebaut,**
 Vorgänger-Version mit `.lang-switch--mobile`-Doppelkopie und mittig
 schwebenden Social-Icons existiert nicht mehr): Leo fand die Hauptnav "zu
