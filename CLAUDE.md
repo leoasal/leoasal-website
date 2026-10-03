@@ -447,6 +447,14 @@ playsinline poster="...">` — beide gleich gestylt via `.cover-trigger img`/
 `.cover-trigger video`) + `<figcaption class="process-caption">` für die
 Unterschrift.
 
+**Lightbox schließen (2026-10-03, Leo-Wunsch):** außer per X, Esc oder
+Backdrop schließt **jeder Klick auf die schwarze Fläche** um Foto/Video —
+`lightbox.js` prüft `!e.target.closest(".lightbox-img, .lightbox-credit")`
+(die Wrapper `.lightbox-content/-stage/-slide` decken den Rand ab, ein
+reiner `target === overlay`-Test würde dort nicht greifen). Klick auf das
+Foto/Video selbst oder die Credit-Zeile (mit Link) schließt nicht; Pfeile
+haben ihre eigenen Handler. Gilt für alle Galerien und Video-Items.
+
 **Bild-/Video-Credit in der Lightbox = die Bildunterschrift selbst:** jeder
 Trigger bekommt zusätzlich `data-credit="<Fallback-Text>"
 data-i18n-attr="data-credit:<gleicher-i18n-key-wie-figcaption>"` — dadurch

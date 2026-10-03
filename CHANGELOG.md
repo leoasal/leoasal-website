@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Lightbox: Klick auf die schwarze Fläche schließt (2026-10-03).** Vorher nur
+  X/Esc; jetzt jeder Klick außerhalb von Foto/Video/Credit-Zeile.
+
 - **Dropdown-Menü live geschaltet (2026-10-03).** Branch `menu-option-dropdown`
   nach `main` gemergt: Hamburger rechts in der Kopfzeile statt Rail/Bottom-
   Nav, auf allen 9 Seiten. Die Rail-Variante bleibt als Branch

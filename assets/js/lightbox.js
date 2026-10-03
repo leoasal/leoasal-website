@@ -45,7 +45,10 @@
         go(1);
         return;
       }
-      if (e.target === overlay || e.target.classList.contains("lightbox-close")) {
+      // Close on the X and on any click in the black area around the photo —
+      // the wrapper divs (content/stage/slide) cover most of it, so test for
+      // "not the photo/video and not the credit line" instead of target === overlay.
+      if (!e.target.closest(".lightbox-img, .lightbox-credit")) {
         close();
       }
     });
