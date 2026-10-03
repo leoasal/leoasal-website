@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision-Ears-Logo höher und kleiner (2026-10-03).** Oberkante bündig mit dem
+  Zitat (statt mittig), 150 px statt 190 px (mobil 120 px).
+
 - **Vision-Ears-Logo rechts neben dem Zitat (2026-10-03).** Statt über der
   Überschrift jetzt in `.gear-quote-row` neben dem Zitat, vertikal zentriert;
   mobil darunter.
