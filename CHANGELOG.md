@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision-Ears-Logo rechts neben dem Zitat (2026-10-03).** Statt über der
+  Überschrift jetzt in `.gear-quote-row` neben dem Zitat, vertikal zentriert;
+  mobil darunter.
+
 - **Lightbox: Klick auf die schwarze Fläche schließt (2026-10-03).** Vorher nur
   X/Esc; jetzt jeder Klick außerhalb von Foto/Video/Credit-Zeile.
 
