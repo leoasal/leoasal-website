@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision Ears: Link sichtbar unter dem Logo (2026-10-03).** `vision-ears.de`
+  als unterstrichener Link direkt unter dem Logo (über den Fotos), der alte
+  Link unter der Galerie entfällt; Logo hat Hover-Effekt.
+
 - **Vision-Ears-Logo höher und kleiner (2026-10-03).** Oberkante bündig mit dem
   Zitat (statt mittig), 150 px statt 190 px (mobil 120 px).
 

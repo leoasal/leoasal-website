@@ -524,7 +524,10 @@ verlinkt auf vision-ears.de). **Es sitzt rechts neben dem Zitat, bündig mit
 dessen Oberkante** (Leo: erste Platzierung über der Überschrift gefiel nicht,
 dann "etwas höher und kleiner"): `<div class="gear-quote-row">` (Flex,
 `align-items:flex-start`, `space-between`) wrappt `.gear-quote` +
-`.brand-logo` (150 px breit); unter 640 px stapelt es (Logo unter dem Zitat,
+`.brand-side` (rechts: `.brand-logo` 150 px breit, darunter der sichtbare
+unterstrichene Link `vision-ears.de` im `.project-link`-Pattern — steht
+bewusst **über** den Fotos, nicht mehr darunter, Leo: "darf sichtbar
+anklickbar sein"); unter 640 px stapelt es (Logo unter dem Zitat,
 120 px). Bewusst das eckige statt
 des runden Logos: Wortmarke bleibt klein lesbar, das Rund-Siegel hat
 winzigen Text ("CUSTOM IN-EARS"). Das Rund-Logo (`VE Round Colour/
@@ -552,7 +555,7 @@ neben dem separaten `.project-link` weiter unten, war doppelt), 4 Fotos
 in einer `.epk-gallery.epk-gallery--color` (**in Farbe**, 2026-10-03 auf Leos
 Wunsch; ohne `--color` wären sie Graustufen; Standard-4-Spalten-Grid, kein
 inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
-(`.project-link`-Pattern wie bei Ketzberg/Jakob Manz/Loft Arts). Neue
+(`.project-link`-Pattern, sitzt unter dem Logo, s. u.). Neue
 Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block
 anhängen (kein Alternieren nötig, da nur eine Sektion).
 
