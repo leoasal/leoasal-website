@@ -213,24 +213,44 @@ dieses Muster übernehmen: pro inhaltlichem Block eine eigene
 …</div></section>`, alternierend, nicht wieder alles in einen
 gemeinsamen `<div class="container">` packen.
 
-Gemeinsames Muster pro Seite: Header (Logo, `.site-nav`, `.header-actions`
-mit Social-Icons + Sprachumschalter), **nur auf index.html** direkt danach
-`<nav class="side-rail">` (nur ≥1100px sichtbar; Unterseiten haben bewusst
-keine Rail), Content in `<main>`, `<nav class="mobile-nav">` (nur
-<800px sichtbar), Footer mit Impressum/Datenschutz + Copyright, Skripte
-(`i18n.js`, `anchor-scroll.js`, …). Details zu den drei Navs s. "Header/
-Nav-Layout" unten. Neue Seiten am besten von
-einer bestehenden ähnlichen Seite kopieren statt neu aufbauen, damit
-nichts vergessen wird.
+Gemeinsames Muster pro Seite: Header (Logo, `.header-actions` mit
+Social-Icons + Sprachumschalter + Hamburger-Button `.menu-toggle`), darin
+unten das Dropdown `<nav class="menu-panel" id="menu-panel">`, Content in
+`<main>`, Footer mit Impressum/Datenschutz + Copyright, Skripte (`i18n.js`,
+`menu.js`, `anchor-scroll.js`, …). Details zur Nav s. "Header/Nav" unten.
+Neue Seiten am besten von einer bestehenden ähnlichen Seite kopieren statt
+neu aufbauen, damit nichts vergessen wird.
 
-> **Menü-Varianten (2026-10-02):** `main` hat die Marker-Rail rechts (diese
-> Doku). Zwei Varianten liegen als Branches vor, damit nichts verloren geht:
-> `menu-option-side-rail` = exakter Stand der Rail (Sicherung) und
-> `menu-option-dropdown` = Experiment mit klassischem Hamburger-Dropdown in
-> der Kopfzeile (Vorbild julius-asal.com). Vorschau der Dropdown-Variante
-> ohne Branch-Wechsel: `git worktree add ../leoasal-website-dropdown
-> menu-option-dropdown` und dort `python3 -m http.server 5179`. Entscheidet
-> Leo sich für eine, den Branch nach main mergen und diese Doku bereinigen.
+**Header/Nav — aktuell: Hamburger-Dropdown (live seit 2026-10-03, Vorbild
+julius-asal.com):** Auf allen 9 Seiten und allen Breiten dieselbe Nav: ein
+Hamburger-Button (`.menu-toggle`, wird beim Öffnen zum X) rechts in der
+Kopfzeile, nach den Social-Icons und der Sprachwahl in `.header-actions`.
+Er klappt `.menu-panel` auf — ein weißes Dropdown, das an der Unterkante des
+Headers hängt (`position:absolute; top:100%`, rechtsbündig zur Container-
+Kante, deckend weiß, 0.25 s Ein-/Ausblenden), mit den 7 Punkten Home/Blog/
+Bio/Dates/Projects/Gear/Contact untereinander. `assets/js/menu.js` steuert
+Auf/Zu (Klick auf den Button, Klick außerhalb, Esc, Klick auf einen Eintrag)
+und zieht unterhalb 480 px die `.site-social`-Icons per `matchMedia` aus der
+Kopfzeile ins Dropdown (dort kein Platz; Tidal & Co. wären sonst abgeschnitten
+— bei breiterem Viewport wandern sie zurück). `anchor-scroll.js` ist nur noch
+Scrollspy + Hash-Landung: der nächstgelegene Abschnitt bekommt
+`aria-current="location"` auf dem `.menu-panel`-Link (Unterseiten:
+"Projects" hartcodiert `aria-current="page"`). Menü-Eintrag-Selektoren im
+CSS sind auf `.menu-panel ul a` begrenzt (sonst erben die Social-Links das
+Eintrags-Padding). i18n: `nav.menu` (aria-label des Buttons) in allen 3
+JSONs; auf impressum/datenschutz hartcodiert "Menü". Es gibt keine
+`.site-nav`, `.side-rail`, `.mobile-nav` mehr und keinen Bottom-Bar-
+`main`-Abstand.
+
+> **Archiv: Marker-Rail-Variante** (bis 2026-10-02 live). Vollständig
+> erhalten als Branch `menu-option-side-rail` (Stand der Rail) bzw. Tag
+> `menu-rail-last-main` (letzter `main`-Commit vor dem Dropdown-Merge, inkl.
+> aller damaligen Doku). Zurückwechseln: `git revert -m 1 <Merge-Commit>`
+> oder die Dateien aus dem Tag holen (`git checkout menu-rail-last-main --
+> index.html <alle Unterseiten> assets/css/style.css assets/js/
+> anchor-scroll.js`), `menu.js`-Einbindung entfernen. Der folgende Abschnitt
+> bis "Home-Punkt" beschreibt diese **nicht mehr aktive** Variante, bleibt
+> aber bewusst stehen, falls Leo wieder wechseln will.
 
 **Header/Nav-Layout, dreistufig responsiv (2026-09-30 komplett umgebaut,**
 Vorgänger-Version mit `.lang-switch--mobile`-Doppelkopie und mittig
@@ -372,7 +392,10 @@ JS-Änderung nötig gewesen.
 (sonst brach "LEO ASAL" bei 375px in zwei Zeilen um, weil Icons + Sprache
 zusammen 238px brauchten); `@media (max-width:479px)` macht
 `.header-actions`/`.site-social`/`.lang-switch` kompakter (kleinere Gaps,
-Padding) → zusammen ~211px.
+Padding) → zusammen ~211px. **Seit dem Dropdown (2026-10-03) ist das
+überholt:** unter 480 px stehen in der Kopfzeile nur noch Logo, Sprachwahl
+und Hamburger; die Social-Icons sitzen im Dropdown (s. "Header/Nav —
+aktuell").
 
 **`.header-actions`** (`display:flex; align-items:center; gap:1.1rem`)
 wrapt `.site-social` + `.lang-switch` zu einer Gruppe — dadurch landen
@@ -471,15 +494,14 @@ Redirect-Stub auf `index.html#gear` wie die anderen 5. Nav-Link auf allen
 Seiten mit echtem Header ist `index.html#gear` (bzw. auf index.html
 selbst nur `#gear`), **eingefügt zwischen Projects und Contact** +
 `nav.gear`-i18n-Key (auch auf impressum.html/datenschutz.html, dort wie
-die anderen Nav-Labels hartcodiert ohne `data-i18n`). `site-nav`+
-`mobile-nav`-Liste ist jetzt **6 Einträge** statt 5 — `.mobile-nav a
-{ flex: 1 }` verteilt automatisch neu, kein CSS-Fix nötig.
+die anderen Nav-Labels hartcodiert ohne `data-i18n`). die
+`.menu-panel`-Liste hat jetzt **7 Einträge** inkl. Home (Dropdown wächst
+automatisch, kein CSS-Fix nötig).
 `assets/js/anchor-scroll.js`: `spyIds`-Array ist
 `["home","blog","bio","dates","projects","gear","contact"]` — **die
 Reihenfolge in diesem Array muss immer exakt der DOM-Reihenfolge der
 Sektionen entsprechen** (die Landing-Positionen müssen aufsteigend sein,
-sonst bricht die Interpolation des Rail-Balkens, s. "Scrollspy +
-Rail-Balken"). `index.html` lädt jetzt
+sonst bricht die Landing-Positions-Logik des Scrollspy. `index.html` lädt jetzt
 zusätzlich `assets/js/lightbox.js` (vorher nicht nötig, da die Homepage
 bis dahin keine Lightbox-Galerie hatte). Hintergrund-Alternierung dadurch
 `#gear` = weiß (5. Band), `#contact` = grau (6. Band, vorher weiß als
@@ -723,7 +745,7 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   davon committet wird. HTML-Seiten selbst waren bisher nicht betroffen.
 - **Verborgene Browser-Pane = kein `requestAnimationFrame`:** ist
   `document.visibilityState === "hidden"`, laufen rAF-basierte Handler
-  (Scrollspy/Rail-Balken) nicht — Tests zeigen dann stale Zustände, kein
+  (Scrollspy) nicht — Tests zeigen dann stale Zustände, kein
   Code-Fehler. Tab vorher per `tabs_select` nach vorn holen.
 - **Neue Tabs landen auf `file://`:** Nach `Edit`/`Write` öffnet sich ein
   `file://`-Preview-Tab ohne CSS; `navigate` weicht manchmal auf ihn aus
@@ -828,8 +850,8 @@ verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
   aktuell 7). Wenn er das anstößt: neue `#unterricht`-Sektion in
   `index.html` nach dem Muster der bestehenden Sektionen (s.
   "Seitenstruktur" oben), `nav.unterricht`-i18n-Key in allen 3 JSONs, Link
-  in **drei** Stellen pro Seite mit echtem Header ergänzen (`.site-nav`-
-  `<ul>`, `.mobile-nav`, auf index.html zusätzlich `.side-rail`-`<ul>`) auf **allen 9** Seiten (s.
+  in **einer** Stelle pro Seite mit echtem Header ergänzen (`.menu-panel`-
+  `<ul>`) auf **allen 9** Seiten (s.
   "Header/Nav-Layout" oben), `spyIds`-Array in `anchor-scroll.js` um
   `"unterricht"` an der richtigen Position erweitern (Reihenfolge muss der
   DOM-Reihenfolge der Sektionen entsprechen, sonst bricht der Scrollspy),

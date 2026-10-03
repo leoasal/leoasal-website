@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Dropdown-Menü live geschaltet (2026-10-03).** Branch `menu-option-dropdown`
+  nach `main` gemergt: Hamburger rechts in der Kopfzeile statt Rail/Bottom-
+  Nav, auf allen 9 Seiten. Die Rail-Variante bleibt als Branch
+  `menu-option-side-rail` und Tag `menu-rail-last-main` erhalten, ihre Doku
+  steht als "Archiv" in `CLAUDE.md`.
+
 - **Vision Ears: Logo + kleineres Zitat (2026-10-03).** Farbiges Wortmarken-Logo
   über dem Gear-Block (`.brand-logo`), Zitat-Schrift von Standardgröße auf
   0.85rem verkleinert.
