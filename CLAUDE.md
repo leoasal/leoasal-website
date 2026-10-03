@@ -505,7 +505,8 @@ Artist"), Intro-Satz (`gear.visionears.text`, i18n), Zitat
 sind Übersetzungen davon), Zitat-Footer ist nur noch `— Leo Asal`
 (2026-09-30 den vision-ears.de-Link dort entfernt — er stand direkt
 neben dem separaten `.project-link` weiter unten, war doppelt), 4 Fotos
-in einer ganz normalen `.epk-gallery` (Standard-4-Spalten-Grid, kein
+in einer `.epk-gallery.epk-gallery--color` (**in Farbe**, 2026-10-03 auf Leos
+Wunsch; ohne `--color` wären sie Graustufen; Standard-4-Spalten-Grid, kein
 inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
 (`.project-link`-Pattern wie bei Ketzberg/Jakob Manz/Loft Arts). Neue
 Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block

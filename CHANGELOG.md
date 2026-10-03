@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision-Ears-Fotos in Farbe (2026-10-03).** Galerie in `#gear` bekommt
+  `epk-gallery--color` (vorher Graustufen-Filter).
+
 - **Menü-Variante "Dropdown" als Branch angelegt (2026-10-02).** Die Rail ist
   als Branch `menu-option-side-rail` gesichert. Auf `menu-option-dropdown`
   gibt es stattdessen einen Hamburger rechts in der Kopfzeile, der die 7
