@@ -960,6 +960,17 @@ a.project-card:hover {
 
 /* ---------- Gear ---------- */
 
+.brand-logo {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.brand-logo img {
+  display: block;
+  height: 64px;
+  width: auto;
+}
+
 .gear-quote {
   margin: 1.5rem 0;
   padding-left: 1.25rem;
@@ -970,12 +981,13 @@ a.project-card:hover {
 
 .gear-quote p {
   margin: 0;
+  font-size: 0.85rem;
 }
 
 .gear-quote footer {
   margin-top: 0.6rem;
   font-style: normal;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--accent-dark);
 }
 

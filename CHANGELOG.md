@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision Ears: Logo + kleineres Zitat (2026-10-03).** Farbiges Wortmarken-Logo
+  über dem Gear-Block (`.brand-logo`), Zitat-Schrift von Standardgröße auf
+  0.85rem verkleinert.
+
 - **Vision-Ears-Fotos in Farbe (2026-10-03).** Galerie in `#gear` bekommt
   `epk-gallery--color` (vorher Graustufen-Filter).
 

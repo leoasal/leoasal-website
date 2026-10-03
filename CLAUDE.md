@@ -487,6 +487,16 @@ bis dahin keine Lightbox-Galerie hatte). Hintergrund-Alternierung dadurch
 Hintergrundklassen der betroffenen Sektionen neu durchzählen, nicht nur
 die neue Sektion isoliert einfärben.
 
+**Vision-Ears-Logo (2026-10-03):** über dem `<h3>` sitzt das farbige
+Wortmarken-Logo (`assets/images/visionears-logo.png`, 560 px breit, aus
+`VE Straight Colour/VE VE straight_2.png`, transparent → passt auf dem weißen
+`#gear`-Band; Klasse `.brand-logo`, 64 px hoch, verlinkt auf vision-ears.de).
+Bewusst das eckige statt des runden Logos: Wortmarke bleibt klein lesbar, das
+Rund-Siegel hat winzigen Text ("CUSTOM IN-EARS"). Das Rund-Logo
+(`VE Round Colour/VE Round2.png`) liegt nur in Leos Downloads als Alternative.
+Das Zitat (`.gear-quote p`) ist 0.85rem, der Footer 0.75rem (Leo: "Schrift
+kleiner").
+
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
 Spanisch "Equipo", wie `nav.gear`). **Als erweiterbare Liste angelegt:**
