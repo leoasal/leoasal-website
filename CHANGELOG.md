@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Vision Ears: Text-Link entfernt (2026-10-03).** Nur noch das Logo verlinkt auf
+  vision-ears.de; weder unter den Fotos noch unter dem Logo gibt es einen
+  Text-Link.
+
 - **Vision Ears: Link sichtbar unter dem Logo (2026-10-03).** `vision-ears.de`
   als unterstrichener Link direkt unter dem Logo (über den Fotos), der alte
   Link unter der Galerie entfällt; Logo hat Hover-Effekt.

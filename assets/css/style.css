@@ -889,11 +889,6 @@ a.project-card:hover {
   flex: 0 0 auto;
 }
 
-.brand-side .project-link {
-  margin: 0.6rem 0 0;
-  font-size: 0.8rem;
-}
-
 .brand-logo {
   display: block;
   transition: opacity 0.15s ease;
@@ -915,7 +910,6 @@ a.project-card:hover {
     align-items: flex-start;
   }
   .brand-logo img { width: 120px; }
-  .brand-side .project-link { margin-bottom: 0; }
 }
 
 .gear-quote {
