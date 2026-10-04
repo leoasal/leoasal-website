@@ -539,6 +539,26 @@ winzigen Text ("CUSTOM IN-EARS"). Das Rund-Logo (`VE Round Colour/
 VE Round2.png`) liegt nur in Leos Downloads als Alternative. Das Zitat
 (`.gear-quote p`) ist 0.85rem, der Footer 0.75rem.
 
+**Gear als horizontale Galerie (2026-10-04, Leo-Wunsch):** die Marken-Blöcke
+stehen nicht mehr untereinander, sondern nebeneinander in
+`.gear-slider > #gear-slides.gear-slides` (Flex, `overflow-x:auto`,
+`scroll-snap-type:x mandatory`, Scrollbar versteckt — Wischen/Trackpad geht
+nativ). Jede Marke ist ein `.gear-slide` (100 % Breite, Flex-Zeile) =
+`.gear-slide-body` (der bisherige h3+Text+Galerie-Block) plus Pfeil-Balken:
+`.gear-toggle` (**gleiche Klassen/Optik wie die Kalender-Pfeile
+`.dates-toggle`**, nur hochkant: 3 rem breit, volle Slide-Höhe, Trennlinie,
+Chevron per `rotate(-90deg)` = nach rechts bzw. `90deg` = nach links). Der
+erste Slide (Vision Ears) hat rechts `.gear-toggle--next`, der letzte
+(Sonor) links `.gear-toggle--prev`; **neue Marke = neuer `.gear-slide`**, der
+bisher letzte bekommt zusätzlich einen `--next`-Balken, der neue einen
+`--prev`. `assets/js/gear-slider.js` scrollt bei Klick auf
+`[data-gear-step]` um eine Streifenbreite (`scrollBy`, smooth). i18n:
+`gear.next`/`gear.prev` (aria-label der Balken). Alle Slides haben die Höhe
+des höchsten (Flex-Stretch) — der kürzere Block hat unten Leerraum. Der
+Eyebrow über "Gear" heißt jetzt **"Equipment"** (en/de; es "Equipamiento")
+statt "Endorsements"/"Kooperationen"/"Colaboraciones". `.gear-brand` gibt es
+nicht mehr.
+
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
 Spanisch "Equipo", wie `nav.gear`). **Als erweiterbare Liste angelegt:**
@@ -560,9 +580,8 @@ neben dem separaten `.project-link` weiter unten, war doppelt), 4 Fotos
 in einer `.epk-gallery.epk-gallery--color` (**in Farbe**, 2026-10-03 auf Leos
 Wunsch; ohne `--color` wären sie Graustufen; Standard-4-Spalten-Grid, kein
 inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
-nur über das Logo (s. u.). **Sonor-Vintage-Series-Block (2026-10-04):** zweiter Marken-Block darunter
-(`<h3 class="gear-brand">Sonor Vintage Series</h3>`, `.gear-brand` = 4rem
-Abstand nach oben), Satz `gear.sonor.text` (i18n, 3 Sprachen — bewusst nur
+nur über das Logo (s. u.). **Sonor-Vintage-Series-Block (2026-10-04):** zweiter Marken-Slide neben Vision
+Ears (`<h3>Sonor Vintage Series</h3>`), Satz `gear.sonor.text` (i18n, 3 Sprachen — bewusst nur
 "Leo spielt ein Sonor Vintage Series Schlagzeug", keine Endorsement-
 Behauptung, da Leo es als "mein Sonor Vintage Series" beschrieb), darunter
 eine normale `.epk-gallery.epk-gallery--color` mit 4 Fotos des grünen Kits

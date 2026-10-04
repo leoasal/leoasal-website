@@ -885,8 +885,69 @@ a.project-card:hover {
 
 /* ---------- Gear ---------- */
 
-.gear-brand {
-  margin-top: 4rem;
+/* Brands side by side: a scroll-snap strip, one brand per "page". The arrow
+   bars reuse the calendar's .dates-toggle look, turned sideways. */
+.gear-slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gear-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.gear-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  scroll-snap-align: start;
+}
+
+.gear-slide-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gear-slide-body > h3:first-child {
+  margin-top: 0;
+}
+
+.gear-toggle {
+  flex: 0 0 3rem;
+  width: 3rem;
+  padding: 0;
+  border-bottom: 0;
+  align-self: stretch;
+}
+
+.gear-toggle--next {
+  border-left: 1px solid var(--line);
+  margin-left: 1.5rem;
+}
+
+.gear-toggle--prev {
+  border-right: 1px solid var(--line);
+  margin-right: 1.5rem;
+}
+
+/* the shared chevron points down at rest: -90deg = right, 90deg = left */
+.gear-toggle--next svg {
+  transform: rotate(-90deg);
+}
+
+.gear-toggle--prev svg {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 639px) {
+  .gear-toggle {
+    flex-basis: 2.25rem;
+    width: 2.25rem;
+  }
+  .gear-toggle--next { margin-left: 0.75rem; }
+  .gear-toggle--prev { margin-right: 0.75rem; }
 }
 
 .gear-quote-row {

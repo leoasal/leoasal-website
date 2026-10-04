@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear als horizontale Galerie + Eyebrow „Equipment“ (2026-10-04).** Vision Ears
+  und Sonor stehen als Slides nebeneinander (Scroll-Snap-Streifen); rechts am
+  Vision-Ears-Block bzw. links am Sonor-Block sitzt der Pfeil-Balken im
+  `.dates-toggle`-Look des Kalenders, seitwärts gedreht. Neu:
+  `assets/js/gear-slider.js`, i18n `gear.next`/`gear.prev`. Eyebrow von
+  „Endorsements“ auf „Equipment“ (DE „Equipment“, ES „Equipamiento“).
+
 - **Sonor-Galerie: Bild 4 ersetzt (2026-10-04).** `sonor-photo-4.jpg` ist jetzt das
   beschriftete Setup-Foto aus der Inbox (`setup-beschriftet-dunkel.jpg`,
   4096×3072 → 2000×1500, q85; höhere Auflösung als die anderen, damit die
