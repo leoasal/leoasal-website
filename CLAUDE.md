@@ -551,7 +551,9 @@ h3+Text+Galerie-Block) plus **absolut positioniertem** Pfeil-Balken
 (`right:0`/`left:0`, `top:0;bottom:0`): `.gear-toggle` (**gleiche Klassen/Optik wie die Kalender-Pfeile
 `.dates-toggle`**, nur hochkant: 3 rem breit, volle Slide-Höhe, Trennlinie,
 Chevron per `rotate(-90deg)` = nach rechts bzw. `90deg` = nach links). Der
-erste Slide (Vision Ears) hat rechts `.gear-toggle--next`, der letzte
+erste Slide (Vision Ears) hat rechts `.gear-toggle--next` und links einen
+reinen Strich als Start-Markierung (`.gear-slide:first-child::before`, 1 px
+`--line`, Leo-Wunsch), der letzte
 (Sonor) links `.gear-toggle--prev`; **neue Marke = neuer `.gear-slide`**, der
 bisher letzte bekommt zusätzlich einen `--next`-Balken, der neue einen
 `--prev`. `assets/js/gear-slider.js` scrollt bei Klick auf

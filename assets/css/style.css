@@ -935,6 +935,17 @@ a.project-card:hover {
   border-right: 1px solid var(--line);
 }
 
+/* first slide has no "back" bar: a plain line on its left edge marks the
+   start of the strip and mirrors the bar on its right */
+.gear-slide:first-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid var(--line);
+}
+
 /* the shared chevron points down at rest: -90deg = right, 90deg = left */
 .gear-toggle--next svg {
   transform: rotate(-90deg);

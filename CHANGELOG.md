@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Strich links neben Vision Ears (2026-10-04).** Dünne Linie am linken
+  Rand des ersten Slides (`.gear-slide:first-child::before`) als
+  Start-Markierung, spiegelt den Pfeil-Balken rechts.
+
 - **Sonor-Satz einzeilig (2026-10-04).** Inline-`max-width:68ch` am Absatz
   entfernt, damit der englische Satz auf Desktop in eine Zeile passt (bei
   schmalen Breiten und im längeren DE-Text bricht er weiter natürlich um).
