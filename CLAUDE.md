@@ -559,7 +559,17 @@ neben dem separaten `.project-link` weiter unten, war doppelt), 4 Fotos
 in einer `.epk-gallery.epk-gallery--color` (**in Farbe**, 2026-10-03 auf Leos
 Wunsch; ohne `--color` wären sie Graustufen; Standard-4-Spalten-Grid, kein
 inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
-nur über das Logo (s. u.). Neue
+nur über das Logo (s. u.). **Sonor-Vintage-Series-Block (2026-10-04):** zweiter Marken-Block darunter
+(`<h3 class="gear-brand">Sonor Vintage Series</h3>`, `.gear-brand` = 4rem
+Abstand nach oben), Satz `gear.sonor.text` (i18n, 3 Sprachen — bewusst nur
+"Leo spielt ein Sonor Vintage Series Schlagzeug", keine Endorsement-
+Behauptung, da Leo es als "mein Sonor Vintage Series" beschrieb), darunter
+eine normale `.epk-gallery.epk-gallery--color` mit 4 Fotos des grünen Kits
+(`assets/images/sonor-photo-1.jpg`–`-4.jpg`, aus iPhone-Originalen
+`IMG_8338/8339/8343/8346.jpeg` 4032×3024 auf 1600×1200 skaliert, JPEG q82;
+Grid zeigt sie quadratisch zugeschnitten, die Lightbox das volle 4:3-Bild).
+Kein Credit/`data-credit` (Leos eigene Fotos). Originale in
+`Inbox/processed/`. Neue
 Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block
 anhängen (kein Alternieren nötig, da nur eine Sektion).
 

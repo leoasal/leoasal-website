@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Sonor Vintage Series (2026-10-04).** 4 Fotos aus der Inbox
+  (`IMG_8338/8339/8343/8346.jpeg`, iPhone 4032×3024) → `sonor-photo-1…4.jpg`
+  (1600×1200, q82, EXIF-Rotation angewendet), neuer Block unter Vision Ears in
+  `#gear` + `gear.sonor.text` (EN/DE/ES). Originale nach `Inbox/processed/`.
+
 - **Dropdown-Menü halbtransparent (2026-10-04).** Hintergrund von deckend weiß auf
   `rgba(255,255,255,.72)` + Blur; Header-Hintergrund dafür auf
   `.site-header::before` verlegt, damit der Blur die Seite dahinter erreicht.

@@ -885,6 +885,10 @@ a.project-card:hover {
 
 /* ---------- Gear ---------- */
 
+.gear-brand {
+  margin-top: 4rem;
+}
+
 .gear-quote-row {
   display: flex;
   align-items: flex-start;
