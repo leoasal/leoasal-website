@@ -569,8 +569,8 @@ eine normale `.epk-gallery.epk-gallery--color` mit 4 Fotos des grünen Kits
 (`assets/images/sonor-photo-1.jpg`–`-4.jpg`, aus iPhone-Originalen
 `IMG_8338/8343/8339.jpeg` (in dieser Reihenfolge, 2↔3 getauscht); **Bild 4 ist
 seit 2026-10-04 das beschriftete Setup-Foto** (`setup-beschriftet-dunkel.jpg`,
-Draufsicht mit Weißen Beschriftungsboxen je Trommel/Becken, 2000×1500 q85;
-Einzelne Boxen enthalten noch den Platzhalter „[Modell folgt]“ im Bild selbst) 4032×3024 auf 1600×1200 skaliert, JPEG q82;
+Draufsicht mit weißen Beschriftungsboxen je Trommel/Becken, 2000×1500 q85;
+einzelne Boxen enthalten noch den Platzhalter „[Modell folgt]“ im Bild selbst) 4032×3024 auf 1600×1200 skaliert, JPEG q82;
 Grid zeigt sie quadratisch zugeschnitten, die Lightbox das volle 4:3-Bild).
 Kein Credit/`data-credit` (Leos eigene Fotos). Originale in
 `Inbox/processed/`. Neue
