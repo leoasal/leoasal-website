@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear-Slides: Inhaltsfeld überall gleich (2026-10-04).** Pfeil-Balken sind jetzt
+  absolut positioniert, jeder Slide hat links und rechts denselben Rand
+  (4.5rem) — Vision Ears und Sonor sitzen beide mittig, gemessen identisch
+  (Breite 776 px, 72 px Abstand links).
+
 - **Gear als horizontale Galerie + Eyebrow „Equipment“ (2026-10-04).** Vision Ears
   und Sonor stehen als Slides nebeneinander (Scroll-Snap-Streifen); rechts am
   Vision-Ears-Block bzw. links am Sonor-Block sitzt der Pfeil-Balken im

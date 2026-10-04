@@ -543,9 +543,12 @@ VE Round2.png`) liegt nur in Leos Downloads als Alternative. Das Zitat
 stehen nicht mehr untereinander, sondern nebeneinander in
 `.gear-slider > #gear-slides.gear-slides` (Flex, `overflow-x:auto`,
 `scroll-snap-type:x mandatory`, Scrollbar versteckt — Wischen/Trackpad geht
-nativ). Jede Marke ist ein `.gear-slide` (100 % Breite, Flex-Zeile) =
-`.gear-slide-body` (der bisherige h3+Text+Galerie-Block) plus Pfeil-Balken:
-`.gear-toggle` (**gleiche Klassen/Optik wie die Kalender-Pfeile
+nativ). Jede Marke ist ein `.gear-slide` (100 % Breite, `position:relative`,
+**`padding: 0 4.5rem` auf beiden Seiten in jedem Slide** — damit das
+Inhaltsfeld überall exakt gleich breit/mittig sitzt, egal ob links, rechts
+oder beide Pfeile da sind; mobil 3 rem) = `.gear-slide-body` (der bisherige
+h3+Text+Galerie-Block) plus **absolut positioniertem** Pfeil-Balken
+(`right:0`/`left:0`, `top:0;bottom:0`): `.gear-toggle` (**gleiche Klassen/Optik wie die Kalender-Pfeile
 `.dates-toggle`**, nur hochkant: 3 rem breit, volle Slide-Höhe, Trennlinie,
 Chevron per `rotate(-90deg)` = nach rechts bzw. `90deg` = nach links). Der
 erste Slide (Vision Ears) hat rechts `.gear-toggle--next`, der letzte

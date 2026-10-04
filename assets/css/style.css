@@ -899,14 +899,16 @@ a.project-card:hover {
 }
 
 .gear-slide {
+  position: relative;
   flex: 0 0 100%;
   min-width: 0;
-  display: flex;
+  /* the same gutter on BOTH sides in every slide (toggle 3rem + 1.5rem gap),
+     so the content box has identical width/position whichever arrows exist */
+  padding: 0 4.5rem;
   scroll-snap-align: start;
 }
 
 .gear-slide-body {
-  flex: 1;
   min-width: 0;
 }
 
@@ -915,21 +917,22 @@ a.project-card:hover {
 }
 
 .gear-toggle {
-  flex: 0 0 3rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 3rem;
   padding: 0;
   border-bottom: 0;
-  align-self: stretch;
 }
 
 .gear-toggle--next {
+  right: 0;
   border-left: 1px solid var(--line);
-  margin-left: 1.5rem;
 }
 
 .gear-toggle--prev {
+  left: 0;
   border-right: 1px solid var(--line);
-  margin-right: 1.5rem;
 }
 
 /* the shared chevron points down at rest: -90deg = right, 90deg = left */
@@ -942,12 +945,8 @@ a.project-card:hover {
 }
 
 @media (max-width: 639px) {
-  .gear-toggle {
-    flex-basis: 2.25rem;
-    width: 2.25rem;
-  }
-  .gear-toggle--next { margin-left: 0.75rem; }
-  .gear-toggle--prev { margin-right: 0.75rem; }
+  .gear-slide { padding: 0 3rem; }
+  .gear-toggle { width: 2.25rem; }
 }
 
 .gear-quote-row {
