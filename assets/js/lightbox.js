@@ -55,6 +55,11 @@
     document.addEventListener("keydown", function (e) {
       if (!overlay.classList.contains("is-open")) return;
       if (e.key === "Escape") close();
+      if (e.key === " " || e.key === "Spacebar") {
+        // Space closes; keep it from scrolling the page or re-pressing a focused button.
+        e.preventDefault();
+        close();
+      }
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "ArrowRight") go(1);
     });

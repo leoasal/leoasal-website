@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Lightbox: Leertaste schließt (2026-10-04).** Zusätzlich zu X/Esc/Klick auf
+  Schwarz; per echtem Tastendruck getestet (kein Scrollen, kein Wiederöffnen).
+
 - **Sonor-Fotos: Bild 2 und 3 getauscht (2026-10-04).** Dateien
   `sonor-photo-2.jpg`/`-3.jpg` vertauscht (Reihenfolge jetzt 8338, 8343, 8339,
   8346).
