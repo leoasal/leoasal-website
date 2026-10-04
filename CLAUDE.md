@@ -585,7 +585,8 @@ Wunsch; ohne `--color` wären sie Graustufen; Standard-4-Spalten-Grid, kein
 inline-Override mehr — s. Foto-Herkunft unten), Link auf vision-ears.de
 nur über das Logo (s. u.). **Sonor-Vintage-Series-Block (2026-10-04):** zweiter Marken-Slide neben Vision
 Ears (`<h3>Sonor Vintage Series</h3>`), Satz `gear.sonor.text` (i18n, 3 Sprachen — bewusst nur
-"Leo spielt ein Sonor Vintage Series Schlagzeug", keine Endorsement-
+"Leo spielt ein Sonor Vintage Series Schlagzeug in der Lackierung California
+Blue" (EN-Wortlaut von Leo vorgegeben), keine Endorsement-
 Behauptung, da Leo es als "mein Sonor Vintage Series" beschrieb), darunter
 eine normale `.epk-gallery.epk-gallery--color` mit 4 Fotos des grünen Kits
 (`assets/images/sonor-photo-1.jpg`–`-4.jpg`, aus iPhone-Originalen

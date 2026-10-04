@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Text ergänzt (2026-10-04).** `gear.sonor.text`: „… with a California Blue
+  finish“ (DE/ES übersetzt).
+
 - **Gear-Slides: Inhaltsfeld überall gleich (2026-10-04).** Pfeil-Balken sind jetzt
   absolut positioniert, jeder Slide hat links und rechts denselben Rand
   (4.5rem) — Vision Ears und Sonor sitzen beide mittig, gemessen identisch
