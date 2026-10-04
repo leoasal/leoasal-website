@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Platzhalter ist jetzt ein senkrechter Strich (2026-10-04).** Links von
+  Vision Ears entfällt die Trennlinie; statt des blassen Pfeils steht ein
+  2 px breiter, 1.6 rem hoher Strich (`.gear-start-mark`) in der Farbe des
+  Geister-Pfeils.
+
 - **Gear: Start-Markierung als Platzhalter-Balken (2026-10-04).** Der Strich links
   von Vision Ears wanderte von der Außenkante an die Position des Zurück-
   Balkens (direkt vor dem Text) und trägt einen blassen, deaktivierten Pfeil

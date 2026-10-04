@@ -935,12 +935,22 @@ a.project-card:hover {
   border-right: 1px solid var(--line);
 }
 
-/* First slide: a disabled stand-in for the "back" bar, same place and size
-   as on the next slide, with a ghosted arrow = "you are at the start". */
+/* First slide: a disabled stand-in for the "back" bar, same place and size as
+   on the next slide. No divider line and no arrow: just a short vertical
+   stroke, as tall as the arrow icon (1.6rem), in the ghosted arrow colour. */
 .gear-toggle--start {
   cursor: default;
   pointer-events: none;
+  border-right: 0;
   color: var(--line);
+}
+
+.gear-start-mark {
+  display: block;
+  width: 2px;
+  height: 1.6rem;
+  background: currentColor;
+  border-radius: 1px;
 }
 
 /* the shared chevron points down at rest: -90deg = right, 90deg = left */
