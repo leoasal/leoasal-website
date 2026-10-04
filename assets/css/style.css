@@ -937,8 +937,8 @@ a.project-card:hover {
 
 /* First slide: a disabled stand-in for the "back" bar, same place and size as
    on the next slide, including its divider line. Instead of the arrow it shows
-   a short vertical stroke as tall as the arrow icon (1.6rem), drawn as faintly
-   as the long divider line (1px, --line). */
+   two short vertical strokes close together, as tall as the arrow icon (1.6rem),
+   drawn as faintly as the long divider line (1px, --line). */
 .gear-toggle--start {
   cursor: default;
   pointer-events: none;
@@ -950,6 +950,10 @@ a.project-card:hover {
   width: 1px;
   height: 1.6rem;
   background: currentColor;
+  /* second stroke right next to the first; shifted back by half the pair
+     width so the pair stays centred in the bar */
+  box-shadow: 4px 0 0 currentColor;
+  transform: translateX(-2px);
 }
 
 /* the shared chevron points down at rest: -90deg = right, 90deg = left */

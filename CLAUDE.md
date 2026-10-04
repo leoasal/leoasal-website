@@ -574,7 +574,9 @@ erste Slide (Vision Ears) hat rechts `.gear-toggle--next` und links einen
 Breite wie `--prev` auf dem nächsten Slide, `disabled`/`aria-hidden`/
 `tabindex=-1`, `pointer-events:none`, **mit** der langen Trennlinie rechts im
 Balken (`border-right`, wie bei `--prev`) und statt des Pfeils ein kurzer
-senkrechter Strich `.gear-start-mark`: 1 px × 1.6 rem (Höhe des Pfeil-Icons),
+senkrechtes **Doppelstrich-Paar** `.gear-start-mark` (zwei 1-px-Striche, 4 px
+Abstand per `box-shadow:4px 0 0`, per `translateX(-2px)` im Balken
+zentriert), je 1.6 rem hoch (Höhe des Pfeil-Icons),
 **so schwach wie die lange Linie** (`--line`-Grau, gemessen identisch;
 Leo, 2026-10-04, nach mehreren Varianten: Strich, blasser Pfeil, blasser
 Strich ohne Linie, violetter Strich — zuletzt „schwächer, ungefähr so wie

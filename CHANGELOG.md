@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Start-Markierung als Doppelstrich (2026-10-04).** Aus dem einen
+  kleinen Strich werden zwei, 4 px auseinander (`box-shadow`), mittig im Balken.
+
 - **Gear: kleiner Start-Strich schwächer (2026-10-04).** Von violett/2 px auf
   `--line`-Grau/1 px, gleiche Stärke wie die lange Trennlinie.
 
