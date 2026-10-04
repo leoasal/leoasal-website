@@ -624,7 +624,10 @@ seit 2026-10-04 das beschriftete Setup-Foto** (`setup-beschriftet-dunkel.jpg`,
 Draufsicht mit weißen Beschriftungsboxen je Trommel/Becken, 2000×1500 q85;
 einzelne Boxen enthalten noch den Platzhalter „[Modell folgt]“ im Bild selbst) 4032×3024 auf 1600×1200 skaliert, JPEG q82;
 Grid zeigt sie quadratisch zugeschnitten, die Lightbox das volle 4:3-Bild).
-Kein Credit/`data-credit` (Leos eigene Fotos). Originale in
+Kein Credit/`data-credit` (Leos eigene Fotos). Vorschau von Bild 3 hat inline
+`object-position:25% 50%`, damit das Set im quadratischen Ausschnitt mittig
+sitzt (Leo: „weiter in die Mitte, also nach rechts“); die Lightbox zeigt
+weiter das volle Bild. Originale in
 `Inbox/processed/`. Neue
 Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block
 anhängen (kein Alternieren nötig, da nur eine Sektion).

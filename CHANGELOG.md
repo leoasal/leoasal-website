@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor Bild 3: Vorschau-Ausschnitt (2026-10-04).** `object-position:25% 50%`
+  verschiebt das Set im Quadrat-Thumbnail nach rechts in die Mitte.
+
 - **Gear: Start-Markierung als Doppelstrich (2026-10-04).** Aus dem einen
   kleinen Strich werden zwei, 4 px auseinander (`box-shadow`), mittig im Balken.
 
