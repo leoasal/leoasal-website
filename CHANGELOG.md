@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Fotos: Bild 2 und 3 getauscht (2026-10-04).** Dateien
+  `sonor-photo-2.jpg`/`-3.jpg` vertauscht (Reihenfolge jetzt 8338, 8343, 8339,
+  8346).
+
 - **Gear: Sonor Vintage Series (2026-10-04).** 4 Fotos aus der Inbox
   (`IMG_8338/8339/8343/8346.jpeg`, iPhone 4032×3024) → `sonor-photo-1…4.jpg`
   (1600×1200, q82, EXIF-Rotation angewendet), neuer Block unter Vision Ears in
