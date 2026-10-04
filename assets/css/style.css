@@ -937,20 +937,19 @@ a.project-card:hover {
 
 /* First slide: a disabled stand-in for the "back" bar, same place and size as
    on the next slide, including its divider line. Instead of the arrow it shows
-   a short vertical stroke as tall and as bold as the arrow icon (1.6rem, 2px)
-   in the arrows' violet. */
+   a short vertical stroke as tall as the arrow icon (1.6rem), drawn as faintly
+   as the long divider line (1px, --line). */
 .gear-toggle--start {
   cursor: default;
   pointer-events: none;
-  color: var(--accent-dark);
+  color: var(--line);
 }
 
 .gear-start-mark {
   display: block;
-  width: 2px;
+  width: 1px;
   height: 1.6rem;
   background: currentColor;
-  border-radius: 1px;
 }
 
 /* the shared chevron points down at rest: -90deg = right, 90deg = left */

@@ -5,6 +5,9 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: kleiner Start-Strich schwächer (2026-10-04).** Von violett/2 px auf
+  `--line`-Grau/1 px, gleiche Stärke wie die lange Trennlinie.
+
 - **Gear: Start-Strich violett + lange Linie wieder da (2026-10-04).** Der kurze
   Strich links von Vision Ears hat die Farbe der Pfeile (`--accent-dark`),
   2 px × 1.6 rem; die lange Trennlinie links neben dem Text ist wieder
