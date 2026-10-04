@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Start-Markierung als Platzhalter-Balken (2026-10-04).** Der Strich links
+  von Vision Ears wanderte von der Außenkante an die Position des Zurück-
+  Balkens (direkt vor dem Text) und trägt einen blassen, deaktivierten Pfeil
+  nach links als Platzhalter (`.gear-toggle--start`). Ersetzt das
+  `::before`-Linienstück.
+
 - **Weichere Galerie-Animationen (2026-10-04).** Neues `soft-scroll.js` (850 ms
   easeInOutCubic) für Gear-Galerie und alle Foto-Reihen mit Pfeilen
   (Yamuna, Bänsch, Härtel/Asal, Ketzberg, Loft Arts); CSS-`scroll-behavior:
