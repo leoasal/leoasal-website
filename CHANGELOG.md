@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Satz einzeilig (2026-10-04).** Inline-`max-width:68ch` am Absatz
+  entfernt, damit der englische Satz auf Desktop in eine Zeile passt (bei
+  schmalen Breiten und im längeren DE-Text bricht er weiter natürlich um).
+
 - **Sonor-Text ergänzt (2026-10-04).** `gear.sonor.text`: „… with a California Blue
   finish“ (DE/ES übersetzt).
 
