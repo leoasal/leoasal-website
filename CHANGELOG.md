@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Galerie: Bild 4 ersetzt (2026-10-04).** `sonor-photo-4.jpg` ist jetzt das
+  beschriftete Setup-Foto aus der Inbox (`setup-beschriftet-dunkel.jpg`,
+  4096×3072 → 2000×1500, q85; höhere Auflösung als die anderen, damit die
+  Beschriftung in der Lightbox lesbar bleibt), Alt-Text angepasst. Das
+  vorherige Bild (`IMG_8346`) liegt weiter in `Inbox/processed/`, Original des
+  neuen ebenfalls.
+
 - **Lightbox: Leertaste schließt (2026-10-04).** Zusätzlich zu X/Esc/Klick auf
   Schwarz; per echtem Tastendruck getestet (kein Scrollen, kein Wiederöffnen).
 
