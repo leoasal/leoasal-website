@@ -9,6 +9,8 @@
     var btn = e.target.closest("[data-gear-step]");
     if (!btn) return;
     var step = parseInt(btn.getAttribute("data-gear-step"), 10) || 0;
-    strip.scrollBy({ left: step * strip.clientWidth, behavior: "smooth" });
+    var dx = step * strip.clientWidth;
+    if (window.softScrollBy) window.softScrollBy(strip, dx);
+    else strip.scrollBy({ left: dx, behavior: "smooth" });
   });
 })();

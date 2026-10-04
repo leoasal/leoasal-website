@@ -2,7 +2,9 @@
   var overlay = null;
   var items = [];
   var index = 0;
-  var ANIM_MS = 300;
+  var ANIM_MS = 520;
+  var EASE = "cubic-bezier(0.45, 0, 0.2, 1)";
+  var animating = false;
   var track = null;
   var stageWidth = 0;
   var dragStartX = null;
@@ -124,13 +126,15 @@
   }
 
   function settleTo(targetPercent, step) {
-    track.style.transition = "transform " + ANIM_MS + "ms ease";
+    track.style.transition = "transform " + ANIM_MS + "ms " + EASE;
+    animating = true;
     track.style.transform = "translateX(" + targetPercent + "%)";
     window.setTimeout(function () {
       if (step) index = (index + step + items.length) % items.length;
       renderSlides();
       track.style.transition = "none";
       track.style.transform = "translateX(-33.3333%)";
+      animating = false;
     }, ANIM_MS);
   }
 
@@ -221,7 +225,7 @@
   }
 
   function go(step) {
-    if (!items.length || items.length <= 1) return;
+    if (!items.length || items.length <= 1 || animating) return;
     settleTo(step > 0 ? -66.6667 : 0, step);
   }
 

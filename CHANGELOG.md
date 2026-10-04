@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Weichere Galerie-Animationen (2026-10-04).** Neues `soft-scroll.js` (850 ms
+  easeInOutCubic) für Gear-Galerie und alle Foto-Reihen mit Pfeilen
+  (Yamuna, Bänsch, Härtel/Asal, Ketzberg, Loft Arts); CSS-`scroll-behavior:
+  smooth` an `.epk-gallery--row` entfernt. Lightbox-Übergang 300 → 520 ms mit
+  weicherer Kurve, plus Klick-Sperre während der Animation. Gemessen: Gear-
+  Wechsel 0→920 px in ~850 ms mit sanftem Start und Auslauf.
+
 - **Gear: Strich links neben Vision Ears (2026-10-04).** Dünne Linie am linken
   Rand des ersten Slides (`.gear-slide:first-child::before`) als
   Start-Markierung, spiegelt den Pfeil-Balken rechts.

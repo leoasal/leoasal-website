@@ -1,4 +1,9 @@
 (function () {
+  function softScroll(el, dx) {
+    if (window.softScrollBy) window.softScrollBy(el, dx);
+    else el.scrollBy({ left: dx, behavior: "smooth" });
+  }
+
   function setupGallery(gallery) {
     var items = gallery.querySelectorAll(".cover-trigger");
     if (items.length <= 4) return;
@@ -43,10 +48,10 @@
     }
 
     prev.addEventListener("click", function () {
-      gallery.scrollBy({ left: -step(), behavior: "smooth" });
+      softScroll(gallery, -step());
     });
     next.addEventListener("click", function () {
-      gallery.scrollBy({ left: step(), behavior: "smooth" });
+      softScroll(gallery, step());
     });
     gallery.addEventListener("scroll", update);
     window.addEventListener("resize", update);

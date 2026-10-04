@@ -452,6 +452,24 @@ playsinline poster="...">` — beide gleich gestylt via `.cover-trigger img`/
 `.cover-trigger video`) + `<figcaption class="process-caption">` für die
 Unterschrift.
 
+**Weiches Galerie-Scrollen (2026-10-04, Leo-Wunsch):** die Pfeil-Klicks der
+Foto-Reihen (`gallery-nav.js`, `.epk-gallery--row`) und der Gear-Galerie
+(`gear-slider.js`) nutzen NICHT mehr das browsereigene `behavior:"smooth"`
+(kurz, ruckelig), sondern `assets/js/soft-scroll.js`:
+`window.softScrollBy(el, dx)` = rAF-Animation, 850 ms, easeInOutCubic (lahmer
+Start, schnelle Mitte, langes Ausgleiten). Währenddessen wird
+`scroll-snap-type` kurz auf `none` gesetzt (sonst kämpft Snap gegen die
+Frame-Positionen) und danach wiederhergestellt; `wheel`/`touchstart`/
+`pointerdown` brechen sie ab; `prefers-reduced-motion` = Sprung. Fallback auf
+natives `smooth`, falls `soft-scroll.js` fehlt. **`scroll-behavior:smooth` ist
+bei `.epk-gallery--row` entfernt** (würde die Skript-Positionen verschmieren).
+`soft-scroll.js` muss VOR `gallery-nav.js`/`gear-slider.js` eingebunden sein
+(index.html + die 5 Seiten mit Foto-Reihen). Test: in der verborgenen Pane
+rAF per `setTimeout(f(performance.now()),16)` stubben. Die Lightbox-Wischer/
+Pfeile gleiten jetzt 520 ms mit `cubic-bezier(.45,0,.2,1)` (vorher 300 ms
+`ease`); `go()` ignoriert Klicks/Tasten, solange die Animation läuft
+(`animating`-Flag), damit schnelles Doppelklicken den Index nicht verrutscht.
+
 **Lightbox schließen (2026-10-03, Leo-Wunsch):** außer per X, Esc, **Leertaste**
 (2026-10-04, `preventDefault`, damit die Seite nicht scrollt und ein fokussierter
 Trigger-Button nicht neu auslöst) oder Backdrop schließt **jeder Klick auf die schwarze Fläche** um Foto/Video —
