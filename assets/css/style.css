@@ -112,9 +112,19 @@ p { margin: 0 0 1em; }
   position: sticky;
   top: 0;
   z-index: 20;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The bar's frosted background lives on a pseudo-element: a backdrop-filter on
+   the header itself would make it a "backdrop root" and stop the dropdown
+   (a child) from blurring the page content behind it. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--line);
 }
 
 .site-header .container {
@@ -259,7 +269,9 @@ p { margin: 0 0 1em; }
   right: max(0.75rem, calc((100vw - var(--max-width)) / 2 + 0.75rem));
   min-width: 13rem;
   max-width: calc(100vw - 1.5rem);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   border-top: 0;
   border-radius: 0 0 8px 8px;

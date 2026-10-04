@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Dropdown-Menü halbtransparent (2026-10-04).** Hintergrund von deckend weiß auf
+  `rgba(255,255,255,.72)` + Blur; Header-Hintergrund dafür auf
+  `.site-header::before` verlegt, damit der Blur die Seite dahinter erreicht.
+
 - **Vision Ears: Text-Link entfernt (2026-10-03).** Nur noch das Logo verlinkt auf
   vision-ears.de; weder unter den Fotos noch unter dem Logo gibt es einen
   Text-Link.

@@ -227,7 +227,8 @@ Hamburger-Button (`.menu-toggle`, wird beim Öffnen zum X) rechts in der
 Kopfzeile, nach den Social-Icons und der Sprachwahl in `.header-actions`.
 Er klappt `.menu-panel` auf — ein weißes Dropdown, das an der Unterkante des
 Headers hängt (`position:absolute; top:100%`, rechtsbündig zur Container-
-Kante, deckend weiß, 0.25 s Ein-/Ausblenden), mit den 7 Punkten Home/Blog/
+Kante, halbtransparentes Milchglas `rgba(255,255,255,.72)` + `blur(14px)`, 0.25 s
+Ein-/Ausblenden; Leo: "etwas transparent"), mit den 7 Punkten Home/Blog/
 Bio/Dates/Projects/Gear/Contact untereinander. `assets/js/menu.js` steuert
 Auf/Zu (Klick auf den Button, Klick außerhalb, Esc, Klick auf einen Eintrag)
 und zieht unterhalb 480 px die `.site-social`-Icons per `matchMedia` aus der
@@ -235,7 +236,11 @@ Kopfzeile ins Dropdown (dort kein Platz; Tidal & Co. wären sonst abgeschnitten
 — bei breiterem Viewport wandern sie zurück). `anchor-scroll.js` ist nur noch
 Scrollspy + Hash-Landung: der nächstgelegene Abschnitt bekommt
 `aria-current="location"` auf dem `.menu-panel`-Link (Unterseiten:
-"Projects" hartcodiert `aria-current="page"`). Menü-Eintrag-Selektoren im
+"Projects" hartcodiert `aria-current="page"`). **Falle:** der Header-Hintergrund + `backdrop-filter` sitzt auf
+`.site-header::before` (nicht auf dem Header selbst) — ein `backdrop-filter`
+am Header würde ihn zum "Backdrop Root" machen, und der Blur des Dropdowns
+(Kind des Headers) sähe dann nur den Header, nicht die Seite dahinter.
+Menü-Eintrag-Selektoren im
 CSS sind auf `.menu-panel ul a` begrenzt (sonst erben die Social-Links das
 Eintrags-Padding). i18n: `nav.menu` (aria-label des Buttons) in allen 3
 JSONs; auf impressum/datenschutz hartcodiert "Menü". Es gibt keine
