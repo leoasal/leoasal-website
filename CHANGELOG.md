@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: Start-Strich violett + lange Linie wieder da (2026-10-04).** Der kurze
+  Strich links von Vision Ears hat die Farbe der Pfeile (`--accent-dark`),
+  2 px × 1.6 rem; die lange Trennlinie links neben dem Text ist wieder
+  eingeblendet (Leo bestätigte die Auslegung per Rückfrage).
+
 - **Gear: Platzhalter ist jetzt ein senkrechter Strich (2026-10-04).** Links von
   Vision Ears entfällt die Trennlinie; statt des blassen Pfeils steht ein
   2 px breiter, 1.6 rem hoher Strich (`.gear-start-mark`) in der Farbe des

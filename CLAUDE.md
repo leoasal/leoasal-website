@@ -572,11 +572,12 @@ Chevron per `rotate(-90deg)` = nach rechts bzw. `90deg` = nach links). Der
 erste Slide (Vision Ears) hat rechts `.gear-toggle--next` und links einen
 **deaktivierten Platzhalter-Balken** (`.gear-toggle--start`: gleiche Position/
 Breite wie `--prev` auf dem nächsten Slide, `disabled`/`aria-hidden`/
-`tabindex=-1`, `pointer-events:none`, **ohne Trennlinie** und **ohne Pfeil**:
-nur ein kurzer senkrechter Strich `.gear-start-mark`, 2 px × 1.6 rem = Höhe
-des Pfeil-Icons, in `--line`-Grau = „hier ist der Anfang“; Leo: erst Strich,
-dann blasser Pfeil, am Ende „probiere einen senkrechten Strich in der Größe
-des Pfeils und der Farbe“), der letzte
+`tabindex=-1`, `pointer-events:none`, **mit** der langen Trennlinie rechts im
+Balken (`border-right`, wie bei `--prev`) und statt des Pfeils ein kurzer
+senkrechter Strich `.gear-start-mark`: 2 px × 1.6 rem = Größe/Stärke des
+Pfeil-Icons, **in `--accent-dark`-Violett wie die Pfeile** (Leo, 2026-10-04,
+nach mehreren Varianten: erst Strich, dann blasser Pfeil, dann blasser
+Strich ohne Linie, final Strich violett + lange Linie links daneben)), der letzte
 (Sonor) links `.gear-toggle--prev`; **neue Marke = neuer `.gear-slide`**, der
 bisher letzte bekommt zusätzlich einen `--next`-Balken, der neue einen
 `--prev`. `assets/js/gear-slider.js` scrollt bei Klick auf

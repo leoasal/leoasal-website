@@ -936,13 +936,13 @@ a.project-card:hover {
 }
 
 /* First slide: a disabled stand-in for the "back" bar, same place and size as
-   on the next slide. No divider line and no arrow: just a short vertical
-   stroke, as tall as the arrow icon (1.6rem), in the ghosted arrow colour. */
+   on the next slide, including its divider line. Instead of the arrow it shows
+   a short vertical stroke as tall and as bold as the arrow icon (1.6rem, 2px)
+   in the arrows' violet. */
 .gear-toggle--start {
   cursor: default;
   pointer-events: none;
-  border-right: 0;
-  color: var(--line);
+  color: var(--accent-dark);
 }
 
 .gear-start-mark {
