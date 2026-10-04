@@ -13,4 +13,17 @@
     if (window.softScrollBy) window.softScrollBy(strip, dx);
     else strip.scrollBy({ left: dx, behavior: "smooth" });
   });
+
+  // Warm up: the off-screen slides' photos are lazy-loaded; fetch + decode them
+  // once the page is idle so the glide never waits on a big image.
+  function warm() {
+    strip.querySelectorAll("img").forEach(function (img) {
+      img.loading = "eager";
+      if (img.decode) img.decode().catch(function () {});
+    });
+  }
+  window.addEventListener("load", function () {
+    if (window.requestIdleCallback) window.requestIdleCallback(warm, { timeout: 2500 });
+    else setTimeout(warm, 1200);
+  });
 })();

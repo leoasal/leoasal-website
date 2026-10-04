@@ -454,21 +454,32 @@ Unterschrift.
 
 **Weiches Galerie-Scrollen (2026-10-04, Leo-Wunsch):** die Pfeil-Klicks der
 Foto-Reihen (`gallery-nav.js`, `.epk-gallery--row`) und der Gear-Galerie
-(`gear-slider.js`) nutzen NICHT mehr das browsereigene `behavior:"smooth"`
+(`gear-slider.js`) nutzen NICHT das browsereigene `behavior:"smooth"`
 (kurz, ruckelig), sondern `assets/js/soft-scroll.js`:
-`window.softScrollBy(el, dx)` = rAF-Animation, 850 ms, easeInOutCubic (lahmer
-Start, schnelle Mitte, langes Ausgleiten). Währenddessen wird
-`scroll-snap-type` kurz auf `none` gesetzt (sonst kämpft Snap gegen die
-Frame-Positionen) und danach wiederhergestellt; `wheel`/`touchstart`/
-`pointerdown` brechen sie ab; `prefers-reduced-motion` = Sprung. Fallback auf
-natives `smooth`, falls `soft-scroll.js` fehlt. **`scroll-behavior:smooth` ist
-bei `.epk-gallery--row` entfernt** (würde die Skript-Positionen verschmieren).
+`window.softScrollBy(el, dx)`. **Technik FLIP, GPU-basiert** (Leo: „hängt ein
+bisschen“ — die erste Version setzte `scrollLeft` pro Frame per
+`requestAnimationFrame` im Hauptthread und stockte, sobald der Browser
+gleichzeitig große Fotos dekodierte): `scrollLeft` springt sofort aufs Ziel,
+jedes Kind bekommt aber ein `translate3d(delta,0,0)` und gleitet per
+CSS-Transition (850 ms, `cubic-bezier(.65,0,.35,1)`) zurück auf 0 — das
+läuft auf dem Compositor, unabhängig vom Hauptthread. Während der Fahrt ist
+`scroll-snap-type` kurz `none`; Aufräumen nach `DURATION+80 ms` per Timeout;
+`wheel`/`touchstart`/`pointerdown` räumen sofort auf (springt dann ans Ziel);
+`prefers-reduced-motion` = Sprung. Fallback auf natives `smooth`, falls
+`soft-scroll.js` fehlt. **`scroll-behavior:smooth` ist bei
+`.epk-gallery--row` entfernt.** Zusätzlich lädt/dekodiert `gear-slider.js`
+nach `load` (Idle) alle Gear-Bilder vor (`loading=eager` + `img.decode()`),
+damit der zweite Slide beim Gleiten nicht erst Bilder nachladen muss.
 `soft-scroll.js` muss VOR `gallery-nav.js`/`gear-slider.js` eingebunden sein
-(index.html + die 5 Seiten mit Foto-Reihen). Test: in der verborgenen Pane
-rAF per `setTimeout(f(performance.now()),16)` stubben. Die Lightbox-Wischer/
-Pfeile gleiten jetzt 520 ms mit `cubic-bezier(.45,0,.2,1)` (vorher 300 ms
-`ease`); `go()` ignoriert Klicks/Tasten, solange die Animation läuft
-(`animating`-Flag), damit schnelles Doppelklicken den Index nicht verrutscht.
+(index.html + die 5 Seiten mit Foto-Reihen). **Test-Falle:** in der
+verborgenen Browser-Pane pausieren CSS-Transitions, solange die Pane nicht
+gezeichnet wird — erst einen `computer`-Screenshot machen, dann sofort
+`getComputedStyle(kind).transform` samplen. Und: Seiten ohne `?t=N` am
+`<script>` laufen im Tab oft mit der alten gecachten JS (hier: Loft Arts
+zeigte alte rAF-Version, bis `?t=` dran war). Die Lightbox-Wischer/Pfeile
+gleiten 520 ms mit `cubic-bezier(.45,0,.2,1)` (vorher 300 ms `ease`);
+`go()` ignoriert Klicks/Tasten, solange die Animation läuft
+(`animating`-Flag).
 
 **Lightbox schließen (2026-10-03, Leo-Wunsch):** außer per X, Esc, **Leertaste**
 (2026-10-04, `preventDefault`, damit die Seite nicht scrollt und ein fokussierter

@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear-/Foto-Reihen-Animation ruckelfrei (2026-10-04).** `soft-scroll.js` von
+  per-Frame-`scrollLeft` (Hauptthread, stockte beim Bild-Dekodieren) auf FLIP
+  mit CSS-Transform-Transition (Compositor/GPU) umgestellt; Gear-Bilder werden
+  nach dem Laden vorab geladen/dekodiert. Gemessen: Gear 920→0 px, Loft-Arts-
+  Reihe 233→0 px, jeweils sanfter Start/Auslauf, danach sauber aufgeräumt.
+
 - **Sonor Bild 3: Vorschau-Ausschnitt (2026-10-04).** `object-position:25% 50%`
   verschiebt das Set im Quadrat-Thumbnail nach rechts in die Mitte.
 
