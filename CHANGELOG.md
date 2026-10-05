@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor Bild 1 erneut getauscht (2026-10-05).** Neue Fassung von `IMG_8338.jpeg`
+  (hellere Draufsicht, 4032×3024 → 1600×1200, q82) ersetzt `sonor-photo-1.jpg`;
+  `?v=2` gegen Cache. Original als `IMG_8338-2026-10-05-v3.jpeg` nach
+  `Inbox/processed/`.
+
 - **Sonor-Video 1,2× schneller (2026-10-05).** Per `setpts=PTS/1.2` direkt ins
   Video gerechnet (Boomerang neu: 13,5 → 11,3 s, 2,1 MB), `?v=3` an den
   Video-URLs.

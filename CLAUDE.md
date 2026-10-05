@@ -631,8 +631,11 @@ Behauptung, da Leo es als "mein Sonor Vintage Series" beschrieb), darunter
 eine normale `.epk-gallery.epk-gallery--color` mit 4 Fotos des grünen Kits
 (`assets/images/sonor-photo-1.jpg`–`-4.jpg`, aus iPhone-Originalen
 (Bild 2 = `IMG_8343`, Bild 3 = `IMG_8339`; Bild 1 seit 2026-10-05 die
-neue Aufnahme `IMG_8338.jpeg`, Draufsicht von links — nicht zu verwechseln mit
-dem gleichnamigen alten `IMG_8338` in `Inbox/processed/`); **Bild 4 ist das
+neue Aufnahme `IMG_8338.jpeg` (Draufsicht von links; Leo lieferte sie am
+selben Tag in drei Fassungen nach, aktuell ist die dritte/hellste, `…-v3` in
+`Inbox/processed/`; nicht zu verwechseln mit dem gleichnamigen alten
+`IMG_8338`); im HTML hängt `?v=2` an `sonor-photo-1.jpg`, damit Browser die
+ersetzte Datei neu laden); **Bild 4 ist das
 beschriftete Setup-Foto** (`setup-beschriftet-dunkel.jpg`, Draufsicht mit
 weißen Beschriftungsboxen je Trommel/Becken, 2000×1500 q85; seit 2026-10-05
 in der finalen Fassung mit allen Modellnamen, kein „[Modell folgt]“ mehr) 4032×3024 auf 1600×1200 skaliert, JPEG q82;
