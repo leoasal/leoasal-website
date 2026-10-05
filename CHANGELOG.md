@@ -5,6 +5,14 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor: 4 neue Medien (2026-10-05).** Inbox: `IMG_8365.jpeg`, `IMG_8367.jpeg`
+  (je 4:3 → 1600×1200, q82), `SE2_9504.jpg` (6000×4000 → 1600×1067, q82) →
+  `sonor-photo-5…7.jpg`; `IMG_8368.MOV` (7,5 s, 1920×1440, mit Ton) → Boomerang
+  (`reverse`+`concat`), ohne Ton, 960×720, CRF 29, `sonor-video.mp4` +
+  `sonor-video-poster.jpg`. Galerie hat jetzt 8 Einträge (Foto-Reihe mit
+  Pfeilen), Video lädt lazy beim Sichtbarwerden. `gallery-nav.js` neu in
+  index.html. Originale nach `Inbox/processed/`.
+
 - **Sonor: Bild 1 und 4 ausgetauscht (2026-10-05).** Zwei neue Dateien aus der
   Inbox: `IMG_8338.jpeg` (neue Aufnahme, 4032×3024 → 1600×1200, q82) ersetzt
   `sonor-photo-1.jpg`; `setup-beschriftet-dunkel.jpg` (aktualisierte

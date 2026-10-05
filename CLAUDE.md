@@ -637,6 +637,22 @@ beschriftete Setup-Foto** (`setup-beschriftet-dunkel.jpg`, Draufsicht mit
 weißen Beschriftungsboxen je Trommel/Becken, 2000×1500 q85; seit 2026-10-05
 in der finalen Fassung mit allen Modellnamen, kein „[Modell folgt]“ mehr) 4032×3024 auf 1600×1200 skaliert, JPEG q82;
 Grid zeigt sie quadratisch zugeschnitten, die Lightbox das volle 4:3-Bild).
+Die Galerie hat seit 2026-10-05 **8 Einträge** (>4 → `gallery-nav.js` macht
+daraus automatisch eine `.epk-gallery--row` mit Pfeilen; `gallery-nav.js` +
+`soft-scroll.js` werden dafür in index.html geladen; `.epk-gallery--row` hat
+`overscroll-behavior-x: contain`, damit Wischen in der Foto-Reihe nicht den
+äußeren Gear-Slider mitnimmt): Bild 5 = `IMG_8365` (türkises Kit von oben),
+6 = `IMG_8367` (Kit auf der Bühne), 7 = `SE2_9504` (Live-Foto von Leo,
+6000×4000 → 1600×1067, Vorschau `object-position:65% 50%`; **Fotograf/Credit
+unbekannt, derzeit ohne `data-credit`**), 8 = **Video** `IMG_8368.MOV` →
+`sonor-video.mp4` (**Boomerang vorwärts+rückwärts, ohne Ton**, 960×720, 15 s,
+CRF 29, 2,7 MB; Poster `sonor-video-poster.jpg` bei 1,2 s). Videos im
+Thumbnail-Raster nutzen das Yamuna-Making-of-Muster (`data-lightbox-video`,
+`data-lightbox-poster`), aber als **Lazy-Video**: `<video data-src=…>` ohne
+`autoplay`/`src`; `gear-slider.js` setzt `src` und ruft `play()` erst per
+IntersectionObserver, wenn es sichtbar wird (`canplay`-Retry, nie wieder
+pausiert). **Falle:** ein Video, das beim Laden schon (verdeckt) im zweiten
+Slide autoplayt — oder `preload="metadata"` — blieb leer/blank; deshalb Lazy.
 Kein Credit/`data-credit` (Leos eigene Fotos). Vorschau von Bild 3 hat inline
 `object-position:25% 50%`, damit das Set im quadratischen Ausschnitt mittig
 sitzt (Leo: „weiter in die Mitte, also nach rechts“); die Lightbox zeigt

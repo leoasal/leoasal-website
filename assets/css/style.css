@@ -1410,6 +1410,7 @@ a.project-card:hover {
 }
 
 .epk-gallery--row {
+  overscroll-behavior-x: contain; /* don't pass swipes on to an outer slider (Gear) */
   display: flex;
   flex-wrap: nowrap;
   margin: 0;
