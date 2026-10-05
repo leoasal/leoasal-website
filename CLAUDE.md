@@ -643,8 +643,10 @@ Die Galerie hat seit 2026-10-05 **8 Einträge**, bewusst als **normales
 die neuen Fotos und Video nicht“; `gallery-nav.js` ist deshalb in index.html
 **nicht** geladen): Bild 5 = `IMG_8365` (türkises Kit von oben), 6 =
 `IMG_8367` (Kit auf der Bühne), 7 = `SE2_9504` (Live-Foto von Leo,
-6000×4000 → 1600×1067, Vorschau `object-position:65% 50%`; **Fotograf/Credit
-unbekannt, derzeit ohne `data-credit`**), 8 = **Video** `IMG_8368.MOV` →
+6000×4000 → 1600×1067, Vorschau `object-position:65% 50%`; **Fotograf: Simon
+Engelbert**, Credit „© Simon Engelbert“ → instagram.com/simon.engelbert.photo
+als `data-credit`/`-name`/`-url` direkt am Trigger-Button, erscheint in der
+Lightbox), 8 = **Video** `IMG_8368.MOV` →
 `sonor-video.mp4` (**Boomerang vorwärts+rückwärts, ohne Ton**, 960×720, 15 s,
 CRF 29, 2,7 MB; Poster `sonor-video-poster.jpg` bei 1,2 s). Videos im
 Thumbnail-Raster nutzen das Yamuna-Making-of-Muster (`data-lightbox-video`,
@@ -658,7 +660,7 @@ wieder (`AbortError`, „nicht sichtbar“) — deshalb Neustart per
 `pause`-Listener und 1 s nach jedem Slide-Wechsel (`playVisible()`);
 (3) Test-Tab/Besucher können alte gecachte `gear-slider.js` haben (Pages:
 `cache-control: max-age=600`) — das Video bleibt dann ein Standbild, ist aber
-per Klick in der Lightbox abspielbar. Kein Credit/`data-credit` (Leos eigene Fotos). Vorschau von Bild 3 hat inline
+per Klick in der Lightbox abspielbar. Die übrigen Sonor-Fotos haben keinen Credit (Leos eigene Fotos). Vorschau von Bild 3 hat inline
 `object-position:25% 50%`, damit das Set im quadratischen Ausschnitt mittig
 sitzt (Leo: „weiter in die Mitte, also nach rechts“); die Lightbox zeigt
 weiter das volle Bild. Originale in

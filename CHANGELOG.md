@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor Bild 7: Fotografen-Credit (2026-10-05).** „© Simon Engelbert“ mit Link
+  auf https://www.instagram.com/simon.engelbert.photo/ in der Lightbox
+  (`data-credit*` am Trigger).
+
 - **Sonor-Galerie: alle 8 Medien sichtbar (2026-10-05).** Leo sah die neuen
   Fotos/das Video nicht: Sie lagen in einer seitlich scrollenden Foto-Reihe
   hinter dem 4. Bild. Jetzt normales Raster (2×4), `gallery-nav.js` aus
