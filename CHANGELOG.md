@@ -5,6 +5,10 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Video: Anfang gekürzt (2026-10-05).** Erste 0,8 s des Originals
+  abgeschnitten (Person lief links durchs Bild), Boomerang neu kodiert
+  (15,1 → 13,5 s, 2,4 MB); `?v=2` an den Video-URLs gegen Cache.
+
 - **Sonor Bild 7: Fotografen-Credit (2026-10-05).** „© Simon Engelbert“ mit Link
   auf https://www.instagram.com/simon.engelbert.photo/ in der Lightbox
   (`data-credit*` am Trigger).

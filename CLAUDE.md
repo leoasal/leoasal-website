@@ -648,7 +648,10 @@ Engelbert**, Credit „© Simon Engelbert“ → instagram.com/simon.engelbert.p
 als `data-credit`/`-name`/`-url` direkt am Trigger-Button, erscheint in der
 Lightbox), 8 = **Video** `IMG_8368.MOV` →
 `sonor-video.mp4` (**Boomerang vorwärts+rückwärts, ohne Ton**, 960×720, 15 s,
-CRF 29, 2,7 MB; Poster `sonor-video-poster.jpg` bei 1,2 s). Videos im
+CRF 29; **Anfang 0,8 s abgeschnitten** (`-ss 0.8` vor dem Input, dort lief
+eine Person durchs Bild), Ergebnis 13,5 s / 2,4 MB; Poster
+`sonor-video-poster.jpg` bei 1,2 s des Originals; im HTML hängt `?v=2` an der
+Video-URL, damit Browser die ersetzte Datei neu laden). Videos im
 Thumbnail-Raster nutzen das Yamuna-Making-of-Muster (`data-lightbox-video`,
 `data-lightbox-poster`), aber ohne `autoplay`: `<video src=… preload="none"
 data-play-when-visible muted loop playsinline>` zeigt das Poster, lädt beim
