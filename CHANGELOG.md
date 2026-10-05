@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor: Bild 1 und 4 ausgetauscht (2026-10-05).** Zwei neue Dateien aus der
+  Inbox: `IMG_8338.jpeg` (neue Aufnahme, 4032×3024 → 1600×1200, q82) ersetzt
+  `sonor-photo-1.jpg`; `setup-beschriftet-dunkel.jpg` (aktualisierte
+  Beschriftung, 4096×3072 → 2000×1500, q85) ersetzt `sonor-photo-4.jpg`.
+  Originale als `…-2026-10-05` nach `Inbox/processed/` (Namen kollidierten
+  mit den Vorversionen).
+
 - **Gear-/Foto-Reihen-Animation ruckelfrei (2026-10-04).** `soft-scroll.js` von
   per-Frame-`scrollLeft` (Hauptthread, stockte beim Bild-Dekodieren) auf FLIP
   mit CSS-Transform-Transition (Compositor/GPU) umgestellt; Gear-Bilder werden
