@@ -939,7 +939,8 @@ a.project-card:hover {
    on the next slide, including its divider line. Instead of the arrow it shows
    two short vertical strokes close together, as tall as the arrow icon (1.6rem),
    drawn as faintly as the long divider line (1px, --line). */
-.gear-toggle--start {
+.gear-toggle--start,
+.gear-toggle--end {
   cursor: default;
   pointer-events: none;
   color: var(--line);

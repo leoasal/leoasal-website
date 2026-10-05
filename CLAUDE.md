@@ -581,7 +581,13 @@ h3+Text+Galerie-Block) plus **absolut positioniertem** Pfeil-Balken
 `.dates-toggle`**, nur hochkant: 3 rem breit, volle Slide-Höhe, Trennlinie,
 Chevron per `rotate(-90deg)` = nach rechts bzw. `90deg` = nach links). Der
 erste Slide (Vision Ears) hat rechts `.gear-toggle--next` und links einen
-**deaktivierten Platzhalter-Balken** (`.gear-toggle--start`: gleiche Position/
+**deaktivierten Platzhalter-Balken** (`.gear-toggle--start`; **spiegelbildlich
+sitzt am Ende des letzten Slides (Sonor) derselbe Platzhalter als
+`.gear-toggle--next.gear-toggle--end`** — lange Linie links im Balken + dasselbe
+Doppelstrich-Paar, gleiche Optik, `disabled`; Leo 2026-10-05: „die Linien am
+Anfang auch ans Ende“. Bei einer neuen Marke wandert der End-Platzhalter in
+den neuen letzten Slide und der bisher letzte bekommt einen echten
+`--next`-Balken). Beschreibung des Anfangs-Platzhalters (`.gear-toggle--start`: gleiche Position/
 Breite wie `--prev` auf dem nächsten Slide, `disabled`/`aria-hidden`/
 `tabindex=-1`, `pointer-events:none`, **mit** der langen Trennlinie rechts im
 Balken (`border-right`, wie bei `--prev`) und statt des Pfeils ein kurzer

@@ -5,6 +5,11 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear: End-Markierung hinter Sonor (2026-10-05).** Der Platzhalter-Balken mit
+  langer Linie und Doppelstrich, der den Anfang vor Vision Ears markiert, steht
+  jetzt spiegelbildlich auch am Ende rechts neben Sonor
+  (`.gear-toggle--next.gear-toggle--end`, deaktiviert).
+
 - **Sonor Bild 1 erneut getauscht (2026-10-05).** Neue Fassung von `IMG_8338.jpeg`
   (hellere Draufsicht, 4032×3024 → 1600×1200, q82) ersetzt `sonor-photo-1.jpg`;
   `?v=2` gegen Cache. Original als `IMG_8338-2026-10-05-v3.jpeg` nach
