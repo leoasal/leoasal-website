@@ -27,32 +27,36 @@
     else setTimeout(warm, 1200);
   });
 
-  // Lazy videos (<video data-src>): start loading/playing only once they are
-  // actually on screen. A video that starts while hidden inside an off-screen
-  // slide can stay blank, and this also saves the download on page load.
-  var lazyVideos = Array.prototype.slice.call(strip.querySelectorAll("video[data-src]"));
+  // Videos with data-play-when-visible keep preload="none" (poster only, no
+  // download on page load) and start playing once they are on screen. They have
+  // a normal src, so without this script the poster still shows and the
+  // lightbox still plays them. (A video that autoplays while hidden inside an
+  // off-screen slide, or with preload="metadata", stayed blank.)
+  var lazyVideos = Array.prototype.slice.call(strip.querySelectorAll("video[data-play-when-visible]"));
+  var inView = new WeakSet();
   function startVideo(v) {
-    if (!v.getAttribute("src")) {
-      v.src = v.getAttribute("data-src");
-      v.addEventListener("canplay", function () {
-        var q = v.play();
-        if (q && q.catch) q.catch(function () {});
-      }, { once: true });
-      v.load();
-    }
     var p = v.play();
     if (p && p.catch) p.catch(function () {});
   }
-  if (lazyVideos.length) {
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) startVideo(e.target); // never paused again: it is a short silent loop
-        });
-      }, { threshold: 0.25 });
-      lazyVideos.forEach(function (v) { io.observe(v); });
-    } else {
-      lazyVideos.forEach(startVideo);
-    }
+  function playVisible() {
+    lazyVideos.forEach(function (v) { if (inView.has(v) && v.paused) startVideo(v); });
+  }
+  if (lazyVideos.length && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { inView.add(e.target); startVideo(e.target); }
+        else inView.delete(e.target);
+      });
+    }, { threshold: 0.25 });
+    lazyVideos.forEach(function (v) {
+      io.observe(v);
+      // The browser may pause it again while the slide is still mid-glide
+      // (counted as "not visible" for a moment): restart if it is in view.
+      v.addEventListener("pause", function () { setTimeout(playVisible, 150); });
+    });
+    // ...and once more after every slide change has settled.
+    strip.addEventListener("click", function (e) {
+      if (e.target.closest("[data-gear-step]")) setTimeout(playVisible, 1000);
+    });
   }
 })();

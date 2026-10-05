@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Galerie: alle 8 Medien sichtbar (2026-10-05).** Leo sah die neuen
+  Fotos/das Video nicht: Sie lagen in einer seitlich scrollenden Foto-Reihe
+  hinter dem 4. Bild. Jetzt normales Raster (2×4), `gallery-nav.js` aus
+  index.html entfernt. Video: `src` + `preload="none"` + Poster,
+  Start per IntersectionObserver mit Neustart bei Browser-Pause (AbortError
+  mitten in der Slide-Animation).
+
 - **Sonor: 4 neue Medien (2026-10-05).** Inbox: `IMG_8365.jpeg`, `IMG_8367.jpeg`
   (je 4:3 → 1600×1200, q82), `SE2_9504.jpg` (6000×4000 → 1600×1067, q82) →
   `sonor-photo-5…7.jpg`; `IMG_8368.MOV` (7,5 s, 1920×1440, mit Ton) → Boomerang
