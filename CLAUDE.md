@@ -74,6 +74,18 @@ git add -A && git commit -m "..." && git push origin main
 Falls der Remote inzwischen neue Commits hat (z.B. vom Kalender-Sync-Workflow):
 `git pull --rebase origin main` vor dem Push.
 
+**Vor `git add -A` die Inbox leeren:** nur `Inbox/processed/` ist gitignored,
+`Inbox/` selbst nicht — rohe Fotos/Videos dort (oft 3–20 MB) würden sonst ins
+öffentliche Repo committed. Erst verarbeiten und nach `Inbox/processed/`
+verschieben, dann committen. Leo legt Dateien gern mehrfach mit gleichem Namen
+(`IMG_8338.jpeg`) in neuer Fassung ab → beim Verschieben ein Datum/`-vN` an
+den Namen hängen und im Zweifel `md5` gegen `processed/` prüfen.
+
+**Versionierte Medien-URLs:** wird eine Bild-/Videodatei unter gleichem Namen
+ersetzt, `?v=N` an die URL im HTML hängen (`sonor-photo-1.jpg?v=2`,
+`sonor-video.mp4?v=3`) — GitHub Pages liefert mit `cache-control:
+max-age=600`, Browser zeigen sonst bis zu 10 Min. das alte Bild.
+
 ## GitHub-Zugriff in diesem Environment
 
 GitHub CLI ist **nicht** über Homebrew installiert (kein Homebrew vorhanden),
@@ -611,10 +623,10 @@ nicht mehr.
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
 Spanisch "Equipo", wie `nav.gear`). **Als erweiterbare Liste angelegt:**
-jede Marke/jedes Endorsement kriegt darunter einen eigenen `<h3>`-Block
-(nicht als eigenes `.home-section`-Band, da Gear insgesamt schon eine
-einzelne Homepage-Sektion ist — analog zu den `.blog-post`-Artikeln unter
-der Blog-Sektion). Bisher nur Vision Ears: `<h3>Vision Ears Artist</h3>`
+jede Marke kriegt einen eigenen `<h3>`-Block **als eigener `.gear-slide`**
+(s. "Gear als horizontale Galerie" oben; kein eigenes `.home-section`-Band,
+da Gear insgesamt eine einzelne Homepage-Sektion ist). Aktuell zwei Marken
+(Vision Ears, Sonor). Vision Ears: `<h3>Vision Ears Artist</h3>`
 (2026-09-30 — ursprünglich `<h3>Vision Ears</h3>` mit separatem
 Eyebrow-Badge "Vision Ears Artist" darüber, auf Leos Wunsch
 zusammengelegt: Badge raus, Markenname selbst heißt jetzt "Vision Ears
@@ -678,9 +690,13 @@ per Klick in der Lightbox abspielbar. Die übrigen Sonor-Fotos haben keinen Cred
 `object-position:25% 50%`, damit das Set im quadratischen Ausschnitt mittig
 sitzt (Leo: „weiter in die Mitte, also nach rechts“); die Lightbox zeigt
 weiter das volle Bild. Originale in
-`Inbox/processed/`. Neue
-Marke ergänzen: denselben h3+Text-Block unter dem Vision-Ears-Block
-anhängen (kein Alternieren nötig, da nur eine Sektion).
+`Inbox/processed/`. **Neue Marke ergänzen:** neuen `.gear-slide` hinter
+Sonor anhängen (h3 + Text + Galerie im `.gear-slide-body`), den End-
+Platzhalter (`.gear-toggle--end`) aus Sonor in den neuen letzten Slide
+verschieben, Sonor bekommt dafür einen echten `.gear-toggle--next`
+(`data-gear-step="1"`, `data-i18n-attr="aria-label:gear.next"`), der neue
+Slide einen echten `.gear-toggle--prev` (`data-gear-step="-1"`); i18n-Texte in
+allen drei JSONs.
 
 Fotos (`assets/images/visionears-photo-1.jpg` bis `-4.jpg`, seit
 2026-09-30): ursprünglich 2 von Instagram gezogene 640×640-Crops (s.
@@ -881,6 +897,19 @@ statt iframe zeigen, iframe erst per Klick nachladen.
   CSS-Änderung ein temporäres `?t=N` an `<link>`/`<script>` einplanen und
   danach per `grep -rn '?t=' *.html assets/js/*.js` sicherstellen, dass nichts
   davon committet wird. HTML-Seiten selbst waren bisher nicht betroffen.
+- **Browser-Pane und `leoasal.com`:** die Pane blockt Subressourcen der Live-
+  Domain (`net::ERR_BLOCKED_BY_CLIENT`) — die Live-Seite erscheint dort ohne
+  CSS/Bilder. Kein Seitenfehler; Live-Check daher per `curl` (HTTP-Status,
+  `md5` gegen lokale Datei), Verhalten nur lokal auf `localhost:5178` testen.
+- **CSS-Transitions pausieren in der verborgenen Pane** genauso wie rAF:
+  erst einen `computer`-Screenshot machen (zeichnet die Pane), dann sofort
+  `getComputedStyle(…).transform` samplen. Screenshots können nach
+  Lazy-Image-Layoutverschiebungen auf `#contact`/Footer landen → vor jedem
+  Screenshot nochmal `scrollTo` auf das Ziel.
+- **Zwei lokale Preview-Server/Worktrees:** `git worktree` unter
+  `../leoasal-website-dropdown` (Branch `menu-option-dropdown`, Port 5179) ist
+  ein Überbleibsel der Menü-Variantenprüfung und nicht mehr nötig; nur
+  `localhost:5178` (dieses Verzeichnis) ist maßgeblich.
 - **Verborgene Browser-Pane = kein `requestAnimationFrame`:** ist
   `document.visibilityState === "hidden"`, laufen rAF-basierte Handler
   (Scrollspy) nicht — Tests zeigen dann stale Zustände, kein

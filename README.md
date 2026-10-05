@@ -31,10 +31,16 @@ und Termine und braucht dafür einen echten HTTP-Server.
 - `assets/js/i18n.js` — Sprachumschalter-Logik (liest
   `assets/i18n/{en,de,es}.json`).
 - `assets/js/dates.js` — lädt `data/dates.json` und rendert die Termine.
-- `assets/js/anchor-scroll.js` — Scrollen zu Homepage-Sektionen, Scrollspy
-  für alle Navs und die Seitenleiste (Balken wandert proportional zum
-  Scrollen mit und ist ziehbar).
-- `assets/js/lightbox.js`, `assets/js/gallery-nav.js` — Bildergalerien.
+- `assets/js/menu.js` — Hamburger-Dropdown in der Kopfzeile (Auf/Zu,
+  Klick außerhalb, Esc).
+- `assets/js/anchor-scroll.js` — Scrollen zu Homepage-Sektionen und
+  Scrollspy (markiert den aktuellen Abschnitt im Dropdown).
+- `assets/js/lightbox.js` — Großansicht für Fotos und Videos (schließt per X,
+  Esc, Leertaste oder Klick auf die schwarze Fläche).
+- `assets/js/soft-scroll.js` — weiches Seitwärts-Gleiten (GPU-Transition) für
+  Galerie-Pfeile; `assets/js/gallery-nav.js` — Foto-Reihen mit Pfeilen auf den
+  Projektseiten; `assets/js/gear-slider.js` — horizontale Gear-Galerie
+  (Vision Ears ↔ Sonor).
 - `assets/fonts/` — selbst gehostete Schriften (Playfair Display, Source
   Code Pro).
 - `scripts/sync-calendar.js` + `.github/workflows/sync-calendar.yml` —
@@ -42,7 +48,9 @@ und Termine und braucht dafür einen echten HTTP-Server.
   `data/dates.json`/`data/dates.ics` (läuft automatisch, s. unten).
 - `data/dates.json`, `data/dates.ics` — vom Sync-Workflow generiert, nicht
   von Hand bearbeiten.
-- `Inbox/` — Ablage für noch nicht einsortierte Dateien (Fotos, Notizen).
+- `Inbox/` — Ablage für noch nicht einsortierte Dateien (Fotos, Videos,
+  Notizen); verarbeitete Originale wandern nach `Inbox/processed/`
+  (gitignored). Vor dem Committen leeren.
 
 Architektur-Entscheidungen, Konventionen und der aktuelle Stand stehen in
 [`CLAUDE.md`](CLAUDE.md); der Verlauf abgeschlossener Änderungen in
@@ -50,11 +58,20 @@ Architektur-Entscheidungen, Konventionen und der aktuelle Stand stehen in
 
 ## Navigation
 
-Drei Stufen je nach Breite: unter 800px eine fixe Leiste am unteren Rand,
-zwischen 800 und 1099px die horizontale Leiste im Header, ab 1100px eine
-fixe vertikale Seitenleiste rechts mit einem Balken, der beim Scrollen
-mitwandert. Neue Nav-Punkte müssen in allen drei Listen auf allen Seiten
-ergänzt werden — die Checkliste steht in [`CLAUDE.md`](CLAUDE.md).
+Ein Hamburger-Button rechts in der Kopfzeile (nach Social-Icons und
+Sprachwahl) klappt ein halbtransparentes Dropdown mit den 7 Punkten
+(Home/Blog/Bio/Dates/Projects/Gear/Contact) auf — auf allen Seiten und allen
+Breiten gleich. Neue Nav-Punkte kommen in die `.menu-panel`-Liste auf allen
+Seiten; die Checkliste steht in [`CLAUDE.md`](CLAUDE.md). Die frühere
+Variante mit der Marker-Seitenleiste ist als Branch `menu-option-side-rail`
+(und Tag `menu-rail-last-main`) erhalten.
+
+## Gear
+
+Der Abschnitt „Gear" ist eine horizontale Galerie: Vision Ears und Sonor
+stehen als Slides nebeneinander, senkrechte Pfeil-Balken (Look wie die
+Kalender-Pfeile) wechseln zwischen den Marken. Neue Marke = neuer Slide, siehe
+`CLAUDE.md`.
 
 ## Deployment
 

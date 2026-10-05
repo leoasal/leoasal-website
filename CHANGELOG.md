@@ -5,6 +5,14 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Doku-Abgleich (2026-10-05, Skill update-project).** README: Navigation auf
+  Dropdown umgestellt, neuer Abschnitt „Gear“, JS-Liste um `menu.js`,
+  `soft-scroll.js`, `gear-slider.js` ergänzt, Lightbox-Schließwege, Inbox-
+  Hinweis. CLAUDE.md: Gear-Absätze auf Slider/Marken-Slides korrigiert („Neue
+  Marke ergänzen“ neu), Fallstricke ergänzt (Inbox nicht gitignored, `?v=N`
+  gegen 10-Min-Cache, Pane blockt `leoasal.com`, Transitions pausieren in
+  verborgener Pane, übrig gebliebener Worktree). `.gitignore` geprüft, passt.
+
 - **Gear: End-Markierung hinter Sonor (2026-10-05).** Der Platzhalter-Balken mit
   langer Linie und Doppelstrich, der den Anfang vor Vision Ears markiert, steht
   jetzt spiegelbildlich auch am Ende rechts neben Sonor
