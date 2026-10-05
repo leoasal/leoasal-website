@@ -649,8 +649,10 @@ als `data-credit`/`-name`/`-url` direkt am Trigger-Button, erscheint in der
 Lightbox), 8 = **Video** `IMG_8368.MOV` →
 `sonor-video.mp4` (**Boomerang vorwärts+rückwärts, ohne Ton**, 960×720, 15 s,
 CRF 29; **Anfang 0,8 s abgeschnitten** (`-ss 0.8` vor dem Input, dort lief
-eine Person durchs Bild), Ergebnis 13,5 s / 2,4 MB; Poster
-`sonor-video-poster.jpg` bei 1,2 s des Originals; im HTML hängt `?v=2` an der
+eine Person durchs Bild), **1,2× Geschwindigkeit fest ins Video gerechnet**
+(`setpts=PTS/1.2,fps=30`, nicht per `playbackRate` — gilt so auch in der
+Lightbox), Ergebnis 11,3 s / 2,1 MB; Poster
+`sonor-video-poster.jpg` bei 1,2 s des Originals; im HTML hängt `?v=3` an der
 Video-URL, damit Browser die ersetzte Datei neu laden). Videos im
 Thumbnail-Raster nutzen das Yamuna-Making-of-Muster (`data-lightbox-video`,
 `data-lightbox-poster`), aber ohne `autoplay`: `<video src=… preload="none"
