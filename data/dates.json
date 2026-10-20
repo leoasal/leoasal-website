@@ -1456,6 +1456,13 @@
     "url": "https://jakobmanz.de"
   },
   {
+    "title": "TV total @ ProSieben",
+    "location": "ProSieben",
+    "start": "2026-04-07T20:15:00",
+    "allDay": false,
+    "url": ""
+  },
+  {
     "title": "The Jakob Manz Project @ Jazzclub Englischer Bahnhof",
     "location": "Jazzclub Englischer Bahnhof, Poggenburgstraße 10A, 25813 Husum, Schleswig-Holstein, Deutschland",
     "start": "2026-04-17T00:00:00",
@@ -1475,6 +1482,13 @@
     "start": "2026-04-25T00:00:00",
     "allDay": true,
     "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "TV total @ ProSieben",
+    "location": "ProSieben",
+    "start": "2026-05-19T20:15:00",
+    "allDay": false,
+    "url": ""
   },
   {
     "title": "Jakob Bänsch Quartett @ Pforzheim Domicile",
@@ -1510,6 +1524,13 @@
     "start": "2026-07-24T00:00:00",
     "allDay": true,
     "url": "https://jakobmanz.de"
+  },
+  {
+    "title": "TV total @ ProSieben",
+    "location": "ProSieben",
+    "start": "2026-08-11T20:15:00",
+    "allDay": false,
+    "url": ""
   },
   {
     "title": "The Jakob Manz Project @ Sommernachtskino Tübingen",
