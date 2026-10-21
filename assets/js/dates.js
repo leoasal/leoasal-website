@@ -100,6 +100,11 @@
   var ICON_CLOCK =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/></svg>';
 
+  // Locations that are a broadcaster/channel, not a physical venue — these
+  // have no address to map, so the location pin links straight to the
+  // event's URL (e.g. the show's streaming page) instead of Google Maps.
+  var BROADCAST_LOCATIONS = ["ProSieben"];
+
   function renderEvent(e) {
     var when = e.end ? formatDateRange(e.start, e.end) : formatDate(e.start);
     var hasDetails = !e.allDay || e.location || e.url;
@@ -119,7 +124,16 @@
         '<span class="date-detail-icon" role="img" data-i18n-attr="aria-label:dates.time">' + ICON_CLOCK + "</span>" +
         "<span>" + formatTime(e.start) + "</span></div>";
     }
-    if (e.location) {
+    var isBroadcastLocation = e.location && BROADCAST_LOCATIONS.indexOf(e.location.replace(/\n/g, ", ")) !== -1;
+    if (e.location && isBroadcastLocation && e.url) {
+      var broadcastText = e.location.replace(/\n/g, ", ");
+      body +=
+        '<div class="date-detail">' +
+        '<span class="date-detail-icon" role="img" data-i18n-attr="aria-label:dates.location">' + ICON_PIN + "</span>" +
+        '<span class="date-location-value">' +
+        '<a class="date-link" href="' + escapeAttr(e.url) + '" target="_blank" rel="noopener">' + escapeHtml(broadcastText) + "</a>" +
+        "</span></div>";
+    } else if (e.location) {
       var locationText = e.location.replace(/\n/g, ", ");
       var mapsQuery = encodeURIComponent(locationText);
       body +=
@@ -133,7 +147,7 @@
         '&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="' +
         escapeAttr(locationText) + '"></iframe></div>';
     }
-    if (e.url) {
+    if (e.url && !isBroadcastLocation) {
       body +=
         '<div class="date-detail">' +
         '<span class="date-detail-icon" role="img" data-i18n-attr="aria-label:dates.moreInfo">' + ICON_ARROW + "</span>" +
