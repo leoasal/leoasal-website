@@ -815,6 +815,19 @@ Kurz:
   (`https://www.google.com/maps/search/?api=1&query=...`), und darunter
   liegt ein eingebettetes Google-Maps-Preview (`.date-map` iframe,
   `output=embed`-Trick, kein API-Key nötig). Kein Apple-Maps-Link.
+- **Ausnahme für TV-/Streaming-Ausstrahlungen (keine physische Venue,
+  2026-10-21):** `BROADCAST_LOCATIONS` in `dates.js` ist eine kleine
+  Allowlist exakter Location-Strings (aktuell nur `"ProSieben"`). Steht
+  `location` eines Termins exakt in dieser Liste UND ist `url` gesetzt,
+  verlinkt der Location-Pin direkt auf `url` statt auf Google Maps — keine
+  Karte, keine separate "mehr Info"-Zeile (würde sonst denselben Link
+  doppelt zeigen). Alle anderen Termine mit `url` (jakobmanz.de,
+  bujazzo.de, …) bleiben unverändert bei Maps-Link + Karte + separater
+  URL-Zeile. Das Calendar.app-Event-Property `url` lässt sich direkt per
+  AppleScript setzen (`set url of theEvent to "https://..."`) und wird von
+  `sync-calendar.js` wie jede andere Projekt-URL übernommen. Neue
+  Broadcaster ohne Venue: einfach ihren exakten `location`-String zur
+  Liste hinzufügen.
 - Der URL-Link zeigt die **rohe Domain ohne Schema** als Linktext (z.B.
   `jakobmanz.de`, via `displayUrl()` in `dates.js`, strippt `https://`).
   Location- und URL-Link sind **nicht fett** (nur `text-decoration:

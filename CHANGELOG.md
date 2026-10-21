@@ -5,6 +5,13 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Broadcaster-Locations ohne Maps-Link (2026-10-21).** Neue
+  `BROADCAST_LOCATIONS`-Allowlist in `assets/js/dates.js`: Termine mit
+  einer Location aus dieser Liste (aktuell nur "ProSieben") verlinken den
+  Location-Pin direkt auf die Event-URL statt auf Google Maps (keine
+  Karte, kein physischer Ort zu mappen) — ausgelöst durch die ersten
+  "TV total @ ProSieben"-Termine im Kalender.
+
 - **Doku-Abgleich (2026-10-05, Skill update-project).** README: Navigation auf
   Dropdown umgestellt, neuer Abschnitt „Gear“, JS-Liste um `menu.js`,
   `soft-scroll.js`, `gear-slider.js` ergänzt, Lightbox-Schließwege, Inbox-
