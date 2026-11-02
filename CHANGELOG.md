@@ -5,13 +5,14 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
-- **Gear mobil optimiert (2026-11-02).** Unter 640 px quetschten die
-  seitlichen Pfeil-Balken (je 3 rem + 1,5 rem Abstand) den Inhalt auf
-  ~190 px. Jetzt: Inhalt volle Breite (335 px bei 375 px Viewport), die
-  Pfeile sitzen als schmale Zwei-Button-Leiste (je 50 %, 2,75 rem hoch)
-  oben in jedem Slide; die deaktivierten Platzhalter füllen die fehlende
-  Hälfte. Kleinere Überschrift/Fließtext. Desktop unverändert. Nur
-  `assets/css/style.css`.
+- **Gear mobil: eigenes Design (2026-11-02).** Unter 640 px quetschten die
+  seitlichen Pfeil-Balken den Inhalt auf ~190 px (erste Korrektur: Pfeile als
+  Leiste oben). Auf Leos Wunsch ("sich viel weiter von der Desktop-Version
+  abzeichnen", Linien ergeben mobil keinen Sinn) jetzt komplett eigene
+  Mobilversion: keine Balken/Linien, Inhalt volle Breite, Marken-Umschalter
+  `.gear-tabs` im Stil des Sprachumschalters (Großbuchstaben, aktive Marke
+  lila + Unterstrich), Zitat als graue Karte, Vision-Ears-Logo zentriert.
+  Desktop unverändert. Dateien: `style.css`, `gear-slider.js`, `index.html`.
 
 - **Smooth-Jazz-Einzelkonzerte (2026-10-22).** 14 Einzelkonzerte der
   Vienna-Sailings in "WEBSITE TERMINE" ergänzt (reine Kalenderpflege, per

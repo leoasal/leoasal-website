@@ -14,6 +14,26 @@
     else strip.scrollBy({ left: dx, behavior: "smooth" });
   });
 
+  // Phone brand switcher (pills): tap = scroll to that slide, swiping updates
+  // the highlighted pill.
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".gear-tab"));
+  function syncTabs() {
+    var i = Math.round(strip.scrollLeft / (strip.clientWidth || 1));
+    tabs.forEach(function (t, n) {
+      if (n === i) t.setAttribute("aria-current", "true");
+      else t.removeAttribute("aria-current");
+    });
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      var i = parseInt(t.getAttribute("data-gear-go"), 10) || 0;
+      var dx = i * strip.clientWidth - strip.scrollLeft;
+      if (window.softScrollBy) window.softScrollBy(strip, dx);
+      else strip.scrollBy({ left: dx, behavior: "smooth" });
+    });
+  });
+  strip.addEventListener("scroll", syncTabs, { passive: true });
+
   // Warm up: the off-screen slides' photos are lazy-loaded; fetch + decode them
   // once the page is idle so the glide never waits on a big image.
   function warm() {

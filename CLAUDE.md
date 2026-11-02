@@ -620,11 +620,20 @@ Eyebrow über "Gear" heißt jetzt **"Equipment"** (en/de; es "Equipamiento")
 statt "Endorsements"/"Kooperationen"/"Colaboraciones". `.gear-brand` gibt es
 nicht mehr.
 
-**Gear mobil (<640 px, 2026-11-02):** die seitlichen Pfeil-Balken würden den
-Inhalt auf ~190 px quetschen, deshalb `.gear-slide { padding: 3.25rem 0 0 }`
-und die `.gear-toggle`s sitzen oben im Slide als Zwei-Button-Leiste (je 50 %
-breit, 2,75 rem hoch, `prev` links mit Trennlinie, `next`/Platzhalter rechts).
-Wischen geht weiter nativ. Gleiche DOM-Struktur wie Desktop, nur CSS.
+**Gear mobil (<640 px, eigenes Design, 2026-11-02):** die Desktop-Optik
+(Pfeil-Balken, Trennlinien, Doppelstrich-Platzhalter) ergibt auf dem Handy
+keinen Sinn und würde den Inhalt auf ~190 px quetschen. Deshalb unter 640 px:
+`.gear-toggle { display:none }`, Slides ohne Padding (volle Breite), und ein
+Umschalter `.gear-tabs` (zwei `.gear-tab`-Buttons „Vision Ears"/„Sonor",
+`data-gear-go="0|1"`, ab 640 px `display:none`) im Stil des Sprachumschalters/
+Dropdowns: Großbuchstaben, Letter-Spacing, aktive Marke (`aria-current="true"`)
+in `--accent-dark` mit Unterstrich, inaktive 55 % Deckkraft. Antippen gleitet
+per `softScrollBy` zum Slide, Wischen aktualisiert den aktiven Tab
+(`syncTabs()` in `gear-slider.js`). Zitat dort als weiche graue Karte
+(`--bg-soft`) statt Akzentstrich, Vision-Ears-Logo mittig unter dem Zitat.
+**Neue Marke:** zusätzlich einen `.gear-tab` mit passendem `data-gear-go`
+anhängen. Verworfene Alternative B (Marken untereinander, ohne Slider) ist
+als `#gear[data-mobile="stack"]` im CSS vorhanden, aber nicht aktiv.
 
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
