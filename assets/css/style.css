@@ -966,9 +966,27 @@ a.project-card:hover {
   transform: rotate(90deg);
 }
 
+/* Phones: side bars would squeeze the content to ~190px, so the content gets
+   the full width and the arrows move into a slim two-button bar on top of each
+   slide (back left, next right; the disabled stand-ins fill the missing half).
+   Swiping works as on desktop. */
 @media (max-width: 639px) {
-  .gear-slide { padding: 0 3rem; }
-  .gear-toggle { width: 2.25rem; }
+  .gear-slide { padding: 3.25rem 0 0; }
+  .gear-toggle {
+    top: 0;
+    bottom: auto;
+    width: 50%;
+    height: 2.75rem;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .gear-toggle--prev { left: 0; border-right: 1px solid var(--line); }
+  .gear-toggle--next { right: 0; }
+  .gear-toggle--start .gear-start-mark,
+  .gear-toggle--end .gear-start-mark { height: 1.2rem; }
+  .gear-toggle svg { width: 1.4rem; height: 1.4rem; }
+  .gear-slide-body > h3:first-child { font-size: 1.3rem; }
+  .gear-slide .bio-text { font-size: 0.95rem; line-height: 1.6; }
 }
 
 .gear-quote-row {

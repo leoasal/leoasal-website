@@ -5,6 +5,18 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Gear mobil optimiert (2026-11-02).** Unter 640 px quetschten die
+  seitlichen Pfeil-Balken (je 3 rem + 1,5 rem Abstand) den Inhalt auf
+  ~190 px. Jetzt: Inhalt volle Breite (335 px bei 375 px Viewport), die
+  Pfeile sitzen als schmale Zwei-Button-Leiste (je 50 %, 2,75 rem hoch)
+  oben in jedem Slide; die deaktivierten Platzhalter füllen die fehlende
+  Hälfte. Kleinere Überschrift/Fließtext. Desktop unverändert. Nur
+  `assets/css/style.css`.
+
+- **Smooth-Jazz-Einzelkonzerte (2026-10-22).** 14 Einzelkonzerte der
+  Vienna-Sailings in "WEBSITE TERMINE" ergänzt (reine Kalenderpflege, per
+  Sync auf die Seite gekommen; kein Code-Commit).
+
 - **Broadcaster-Locations ohne Maps-Link (2026-10-21).** Neue
   `BROADCAST_LOCATIONS`-Allowlist in `assets/js/dates.js`: Termine mit
   einer Location aus dieser Liste (aktuell nur "ProSieben") verlinken den
