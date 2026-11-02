@@ -1009,8 +1009,7 @@ a.project-card:hover {
     background: var(--bg-soft);
     border-radius: 8px;
   }
-  .gear-quote-row { margin: 1.25rem 0; align-items: stretch; }
-  .gear-quote-row .brand-side { align-self: center; }
+  .gear-quote-row { margin: 1.25rem 0; }
 
   /* Variant B: no slider, brands one below the other */
   #gear[data-mobile="stack"] .gear-tabs { display: none; }
@@ -1053,10 +1052,13 @@ a.project-card:hover {
 }
 
 @media (max-width: 639px) {
+  /* logo above the quote, centred */
   .gear-quote-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 1.25rem;
   }
+  .gear-quote-row .brand-side { align-self: center; }
   .brand-logo img { width: 120px; }
 }
 

@@ -5,6 +5,12 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Sonor-Video ohne Leer-Bild, Logo über dem Zitat (2026-11-02).** Das Video
+  zeigte beim Start oft kurz eine leere Fläche, bevor das erste Bild da war:
+  Grid-Video bekommt das Poster zusätzlich als CSS-Hintergrund, das
+  Lightbox-Video (`lightbox.js`) `poster` + Hintergrund + `preload=auto`.
+  Mobil steht das Vision-Ears-Logo jetzt mittig über dem Zitat.
+
 - **Gear mobil: eigenes Design (2026-11-02).** Unter 640 px quetschten die
   seitlichen Pfeil-Balken den Inhalt auf ~190 px (erste Korrektur: Pfeile als
   Leiste oben). Auf Leos Wunsch ("sich viel weiter von der Desktop-Version

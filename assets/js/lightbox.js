@@ -167,6 +167,14 @@
         el.loop = true;
         el.playsInline = true;
         el.autoplay = true;
+        el.preload = "auto";
+        // Poster = box size + picture while the first frame is still loading
+        // (without it the empty <video> shows as a small blank box first).
+        var poster = trigger.getAttribute("data-lightbox-poster");
+        if (poster) {
+          el.poster = poster;
+          el.style.background = "url('" + poster + "') center / contain no-repeat";
+        }
       }
       slide.appendChild(el);
     }

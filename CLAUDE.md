@@ -630,7 +630,10 @@ Dropdowns: Großbuchstaben, Letter-Spacing, aktive Marke (`aria-current="true"`)
 in `--accent-dark` mit Unterstrich, inaktive 55 % Deckkraft. Antippen gleitet
 per `softScrollBy` zum Slide, Wischen aktualisiert den aktiven Tab
 (`syncTabs()` in `gear-slider.js`). Zitat dort als weiche graue Karte
-(`--bg-soft`) statt Akzentstrich, Vision-Ears-Logo mittig unter dem Zitat.
+(`--bg-soft`) statt Akzentstrich, Vision-Ears-Logo mittig **über** dem Zitat
+(`.gear-quote-row` dort `column-reverse`; die Regel steht im zweiten
+`@media (max-width:639px)`-Block weiter unten — nicht im ersten, sonst wird
+sie überschrieben).
 **Neue Marke:** zusätzlich einen `.gear-tab` mit passendem `data-gear-go`
 anhängen. Verworfene Alternative B (Marken untereinander, ohne Slider) ist
 als `#gear[data-mobile="stack"]` im CSS vorhanden, aber nicht aktiv.
@@ -694,7 +697,10 @@ Thumbnail-Raster nutzen das Yamuna-Making-of-Muster (`data-lightbox-video`,
 `data-lightbox-poster`), aber ohne `autoplay`: `<video src=… preload="none"
 data-play-when-visible muted loop playsinline>` zeigt das Poster, lädt beim
 Seitenaufruf nichts, und `gear-slider.js` ruft `play()` per
-IntersectionObserver, sobald es sichtbar ist. **Fallen:** (1) Autoplay in
+IntersectionObserver, sobald es sichtbar ist. **Kein Leer-Bild vor dem Video (2026-11-02):** das Grid-`<video>` hat das Poster
+zusätzlich als `background` (inline), und `lightbox.js` setzt auf dem
+Lightbox-`<video>` `poster` + `background` + `preload=auto` — sonst zeigte ein
+noch nicht ladendes Video kurz eine leere Fläche. **Fallen:** (1) Autoplay in
 einem verdeckten Slide oder `preload="metadata"` ließ das Thumbnail blank;
 (2) der Browser pausiert das Video mitten in der Wechsel-Animation sofort
 wieder (`AbortError`, „nicht sichtbar“) — deshalb Neustart per
