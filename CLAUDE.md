@@ -646,7 +646,9 @@ Aufbau: `.page-header` (Eyebrow `lessons.eyebrow`, h2 `lessons.heading`),
 Intro + Lead-Satz in `.bio-text`, die sechs Schwerpunkte (Technik, Stile,
 Grooves & Fill-ins, Soli, Timing & Feel, Philosophie) als `ul.lessons-list`
 (Grid 1/2/3 Spalten, je `h3` + `p`, keine Linien/Karten), Schluss-CTA
-`.lessons-cta` mit Link auf `#contact`. Texte in allen 3 i18n-JSONs
+`.lessons-cta` mit Link auf `#contact`. **Texte stehen in der 3. Person**
+("Leo gibt/is available …", wie die Gear-Texte; Leo-Wunsch 2026-11-05), keine
+Ich-/Du-Form. Texte in allen 3 i18n-JSONs
 (`lessons.*`, `nav.lessons`). Hintergrund `home-section--alt` (grau),
 dadurch ist `#contact` jetzt weiß (Alternierung neu durchgezählt). Nicht
 verifiziert/bewusst weggelassen: Online-Unterricht, Ort, Preise, Niveau —
