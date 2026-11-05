@@ -5,6 +5,14 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
 
 ## Erledigt (chronologisch, neueste zuerst)
 
+- **Neue Sektion „Lessons“ / Unterricht (2026-11-05).** Neuer Nav-Punkt und
+  Sektion `#lessons` zwischen Gear und Contact (Drum-Unterricht: Einzelstunden
+  und Workshops, sechs Schwerpunkte als dreispaltige Liste, CTA auf Kontakt).
+  Texte von Leos Stichpunkten ausgearbeitet, EN/DE/ES. Menü-Eintrag auf allen
+  9 Seiten, `spyIds` in `anchor-scroll.js` erweitert, `#contact` jetzt weißer
+  Hintergrund (Alternierung). Dateien: `index.html`, 8 weitere Seiten (nur
+  Menü), `style.css`, `anchor-scroll.js`, 3 i18n-JSONs, Doku.
+
 - **Sonor-Video ohne Leer-Bild, Logo über dem Zitat (2026-11-02).** Das Video
   zeigte beim Start oft kurz eine leere Fläche, bevor das erste Bild da war:
   Grid-Video bekommt das Poster zusätzlich als CSS-Hintergrund, das

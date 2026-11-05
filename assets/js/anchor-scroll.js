@@ -95,7 +95,7 @@
 
   // ---- Scrollspy ------------------------------------------------------------
   // Marks the nearest section's entry in the dropdown menu (aria-current).
-  var spyIds = ["home", "blog", "bio", "dates", "projects", "gear", "contact"];
+  var spyIds = ["home", "blog", "bio", "dates", "projects", "gear", "lessons", "contact"];
   var spySections = spyIds
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);

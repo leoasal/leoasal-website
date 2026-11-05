@@ -1082,6 +1082,44 @@ a.project-card:hover {
   color: var(--accent-dark);
 }
 
+/* ---------- Lessons ---------- */
+
+.lessons-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 3rem;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .lessons-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .lessons-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.lessons-list h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+  color: var(--accent-dark);
+}
+
+.lessons-list p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.lessons-cta {
+  margin-top: 2.5rem;
+}
+
+.lessons-cta a {
+  color: var(--accent-dark);
+}
+
 /* ---------- Yamuna EPK ---------- */
 
 .video-grid {

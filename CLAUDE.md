@@ -103,7 +103,7 @@ nutzen oder als Variable setzen: `GH=~/.local/gh-cli/gh_2.97.0_macOS_arm64/bin/g
 eigenständigen Seiten.** Leo wollte, dass Klicken in der Nav und
 Runterscrollen auf der Startseite zum exakt selben Ergebnis führen ("die
 Unterscheidung zwischen Scrollen und den einzelnen Seiten soll es nicht
-mehr geben"). Der komplette Inhalt dieser 6 Bereiche lebt ausschließlich
+mehr geben"). Der komplette Inhalt dieser 7 Bereiche lebt ausschließlich
 als Sektionen in `index.html` (`#blog`, `#bio`, `#dates`, `#projects`,
 `#gear`, `#contact` — in dieser Reihenfolge, Blog zuerst direkt nach dem
 Hero, Gear vor Contact — 2026-09-30 auf Leos Wunsch von "letzter Punkt"
@@ -129,7 +129,7 @@ prüfen, nicht automatisch eine eigenständige Seite bauen.
 ```
 index.html                    Startseite: Hero (Foto + Name), danach direkt im Anschluss
                                die vollständigen Sektionen #blog/#bio/#dates/#projects/
-                               #gear/#contact (siehe Architektur-Hinweis oben) — abwechselnd
+                               #gear/#lessons/#contact (siehe Architektur-Hinweis oben) — abwechselnd
                                weißer/hellgrauer Hintergrund (`.home-section`/
                                `.home-section--alt`, Reihenfolge weiß/grau/weiß/grau/weiß/grau)
                                zur optischen Trennung, großzügiger Abstand (`padding: 5rem
@@ -240,7 +240,7 @@ Kopfzeile, nach den Social-Icons und der Sprachwahl in `.header-actions`.
 Er klappt `.menu-panel` auf — ein weißes Dropdown, das an der Unterkante des
 Headers hängt (`position:absolute; top:100%`, rechtsbündig zur Container-
 Kante, halbtransparentes Milchglas `rgba(255,255,255,.72)` + `blur(14px)`, 0.25 s
-Ein-/Ausblenden; Leo: "etwas transparent"), mit den 7 Punkten Home/Blog/
+Ein-/Ausblenden; Leo: "etwas transparent"), mit den 8 Punkten Home/Blog/
 Bio/Dates/Projects/Gear/Contact untereinander. `assets/js/menu.js` steuert
 Auf/Zu (Klick auf den Button, Klick außerhalb, Esc, Klick auf einen Eintrag)
 und zieht unterhalb 480 px die `.site-social`-Icons per `matchMedia` aus der
@@ -539,7 +539,7 @@ nach `Inbox/processed/` (gitignored, s. "Inbox").
 Sektion für Marken/Ausrüstung, mit der er kooperiert (erster Eintrag:
 Vision Ears, In-Ear-Monitore) — als eigener Punkt im One-Pager, genau wie
 Blog/Bio/Dates/Projects/Contact (s. Architektur-Hinweis ganz oben in
-diesem Abschnitt), **Position 6 von 7 (Home/Blog/Bio/Dates/Projects/Gear/Contact), direkt vor Contact** (2026-09-30
+diesem Abschnitt), **Position 6 von 8 (Home/Blog/Bio/Dates/Projects/Gear/Lessons/Contact); seit 2026-11-05 steht Lessons zwischen Gear und Contact** (2026-09-30
 per Rückfrage zunächst ans Ende gesetzt, dann von Leo explizit vor
 Contact korrigiert: "gear soll als 5. punkt, vor kontakt, sein"). **Erster
 Entwurf war außerdem eine eigenständige `gear.html` mit eigenem
@@ -550,10 +550,10 @@ Seiten mit echtem Header ist `index.html#gear` (bzw. auf index.html
 selbst nur `#gear`), **eingefügt zwischen Projects und Contact** +
 `nav.gear`-i18n-Key (auch auf impressum.html/datenschutz.html, dort wie
 die anderen Nav-Labels hartcodiert ohne `data-i18n`). die
-`.menu-panel`-Liste hat jetzt **7 Einträge** inkl. Home (Dropdown wächst
+`.menu-panel`-Liste hat jetzt **8 Einträge** inkl. Home (Dropdown wächst
 automatisch, kein CSS-Fix nötig).
 `assets/js/anchor-scroll.js`: `spyIds`-Array ist
-`["home","blog","bio","dates","projects","gear","contact"]` — **die
+`["home","blog","bio","dates","projects","gear","lessons","contact"]` — **die
 Reihenfolge in diesem Array muss immer exakt der DOM-Reihenfolge der
 Sektionen entsprechen** (die Landing-Positionen müssen aufsteigend sein,
 sonst bricht die Landing-Positions-Logik des Scrollspy. `index.html` lädt jetzt
@@ -637,6 +637,22 @@ sie überschrieben).
 **Neue Marke:** zusätzlich einen `.gear-tab` mit passendem `data-gear-go`
 anhängen. Verworfene Alternative B (Marken untereinander, ohne Slider) ist
 als `#gear[data-mobile="stack"]` im CSS vorhanden, aber nicht aktiv.
+
+**Lessons-Sektion (`#lessons`, 2026-11-05):** Drum-Unterricht, Position
+zwischen Gear und Contact (Nav-Label EN "Lessons", DE "Unterricht", ES
+"Clases"; Anker/ID bewusst englisch wie `#dates`/`#gear`). Wie alle
+Bereiche nur eine Sektion auf dem One-Pager, keine eigene Seite/kein Stub.
+Aufbau: `.page-header` (Eyebrow `lessons.eyebrow`, h2 `lessons.heading`),
+Intro + Lead-Satz in `.bio-text`, die sechs Schwerpunkte (Technik, Stile,
+Grooves & Fill-ins, Soli, Timing & Feel, Philosophie) als `ul.lessons-list`
+(Grid 1/2/3 Spalten, je `h3` + `p`, keine Linien/Karten), Schluss-CTA
+`.lessons-cta` mit Link auf `#contact`. Texte in allen 3 i18n-JSONs
+(`lessons.*`, `nav.lessons`). Hintergrund `home-section--alt` (grau),
+dadurch ist `#contact` jetzt weiß (Alternierung neu durchgezählt). Nicht
+verifiziert/bewusst weggelassen: Online-Unterricht, Ort, Preise, Niveau —
+Leo hat dazu nichts gesagt, nicht erfinden. **Neue Nav-Punkte** müssen in
+`.menu-panel` auf allen 9 Seiten + `spyIds` ergänzt werden (hier genauso
+gemacht; impressum/datenschutz hartcodiert deutsch ohne `data-i18n`).
 
 Sektionsaufbau (wie jede Homepage-Sektion): `.page-header` mit Eyebrow
 (`gear.eyebrow`, i18n) + `<h2>` "Gear" (`gear.heading`, i18n — auf
@@ -1045,18 +1061,5 @@ verarbeitet — Bild-Resize-Parameter, Video-Encoding-Optionen etc.).
 
 ## Offene Punkte / mögliche nächste Schritte
 
-- **Neuer Nav-Punkt "Unterricht"** (angekündigt 2026-09-30, noch nicht
-  umgesetzt): Leo will später einen 8. Punkt in der Hauptnav für
-  Drum-Unterricht ergänzen (Home/Blog/Bio/Dates/Projects/Gear/Contact sind
-  aktuell 7). Wenn er das anstößt: neue `#unterricht`-Sektion in
-  `index.html` nach dem Muster der bestehenden Sektionen (s.
-  "Seitenstruktur" oben), `nav.unterricht`-i18n-Key in allen 3 JSONs, Link
-  in **einer** Stelle pro Seite mit echtem Header ergänzen (`.menu-panel`-
-  `<ul>`) auf **allen 9** Seiten (s.
-  "Header/Nav-Layout" oben), `spyIds`-Array in `anchor-scroll.js` um
-  `"unterricht"` an der richtigen Position erweitern (Reihenfolge muss der
-  DOM-Reihenfolge der Sektionen entsprechen, sonst bricht der Scrollspy),
-  Hintergrund-Alternierung der betroffenen Sektionen neu durchzählen.
-  Noch nicht geklärt: an welcher Position in der Reihenfolge (vermutlich
-  nicht einfach ans Ende, s. Präzedenzfall Gear, das explizit vor statt
-  nach Contact eingeordnet wurde) — bei Umsetzung nachfragen statt raten.
+Keine offenen Punkte vermerkt. (Der früher hier geführte Nav-Punkt "Unterricht"
+ist seit 2026-11-05 umgesetzt, s. "Lessons-Sektion".)

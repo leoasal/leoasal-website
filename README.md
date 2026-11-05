@@ -17,8 +17,8 @@ und Termine und braucht dafür einen echten HTTP-Server.
 ## Struktur
 
 - `index.html` — Startseite: Hero (`#home`) + die Sektionen `#blog`/`#bio`/
-  `#dates`/`#projects`/`#gear`/`#contact`. Die "Seiten" Blog/Bio/Termine/
-  Projekte/Gear/Kontakt leben inhaltlich hier, nicht als eigene Dateien.
+  `#dates`/`#projects`/`#gear`/`#lessons`/`#contact`. Die "Seiten" Blog/Bio/
+  Termine/Projekte/Gear/Unterricht/Kontakt leben inhaltlich hier, nicht als eigene Dateien.
 - `blog.html`, `bio.html`, `dates.html`, `projects.html`, `gear.html`,
   `contact.html` — reine Redirect-Stubs auf die jeweilige
   `index.html#…`-Sektion, für alte Bookmarks/Links.
@@ -59,8 +59,8 @@ Architektur-Entscheidungen, Konventionen und der aktuelle Stand stehen in
 ## Navigation
 
 Ein Hamburger-Button rechts in der Kopfzeile (nach Social-Icons und
-Sprachwahl) klappt ein halbtransparentes Dropdown mit den 7 Punkten
-(Home/Blog/Bio/Dates/Projects/Gear/Contact) auf — auf allen Seiten und allen
+Sprachwahl) klappt ein halbtransparentes Dropdown mit den 8 Punkten
+(Home/Blog/Bio/Dates/Projects/Gear/Lessons/Contact) auf — auf allen Seiten und allen
 Breiten gleich. Neue Nav-Punkte kommen in die `.menu-panel`-Liste auf allen
 Seiten; die Checkliste steht in [`CLAUDE.md`](CLAUDE.md). Die frühere
 Variante mit der Marker-Seitenleiste ist als Branch `menu-option-side-rail`
