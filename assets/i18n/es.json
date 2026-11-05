@@ -111,8 +111,7 @@
   "nav.lessons": "Clases",
   "lessons.eyebrow": "Enseñanza",
   "lessons.heading": "Clases",
-  "lessons.intro": "Leo está disponible para clases particulares y talleres, ya sea para afianzar las bases o para explorar nuevos terrenos musicales. Cada sesión se adapta a lo que se quiera trabajar.",
-  "lessons.lead": "Estas son algunas de las áreas en las que Leo trabaja en sus clases:",
+  "lessons.intro": "Leo está disponible para clases particulares y talleres, ya sea para afianzar las bases o para explorar nuevos terrenos musicales.",
   "lessons.technique.title": "Técnica",
   "lessons.technique.text": "Manos, pies y coordinación: una forma relajada y eficiente de tocar el instrumento.",
   "lessons.styles.title": "Diferentes estilos",
@@ -125,5 +124,5 @@
   "lessons.timing.text": "Tiempo, subdivisión y toque: lo que hace que un groove suene bien.",
   "lessons.philosophy.title": "Filosofía",
   "lessons.philosophy.text": "Cómo practicar, cómo escuchar y cómo abordar la música.",
-  "lessons.cta": "¿Hay interés? <a href=\"#contact\">Ponte en contacto</a> para hablar de qué trabajar."
+  "lessons.cta": "<a href=\"#contact\">¿Hay interés?</a> Ponte en contacto para hablar de qué trabajar."
 }

@@ -14,6 +14,8 @@ Aktueller Zustand/Architektur steht in `CLAUDE.md`, nicht hier.
   Menü), `style.css`, `anchor-scroll.js`, 3 i18n-JSONs, Doku.
   Texte danach auf Leos Wunsch in die 3. Person singular umgestellt („Leo gibt
   Einzelunterricht …“, wie die Gear-Texte), CTA ohne „ich/mir“.
+  Danach auf Leos Wunsch Lead-Satz und „Jede Stunde richtet sich danach …“
+  entfernt; im Schluss ist nur noch „Interesse?“ der Link zu `#contact`.
 
 - **Sonor-Video ohne Leer-Bild, Logo über dem Zitat (2026-11-02).** Das Video
   zeigte beim Start oft kurz eine leere Fläche, bevor das erste Bild da war:

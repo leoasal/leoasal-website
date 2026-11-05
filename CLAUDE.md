@@ -643,10 +643,10 @@ zwischen Gear und Contact (Nav-Label EN "Lessons", DE "Unterricht", ES
 "Clases"; Anker/ID bewusst englisch wie `#dates`/`#gear`). Wie alle
 Bereiche nur eine Sektion auf dem One-Pager, keine eigene Seite/kein Stub.
 Aufbau: `.page-header` (Eyebrow `lessons.eyebrow`, h2 `lessons.heading`),
-Intro + Lead-Satz in `.bio-text`, die sechs Schwerpunkte (Technik, Stile,
+ein Intro-Satz in `.bio-text` (bewusst ohne Lead-Satz/„jede Stunde richtet sich…“, Leo-Wunsch), die sechs Schwerpunkte (Technik, Stile,
 Grooves & Fill-ins, Soli, Timing & Feel, Philosophie) als `ul.lessons-list`
 (Grid 1/2/3 Spalten, je `h3` + `p`, keine Linien/Karten), Schluss-CTA
-`.lessons-cta` mit Link auf `#contact`. **Texte stehen in der 3. Person**
+`.lessons-cta`, in dem nur das Wort „Interesse?“/„Interested?“ als Link auf `#contact` steht. **Texte stehen in der 3. Person**
 ("Leo gibt/is available …", wie die Gear-Texte; Leo-Wunsch 2026-11-05), keine
 Ich-/Du-Form. Texte in allen 3 i18n-JSONs
 (`lessons.*`, `nav.lessons`). Hintergrund `home-section--alt` (grau),

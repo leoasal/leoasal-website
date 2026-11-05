@@ -111,8 +111,7 @@
   "nav.lessons": "Unterricht",
   "lessons.eyebrow": "Einzelstunden &amp; Workshops",
   "lessons.heading": "Unterricht",
-  "lessons.intro": "Leo gibt Einzelunterricht und Workshops – ob zum Vertiefen der Grundlagen oder zum Entdecken neuer musikalischer Wege. Jede Stunde richtet sich danach, woran gearbeitet werden soll.",
-  "lessons.lead": "Das sind einige Bereiche, an denen Leo im Unterricht zum Beispiel arbeitet:",
+  "lessons.intro": "Leo gibt Einzelunterricht und Workshops – ob zum Vertiefen der Grundlagen oder zum Entdecken neuer musikalischer Wege.",
   "lessons.technique.title": "Technik",
   "lessons.technique.text": "Hände, Füße und Koordination – ein entspannter, effizienter Umgang mit dem Instrument.",
   "lessons.styles.title": "Verschiedene Stilistiken",
@@ -125,5 +124,5 @@
   "lessons.timing.text": "Time, Unterteilung und Anschlag – was einen Groove gut anfühlen lässt.",
   "lessons.philosophy.title": "Philosophie",
   "lessons.philosophy.text": "Wie man übt, wie man zuhört und wie man an Musik herangeht.",
-  "lessons.cta": "Interesse? <a href=\"#contact\">Kontakt aufnehmen</a> und besprechen, woran gearbeitet werden soll."
+  "lessons.cta": "<a href=\"#contact\">Interesse?</a> Kontakt aufnehmen und besprechen, woran gearbeitet werden soll."
 }
